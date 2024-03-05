@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8245f7fa1c5db6242b9474552181d70a, type: 3}
+  m_Name: EnemyDataList_SO
+  m_EditorClassIdentifier: 
+  enemies:
+  - index: 0
+    name: 77ko
+    sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
+    prefab: {fileID: 4708548768610898139, guid: d3470c4045ebf444b82348e1abed035c, type: 3}
+    faceToLeft: 0
+    enemyType: 1
+    attack: 1
+    hp: 10
+    speed: 6
+    getPlayerPosTimeDelta: 0.1
+    attackRange: 0.1
+    attackSpeed: 10
+    exp: 2
+    money: 5
+    desc: "\u666E\u901A\u8FD1\u6218"
+  - index: 1
+    name: scarlet rain
+    sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
+    prefab: {fileID: 4708548768610898139, guid: 8e01a792c675b0242b13b04c952bf1c1, type: 3}
+    faceToLeft: 1
+    enemyType: 2
+    attack: 1
+    hp: 10
+    speed: 2
+    getPlayerPosTimeDelta: 0.1
+    attackRange: 8
+    attackSpeed: 5
+    exp: 2
+    money: 5
+    desc: "\u666E\u901A\u8FDC"
+  - index: 2
+    name: purple hairpin
+    sprite: {fileID: 21300000, guid: dd4a95dd14ce03c4983df3a75f7425ce, type: 3}
+    prefab: {fileID: 4708548768610898139, guid: 8966b92e5303bff4bae67499f71fa73b, type: 3}
+    faceToLeft: 0
+    enemyType: 2
+    attack: 1
+    hp: 5
+    speed: 5
+    getPlayerPosTimeDelta: 0.1
+    attackRange: 8
+    attackSpeed: 5
+    exp: 10
+    money: 5
+    desc: "\u666E\u901A\u8FDC \u4E00\u6B21\u4E24\u53D1"
+  - index: 3
+    name: gateau
+    sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
+    prefab: {fileID: 4708548768610898139, guid: fe2ab76247283a345b7569a04b8e8c79, type: 3}
+    faceToLeft: 0
+    enemyType: 2
+    attack: 5
+    hp: 1
+    speed: 4
+    getPlayerPosTimeDelta: 0.1
+    attackRange: 7
+    attackSpeed: 10
+    exp: 2
+    money: 5
+    desc: "boqi \u666E\u901A\u8FDC \u4E00\u6B211\u53D1 \u5149\u7403\u5927\u4E14\u6162"
+  - index: 4
+    name: nijika
+    sprite: {fileID: 21300000, guid: dd4a95dd14ce03c4983df3a75f7425ce, type: 3}
+    prefab: {fileID: 4708548768610898139, guid: 94179feecd9f36f48bc042a1d8bc2bab, type: 3}
+    faceToLeft: 0
+    enemyType: 1
+    attack: 5
+    hp: 1
+    speed: 8
+    getPlayerPosTimeDelta: 0.1
+    attackRange: 0.6
+    attackSpeed: 5
+    exp: 2
+    money: 5
+    desc: "\u5B58\u6D3B\u65F6\u95F4\u8D8A\u957F\u901F\u5EA6\u8D8A\u5FEB"
+  - index: 5
+    name: kita
+    sprite: {fileID: 21300000, guid: c7dbe3efae9dd5e409b17fc8d5701523, type: 3}
+    prefab: {fileID: 4708548768610898139, guid: 95aa2ee42593c784dbc543523da4a01c, type: 3}
+    faceToLeft: 1
+    enemyType: 1
+    attack: 5
+    hp: 1
+    speed: 7
+    getPlayerPosTimeDelta: 0.1
+    attackRange: 6
+    attackSpeed: 10
+    exp: 2
+    money: 5
+    desc: "\u7A81\u7136\u51B2\u523A"
+  - index: 6
+    name: ryou
+    sprite: {fileID: 21300000, guid: b020fb3341ca2c945a553cc9b73b98ee, type: 3}
+    prefab: {fileID: 4708548768610898139, guid: a853ea4871a1c8d48b621041d4cec8f7, type: 3}
+    faceToLeft: 0
+    enemyType: 2
+    attack: 1
+    hp: 20
+    speed: 6
+    getPlayerPosTimeDelta: 0.1
+    attackRange: 8
+    attackSpeed: 5
+    exp: 2
+    money: 5
+    desc: "\u4E00\u6B215\u53D1"
+  - index: 7
+    name: chaser
+    sprite: {fileID: 21300000, guid: 6d2196183c1801e479f78254bbc800c0, type: 3}
+    prefab: {fileID: 4708548768610898139, guid: 2b29b3a257f9717409212f7b15b70054, type: 3}
+    faceToLeft: 0
+    enemyType: 1
+    attack: 5
+    hp: 200
+    speed: 10
+    getPlayerPosTimeDelta: 0.1
+    attackRange: 8
+    attackSpeed: 10
+    exp: 100
+    money: 50
+    desc: "\u89E6\u624B\u653B\u51FB"
+  - index: 8
+    name: chaser
+    sprite: {fileID: 21300000, guid: 6d2196183c1801e479f78254bbc800c0, type: 3}
+    prefab: {fileID: 4708548768610898139, guid: 2b29b3a257f9717409212f7b15b70054, type: 3}
+    faceToLeft: 0
+    enemyType: 1
+    attack: 0
+    hp: 2147483647
+    speed: 0
+    getPlayerPosTimeDelta: 0
+    attackRange: 0
+    attackSpeed: 0
+    exp: 0
+    money: 0
+    desc: "\u6728\u6869"

@@ -1,0 +1,133 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+[System.Serializable]
+public struct Character
+{
+    public int index;
+    public string name;
+    public Sprite sprite;
+    public GameObject prefab;
+    public bool faceToLeft;
+    
+    public Profession profession;
+    [Header("Attributes")]
+    public int attack;
+    public int hp;
+    public int speed;
+    public int attackSpeed; // 10s内攻击次数
+    public int attackRange; // 攻击距离
+    [TextArea(3, 10)]
+    public string desc;
+    public List<ExtraType> extraTypes;
+    public List<int> extraThresholds;
+    public List<string> extraDesire1;
+    public List<string> extraDesire2;
+}
+
+[System.Serializable]
+public struct Enemy
+{
+    public int index;
+    public string name;
+    public Sprite sprite;
+    public GameObject prefab;
+    public bool faceToLeft;
+    public EnemyType enemyType;
+    [Header("Attributes")]
+    public int attack;
+    public int hp;
+    public int speed;
+    public float getPlayerPosTimeDelta;
+    public float attackRange;
+    public float attackSpeed;
+    public int exp;
+    public int money;
+    [TextArea(3, 10)]
+    public string desc;
+}
+
+[System.Serializable]
+public struct LevelCreatEnemy
+{
+    public int levelIndex;
+    public Vector2[] offset;
+    public int[] enemyIndex;
+    public int[] enemyCreateFirstTime;
+    public int[] enemyCreateDeltaTime;
+    // 从第几秒后不出怪
+    public int endCreatEnemyTime;
+
+}
+[System.Serializable]
+public class SoundDetails
+{
+    public SoundName soundName;
+    public AudioClip soundClip;
+    [Range(0.1f, 1.5f)]
+    public float soundPitchMin;
+    [Range(0.1f, 1.5f)]
+    public float soundPitchMax;
+    [Range(0.1f, 1f)]
+    public float soundVolume;
+}
+[System.Serializable]
+public class GenerateEnemyPointData
+{
+    public int[] enemyIndex;
+    public int[] enemyCreateFirstTime;
+    public int[] enemyCreateDeltaTime;
+
+}
+
+[System.Serializable]
+public class Buff
+{
+    public string buffName;
+    public float duration;
+    public float attackBonus;
+    public float speedBonus;
+    public float attackRangeBonus;
+    public float attackSpeedBonus;
+    public float hpBonus;
+    // 其他可能的影响属性
+    public Buff(string name,float b1, float b2, float b3, float b4)
+    {
+        this.buffName = name;
+        this.attackBonus = b1;
+        this.speedBonus = b2;
+        this.attackRangeBonus = b3;
+        this.attackSpeedBonus = b4;
+    }
+    public void AddBuff(Buff b)
+    {
+        this.attackBonus += b.attackBonus;
+        this.speedBonus += b.speedBonus;
+        this.attackRangeBonus += b.attackRangeBonus;
+        this.attackSpeedBonus += b.attackSpeedBonus;
+    }
+    public void AddBuff(float bonus)
+    {
+        this.attackBonus += bonus;
+        this.speedBonus += bonus;
+        this.attackRangeBonus += bonus;
+        this.attackSpeedBonus += bonus;
+    }
+    public void SubBuff(Buff b)
+    {
+        this.attackBonus -= b.attackBonus;
+        this.speedBonus -= b.speedBonus;
+        this.attackRangeBonus -= b.attackRangeBonus;
+        this.attackSpeedBonus -= b.attackSpeedBonus;
+    }
+}
+
+[System.Serializable]
+public class LanguageToText
+{
+    public List<string> texts;
+}
+

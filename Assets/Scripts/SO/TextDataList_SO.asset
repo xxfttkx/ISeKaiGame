@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95acd3e9427a6c941bf00a4eccf1453f, type: 3}
+  m_Name: TextDataList_SO
+  m_EditorClassIdentifier: 
+  textDataList:
+  - texts:
+    - "\u5F00\u59CB"
+    - Start
+    - 
+  - texts:
+    - "\u9000\u51FA"
+    - Quit
+    - 
+  - texts:
+    - Min
+    - Min
+    - 
+  - texts:
+    - Max
+    - Max
+    - 
+  - texts:
+    - Sub
+    - Sub
+    - 
+  - texts:
+    - Add
+    - Add
+    - 
+  - texts:
+    - "\u8D2D\u4E70"
+    - Buy
+    - 
+  - texts:
+    - "\u8FDB\u5165"
+    - Go!!!!!
+    - 
+  - texts:
+    - "\u91CD\u8BD5"
+    - Retry
+    - 
+  - texts:
+    - "\u56DE\u5230\u5927\u5385"
+    - Back
+    - 
+  - texts:
+    - "\u56DE\u5230\u9009\u4EBA\u754C\u9762"
+    - Return  Select
+    - 
+  - texts:
+    - "\u56DE\u5230\u6E38\u620F"
+    - Back
+    - 
+  - texts:
+    - "\u58F0\u97F3\u8BBE\u7F6E"
+    - Sound
+    - 
+  - texts:
+    - Mod
+    - Mod
+    - 

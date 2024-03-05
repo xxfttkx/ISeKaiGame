@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2408b070cc5cd42a1906d055c454be, type: 3}
+  m_Name: LevelCreatEnemyDataList_SO
+  m_EditorClassIdentifier: 
+  levels:
+  - levelIndex: 0
+    offset: []
+    enemyIndex: 
+    enemyCreateFirstTime: 
+    enemyCreateDeltaTime: 
+    endCreatEnemyTime: 0
+  - levelIndex: 1
+    offset:
+    - {x: 10, y: 10}
+    - {x: -10, y: 10}
+    - {x: 10, y: -10}
+    - {x: 10, y: 10}
+    - {x: -10, y: 10}
+    enemyIndex: 0800000008000000080000000800000008000000
+    enemyCreateFirstTime: 0100000001000000010000000100000001000000
+    enemyCreateDeltaTime: 0300000003000000030000000300000003000000
+    endCreatEnemyTime: 10
+  - levelIndex: 2
+    offset:
+    - {x: 10, y: 10}
+    - {x: -10, y: 10}
+    enemyIndex: 0100000001000000
+    enemyCreateFirstTime: 0000000000000000
+    enemyCreateDeltaTime: 0200000002000000
+    endCreatEnemyTime: 40
+  - levelIndex: 3
+    offset:
+    - {x: 10, y: 10}
+    - {x: -10, y: 10}
+    enemyIndex: 0100000001000000
+    enemyCreateFirstTime: 0000000000000000
+    enemyCreateDeltaTime: 0200000002000000
+    endCreatEnemyTime: 40
+  - levelIndex: 4
+    offset:
+    - {x: 10, y: 10}
+    - {x: -10, y: 10}
+    enemyIndex: 0100000001000000
+    enemyCreateFirstTime: 0000000000000000
+    enemyCreateDeltaTime: 0200000002000000
+    endCreatEnemyTime: 40
+  - levelIndex: 5
+    offset:
+    - {x: 10, y: 10}
+    - {x: -10, y: 10}
+    enemyIndex: 0100000001000000
+    enemyCreateFirstTime: 0000000000000000
+    enemyCreateDeltaTime: 0200000002000000
+    endCreatEnemyTime: 40
