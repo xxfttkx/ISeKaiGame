@@ -3,9 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_1_Mage : Player
+public class Player_1_Mage : Player_Single
 {
-
     protected override void Awake()
     {
         character.index = 1;
@@ -14,31 +13,31 @@ public class Player_1_Mage : Player
     protected override void OnEnable()
     {
         base.OnEnable();
-        StartCoroutine(Attack());
     }
     protected override void OnDisable()
     {
         base.OnDisable();
     }
 
-    IEnumerator Attack()
+    protected override IEnumerator AttackAnim(EnemyBase e)
     {
-        while (true)
+        PoolManager.Instance.CreateFeather(e, this.transform.position);
+        AudioManager.Instance.PlaySoundEffect(SoundName.Atk);
+        yield break;
+    }
+    public override void AddBuffBeforeStart()
+    {
+        foreach (var p in PlayerManager.Instance.players)
         {
-            var e = Utils.GetNearestEnemy(this.transform.position, this.GetAttackRange());
-            if(e!=null)
-            {
-                PoolManager.Instance.CreateFeather(e, this.transform.position);
-                AudioManager.Instance.PlaySoundEffect(SoundName.Atk);
-                var cd = 10.0f / GetAttackSpeed();
-                yield return new WaitForSeconds(cd);
-            }
-            else
-            {
-                yield return null;
-            }
-            
+            p.AddBuff("player2", GetBuffBonus(), 0f, 0f, 0f);
         }
-
+    }
+    private float GetBuffBonus()
+    {
+        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 2);
+        if (extra == 0) return 0.2f;
+        if (extra == 1) return 0.5f;
+        if (extra == 2) return 0.1f;
+        return 0f;
     }
 }

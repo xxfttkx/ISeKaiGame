@@ -29,13 +29,14 @@ public class SoundSettingsPanel : Singleton<SoundSettingsPanel>
     }
     public void Init()
     {
-        OnSliderValueChanged(SaveLoadManager.Instance.GetVolume(0), 0);
-        OnSliderValueChanged(SaveLoadManager.Instance.GetVolume(1), 1);
-        OnSliderValueChanged(SaveLoadManager.Instance.GetVolume(2), 2);
+        totalVolume.value = SaveLoadManager.Instance.GetVolume(0);
+        ambientVolume.value = SaveLoadManager.Instance.GetVolume(1);
+        effectVolume.value = SaveLoadManager.Instance.GetVolume(2);
     }
     public void OnSliderValueChanged(float val,int index)
     {
         AudioManager.Instance.SetVolume(val, index);
+        SaveLoadManager.Instance.SetVolume(val, index);
         if(index==0) total.text = Mathf.RoundToInt(val * 100f) + "%";
         else if (index==1) ambient.text = Mathf.RoundToInt(val * 100f) + "%";
         else if (index==2) effect.text = Mathf.RoundToInt(val * 100f) + "%";

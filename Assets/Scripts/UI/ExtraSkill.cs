@@ -32,13 +32,27 @@ public class ExtraSkill : MonoBehaviour
         this.playerIndex = playerIndex;
         var ch = SOManager.Instance.GetPlayerDataByIndex(playerIndex);
         this.extraIndex = extraIndex;
-        extraCost.text = Utils.GetExtraString(ch.extraTypes[extraIndex], ch.extraThresholds[extraIndex]);
+        int curr = SaveLoadManager.Instance.GetPlayerExtraData(playerIndex, ch.extraTypes[extraIndex]);
+        int threshold = ch.extraThresholds[extraIndex];
+        bool canSelect = curr >= threshold;
+        string color = canSelect ? "green" : "red";
+        string currState = $"(<color={color}>{curr}</color>/{threshold})";
+        extraCost.text = Utils.GetExtraString(ch.extraTypes[extraIndex], ch.extraThresholds[extraIndex])+"\n"+currState;
         extraDesire1.text = ch.extraDesire1[extraIndex];
         extraDesire2.text = ch.extraDesire2[extraIndex];
-        btns[0].InitButton(0, TryClickDesire);
-        btns[1].InitButton(1, TryClickDesire);
-        var selectedIndex = SaveLoadManager.Instance.GetPlayerExtra(playerIndex, extraIndex);
-        SetSelectedIndex(selectedIndex);
+        if(!canSelect)
+        {
+            btns[0].interactable = false;
+            btns[1].interactable = false;
+        }
+        else
+        {
+            btns[0].InitButton(0, TryClickDesire);
+            btns[1].InitButton(1, TryClickDesire);
+            var selectedIndex = SaveLoadManager.Instance.GetPlayerExtra(playerIndex, extraIndex);
+            SetSelectedIndex(selectedIndex);
+        }
+        
     }
     public void SetSelectedIndex(int index)
     {

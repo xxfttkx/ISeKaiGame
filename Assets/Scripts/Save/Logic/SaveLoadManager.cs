@@ -196,7 +196,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         
     }
 
-    public void EndLevel(List<int> charIndexes, int level)
+    public void PassLevel(List<int> charIndexes, int level)
     {
         var charsToLevel = gameSaveData.charsToLevel;
         charIndexes.Sort();
@@ -216,8 +216,6 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         {
             SetPlayerExtraData(i, ExtraType.ExitLevel, level);
         }
-        var ch = gameSaveData.playerMaxLevel;
-
         Save();
     }
 
@@ -359,7 +357,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         var l = gameSaveData.volumes;
         if (l == null || l.Count <= index)
         {
-            Utils.TryFillList<float>(ref gameSaveData.volumes, 0f, index + 1);
+            Utils.TryFillList<float>(ref gameSaveData.volumes, 1f, index + 1);
         }
         return gameSaveData.volumes[index];
     }
@@ -368,8 +366,16 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         var l = gameSaveData.volumes;
         if (l == null || l.Count <= index)
         {
-            Utils.TryFillList<float>(ref gameSaveData.volumes, 0f, index + 1);
+            Utils.TryFillList<float>(ref gameSaveData.volumes, 1f, index + 1);
         }
         gameSaveData.volumes[index] = val;
+    }
+    public bool CanSelectExtra(int playerIndex,int extraIndex)
+    {
+        var ch = SOManager.Instance.GetPlayerDataByIndex(playerIndex);
+        var extraType = ch.extraTypes[extraIndex];
+        var threshold = ch.extraThresholds[extraIndex];
+        var curr = GetPlayerExtraData(playerIndex, extraType);
+        return curr >= threshold;
     }
 }

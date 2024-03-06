@@ -48,7 +48,7 @@ public class ButtonPanel : Singleton<ButtonPanel>
     }
     public void GoButton()
     {
-        PlayerManager.Instance.StartGame(SelectPanel.Instance.GetSelectedIndexes());
+        PlayerManager.Instance.InitPlayer(SelectPanel.Instance.GetSelectedIndexes());
         UIManager.Instance.InitPlayerPanel();
         //todo 写别的地方
         int result = 1;
@@ -63,8 +63,6 @@ public class ButtonPanel : Singleton<ButtonPanel>
         if (result == 0) result = 1;
         LevelManager.Instance.StartLevel(result);
         GameStateManager.Instance.SetGameState(GameState.GamePlay);
-        
-
         SelectCanvas.Instance.gameObject.SetActive(false);
     }
     public void MinButton()

@@ -13,7 +13,7 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
     private List<PlayerBtn> playerImages;
     private List<ExtraSkill> extraSkills;
     public TextMeshProUGUI desc;
-
+    public bool bInit;
     protected override void Awake()
     {
         base.Awake();
@@ -23,7 +23,9 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
 
     public void Init(List<int> playerIndexes)
     {
-        foreach(var i in playerImages)
+        if (bInit) return;
+        bInit = true;
+        foreach (var i in playerImages)
         {
             //todo not destory
             Destroy(i.gameObject);
@@ -40,18 +42,19 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
         ShowPlayerExtra(playerIndexes[0]);
     }
 
-    public void ShowPlayerExtra(int playerIndex)
+    public void ShowPlayerExtra(int playerIndex = -1)
     {
+        Init(PlayerManager.Instance.trueIndexes);
+        if (playerIndex == -1) playerIndex = playerImages[0].index;
         var ch = SOManager.Instance.GetPlayerDataByIndex(playerIndex);
         var player = PlayerManager.Instance.indexToPlayer[playerIndex];
-        if (playerIndex == -1) playerIndex = playerImages[0].index;
         desc.text = $"Desc:\n{ch.desc}\nAtk:{player.character.attack}\nSpeed:{player.character.speed}\nAtkSpeed:{player.character.attackSpeed}\nAtkRange:{player.character.attackRange}";
         foreach(var btn in playerImages)
         {
             if (btn.index == playerIndex) btn.Select();
             else btn.CancelSelect();
         }
-        var count = ch.extraCost.Count;
+        var count = ch.extraTypes.Count;
         for (int i = 0; i < count; ++i)
         {
             ExtraSkill extraSkill;
@@ -66,6 +69,7 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
                 extraSkills.Add(extraSkill);
             }
             extraSkill.SetExtraSkill(playerIndex, i);
+            extraSkill.gameObject.SetActive(true);
         }
         for (int i = extraSkills.Count - 1; i >= count; --i)
         {

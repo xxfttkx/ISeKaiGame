@@ -31,16 +31,15 @@ public class LevelManager : Singleton<LevelManager>
     }
     public void SubEnemyNum(int enemyGlobalIndex)
     {
-        currEnemyNum -= 1;
-        enemyList[enemyGlobalIndex] = null;
-        LevelPanel.Instance.enemyNumChange(currEnemyNum);
-        if (timeEnd&& currEnemyNum==0)
+        if (enemyGlobalIndex != -1)
         {
-            //
-            List<int> charIndexes = PlayerManager.Instance.GetCharsIndexes();
-            SaveLoadManager.Instance.EndLevel(charIndexes, currLevel);
-            EventHandler.CallExitLevelEvent(currLevel);
-            EndLevel();
+            currEnemyNum -= 1;
+            enemyList[enemyGlobalIndex] = null;
+            LevelPanel.Instance.enemyNumChange(currEnemyNum);
+        }
+        if (timeEnd && currEnemyNum==0)
+        {
+            PassLevel();
         }
     }
     public void StartLevel(int levelIndex)
@@ -80,8 +79,11 @@ public class LevelManager : Singleton<LevelManager>
     }
 
     // นýนุ
-    public void EndLevel()
+    public void PassLevel()
     {
+        List<int> charIndexes = PlayerManager.Instance.GetCharsIndexes();
+        SaveLoadManager.Instance.PassLevel(charIndexes, currLevel);
+        EventHandler.CallExitLevelEvent(currLevel);
         if (currLevel == Settings.levelMaxNum)
         {
             EndCanvas.Instance.EndGame(1);
@@ -103,5 +105,10 @@ public class LevelManager : Singleton<LevelManager>
             LevelPanel.Instance.TimeChange(endTime);
         }
         timeEnd = true;
+        SubEnemyNum(-1);
+    }
+    public void Retry()
+    {
+        StartLevel(currLevel);
     }
 }

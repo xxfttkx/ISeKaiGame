@@ -13,7 +13,7 @@ public class UIManager : Singleton<UIManager>
     public GameObject endCanvas;
     
     public GameObject playerDataPrefab;
-    public GameObject pausePanel;
+    public PausePanel pausePanel;
     public PlayerSettingsPanel playerSettingsPanel;
     public SoundSettingsPanel soundSettingsPanel;
 
@@ -21,15 +21,14 @@ public class UIManager : Singleton<UIManager>
     private Dictionary<int, PlayerData> indexToPlayerData;
     public GameObject playerPanel;
     public List<PlayerData> PlayerDataList;
+    private Stack<GameObject> openPanel;
 
-    internal void ShowPausePanel()
-    {
-        pausePanel.SetActive(true);
-    }
+    
     private void Start()
     {
         indexToPlayerData = new Dictionary<int, PlayerData>();
         PlayerDataList = new List<PlayerData>();
+        openPanel = new Stack<GameObject>();
     }
     private void Update()
     {
@@ -38,15 +37,30 @@ public class UIManager : Singleton<UIManager>
             if (GameStateManager.Instance.InGamePlay())
             {
                 ShowPausePanel();
-                GameStateManager.Instance.SetGameState(GameState.GamePause);
-            }else if(GameStateManager.Instance.InGamePause())
+            }
+            else if(GameStateManager.Instance.InGamePause())
             {
-                pausePanel.SetActive(false);
-                playerSettingsPanel.gameObject.SetActive(false);
-                GameStateManager.Instance.SetGameState(GameState.GamePlay);
+                var panel = openPanel.Pop();
+                panel.SetActive(false);
+                if (openPanel.Count == 0)
+                {
+                    GameStateManager.Instance.SetGameState(GameState.GamePlay);
+                }
             }
         }
             
+    }
+    private void OnEnable()
+    {
+        EventHandler.EndLevelEvent += OnEndLevelEvent;
+    }
+    private void OnDisable()
+    {
+        EventHandler.EndLevelEvent -= OnEndLevelEvent;
+    }
+    void OnEndLevelEvent()
+    {
+        playerSettingsPanel.bInit = false;
     }
 
     private void OnApplicationPause(bool pauseStatus)
@@ -56,9 +70,13 @@ public class UIManager : Singleton<UIManager>
             if(GameStateManager.Instance.InGamePlay())
             {
                 ShowPausePanel();
-                GameStateManager.Instance.SetGameState(GameState.GamePause);
             }
         }
+    }
+    internal void ShowPausePanel()
+    {
+        TryAddToOpenPanelStack(pausePanel.gameObject);
+        GameStateManager.Instance.SetGameState(GameState.GamePause);
     }
     public void InitPlayerPanel()
     {
@@ -99,15 +117,22 @@ public class UIManager : Singleton<UIManager>
 
     public void ShowPlayerSettingsPanel(int playerIndex = -1)
     {
+        TryAddToOpenPanelStack(playerSettingsPanel.gameObject);
         GameStateManager.Instance.SetGameState(GameState.GamePause);
-        playerSettingsPanel.gameObject.SetActive(true);
         playerSettingsPanel.ShowPlayerExtra(playerIndex);
     }
-    public void ShowSoundSettingsPanel(int playerIndex = -1)
+    public void ShowSoundSettingsPanel()
     {
-        soundSettingsPanel.gameObject.SetActive(true);
+        TryAddToOpenPanelStack(soundSettingsPanel.gameObject);
         soundSettingsPanel.Init();
     }
-
+    private void TryAddToOpenPanelStack(GameObject go)
+    {
+        if (!openPanel.Contains(go))
+        {
+            openPanel.Push(go);
+            go.SetActive(true);
+        }
+    }
 
 }

@@ -66,10 +66,10 @@ public static class EventHandler
         StartNewGameEvent?.Invoke();
     }
 
-    public static event Action EndGameEvent;
-    public static void CallEndGameEvent()
+    public static event Action EndLevelEvent;
+    public static void CallEndLevelEvent()
     {
-        EndGameEvent?.Invoke();
+        EndLevelEvent?.Invoke();
     }
 
     public static event Action GameOverEvent;

@@ -5,41 +5,39 @@ using UnityEngine.UI;
 
 public class PausePanel : MonoBehaviour
 {
-    public Button retry;
-    public Button backToSelect;
-    public Button backToTitle;
-    public Button backToGame;
+    public DefaultBtn retry;
+    public DefaultBtn backToSelect;
+    public DefaultBtn backToTitle;
+    public DefaultBtn backToGame;
     private void Awake()
     {
-        retry.onClick.AddListener(Retry);
-        backToSelect.onClick.AddListener(BackToSelect);
-        backToTitle.onClick.AddListener(BackToTitle);
-        backToGame.onClick.AddListener(BackToGame);
+        retry.btnClick.AddListener(Retry);
+        backToSelect.btnClick.AddListener(BackToSelect);
+        backToTitle.btnClick.AddListener(BackToTitle);
+        backToGame.btnClick.AddListener(BackToGame);
         this.gameObject.SetActive(false);
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Backspace))
-        {
-            BackToGame();
-        }
     }
-    void Retry()
+    public void Retry()
     {
-        int l = LevelManager.Instance.currLevel;
         EventHandler.CallExitLevelEvent(-1);
-        LevelManager.Instance.StartLevel(l);
+        EventHandler.CallEndLevelEvent();
+        LevelManager.Instance.Retry();
         GameStateManager.Instance.SetGameState(GameState.GamePlay);
     }
-    void BackToSelect()
+    public void BackToSelect()
     {
         EventHandler.CallExitLevelEvent(-1);
-        StartCanvas.Instance.StartGame();
+        EventHandler.CallEndLevelEvent();
+        StartCanvas.Instance.EnterSelect();
         this.gameObject.SetActive(false);
     }
-    void BackToTitle()
+    public void BackToTitle()
     {
         EventHandler.CallEnterLevelEvent(-1);
+        EventHandler.CallEndLevelEvent();
         StartCanvas.Instance.EnterTitle();
         this.gameObject.SetActive(false);
     }

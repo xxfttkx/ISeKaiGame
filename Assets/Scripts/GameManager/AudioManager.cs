@@ -35,7 +35,6 @@ public class AudioManager : Singleton<AudioManager>
 
     public void SetVolume(float value,int index)
     {
-        SaveLoadManager.Instance.SetVolume(value,index);
         /*// 使用指数函数进行映射
         value = Mathf.Pow(value, 2f); // 2 可以调整为其他指数，根据需要调整映射的形状
         // 将映射后的值转换到输出范围
@@ -81,9 +80,8 @@ public class AudioManager : Singleton<AudioManager>
 
     private void OnLoadFinishEvent()
     {
-        float val = SaveLoadManager.Instance.GetVolume(0);
-        SetVolume(1, 0);
-        SetVolume(1, 1);
-        SetVolume(1, 2);
+        SetVolume(SaveLoadManager.Instance.GetVolume(0), 0);
+        SetVolume(SaveLoadManager.Instance.GetVolume(1), 1);
+        SetVolume(SaveLoadManager.Instance.GetVolume(2), 2);
     }
 }

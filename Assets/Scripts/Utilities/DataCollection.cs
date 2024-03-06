@@ -94,13 +94,13 @@ public class Buff
     public float attackSpeedBonus;
     public float hpBonus;
     // 其他可能的影响属性
-    public Buff(string name,float b1, float b2, float b3, float b4)
+    public Buff(string name,float atk, float speed, float atkRange, float atkSpeed)
     {
         this.buffName = name;
-        this.attackBonus = b1;
-        this.speedBonus = b2;
-        this.attackRangeBonus = b3;
-        this.attackSpeedBonus = b4;
+        this.attackBonus = atk;
+        this.speedBonus = speed;
+        this.attackRangeBonus = atkRange;
+        this.attackSpeedBonus = atkSpeed;
     }
     public void AddBuff(Buff b)
     {

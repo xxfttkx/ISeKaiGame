@@ -41,6 +41,10 @@ public class Player_0_Warrior : Player_Area
 
     public override float GetMoneyEfficiency()
     {
-        return 0.2f;
+        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 2);
+        if(extra == 0) return 0.2f;
+        if(extra == 1) return 2.0f;
+        if(extra == 2) return 1.0f;
+        return 1.0f;
     }
 }

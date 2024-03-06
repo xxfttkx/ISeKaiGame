@@ -34,26 +34,27 @@ public class EndCanvas : Singleton<EndCanvas>
         overPanel.SetActive(false);
         winPanel.SetActive(false);
         
-        int l = LevelManager.Instance.currLevel;
-        EventHandler.CallExitLevelEvent(l);
-        PlayerManager.Instance.StartGame(SaveLoadManager.Instance.GetLastCharsIndexes());
-        LevelManager.Instance.StartLevel(l);
+        EventHandler.CallExitLevelEvent(-1);
+        EventHandler.CallEndLevelEvent();
+        LevelManager.Instance.Retry();
         GameStateManager.Instance.SetGameState(GameState.GamePlay);
-        UIManager.Instance.InitPlayerPanel();
     }
     public void BackToTitle()
     {
-        EventHandler.CallEnterLevelEvent(-1);
         overPanel.SetActive(false);
         winPanel.SetActive(false);
+
+        EventHandler.CallEnterLevelEvent(-1);
+        EventHandler.CallEndLevelEvent();
         StartCanvas.Instance.EnterTitle();
-        PoolManager.Instance.ClearPools();
     }
     public void ReturnToCharacterSelection()
     {
-        EventHandler.CallExitLevelEvent(-1);
         overPanel.SetActive(false);
         winPanel.SetActive(false);
-        StartCanvas.Instance.StartGame();
+
+        EventHandler.CallExitLevelEvent(-1);
+        EventHandler.CallEndLevelEvent();
+        StartCanvas.Instance.EnterSelect();
     }
 }

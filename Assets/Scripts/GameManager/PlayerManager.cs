@@ -68,7 +68,16 @@ public class PlayerManager : Singleton<PlayerManager>
 
     private void ChangePlayerInput()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && players.Count > 0 && players[0].IsAlive())
+        for (int i = 0; i < Settings.playerMaxNum; ++i)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i) && players.Count > i && players[i].IsAlive())
+            {
+                ChangePlayerOnTheField(i);
+                return;
+            }
+        }
+        // 可能要换换人键？？？
+        /*if (Input.GetKeyDown(KeyCode.Alpha1) && players.Count > 0 && players[0].IsAlive())
         {
             ChangePlayerOnTheField(0);
             return;
@@ -82,7 +91,7 @@ public class PlayerManager : Singleton<PlayerManager>
         {
             ChangePlayerOnTheField(2);
             return;
-        }
+        }*/
     }
     private void PlayerMoveInput()
     {
@@ -224,7 +233,7 @@ public class PlayerManager : Singleton<PlayerManager>
         EndCanvas.Instance.EndGame(0);
     }
 
-    public void StartGame(List<int> playerIndexes)
+    public void InitPlayer(List<int> playerIndexes)
     {
         //todo 还没 判断 {-1，-1，-1}
         SaveLoadManager.Instance.SaveLastCharsIndexes(playerIndexes);
@@ -246,9 +255,7 @@ public class PlayerManager : Singleton<PlayerManager>
             players.Add(go.GetComponent<Player>());
             indexToSpriteRenderer.Add(i, go.GetComponent<SpriteRenderer>());
         }
-        PlayerSettingsPanel.Instance?.Init(trueIndexes);
         ChangePlayerOnTheField(0);
-
         InitPlayerHash();
 
     }
@@ -272,8 +279,6 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         int atk = indexToPlayer[playerIndex].GetAttack();
         float bonus = 1;
-        if (indexToPlayer.ContainsKey(1) && indexToPlayer[1].IsAlive())
-            bonus += indexToPlayer[1].GetAttackBonus();
         if (currPlayerIndex!= playerIndex)
             bonus -= 0.5f;
         atk = Mathf.CeilToInt(atk * bonus);

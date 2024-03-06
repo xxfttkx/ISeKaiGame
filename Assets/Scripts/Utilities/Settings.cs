@@ -1,3 +1,4 @@
+// using System.Collections.Generic;
 using UnityEngine;
 public class Settings
 {
@@ -42,9 +43,10 @@ public class Settings
     public const int playerMaxNum = 3;
 
     //最多关卡数
-    public const int levelMaxNum = 50;
+    public const int levelMaxNum = 20;
     //预留敌人数
     public const int reservedEnemyCount = 500;
     // 判断击中玩家距离
     public const float hitPlayerDis = 0.7f;
+/*    public Dictionary<int, KeyCode> changePlayerKey = new Dictionary<int, KeyCode>() {1=KeyCode.Alpha1 };*/
 }

@@ -14,10 +14,10 @@ public class StartCanvas : Singleton<StartCanvas>
     {
         base.Awake();
         startPanel.SetActive(true);
-        btnStart.btnClick.AddListener(StartGame);
+        btnStart.btnClick.AddListener(EnterSelect);
         btnQuit.btnClick.AddListener(QuitGame);
     }
-    public void StartGame()
+    public void EnterSelect()
     {
         selectCanvas.SetActive(true);
         SelectCanvas.Instance.InitSelecePanel();

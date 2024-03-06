@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
         if (attack == 0) return;
         SaveLoadManager.Instance.SetPlayerExtraData(GetPlayerIndex(), ExtraType.BeHurt, Mathf.Min(character.hp, attack));
         character.hp -= attack;
-        UIManager.Instance.HPChange(character.index, GetHpVal());
+        UIManager.Instance.HPChange(GetPlayerIndex(), GetHpVal());
         if (character.hp<=0)
         {
             EventHandler.CallPlayerDeadEvent(character.index);
@@ -178,7 +178,8 @@ public class Player : MonoBehaviour
             Debug.Log("Char hp<0 error...??");
             return;
         }
-        if(character.hp <= atk)
+        SaveLoadManager.Instance.SetPlayerExtraData(GetPlayerIndex(), ExtraType.BeHurt, Mathf.Min(character.hp - 1, atk));
+        if (character.hp <= atk)
         {
             character.hp = 1;
         }

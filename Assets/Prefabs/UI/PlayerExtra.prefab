@@ -140,10 +140,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: pass 30 level
+  m_text: 'pass 30 level
+
+    (<color=green>1</color>/30)'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e89f0bb7a23029c488b79672b753d455, type: 2}
-  m_sharedMaterial: {fileID: 1257072017148723111, guid: e89f0bb7a23029c488b79672b753d455, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c9a4adf8b5e9b09408223a4ec3a585f5, type: 2}
+  m_sharedMaterial: {fileID: 8812938564302615159, guid: c9a4adf8b5e9b09408223a4ec3a585f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -167,8 +169,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 40.63
+  m_fontSizeBase: 40.63
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -276,8 +278,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: steal heart
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e89f0bb7a23029c488b79672b753d455, type: 2}
-  m_sharedMaterial: {fileID: 1257072017148723111, guid: e89f0bb7a23029c488b79672b753d455, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c9a4adf8b5e9b09408223a4ec3a585f5, type: 2}
+  m_sharedMaterial: {fileID: 8812938564302615159, guid: c9a4adf8b5e9b09408223a4ec3a585f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -301,8 +303,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 40.63
+  m_fontSizeBase: 40.63
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -353,6 +355,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8201844357117693721}
   - component: {fileID: 5569726570806388752}
+  - component: {fileID: 5807806073484291885}
+  - component: {fileID: 7543378438422258306}
   m_Layer: 5
   m_Name: PlayerExtra
   m_TagString: Untagged
@@ -400,6 +404,44 @@ MonoBehaviour:
   btns:
   - {fileID: 5698211877949192513}
   - {fileID: 6290138157852762846}
+--- !u!222 &5807806073484291885
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4880772634821124072}
+  m_CullTransparentMesh: 1
+--- !u!114 &7543378438422258306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4880772634821124072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.66178775, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 48d795caac59ecd4b92eeecc4410fd31, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5282523232619731049
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,6 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae90a461d40710d47ac6d11d9f736327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: 1
   btnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -645,8 +688,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: steal heart
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e89f0bb7a23029c488b79672b753d455, type: 2}
-  m_sharedMaterial: {fileID: 1257072017148723111, guid: e89f0bb7a23029c488b79672b753d455, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c9a4adf8b5e9b09408223a4ec3a585f5, type: 2}
+  m_sharedMaterial: {fileID: 8812938564302615159, guid: c9a4adf8b5e9b09408223a4ec3a585f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -670,8 +713,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 40.63
+  m_fontSizeBase: 40.63
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -802,6 +845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae90a461d40710d47ac6d11d9f736327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: 1
   btnEnter:
     m_PersistentCalls:
       m_Calls: []
