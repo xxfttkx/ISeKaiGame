@@ -45,7 +45,7 @@ MonoBehaviour:
     desc: "\u666E\u901A\u8FDC"
   - index: 2
     name: purple hairpin
-    sprite: {fileID: 21300000, guid: dd4a95dd14ce03c4983df3a75f7425ce, type: 3}
+    sprite: {fileID: 21300000, guid: 7648092ef88916f4bbde1408e4e2c38e, type: 3}
     prefab: {fileID: 4708548768610898139, guid: 8966b92e5303bff4bae67499f71fa73b, type: 3}
     faceToLeft: 0
     enemyType: 2

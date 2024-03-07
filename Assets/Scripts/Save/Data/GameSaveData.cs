@@ -23,7 +23,7 @@ public class GameSaveData
     public List<int> playerMaxLevel;
     // 进入某一层次数
     public List<List<int>> playerEnterLevel;
-    //
+    // 0-null 1,2-seleted
     public List<List<int>> playerExtraData;
     // Volume
     public List<float> volumes;

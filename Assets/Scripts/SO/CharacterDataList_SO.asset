@@ -28,12 +28,12 @@ MonoBehaviour:
     extraTypes: 010000000200000006000000
     extraThresholds: 102700001027000000000000
     extraDesire1:
-    - atk = atk+1\ndef = def-1
-    - def += 1\n
+    - "\u521D\u59CBatk+3 speed-=1"
+    - "\u6BCF20\u79D2\uFF0C\u62A4\u76FE\u503C\u53D8\u4E3A15"
     - "\u4F24\u5BB3*2.0 money\u83B7\u5F97\u6548\u73870.1"
     extraDesire2:
-    - "\u4F24\u5BB3*1 money\u83B7\u5F97\u6548\u73871"
-    - "\u6BCF\u79D2\u635F\u59311hp \u4E0D\u81F4\u6B7B"
+    - atk=0 speed+=3
+    - "\u6BCF10\u79D2\uFF0C\u62A4\u76FE\u503C\u53D8\u4E3A10"
     - "\u4F24\u5BB3*1.0 money\u83B7\u5F97\u6548\u73871"
   - index: 1
     name: nirvana
@@ -48,14 +48,14 @@ MonoBehaviour:
     attackRange: 7
     desc: "\u7FBD\u6BDB\u653B\u51FB \u961F\u4F0DBuff atk*=1.2  \u961F\u4F0D\u4E2D\u51FB\u6740\u8005attack/=2"
     extraTypes: 010000000400000006000000
-    extraThresholds: 630000000a00000002000000
+    extraThresholds: 010000000100000001000000
     extraDesire1:
-    - "\u961F\u4F0D\u4F24\u5BB3*1.3  \u961F\u4F0D\u4E2D\u51FB\u6740\u8005attack=1"
-    - "\u961F\u4F0D\u4F24\u5BB3*1.3  \u961F\u4F0D\u4E2D\u51FB\u6740\u8005attack=1"
+    - atk+=3 atkrange-=1
+    - "\u6295\u5C04\u7269\u80FD\u5728\u654C\u4EBA\u95F4\u53CD\u5F39\uFF0C\u6BCF\u6B21atk-=2,\u76F4\u5230atk=0"
     - "\u961F\u4F0D\u4F24\u5BB3*1.5  \u961F\u4F0D\u4E2D\u51FB\u6740\u8005attack=1"
     extraDesire2:
-    - "\u961F\u4F0D\u4F24\u5BB3*1  \u961F\u4F0D\u4E2D\u51FB\u6740\u8005attack\u4E0D\u53D8"
-    - "\u961F\u4F0D\u4F24\u5BB3*1  \u961F\u4F0D\u4E2D\u51FB\u6740\u8005attack\u4E0D\u53D8"
+    - atkrange+=2 atk-=1
+    - "\u6295\u5C04\u7269\u80FD\u5728\u654C\u4EBA\u95F4\u53CD\u5F39\uFF0C\u4F24\u5BB3\u4E0D\u53D8\uFF0C\u6700\u591A\u53CD\u5F39\u4E24\u6B21"
     - "\u961F\u4F0D\u4F24\u5BB3*1.1  \u961F\u4F0D\u4E2D\u51FB\u6740\u8005attack\u4E0D\u53D8"
   - index: 2
     name: 2
@@ -64,37 +64,44 @@ MonoBehaviour:
     faceToLeft: 1
     profession: 1
     attack: 10
-    hp: 50
+    hp: 20
     speed: 2
-    attackSpeed: 2
-    attackRange: 7
+    attackSpeed: 1
+    attackRange: 5
     desc: "\u7ED9\u961F\u53CB\u4E0A\u6240\u6709\u5C6C\u6027\u52A010% \u961F\u4F0D\u4E2D\u51FB\u6740\u4EBA\u7B97\u6211"
-    extraTypes: 030000000700000006000000
+    extraTypes: 030000000400000006000000
     extraThresholds: bc0100001700000002000000
     extraDesire1:
-    - 
-    - 
+    - atk+=10 hp-=5
+    - "\u6BCF\u6740\u4E00\u540D\u654C\u4EBAatk+=1"
     - "\u7ED9\u961F\u53CB\u4E0A\u6240\u6709\u5C6C\u6027\u52A050% \u961F\u4F0D\u4E2D\u9020\u6210\u4F24\u5BB3\u4E5F\u7B97\u6211"
     extraDesire2:
-    - 
-    - 
-    - "\u7ED9\u961F\u53CB\u4E0A\u6240\u6709\u5C6C\u6027\u52A05% \u961F\u4F0D\u4E2D\u9020\u6210\u4F24\u5BB3\u4E0D\u7B97\u6211"
+    - atk-=1 hp+=10
+    - "\u6BCF\u6740\u4E00\u540D\u654C\u4EBAhp\u56DE\u590D1"
+    - "\u7ED9\u961F\u53CB\u4E0A\u6240\u6709\u5C6C\u6027\u52A05% \u961F\u4F0D\u4E2D\u51FB\u6740\u4EBA\u4E0D\u7B97\u6211"
   - index: 3
     name: acacia
     sprite: {fileID: 21300000, guid: aa9207ae36d26d849978a368771f4663, type: 3}
     prefab: {fileID: 4708548768610898139, guid: 1871cdc2ec10017419210b044a2b37bb, type: 3}
     faceToLeft: 1
     profession: 3
-    attack: 20
-    hp: 50
+    attack: 10
+    hp: 30
     speed: 4
-    attackSpeed: 10
-    attackRange: 2
-    desc: "\u6740\u654C\u8840\u91CF\u53D850% \u8D8A\u8FD1\u653B\u901F\u8D8A\u5FEB"
-    extraTypes: 
-    extraThresholds: 
-    extraDesire1: []
-    extraDesire2: []
+    attackSpeed: 100
+    attackRange: 5
+    desc: "\u6740\u654C\u8840\u91CF\u53D850% \u653B\u901F\u53D7\u4E0E\u654C\u4EBA\u8DDD\u79BB\u5F71\u54CD
+      \u81EA\u8EABspeed+50%"
+    extraTypes: 010000000400000008000000
+    extraThresholds: 000000000000000014000000
+    extraDesire1:
+    - atk+=1 atkrange-=1
+    - "\u6B66\u5668+1 \u4E00\u628A\u53EA\u653B\u51FB\u4E0A\u65B9\u654C\u4EBA \u4E00\u628A\u53EA\u653B\u51FB\u4E0B\u53D1\u654C\u4EBA"
+    - "\u6740\u654C\u540Ehp=1 speed+100%"
+    extraDesire2:
+    - atkrange+=3  atk-=1
+    - "\u6B66\u5668+1 \u53EA\u653B\u51FB\u4E0D\u81F3\u4E8E\u81F4\u6B7B\u7684\u654C\u4EBA"
+    - "\u6740\u654C\u540Ehp\u4E0D\u53D8 speed+10%"
   - index: 4
     name: coq au vin
     sprite: {fileID: 21300000, guid: c8f8d1075cf1b454cb4862429fa94bfc, type: 3}

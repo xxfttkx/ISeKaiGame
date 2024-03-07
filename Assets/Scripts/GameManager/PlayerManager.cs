@@ -106,7 +106,9 @@ public class PlayerManager : Singleton<PlayerManager>
         var pIndex = playerIndex;
         if (indexToPlayer.ContainsKey(2) && indexToPlayer[2].IsAlive())
         {
-            pIndex = 2;
+            int extra = SaveLoadManager.Instance.GetPlayerExtra(2, 2);
+            if(extra!=2)
+                pIndex = 2;
         }
         // SaveLoadManager.Instance.PlayerKillEnemy(pIndex, enemy);
         if (indexToPlayer.ContainsKey(1))
@@ -124,6 +126,12 @@ public class PlayerManager : Singleton<PlayerManager>
     internal void PlayerHurtEnemy(int playerIndex, EnemyBase e,int atk = -1)
     {
         if (atk == -1) atk = GetPlayerAttack(playerIndex);
+        if (indexToPlayer.ContainsKey(2) && indexToPlayer[2].IsAlive())
+        {
+            int extra = SaveLoadManager.Instance.GetPlayerExtra(2, 2);
+            if (extra == 1)
+                playerIndex = 2;
+        }
         e.BeHurt(atk, playerIndex);
         RecordManager.Instance.AddDamage(atk);
     }
@@ -135,8 +143,8 @@ public class PlayerManager : Singleton<PlayerManager>
     public void PlayerHealPlayer(int restorer, int recipient,int heal=-1)
     {
         if (heal == -1) heal = GetPlayerAttack(restorer);
-        indexToPlayer[recipient].BeHealed(heal);
-        SaveLoadManager.Instance.SetPlayerExtraData(restorer, ExtraType.Heal, heal);
+        indexToPlayer[recipient].BeHealed(heal, restorer);
+        
     }
     public void EnemyHurtPlayer(EnemyBase e,Player p = null,int attack=-1)
     {
@@ -229,7 +237,7 @@ public class PlayerManager : Singleton<PlayerManager>
         }
         // TODO: GameEnd
         SaveLoadManager.Instance.OnGameOver();
-        GameStateManager.Instance.SetGameState(GameState.GameEnd);
+        EventHandler.CallEndLevelEvent();
         EndCanvas.Instance.EndGame(0);
     }
 
@@ -283,6 +291,15 @@ public class PlayerManager : Singleton<PlayerManager>
             bonus -= 0.5f;
         atk = Mathf.CeilToInt(atk * bonus);
         return atk;
+    }
+    public int GetPlayerAttackRange(int playerIndex)
+    {
+        int r = indexToPlayer[playerIndex].GetAttackRange();
+        float bonus = 1;
+        if (currPlayerIndex != playerIndex)
+            bonus -= 0.5f;
+        r = Mathf.CeilToInt(r * bonus);
+        return r;
     }
     public int GetPlayerSpeed(int playerIndex)
     {

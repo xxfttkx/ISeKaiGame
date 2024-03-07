@@ -8,6 +8,10 @@ public class Feather : MonoBehaviour
     public float velocity = 30;
     public float SeekingEnemyInterval = 0.05f;
     private bool beReleased;
+    private int atk;
+    private int count;
+    private int extra;
+    private int range;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,10 +28,15 @@ public class Feather : MonoBehaviour
     }
     public void AttackEnemy(EnemyBase enemy)
     {
+        atk = PlayerManager.Instance.GetPlayerAttack(1);
+        count = 0;
+        range = PlayerManager.Instance.GetPlayerAttackRange(1);
+        extra = SaveLoadManager.Instance.GetPlayerExtra(1,1);
         StartCoroutine(AttackEnemyIE(enemy));
     }
     IEnumerator AttackEnemyIE(EnemyBase enemy)
     {
+        yield return null;
         Vector2 dir;
         while (true)
         {
@@ -40,8 +49,8 @@ public class Feather : MonoBehaviour
             var distance = dir.magnitude;
             if (distance < 1f)
             {
-                PlayerManager.Instance.PlayerHurtEnemy(1, enemy);
-                Release();
+                PlayerManager.Instance.PlayerHurtEnemy(1, enemy, atk);
+                DoExtra();
                 break;
             }
             else
@@ -57,9 +66,6 @@ public class Feather : MonoBehaviour
             }
             yield return new WaitForSeconds(SeekingEnemyInterval);
         }
-
-        yield break;
-
     }
     void OnExitLevelEvent(int level)
     {
@@ -73,5 +79,47 @@ public class Feather : MonoBehaviour
             PoolManager.Instance.ReleaseObj(this.gameObject, 2);
         }
     }
-
+    void DoExtra()
+    {
+        if (extra == 0)
+        {
+            Release();
+        }
+        else if (extra == 1)
+        {
+            atk -= 2;
+            if (atk <= 0)
+            {
+                Release();
+            }
+            else
+            {
+                TryAtkEnemy();
+            }
+        }
+        else if (extra == 2)
+        {
+            if (count >= 2)
+            {
+                Release();
+            }
+            else
+            {
+                count += 1;
+                TryAtkEnemy();
+            }
+        }
+    }
+    void TryAtkEnemy()
+    {
+        var e = Utils.GetNearestEnemy(this.transform.position, range);
+        if(e==null)
+        {
+            Release();
+        }
+        else
+        {
+            StartCoroutine(AttackEnemyIE(e));
+        }
+    }
 }

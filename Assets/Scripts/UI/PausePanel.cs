@@ -25,25 +25,26 @@ public class PausePanel : MonoBehaviour
         EventHandler.CallExitLevelEvent(-1);
         EventHandler.CallEndLevelEvent();
         LevelManager.Instance.Retry();
-        GameStateManager.Instance.SetGameState(GameState.GamePlay);
+
+        UIManager.Instance.EscOnePanel();
     }
     public void BackToSelect()
     {
+        UIManager.Instance.EscOnePanel();
         EventHandler.CallExitLevelEvent(-1);
         EventHandler.CallEndLevelEvent();
         StartCanvas.Instance.EnterSelect();
-        this.gameObject.SetActive(false);
+        
     }
     public void BackToTitle()
     {
+        UIManager.Instance.EscOnePanel();
         EventHandler.CallEnterLevelEvent(-1);
         EventHandler.CallEndLevelEvent();
         StartCanvas.Instance.EnterTitle();
-        this.gameObject.SetActive(false);
     }
     public void BackToGame()
     {
-        GameStateManager.Instance.SetGameState(GameState.GamePlay);
-        this.gameObject.SetActive(false);
+        UIManager.Instance.EscOnePanel();
     }
 }

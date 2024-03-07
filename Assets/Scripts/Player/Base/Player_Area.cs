@@ -5,19 +5,10 @@ using UnityEngine;
 
 public class Player_Area : Player
 {
-    protected override void Awake()
+    protected override void OnEnterLevelEvent(int l)
     {
-        base.Awake();
-    }
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
+        base.OnEnterLevelEvent(l);
         StartCoroutine(Attack());
-    }
-    protected override void OnDisable()
-    {
-        base.OnDisable();
     }
     protected virtual IEnumerator Attack()
     {
@@ -27,7 +18,7 @@ public class Player_Area : Player
             if (enemies != null && enemies.Count > 0)
             {
                 yield return StartCoroutine(AttackAnim(enemies));
-                yield return GetSkillCD();
+                yield return new WaitForSeconds(GetSkillCD());
             }
             else
             {

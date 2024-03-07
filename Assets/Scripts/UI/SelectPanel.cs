@@ -24,6 +24,7 @@ public class SelectPanel : Singleton<SelectPanel>
         if (CanSelectChar())
         {
             SelectPlayer(index);
+            buttons[index].Select();
             return true;
         }
         else
@@ -100,6 +101,7 @@ public class SelectPanel : Singleton<SelectPanel>
             if (selectedIndexes[i] == playerIndex)
             {
                 selectedIndexes[i] = -1;
+                buttons[playerIndex].CancelSelect();
                 SlotPanel.Instance.CancelSelect(i);
                 break;
             }
@@ -118,5 +120,13 @@ public class SelectPanel : Singleton<SelectPanel>
     public List<int> GetSelectedIndexes()
     {
         return selectedIndexes;
+    }
+
+    public void ClearAllSelect()
+    {
+        for (int i = 0; i < selectedIndexes.Count; ++i)
+        {
+            if (selectedIndexes[i] != -1) CancelSelectPlayer(selectedIndexes[i]);
+        }
     }
 }

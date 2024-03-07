@@ -4,18 +4,10 @@ using UnityEngine;
 
 public class Priest : Player
 {
-    protected override void Awake()
+    protected override void OnEnterLevelEvent(int l)
     {
-        base.Awake();
-    }
-    protected override void OnEnable()
-    {
-        base.OnEnable();
+        base.OnEnterLevelEvent(l);
         StartCoroutine(Heal());
-    }
-    protected override void OnDisable()
-    {
-        base.OnDisable();
     }
     public virtual IEnumerator Heal()
     {

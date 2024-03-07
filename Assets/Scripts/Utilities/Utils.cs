@@ -31,6 +31,30 @@ public static class Utils
         }
         return enemies;
     }
+
+    public static List<EnemyBase> GetNearEnemiesByDistance(Vector2 curr, float range)
+    {
+        List<EnemyBase> enemies = new List<EnemyBase>();
+        int indexMask = LayerMask.GetMask("Enemy");
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(curr, range, indexMask);
+        if (colliders.Length == 0) return null;
+        foreach (var coll in colliders)
+        {
+            if (coll.gameObject.CompareTag("Enemy"))
+            {
+                var enemy = coll.GetComponent<EnemyBase>();
+                enemies.Add(enemy);
+            }
+        }
+        if (enemies.Count == 0) return null;
+        for (int i = enemies.Count - 1; i >= 0; --i)
+        {
+            if (!enemies[i].IsAlive())
+                enemies.RemoveAt(i);
+        }
+        enemies.Sort((e1, e2) => Mathf.RoundToInt(Mathf.Sign(Vector2.SqrMagnitude((Vector2)e1.transform.position - curr) - Vector2.SqrMagnitude((Vector2)e2.transform.position - curr))));
+        return enemies;
+    }
     public static List<EnemyBase> GetNearEnemiesExcludeE(Vector2 curr, float range ,EnemyBase e)
     {
         List<EnemyBase> enemies = new List<EnemyBase>();

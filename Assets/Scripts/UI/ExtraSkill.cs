@@ -47,10 +47,12 @@ public class ExtraSkill : MonoBehaviour
         }
         else
         {
+            btns[0].interactable = true;
+            btns[1].interactable = true;
             btns[0].InitButton(0, TryClickDesire);
             btns[1].InitButton(1, TryClickDesire);
             var selectedIndex = SaveLoadManager.Instance.GetPlayerExtra(playerIndex, extraIndex);
-            SetSelectedIndex(selectedIndex);
+            SetSelectedIndex(selectedIndex - 1);
         }
         
     }
@@ -62,6 +64,6 @@ public class ExtraSkill : MonoBehaviour
             else btns[i].CancelSelect();
         }
         selectedIndex = index;
-        SaveLoadManager.Instance.SavePlayerExtra(playerIndex, extraIndex, selectedIndex);
+        SaveLoadManager.Instance.SavePlayerExtra(playerIndex, extraIndex, selectedIndex + 1);
     }
 }

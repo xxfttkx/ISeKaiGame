@@ -5,19 +5,10 @@ using UnityEngine;
 
 public class Player_Single : Player
 {
-    protected override void Awake()
+    protected override void OnEnterLevelEvent(int l)
     {
-        base.Awake();
-    }
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
+        base.OnEnterLevelEvent(l);
         StartCoroutine(Attack());
-    }
-    protected override void OnDisable()
-    {
-        base.OnDisable();
     }
     protected virtual IEnumerator Attack()
     {

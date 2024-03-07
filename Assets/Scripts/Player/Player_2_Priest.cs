@@ -14,12 +14,31 @@ public class Player_2_Priest : Priest
     protected override void OnEnable()
     {
         base.OnEnable();
+        EventHandler.PlayerKillEnemyEvent += OnPlayerKillEnemyEvent;
     }
     protected override void OnDisable()
     {
+        EventHandler.PlayerKillEnemyEvent -= OnPlayerKillEnemyEvent;
         base.OnDisable();
     }
-
+    public override void Reset()
+    {
+        base.Reset();
+        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 0);
+        if (extra == 0) return;
+        if (extra == 1)
+        {
+            character.attack += 10;
+            character.hp -= 5;
+            return;
+        }
+        if (extra == 2)
+        {
+            character.attack -= 1;
+            character.hp += 10;
+            return;
+        }
+    }
     public override void HealSkill()
     {
         foreach (var p in PlayerManager.Instance.players)
@@ -31,9 +50,28 @@ public class Player_2_Priest : Priest
 
     public override void AddBuffBeforeStart()
     {
-        foreach(var p in PlayerManager.Instance.players)
+        float b = GetBuffBonus();
+        foreach (var p in PlayerManager.Instance.players)
         {
-            p.AddBuff("player2", 0.1f, 0.1f, 0.1f, 0.1f);
+            p.AddBuff("player2", b);
+        }
+    }
+    private float GetBuffBonus()
+    {
+        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 2);
+        if (extra == 0) return 0.1f;
+        if (extra == 1) return 0.5f;
+        if (extra == 2) return 0.05f;
+        return 0f;
+    }
+    private void OnPlayerKillEnemyEvent(int playerIndex)
+    {
+        if(playerIndex==2)
+        {
+            int extra = SaveLoadManager.Instance.GetPlayerExtra(2, 1);
+            if (extra == 0) return;
+            if (extra == 1) character.attack+=1;
+            if (extra == 2) PlayerManager.Instance.PlayerHealPlayer(2,2,1);
         }
     }
 }

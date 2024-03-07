@@ -22,6 +22,15 @@ public class BtnBase : MonoBehaviour, IPointerClickHandler,IPointerEnterHandler,
         btnExit.AddListener(BtnExit);
         btnClick.AddListener(BtnClick);
     }
+    protected virtual void OnEnable()
+    {
+        
+    }
+    protected virtual void OnDisable()
+    {
+        if (btnExit != null)
+            btnExit.Invoke();
+    }
     public virtual void BtnEnter() { }
     public virtual void BtnExit() { }
     public virtual void BtnClick() { }

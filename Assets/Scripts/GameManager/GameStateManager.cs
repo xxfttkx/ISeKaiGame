@@ -14,6 +14,33 @@ public class GameStateManager : Singleton<GameStateManager>
     {
         
     }
+    private void OnEnable()
+    {
+        
+        EventHandler.EnterLevelEvent += OnEnterLevelEvent;
+        EventHandler.ExitLevelEvent += OnExitLevelEvent;
+        EventHandler.EndLevelEvent += OnEndLevelEvent;
+    }
+    private void OnDisable()
+    {
+        
+        EventHandler.EnterLevelEvent -= OnEnterLevelEvent;
+        EventHandler.ExitLevelEvent -= OnExitLevelEvent;
+        EventHandler.EndLevelEvent -= OnEndLevelEvent;
+    }
+    
+    void OnEnterLevelEvent(int _)
+    {
+        SetGameState(GameState.GamePlay);
+    }
+    void OnExitLevelEvent(int _)
+    {
+        SetGameState(GameState.GamePause);
+    }
+    void OnEndLevelEvent()
+    {
+        SetGameState(GameState.GameEnd);
+    }
     public bool InGamePlay()
     {
         return gameState == GameState.GamePlay;

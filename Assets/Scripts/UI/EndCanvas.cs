@@ -35,9 +35,7 @@ public class EndCanvas : Singleton<EndCanvas>
         winPanel.SetActive(false);
         
         EventHandler.CallExitLevelEvent(-1);
-        EventHandler.CallEndLevelEvent();
         LevelManager.Instance.Retry();
-        GameStateManager.Instance.SetGameState(GameState.GamePlay);
     }
     public void BackToTitle()
     {

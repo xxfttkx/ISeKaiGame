@@ -20,7 +20,8 @@ public class ShadowImage : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (escEvent != null)
-            escEvent.Invoke();
+        /*if (escEvent != null)
+            escEvent.Invoke();*/
+        UIManager.Instance.EscOnePanel();
     }
 }

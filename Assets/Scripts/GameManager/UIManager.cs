@@ -40,12 +40,7 @@ public class UIManager : Singleton<UIManager>
             }
             else if(GameStateManager.Instance.InGamePause())
             {
-                var panel = openPanel.Pop();
-                panel.SetActive(false);
-                if (openPanel.Count == 0)
-                {
-                    GameStateManager.Instance.SetGameState(GameState.GamePlay);
-                }
+                EscOnePanel();
             }
         }
             
@@ -134,5 +129,17 @@ public class UIManager : Singleton<UIManager>
             go.SetActive(true);
         }
     }
+    public void EscOnePanel()
+    {
+        var panel = openPanel.Pop();
+        panel.SetActive(false);
+        if (openPanel.Count == 0)
+        {
+            GameStateManager.Instance.SetGameState(GameState.GamePlay);
+        }
+    }
+    public void HideAllUI()
+    {
 
+    }
 }

@@ -34,14 +34,10 @@ public class SelectPlayerButton : BtnBase
         if(selected)
         {
             SelectPanel.Instance.CancelSelectPlayer(index);
-            CancelSelect();
         }
         else
         {
-            if(SelectPanel.Instance.TrySelectPlayer(index))
-            {
-                Select();
-            }
+            SelectPanel.Instance.TrySelectPlayer(index);
         }
         
         

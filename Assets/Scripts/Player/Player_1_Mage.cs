@@ -10,13 +10,23 @@ public class Player_1_Mage : Player_Single
         character.index = 1;
         base.Awake();
     }
-    protected override void OnEnable()
+    public override void Reset()
     {
-        base.OnEnable();
-    }
-    protected override void OnDisable()
-    {
-        base.OnDisable();
+        base.Reset();
+        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 0);
+        if (extra == 0) return;
+        if (extra == 1)
+        {
+            character.attack += 3;
+            character.attackRange -= 1;
+            return;
+        }
+        if (extra == 2)
+        {
+            character.attack -= 1;
+            character.attackRange += 2;
+            return;
+        }
     }
 
     protected override IEnumerator AttackAnim(EnemyBase e)

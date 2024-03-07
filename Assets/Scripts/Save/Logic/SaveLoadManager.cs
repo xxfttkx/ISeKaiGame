@@ -295,7 +295,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         if (gameSaveData.playerExtras[playerIndex] == null)
         {
             List<int> list = gameSaveData.playerExtras[playerIndex];
-            Utils.TryFillList<int>(ref list, -1, extraIndex + 1);
+            Utils.TryFillList<int>(ref list, 0, extraIndex + 1);
             gameSaveData.playerExtras[playerIndex] = list;
         }
         gameSaveData.playerExtras[playerIndex][extraIndex] = selectedIndex;
@@ -311,7 +311,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         if (gameSaveData.playerExtras[playerIndex] == null || gameSaveData.playerExtras[playerIndex].Count <= extraIndex)
         {
             List<int> list = gameSaveData.playerExtras[playerIndex];
-            Utils.TryFillList<int>(ref list, -1, extraIndex + 1);
+            Utils.TryFillList<int>(ref list, 0, extraIndex + 1);
             gameSaveData.playerExtras[playerIndex] = list;
         }
         return gameSaveData.playerExtras[playerIndex][extraIndex];

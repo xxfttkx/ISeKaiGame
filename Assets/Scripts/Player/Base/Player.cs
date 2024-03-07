@@ -26,11 +26,13 @@ public class Player : MonoBehaviour
     }
     protected virtual void OnEnable()
     {
-        Reset();
+        EventHandler.EnterLevelEvent += OnEnterLevelEvent;
+        EventHandler.ExitLevelEvent += OnExitLevelEvent;
     }
     protected virtual void OnDisable()
     {
-        StopAllCoroutines();
+        EventHandler.EnterLevelEvent -= OnEnterLevelEvent;
+        EventHandler.ExitLevelEvent -= OnExitLevelEvent;
     }
     public virtual void Reset()
     {
@@ -40,7 +42,14 @@ public class Player : MonoBehaviour
         character = characterData.GetCharByIndex(character.index);
     }
 
-    
+    protected virtual void OnEnterLevelEvent(int _)
+    {
+        Reset();
+    }
+    protected virtual void OnExitLevelEvent(int _)
+    {
+        StopAllCoroutines();
+    }
 
     public void Move(Vector2 movementInput, float deltaTime)
     {
@@ -75,15 +84,15 @@ public class Player : MonoBehaviour
         val = Mathf.Clamp01(val);
         return val;
     }
-    internal void BeHealed(int heal)
+    public void BeHealed(int heal,int restorer)
     {
         if (character.hp <= 0) return;
         //todo 能达到的最大hp可不该从so中取。。
         var tempHP = character.hp + heal;
         var maxHP = GetMaxHP();
-        int hp = Math.Min(tempHP, maxHP);
-        if (hp == character.hp) return;
-        character.hp = hp;
+        heal = tempHP <= maxHP ? heal : maxHP - character.hp;
+        SaveLoadManager.Instance.SetPlayerExtraData(restorer, ExtraType.Heal, heal);
+        character.hp += heal;
         UIManager.Instance.HPChange(character.index, GetHpVal());
     }
 
@@ -206,13 +215,13 @@ public class Player : MonoBehaviour
         }
         UIManager.Instance.BuffChange(GetPlayerIndex(),b);
     }
-    public void AddBuff(string name, float b1, float b2, float b3, float b4)
+    public void AddBuff(string name, float atk, float speed, float atkRange, float atkSpeed)
     {
         if(buffs.ContainsKey(name))
         {
             return;
         }
-        Buff b = new Buff(name, b1, b2, b3, b4);
+        Buff b = new Buff(name, atk, speed, atkRange, atkSpeed);
         allBuff.AddBuff(b);
         if(b.duration>0)
         {

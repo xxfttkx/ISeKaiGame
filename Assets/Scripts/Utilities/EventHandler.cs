@@ -72,12 +72,6 @@ public static class EventHandler
         EndLevelEvent?.Invoke();
     }
 
-    public static event Action GameOverEvent;
-    public static void CallGameOverEvent()
-    {
-        GameOverEvent?.Invoke();
-    }
-
     public static event Action RestartThisLevelEvent;
     public static void CallRestartThisLevelEvent()
     {
