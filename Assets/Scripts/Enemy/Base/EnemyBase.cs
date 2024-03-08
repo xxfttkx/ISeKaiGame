@@ -23,11 +23,13 @@ public class EnemyBase: MonoBehaviour
     private int globalIndex;
     private bool beReleased;
     public bool canMove;
+    private Animator animator;
 
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sp = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         material = sp.material;
     }
     protected virtual void Start()
@@ -122,6 +124,7 @@ public class EnemyBase: MonoBehaviour
         {
             enemy.hp = 0;
             beReleased = true;
+            animator?.SetBool("Dead", true);
             StartCoroutine(Dead());
             
         }
@@ -141,7 +144,7 @@ public class EnemyBase: MonoBehaviour
             material.SetFloat("_TwistUvAmount", twistAmount);
             material.SetFloat("_TwistUvRadius", twistRadius);
             material.SetFloat("_ZoomUvAmount", zoomAmount);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSecondsRealtime(0.1f);
         }
         PoolManager.Instance.ReleaseEnemy(this.gameObject, enemy.index);
     }
@@ -187,6 +190,7 @@ public class EnemyBase: MonoBehaviour
         beReleased = false;
         canMove = true;
         player = PlayerManager.Instance.GetPlayerInControl();
+        animator?.SetBool("Dead", false);
     }
     private void OnExitLevelEvent(int level)
     {

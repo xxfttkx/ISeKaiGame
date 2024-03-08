@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8663738647581593676
 Transform:
   m_ObjectHideFlags: 0
@@ -261,6 +261,7 @@ MonoBehaviour:
     index: 0
     name: 
     sprite: {fileID: 0}
+    prefab: {fileID: 0}
     faceToLeft: 0
     profession: 0
     attack: 0
@@ -268,32 +269,10 @@ MonoBehaviour:
     speed: 0
     attackSpeed: 0
     attackRange: 0
-    moneyAcquisitionEfficiency: 0
     desc: 
-  maxStateChar:
-    index: 0
-    name: 
-    sprite: {fileID: 0}
-    faceToLeft: 0
-    profession: 0
-    attack: 0
-    hp: 0
-    speed: 0
-    attackSpeed: 0
-    attackRange: 0
-    moneyAcquisitionEfficiency: 0
-    desc: 
-  currStateChar:
-    index: 0
-    name: 
-    sprite: {fileID: 0}
-    faceToLeft: 0
-    profession: 0
-    attack: 0
-    hp: 0
-    speed: 0
-    attackSpeed: 0
-    attackRange: 0
-    moneyAcquisitionEfficiency: 0
-    desc: 
+    extraTypes: 
+    extraThresholds: 
+    extraDesire1: []
+    extraDesire2: []
+  timeOnTheField: 0
   circle: {fileID: 1018466229840944626}

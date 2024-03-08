@@ -29,7 +29,14 @@ public class PlayerManager : Singleton<PlayerManager>
         indexToPlayer = new Dictionary<int, Player>();
         indexToSpriteRenderer = new Dictionary<int, SpriteRenderer>();
     }
-
+    private void OnEnable()
+    {
+        EventHandler.EnterLevelEvent += OnEnterLevelEvent;
+    }
+    private void OnDisable()
+    {
+        EventHandler.EnterLevelEvent -= OnEnterLevelEvent;
+    }
     private void InitPlayerHash()
     {
         playerTypeToPlayer.Clear();
@@ -327,7 +334,7 @@ public class PlayerManager : Singleton<PlayerManager>
         EventHandler.CallChangePlayerOnTheFieldEvent(players[i]);
     }
 
-    public void EnterLevel(int level)
+    protected void OnEnterLevelEvent(int _)
     {
         foreach(var p in players)
         {

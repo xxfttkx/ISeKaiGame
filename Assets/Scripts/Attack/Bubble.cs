@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bubble : MonoBehaviour
+public class Bubble : PlayerAtk
 {
     public Rigidbody2D rb;
     private float maxDistance;
@@ -10,8 +10,6 @@ public class Bubble : MonoBehaviour
     public float seekingEnemyInterval = 0.05f;
     public float bubbleSmallRadius = 0.5f;
     public float bubbleBigRadius = 1.5f;
-    private int atk;
-    private int playerIndex;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,17 +22,10 @@ public class Bubble : MonoBehaviour
     {
         StopAllCoroutines();
     }
-    public void AttackEnemy(EnemyBase enemy, Player p)
-    {
-        atk = p.GetAttack();
-        playerIndex = p.GetPlayerIndex();
-        Vector2 dir = enemy.transform.position - p.transform.position;
-        dir = dir.normalized;
-        StartCoroutine(AttackEnemyIE(dir));
-    }
 
-    IEnumerator AttackEnemyIE(Vector2 direction)
+    protected override IEnumerator AttackEnemy(EnemyBase e)
     {
+        Vector2 dir = e.transform.position - this.transform.position;
         while (true)
         {
             StartCoroutine(AutoRelease());

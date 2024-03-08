@@ -42,7 +42,7 @@ public class EndCanvas : Singleton<EndCanvas>
         overPanel.SetActive(false);
         winPanel.SetActive(false);
 
-        EventHandler.CallEnterLevelEvent(-1);
+        EventHandler.CallExitLevelEvent(-1);
         EventHandler.CallEndLevelEvent();
         StartCanvas.Instance.EnterTitle();
     }

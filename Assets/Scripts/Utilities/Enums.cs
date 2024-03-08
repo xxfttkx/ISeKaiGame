@@ -57,3 +57,13 @@ public enum Language
     Japanese = 2,
 
 }
+
+public enum Characteristic
+{
+    None = 0,
+    Hp,
+    Attack,
+    Speed,
+    AttackRange,
+    AttackSpeed,
+}

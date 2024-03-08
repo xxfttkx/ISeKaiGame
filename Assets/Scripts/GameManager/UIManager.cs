@@ -11,7 +11,7 @@ public class UIManager : Singleton<UIManager>
     public Text moneyText;
     public GameObject startCanvas;
     public GameObject endCanvas;
-    
+
     public GameObject playerDataPrefab;
     public PausePanel pausePanel;
     public PlayerSettingsPanel playerSettingsPanel;
@@ -23,7 +23,7 @@ public class UIManager : Singleton<UIManager>
     public List<PlayerData> PlayerDataList;
     private Stack<GameObject> openPanel;
 
-    
+
     private void Start()
     {
         indexToPlayerData = new Dictionary<int, PlayerData>();
@@ -38,12 +38,12 @@ public class UIManager : Singleton<UIManager>
             {
                 ShowPausePanel();
             }
-            else if(GameStateManager.Instance.InGamePause())
+            else if (GameStateManager.Instance.InGamePause())
             {
                 EscOnePanel();
             }
         }
-            
+
     }
     private void OnEnable()
     {
@@ -62,7 +62,7 @@ public class UIManager : Singleton<UIManager>
     {
         if (pauseStatus)
         {
-            if(GameStateManager.Instance.InGamePlay())
+            if (GameStateManager.Instance.InGamePlay())
             {
                 ShowPausePanel();
             }
@@ -75,7 +75,7 @@ public class UIManager : Singleton<UIManager>
     }
     public void InitPlayerPanel()
     {
-        foreach(var d in PlayerDataList)
+        foreach (var d in PlayerDataList)
         {
             Destroy(d.gameObject);
         }
@@ -96,7 +96,7 @@ public class UIManager : Singleton<UIManager>
         // val = Mathf.Clamp01(val);
         indexToPlayerData[index].SetHP(val);
     }
-    public void BuffChange(int index,Buff buff)
+    public void BuffChange(int index, Buff buff)
     {
         indexToPlayerData[index].SetBuffList(buff);
     }
@@ -105,9 +105,9 @@ public class UIManager : Singleton<UIManager>
         // val = Mathf.Clamp01(val);
         indexToPlayerData[index].SetFieldTime(time);
     }
-    public void MoneyChange(int curr,int add)
+    public void MoneyChange(int curr, int add)
     {
-        moneyText.text = curr+"";
+        moneyText.text = curr + "";
     }
 
     public void ShowPlayerSettingsPanel(int playerIndex = -1)
@@ -131,6 +131,7 @@ public class UIManager : Singleton<UIManager>
     }
     public void EscOnePanel()
     {
+        if (openPanel.Count == 0) return;
         var panel = openPanel.Pop();
         panel.SetActive(false);
         if (openPanel.Count == 0)

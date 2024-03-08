@@ -15,7 +15,7 @@ MonoBehaviour:
   enemies:
   - index: 0
     name: 77ko
-    sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
+    sprite: {fileID: 1571574046, guid: 8cc5cb484953ca94fae100c5c9b6f354, type: 3}
     prefab: {fileID: 4708548768610898139, guid: d3470c4045ebf444b82348e1abed035c, type: 3}
     faceToLeft: 0
     enemyType: 1
@@ -30,9 +30,9 @@ MonoBehaviour:
     desc: "\u666E\u901A\u8FD1\u6218"
   - index: 1
     name: scarlet rain
-    sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
+    sprite: {fileID: 21300000, guid: 7ecf2779827a3eb4b90c5fad2eb62d90, type: 3}
     prefab: {fileID: 4708548768610898139, guid: 8e01a792c675b0242b13b04c952bf1c1, type: 3}
-    faceToLeft: 1
+    faceToLeft: 0
     enemyType: 2
     attack: 1
     hp: 10
@@ -92,7 +92,7 @@ MonoBehaviour:
     name: kita
     sprite: {fileID: 21300000, guid: c7dbe3efae9dd5e409b17fc8d5701523, type: 3}
     prefab: {fileID: 4708548768610898139, guid: 95aa2ee42593c784dbc543523da4a01c, type: 3}
-    faceToLeft: 1
+    faceToLeft: 0
     enemyType: 1
     attack: 5
     hp: 1

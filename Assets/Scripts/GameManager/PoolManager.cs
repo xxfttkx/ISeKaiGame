@@ -76,6 +76,14 @@ public class PoolManager : Singleton<PoolManager>
         Bubble b = obj.GetComponent<Bubble>();
         b.AttackEnemy(enemy, p);
     }
+    public void CreateBubble(Vector2 dir, Vector3 pos, Player p)
+    {
+        ObjectPool<GameObject> objPool = poolList[0];
+        GameObject obj = objPool.Get();
+        obj.transform.position = pos;
+        Bubble b = obj.GetComponent<Bubble>();
+        b.AttackEnemy(enemy, p);
+    }
     public void CreateEnemy(int index, Vector3 pos)
     {
         ObjectPool<GameObject> objPool = enemyPoolList[index];

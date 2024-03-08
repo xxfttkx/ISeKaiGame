@@ -15,11 +15,15 @@ public class Player_7_Warrior : Player
     protected override void OnEnable()
     {
         base.OnEnable();
-        StartCoroutine(Attack());
     }
     protected override void OnDisable()
     {
         base.OnDisable();
+    }
+    public override void Reset()
+    {
+        base.Reset();
+        StartCoroutine(Attack());
     }
     IEnumerator Attack()
     {

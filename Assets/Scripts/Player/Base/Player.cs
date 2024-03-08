@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
 
     protected virtual void OnEnterLevelEvent(int _)
     {
-        Reset();
+        // playermanager жа Reset();
     }
     protected virtual void OnExitLevelEvent(int _)
     {

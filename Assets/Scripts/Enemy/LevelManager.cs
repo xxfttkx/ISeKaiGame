@@ -10,44 +10,50 @@ public class LevelManager : Singleton<LevelManager>
     public bool timeEnd;
     public int currEnemyNum;
     private int endTime;
-    private List<EnemyBase> enemyList;
-    private int currCount; 
+    private HashSet<int> enemyHash;
+    private int currCount; // µ±Ç°index
+    private int currGlobal; //
 
     protected override void Awake()
     {
         base.Awake();
-        enemyList = new List<EnemyBase>(Settings.reservedEnemyCount);
+        enemyHash = new HashSet<int>();
         currCount = 0;
         currEnemyNum = 0;
+        currGlobal = 0;
     }
 
     public void AddEnemyNum(EnemyBase e)
     {
-        currEnemyNum += 1;
-        enemyList.Add(e);
+        enemyHash.Add(currCount);
         e.SetGlobalIndex(currCount);
         currCount += 1;
+        currEnemyNum += 1;
         LevelPanel.Instance.enemyNumChange(currEnemyNum);
     }
     public void SubEnemyNum(int enemyGlobalIndex)
     {
         if (enemyGlobalIndex != -1)
         {
-            currEnemyNum -= 1;
-            enemyList[enemyGlobalIndex] = null;
-            LevelPanel.Instance.enemyNumChange(currEnemyNum);
+            enemyHash.Remove(enemyGlobalIndex);
         }
-        if (timeEnd && currEnemyNum==0)
+        if (enemyGlobalIndex >= currGlobal)
         {
-            PassLevel();
+            currEnemyNum -= 1;
+            LevelPanel.Instance.enemyNumChange(currEnemyNum);
+            if (timeEnd && currEnemyNum == 0)
+            {
+                PassLevel();
+            }
         }
+        
     }
     public void StartLevel(int levelIndex)
     {
-        PlayerManager.Instance.EnterLevel(levelIndex);
         EventHandler.CallEnterLevelEvent(levelIndex);
         timeEnd = false;
         currEnemyNum = 0;
+        currGlobal = currCount;
         LevelPanel.Instance.enemyNumChange(currEnemyNum);
         currLevel = levelIndex;
         var l = SOManager.Instance.levelCreatEnemyDataList_SO.GetLevelByIndex(levelIndex);
@@ -90,7 +96,7 @@ public class LevelManager : Singleton<LevelManager>
         }
         else
         {
-            StartLevel(currLevel + 1);
+            EventHandler.CallTransitionEvent(currLevel+1);
         }
 
 

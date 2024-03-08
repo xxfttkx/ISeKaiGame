@@ -113,10 +113,10 @@ public static class EventHandler
     /// <summary>
     /// ÇÐ»»³¡¾°
     /// </summary>
-    public static event Action<string, Vector3> TransitionEvent;
-    public static void CallTransitionEvent(string sceneToGo, Vector3 positionToGo)
+    public static event Action<int> TransitionEvent;
+    public static void CallTransitionEvent(int level)
     {
-        TransitionEvent?.Invoke(sceneToGo, positionToGo);
+        TransitionEvent?.Invoke(level);
     }
 
     /// <summary>
