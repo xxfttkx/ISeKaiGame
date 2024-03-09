@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Player_Single : Player
 {
-    protected override void OnEnterLevelEvent(int l)
+    public override void Reset()
     {
-        base.OnEnterLevelEvent(l);
+        base.Reset();
         StartCoroutine(Attack());
     }
     protected virtual IEnumerator Attack()
@@ -21,8 +21,7 @@ public class Player_Single : Player
                 continue;
             }
             yield return AttackAnim(e);
-            var cd = new WaitForSeconds(10.0f / GetAttackSpeed());
-            yield return cd;
+            yield return new WaitForSeconds(GetSkillCD());
         }
 
     }

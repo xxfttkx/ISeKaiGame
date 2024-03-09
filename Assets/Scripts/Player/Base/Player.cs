@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Player : MonoBehaviour
 {
     public CharacterDataList_SO characterData;
@@ -83,6 +82,10 @@ public class Player : MonoBehaviour
         float val = ((float)character.hp) / GetMaxHP();
         val = Mathf.Clamp01(val);
         return val;
+    }
+    public int GetHp()
+    {
+        return character.hp;
     }
     public void BeHealed(int heal,int restorer)
     {

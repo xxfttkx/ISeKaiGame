@@ -82,7 +82,7 @@ public class PoolManager : Singleton<PoolManager>
         GameObject obj = objPool.Get();
         obj.transform.position = pos;
         Bubble b = obj.GetComponent<Bubble>();
-        b.AttackEnemy(enemy, p);
+        b.AttackEnemy(dir, p);
     }
     public void CreateEnemy(int index, Vector3 pos)
     {
@@ -196,6 +196,6 @@ public class PoolManager : Singleton<PoolManager>
         GameObject obj = objPool.Get();
         obj.transform.position = pos;
         Lightning f = obj.GetComponent<Lightning>();
-        f.AttackEnemy(p,e);
+        f.AttackEnemy(e,p);
     }
 }

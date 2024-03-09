@@ -5,7 +5,6 @@ using UnityEngine;
 public class Bubble : PlayerAtk
 {
     public Rigidbody2D rb;
-    private float maxDistance;
     public float velocity = 10;
     public float seekingEnemyInterval = 0.05f;
     public float bubbleSmallRadius = 0.5f;
@@ -13,9 +12,11 @@ public class Bubble : PlayerAtk
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        poolIndex = 0;
     }
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         Reset();
     }
     private void OnDisable()
@@ -26,38 +27,47 @@ public class Bubble : PlayerAtk
     protected override IEnumerator AttackEnemy(EnemyBase e)
     {
         Vector2 dir = e.transform.position - this.transform.position;
+        StartCoroutine(AttackEnemy(dir));
+        yield break;
+    }
+    protected override IEnumerator AttackEnemy(Vector2 dir)
+    {
+        dir = dir.normalized;
         while (true)
         {
             StartCoroutine(AutoRelease());
-            var enemies = Utils.GetNearEnemies(this.transform.position, bubbleSmallRadius);
-            if (enemies!=null&& enemies.Count>0)
+            var tempE = Utils.GetNearestEnemy(this.transform.position, bubbleSmallRadius);
+            if (tempE != null)
             {
                 yield return BubuleBigger();
-                enemies = Utils.GetNearEnemies(this.transform.position, bubbleBigRadius);
-                if(enemies != null && enemies.Count > 0)
+                var enemies = Utils.GetNearEnemies(this.transform.position, bubbleBigRadius);
+                if (enemies != null && enemies.Count > 0)
                 {
-                    foreach (var e in enemies)
+                    int extra = SaveLoadManager.Instance.GetPlayerExtra(playerIndex, 1);
+                    if (extra == 0)
+                        atk = Mathf.CeilToInt(atk * 1.0f / enemies.Count);
+                    foreach (var enemy in enemies)
                     {
-                        PlayerManager.Instance.PlayerHurtEnemy(playerIndex, e, atk);
+                        PlayerManager.Instance.PlayerHurtEnemy(playerIndex, enemy, atk);
+                        if (extra == 2) atk += 1;
                     }
                 }
-                
-                PoolManager.Instance.ReleaseObj(this.gameObject, 0);
                 break;
             }
             else
             {
-                rb.MovePosition(rb.position + direction * seekingEnemyInterval * velocity);
+                rb.MovePosition(rb.position + dir * seekingEnemyInterval * velocity);
             }
             yield return new WaitForSeconds(seekingEnemyInterval);
         }
+        Release();
     }
 
 
     IEnumerator AutoRelease()
     {
         yield return new WaitForSeconds(Settings.guangQiuExistTime);
-        PoolManager.Instance.ReleaseObj(this.gameObject, 0);
+        Release();
     }
 
     IEnumerator BubuleBigger()
@@ -67,8 +77,8 @@ public class Bubble : PlayerAtk
             this.transform.localScale = new Vector3(i, i, 1);
             yield return new WaitForSeconds(0.025f);
         }
+        
     }
-
     private void Reset()
     {
         this.transform.localScale = new Vector3(1, 1, 1);

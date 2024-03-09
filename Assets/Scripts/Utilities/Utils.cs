@@ -55,6 +55,18 @@ public static class Utils
         enemies.Sort((e1, e2) => Mathf.RoundToInt(Mathf.Sign(Vector2.SqrMagnitude((Vector2)e1.transform.position - curr) - Vector2.SqrMagnitude((Vector2)e2.transform.position - curr))));
         return enemies;
     }
+
+    public static List<EnemyBase> GetNearEnemiesByDistance(Vector2 curr, float range, int count)
+    {
+        List<EnemyBase> enemies = GetNearEnemiesByDistance(curr, range);
+        if (enemies == null || enemies.Count <= count) return enemies;
+        List<EnemyBase> res = new List<EnemyBase>(count);
+        for (int i = 0; i < count; ++i)
+        {
+            res.Add(enemies[i]);
+        }
+        return res;
+    }
     public static List<EnemyBase> GetNearEnemiesExcludeE(Vector2 curr, float range ,EnemyBase e)
     {
         List<EnemyBase> enemies = new List<EnemyBase>();
@@ -182,5 +194,27 @@ public static class Utils
             ExtraType.ExitNum => $"总共对敌人33333造成{threshold}伤害",
             _ => "Invalid day" 
         };
+    }
+    public static List<EnemyBase> GetEnemiesByDirAndRange(Vector2 curr, Vector2 dir, float range)
+    {
+        dir = dir.normalized;
+        List<EnemyBase> enemies = new List<EnemyBase>();
+        int indexMask = LayerMask.GetMask("Enemy");
+        var rs = Physics2D.LinecastAll(curr, curr+dir*range, indexMask);
+        if (rs.Length == 0) return null;
+        foreach (var r in rs)
+        {
+            if (r.collider.gameObject.CompareTag("Enemy"))
+            {
+                enemies.Add(r.collider.GetComponent<EnemyBase>());
+            }
+        }
+        if (enemies.Count == 0) return null;
+        for (int i = enemies.Count - 1; i >= 0; --i)
+        {
+            if (!enemies[i].IsAlive())
+                enemies.RemoveAt(i);
+        }
+        return enemies;
     }
 }

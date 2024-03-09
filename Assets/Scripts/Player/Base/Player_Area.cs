@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Player_Area : Player
 {
-    protected override void OnEnterLevelEvent(int l)
+    public override void Reset()
     {
-        base.OnEnterLevelEvent(l);
+        base.Reset();
         StartCoroutine(Attack());
     }
     protected virtual IEnumerator Attack()

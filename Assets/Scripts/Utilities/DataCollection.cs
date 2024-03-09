@@ -28,6 +28,7 @@ public struct Character
     public List<string> extraDesire2;
     public Characteristic[] extraCharacteristics;
     public int[] extraCharacteristicVals;
+    public bool finished;
 }
 
 [System.Serializable]

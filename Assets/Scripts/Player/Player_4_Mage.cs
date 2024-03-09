@@ -14,7 +14,6 @@ public class Player_4_Mage : Player_Single
     {
         base.Reset();
         int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 0);
-        
         if (extra == 1)
         {
             character.attack += 2;
@@ -29,9 +28,23 @@ public class Player_4_Mage : Player_Single
     protected override IEnumerator AttackAnim(EnemyBase e)
     {
         int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 1);
-        PoolManager.Instance.CreateBubble(e, this.transform.position, this);
+        Vector2 dir = e.transform.position - this.transform.position;
+        PoolManager.Instance.CreateBubble(dir, this.transform.position, this);
+        Debug.Log("hit");
         if (extra == 1)
-            yield break;
+        {
+            StartCoroutine(DelayShoot(dir));
+        }
+        else if(extra==2)
+        {
+            PoolManager.Instance.CreateBubble(-dir, this.transform.position, this);
+        }
+        yield break;
+    }
+    IEnumerator DelayShoot(Vector2 dir)
+    {
+        yield return new WaitForSeconds(2f);
+        PoolManager.Instance.CreateBubble(dir, this.transform.position, this);
     }
     public override void AddBuffBeforeStart()
     {

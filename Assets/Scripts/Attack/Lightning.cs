@@ -2,35 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lightning : MonoBehaviour
+public class Lightning : PlayerAtk
 {
     public Rigidbody2D rb;
     public float velocity = 10;
     public float SeekingEnemyInterval = 0.02f;
-    private bool beReleased;
-    private Player player;
-    private int atk;
+    private int maxCount;
+    private int extra1;
+    private int extra2;
+    private int range;
     private void Awake()
     {
+        poolIndex = 8;
         rb = GetComponent<Rigidbody2D>();
     }
-    private void OnEnable()
+    public override void AttackEnemy(EnemyBase e, Player p)
     {
-        beReleased = false;
-        EventHandler.ExitLevelEvent += OnExitLevelEvent;
+        base.AttackEnemy(e, p);
+        range = PlayerManager.Instance.GetPlayerAttackRange(p.GetPlayerIndex());
+        extra2 = SaveLoadManager.Instance.GetPlayerExtra(p.GetPlayerIndex(), 2);
+        if (extra2 == 0) maxCount = 10;
+        else if(extra2 == 1) maxCount = 8;
+        else if(extra2 == 2) maxCount = 20;
+        extra1 = SaveLoadManager.Instance.GetPlayerExtra(p.GetPlayerIndex(), 1);
     }
-    private void OnDisable()
-    {
-        EventHandler.ExitLevelEvent -= OnExitLevelEvent;
-        StopAllCoroutines();
-    }
-    public void AttackEnemy(Player p, EnemyBase enemy)
-    {
-        player = p;
-        atk = p.GetAttack();
-        StartCoroutine(Attack(enemy));
-    }
-    IEnumerator Attack(EnemyBase enemy)
+    protected override IEnumerator AttackEnemy(EnemyBase enemy)
     {
         yield return null;
         Vector2 dir;
@@ -45,7 +41,7 @@ public class Lightning : MonoBehaviour
             var distance = dir.magnitude;
             if (distance <= Settings.hitPlayerDis)
             {
-                PlayerManager.Instance.PlayerHurtEnemy(player.GetPlayerIndex(), enemy, atk);
+                HitEnemy(enemy);
                 break;
             }
             else
@@ -61,7 +57,6 @@ public class Lightning : MonoBehaviour
             }
             yield return new WaitForSeconds(SeekingEnemyInterval);
         }
-        TryAttackNextTarget(enemy);
     }
     IEnumerator Attack(Player p)
     {
@@ -76,9 +71,9 @@ public class Lightning : MonoBehaviour
             }
             dir = p.transform.position - this.transform.position;
             var distance = dir.magnitude;
-            if (distance < 1f)
+            if (distance <= Settings.hitPlayerDis)
             {
-                PlayerManager.Instance.PlayerHurtPlayer(player.GetPlayerIndex(), p.GetPlayerIndex(), atk);
+                HitPlayer(p);
                 break;
             }
             else
@@ -94,52 +89,71 @@ public class Lightning : MonoBehaviour
             }
             yield return new WaitForSeconds(SeekingEnemyInterval);
         }
-        TryAttackNextEnemy();
-    }
-    void OnExitLevelEvent(int level)
-    {
-        Release();
-    }
-    void Release()
-    {
-        if (!beReleased)
-        {
-            beReleased = true;
-            PoolManager.Instance.ReleaseObj(this.gameObject, 8);
-        }
     }
     void TryAttackNextTarget(EnemyBase enemy)
     {
+        var e = Utils.GetNearestEnemyExcludeE(this.transform.position, range, enemy);
         var p = PlayerManager.Instance.GetPlayerInControl();
-        if (Vector2.SqrMagnitude(p.transform.position - this.transform.position) <= GetSqrRange())
+        float sqrP = Vector2.SqrMagnitude(p.transform.position - this.transform.position);
+        if (e == null || extra2 == 2)
         {
-            StartCoroutine(Attack(p));
-            return;
+            if(sqrP<=GetSqrRange())
+            {
+                StartCoroutine(Attack(p));
+                return;
+            }
+            else
+            {
+                Release();
+            }
         }
-        var e = Utils.GetNearestEnemyExcludeE(this.transform.position, GetRange(), enemy);
-        if (e != null)
+        else
         {
-            StartCoroutine(Attack(e));
-            return;
+            if(extra2==1)
+            {
+                StartCoroutine(AttackEnemy(e));
+            }
+            else
+            {
+                float sqrE = Vector2.SqrMagnitude(e.transform.position - this.transform.position);
+                if (sqrP < sqrE)
+                {
+                    StartCoroutine(Attack(p));
+                }
+                else
+                {
+                    StartCoroutine(AttackEnemy(e));
+                }
+            }
         }
-        Release();
     }
     void TryAttackNextEnemy()
     {
-        var e = Utils.GetNearestEnemy(this.transform.position, GetRange());
+        var e = Utils.GetNearestEnemy(this.transform.position, range);
         if (e != null)
         {
-            StartCoroutine(Attack(e));
+            StartCoroutine(AttackEnemy(e));
             return;
         }
         Release();
     }
-    private float GetRange()
-    {
-        return 3.0f;
-    }
     private float GetSqrRange()
     {
-        return GetRange()* GetRange();
+        return range * range;
+    }
+    private void HitPlayer(Player p)
+    {
+        PlayerManager.Instance.PlayerHurtPlayer(player.GetPlayerIndex(), p.GetPlayerIndex(), atk);
+        maxCount--;
+        if(maxCount==0) Release();
+        else TryAttackNextEnemy();
+
+    }
+    private void HitEnemy(EnemyBase e)
+    {
+        PlayerManager.Instance.PlayerHurtEnemy(player.GetPlayerIndex(), e, atk);
+        maxCount--;
+        if (maxCount == 0) Release();
+        else TryAttackNextTarget(e);
     }
 }
