@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
     }
     public void BeHealed(int heal,int restorer)
     {
-        if (character.hp <= 0) return;
+        if (!IsAlive()) return;
         //todo 能达到的最大hp可不该从so中取。。
         var tempHP = character.hp + heal;
         var maxHP = GetMaxHP();

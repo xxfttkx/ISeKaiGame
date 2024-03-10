@@ -347,4 +347,20 @@ public class PlayerManager : Singleton<PlayerManager>
             p.AddBuffBeforeStart();
         }
     }
+    public Player GetMinHpValPlayer()
+    {
+        Player ans=null;
+        float min = 1f;
+        foreach (var p in players)
+        {
+            if (!p.IsAlive()) continue;
+            var v = p.GetHpVal();
+            if (v < min)
+            {
+                min = v;
+                ans = p;
+            }
+        }
+        return ans;
+    }
 }
