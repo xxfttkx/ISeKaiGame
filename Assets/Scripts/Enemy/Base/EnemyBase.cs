@@ -83,7 +83,9 @@ public class EnemyBase: MonoBehaviour
     {
         if (IsAlive())
         {
-            SaveLoadManager.Instance.SetPlayerExtraData(playerIndex, ExtraType.Hurt, Mathf.Min(enemy.hp,damage));
+            damage = Mathf.Min(enemy.hp, damage);
+            HPPanel.Instance.Show(this.transform.position, damage);
+            SaveLoadManager.Instance.SetPlayerExtraData(playerIndex, ExtraType.Hurt,damage);
             enemy.hp -= damage;
             if (enemy.hp <= 0)
             {

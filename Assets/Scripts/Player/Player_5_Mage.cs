@@ -49,8 +49,9 @@ public class Player_5_Mage : Player
             if (e != null)
             {
                 int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 1);
-                if (extra == 0)
+                if (extra == 0||extra==1)
                 {
+                    // 可以分开 。。现在直接切换会享受最高加成。。
                     yield return AttackEnemy(e);
                 }
                 else if(extra==2)

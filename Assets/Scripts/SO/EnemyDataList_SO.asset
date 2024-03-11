@@ -148,3 +148,18 @@ MonoBehaviour:
     exp: 0
     money: 0
     desc: "\u6728\u6869"
+  - index: 8
+    name: chaser
+    sprite: {fileID: 21300000, guid: 6d2196183c1801e479f78254bbc800c0, type: 3}
+    prefab: {fileID: 4708548768610898139, guid: 2b29b3a257f9717409212f7b15b70054, type: 3}
+    faceToLeft: 0
+    enemyType: 1
+    attack: 0
+    hp: 2147483647
+    speed: 0
+    getPlayerPosTimeDelta: 0
+    attackRange: 0
+    attackSpeed: 0
+    exp: 0
+    money: 0
+    desc: "\u6BCF\u53D7\u5230\u4F24\u5BB3 \u5C31\u4F1A\u5F80\u4F24\u5BB3\u6765\u6E90\u53D1\u51FA\u67AA"
