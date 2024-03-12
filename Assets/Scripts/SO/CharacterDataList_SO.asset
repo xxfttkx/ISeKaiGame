@@ -595,3 +595,23 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
+  - index: 24
+    name: "\u52C7\u8005/\u9B54\u738B"
+    sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
+    prefab: {fileID: 0}
+    faceToLeft: 0
+    profession: 0
+    attack: 100
+    hp: 2
+    speed: 4
+    attackSpeed: 5
+    attackRange: 5
+    desc: "\u52C7\u8005\u5438\u961F\u53CB\u8840 \u9B54\u738B\u7ED9\u961F\u53CB\u795D\u798F"
+    extraTypes: 020000000600000007000000
+    extraThresholds: 
+    extraDesire1: []
+    extraDesire2: []
+    extraCharacteristics: 
+    extraCharacteristicVals: 
+    extraData: 
+    finished: 0

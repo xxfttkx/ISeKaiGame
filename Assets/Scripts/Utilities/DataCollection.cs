@@ -2,9 +2,24 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
+
 
 [System.Serializable]
+public struct CreatureBase
+{
+    public bool faceToLeft;
+    [Header("Attributes")]
+    public int attack;
+    public int hp;
+    public int speed;
+    public int attackSpeed; // 10sÄÚ¹¥»÷´ÎÊı
+    public int attackRange; // ¹¥»÷¾àÀë
+    [TextArea(3, 10)]
+    public string desc;
+}
+
+    [System.Serializable]
 public struct Character
 {
     public int index;
