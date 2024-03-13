@@ -12,9 +12,14 @@ public class TMPStatic : MonoBehaviour
     {
         tmp = GetComponent<TextMeshProUGUI>();
     }
-    void Start()
+    private void OnEnable()
     {
+        EventHandler.LanguageChange+= OnLanguageChange;
         Init();
+    }
+    private void OnDisable()
+    {
+        EventHandler.LanguageChange -= OnLanguageChange;
     }
 
     void Init()
@@ -22,8 +27,8 @@ public class TMPStatic : MonoBehaviour
         tmp.text = SOManager.Instance.GetStringByIndex(index);
     }
 
-    private void OnChange()
+    private void OnLanguageChange()
     {
-
+        Init();
     }
 }

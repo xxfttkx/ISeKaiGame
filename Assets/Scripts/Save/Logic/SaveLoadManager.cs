@@ -27,16 +27,23 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     private void OnEnable()
     {
         EventHandler.ExitLevelEvent += OnExitLevelEvent;
+        EventHandler.ExtraChangeEvent += OnExtraChangeEvent;
+
     }
 
     private void OnDisable()
     {
-        EventHandler.ExitLevelEvent += OnExitLevelEvent;
+        EventHandler.ExitLevelEvent -= OnExitLevelEvent;
+        EventHandler.ExtraChangeEvent -= OnExtraChangeEvent;
     }
 
     private void OnExitLevelEvent(int _)
     {
         Save();
+    }
+    void OnExtraChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
+    {
+        SavePlayerExtra(playerIndex, extraIndex, selectedIndex + 1);
     }
 
     private void ReadSaveData()
@@ -68,7 +75,16 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         // todo: buffer == level changeʱ  save
         File.WriteAllText(resultPath, jsonData);
     }
-
+    private async void SaveAsync()
+    {
+        var jsonData = JsonConvert.SerializeObject(gameSaveData, Formatting.None);
+        if (!File.Exists(resultPath))
+        {
+            Directory.CreateDirectory(jsonFolder);
+        }
+        await File.WriteAllTextAsync(resultPath, jsonData);
+        EventHandler.CallSaveFinishEvent();
+    }
 
 
     private void JudgeNewCharOrNewEnemy()
@@ -216,7 +232,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         {
             SetPlayerExtraData(i, ExtraType.ExitLevel, level);
         }
-        Save();
+        SaveAsync();
     }
 
     private string GetStrByCharsIndex(List<int> charIndexes)
@@ -271,6 +287,15 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     {
         return gameSaveData?.language??1;
     }
+    public void SetLanguage(int l)
+    {
+        var la = gameSaveData.language;
+        if (l!=la)
+        {
+            gameSaveData.language = l;
+            SaveAsync();
+        }
+    }
 
     public int GetPlayerKillNum(int playerIndex,int enemyIndex)
     {
@@ -299,7 +324,8 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
             gameSaveData.playerExtras[playerIndex] = list;
         }
         gameSaveData.playerExtras[playerIndex][extraIndex] = selectedIndex;
-        Save();
+
+        SaveAsync();
     }
     public int GetPlayerExtra(int playerIndex, int extraIndex)
     {

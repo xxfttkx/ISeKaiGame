@@ -44,14 +44,4 @@ public class ExtraPanel : Singleton<ExtraPanel>
         var ch = SOManager.Instance.GetPlayerDataByIndex(selected);
         t.text = ch.index+":\n"+ch.desc;
     }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

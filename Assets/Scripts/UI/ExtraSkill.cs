@@ -20,11 +20,11 @@ public class ExtraSkill : MonoBehaviour
     {
         if(selectedIndex==index)
         {
-            SetSelectedIndex(-1);
+            SetSelectedIndex(-1,true);
         }
         else
         {
-            SetSelectedIndex(index);
+            SetSelectedIndex(index,true);
         } 
     }
     public void SetExtraSkill(int playerIndex,int extraIndex)
@@ -56,7 +56,7 @@ public class ExtraSkill : MonoBehaviour
         }
         
     }
-    public void SetSelectedIndex(int index)
+    public void SetSelectedIndex(int index,bool manual = false)
     {
         for (int i = 0; i < btns.Count; ++i)
         {
@@ -64,6 +64,10 @@ public class ExtraSkill : MonoBehaviour
             else btns[i].CancelSelect();
         }
         selectedIndex = index;
-        SaveLoadManager.Instance.SavePlayerExtra(playerIndex, extraIndex, selectedIndex + 1);
+        if(manual)
+        {
+            EventHandler.CallExtraChangeEvent(playerIndex, extraIndex, selectedIndex);
+        }
+        
     }
 }

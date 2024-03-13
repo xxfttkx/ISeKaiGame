@@ -19,15 +19,16 @@ public struct CreatureBase
     public string desc;
 }
 
-    [System.Serializable]
+[System.Serializable]
 public struct Character
 {
+    public CreatureBase creature;
     public int index;
     public string name;
     public Sprite sprite;
     public GameObject prefab;
     public bool faceToLeft;
-    
+
     public Profession profession;
     [Header("Attributes")]
     public int attack;
@@ -50,6 +51,7 @@ public struct Character
 [System.Serializable]
 public struct Enemy
 {
+    public CreatureBase creature;
     public int index;
     public string name;
     public Sprite sprite;
@@ -113,7 +115,7 @@ public class Buff
     public float attackSpeedBonus;
     public float hpBonus;
     // 其他可能的影响属性
-    public Buff(string name,float atk, float speed, float atkRange, float atkSpeed)
+    public Buff(string name, float atk, float speed, float atkRange, float atkSpeed)
     {
         this.buffName = name;
         this.attackBonus = atk;
@@ -121,6 +123,12 @@ public class Buff
         this.attackRangeBonus = atkRange;
         this.attackSpeedBonus = atkSpeed;
     }
+
+    public Buff(string name)
+    {
+        buffName = name;
+    }
+
     public void AddBuff(Buff b)
     {
         this.attackBonus += b.attackBonus;
@@ -141,6 +149,13 @@ public class Buff
         this.speedBonus -= b.speedBonus;
         this.attackRangeBonus -= b.attackRangeBonus;
         this.attackSpeedBonus -= b.attackSpeedBonus;
+    }
+    public void Clear()
+    {
+        this.attackBonus = 0f;
+        this.speedBonus = 0f;
+        this.attackRangeBonus = 0f;
+        this.attackSpeedBonus = 0f;
     }
 }
 

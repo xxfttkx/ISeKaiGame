@@ -10,6 +10,7 @@ public class EndCanvas : Singleton<EndCanvas>
     public Button retryButton;
     public Button backButton;
     public Button returnSelectButton;
+    public GameObject saveSucc;
 
     protected override void Awake()
     {
@@ -18,6 +19,25 @@ public class EndCanvas : Singleton<EndCanvas>
         backButton.onClick.AddListener(BackToTitle);
         returnSelectButton.onClick.AddListener(ReturnToCharacterSelection);
         overPanel.SetActive(false);
+        saveSucc.SetActive(false);
+    }
+    private void OnEnable()
+    {
+        EventHandler.SaveFinishEvent += OnSaveFinishEvent;
+    }
+    private void OnDisable()
+    {
+        EventHandler.SaveFinishEvent -= OnSaveFinishEvent;
+    }
+    void OnSaveFinishEvent()
+    {
+        StartCoroutine(DelayHide());
+    }
+    IEnumerator DelayHide()
+    {
+        saveSucc.SetActive(true);
+        yield return new WaitForSecondsRealtime(1f);
+        saveSucc.SetActive(false);
     }
     public void EndGame(int type)
     {

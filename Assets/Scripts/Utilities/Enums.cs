@@ -67,3 +67,12 @@ public enum Characteristic
     AttackRange,
     AttackSpeed,
 }
+
+public enum ApplyBuffType
+{
+    None = 0,
+    NoOverride, //不覆盖
+    Override, //覆盖
+    Add, //添加 时间独立
+    AddTime, //添加 时间共享
+}

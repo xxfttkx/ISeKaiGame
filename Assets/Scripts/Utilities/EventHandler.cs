@@ -234,5 +234,27 @@ public static class EventHandler
     {
         LoadFinishEvent?.Invoke();
     }
+    /// <summary>
+    /// ´æµµ½áÊø
+    /// </summary>
+    public static event Action SaveFinishEvent;
+    public static void CallSaveFinishEvent()
+    {
+        SaveFinishEvent?.Invoke();
+    }
 
+    /// <summary>
+    /// extra chaange
+    /// </summary>
+    public static event Action<int,int,int> ExtraChangeEvent;
+    public static void CallExtraChangeEvent(int playerIndex,int extraIndex, int selectedIndex)
+    {
+        ExtraChangeEvent?.Invoke(playerIndex, extraIndex, selectedIndex);
+    }
+
+    public static event Action LanguageChange;
+    public static void CallLanguageChange()
+    {
+        LanguageChange?.Invoke();
+    }
 }

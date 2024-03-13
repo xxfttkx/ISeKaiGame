@@ -2,19 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Player : MonoBehaviour
+public class Player : Creature
 {
     public CharacterDataList_SO characterData;
     public Character character;
-    public Dictionary<string,Buff> buffs;
-    private Buff allBuff;
+
     private Rigidbody2D rb;
     private SpriteRenderer sp;
     private Material material;
     [SerializeField]
     private float timeOnTheField;
-    protected virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         characterData = SOManager.Instance.characterDataList_SO;
         rb = GetComponent<Rigidbody2D>();
         sp = GetComponent<SpriteRenderer>();
@@ -33,12 +33,14 @@ public class Player : MonoBehaviour
         EventHandler.EnterLevelEvent -= OnEnterLevelEvent;
         EventHandler.ExitLevelEvent -= OnExitLevelEvent;
     }
-    public virtual void Reset()
+    public override void Reset()
     {
+        base.Reset();
         buffs.Clear();
         allBuff = new Buff("all", 0, 0, 0, 0);
         timeOnTheField = 0;
         character = characterData.GetCharByIndex(character.index);
+        hp = character.hp;
     }
 
     protected virtual void OnEnterLevelEvent(int _)
@@ -174,14 +176,6 @@ public class Player : MonoBehaviour
         }
           
     }
-    public bool IsDead()
-    {
-        return character.hp <= 0;
-    }
-    public bool IsAlive()
-    {
-        return character.hp > 0;
-    }
 
     public void BeCompanionHurt(int atk)
     {
@@ -205,18 +199,9 @@ public class Player : MonoBehaviour
 
     public virtual void AddBuff(string name,float bonus)
     {
-        allBuff.AddBuff(bonus);
-        Buff b;
-        if (buffs.TryGetValue(name,out b))
-        {
-            b.AddBuff(bonus);
-        }
-        else
-        {
-            b = new Buff(name, bonus, bonus, bonus, bonus);
-            buffs.Add(name, b);
-        }
-        UIManager.Instance.BuffChange(GetPlayerIndex(),b);
+        Buff b = base.ApplyBuffNoOverride(name, -1, bonus, bonus, bonus, bonus, 0f);
+        if(b!=null)
+            UIManager.Instance.BuffChange(GetPlayerIndex(),b);
     }
     public void AddBuff(string name, float atk, float speed, float atkRange, float atkSpeed)
     {
