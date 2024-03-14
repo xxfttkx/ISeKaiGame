@@ -21,7 +21,7 @@ public class Player_12_Mage : Player_Single
     }
     protected override IEnumerator AttackAnim(EnemyBase e)
     {
-        PoolManager.Instance.ThrowBianPao(this.transform.position, e.transform.position);
+        PoolManager.Instance.ThrowBianPao(e, this);
         yield break;
     }
 }

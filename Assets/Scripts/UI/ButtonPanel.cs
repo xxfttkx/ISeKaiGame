@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class ButtonPanel : Singleton<ButtonPanel>
 {
-    public Button buyButton;
-    public Button goButton;
-    public Button minButton;
-    public Button maxButton;
-    public Button subButton;
-    public Button addButton;
+    public DefaultBtn buyButton;
+    public DefaultBtn goButton;
+    public DefaultBtn minButton;
+    public DefaultBtn maxButton;
+    public DefaultBtn subButton;
+    public DefaultBtn addButton;
     public TMPro.TMP_InputField levelNum;
     private List<int> indexes;
     private int min = 1;
@@ -22,13 +22,13 @@ public class ButtonPanel : Singleton<ButtonPanel>
         base.Awake();
         indexes = new List<int>();
         buyButton.gameObject.SetActive(false);
-        buyButton.onClick.AddListener(BuyButton);
-        goButton.onClick.AddListener(GoButton);
+        buyButton.btnClick.AddListener(BuyButton);
+        goButton.btnClick.AddListener(GoButton);
         goButton.interactable = false;
-        minButton.onClick.AddListener(MinButton);
-        maxButton.onClick.AddListener(MaxButton);
-        subButton.onClick.AddListener(SubButton);
-        addButton.onClick.AddListener(AddButton);
+        minButton.btnClick.AddListener(MinButton);
+        maxButton.btnClick.AddListener(MaxButton);
+        subButton.btnClick.AddListener(SubButton);
+        addButton.btnClick.AddListener(AddButton);
         minButton.interactable = false;
         maxButton.interactable = false;
         subButton.interactable = false;
@@ -51,15 +51,7 @@ public class ButtonPanel : Singleton<ButtonPanel>
         PlayerManager.Instance.InitPlayer(SelectPanel.Instance.GetSelectedIndexes());
         UIManager.Instance.InitPlayerPanel();
         //todo 写别的地方
-        int result = 1;
-        if (int.TryParse(levelNum.text, out result))
-        {
-            
-        }
-        else
-        {
-
-        }
+        int.TryParse(levelNum.text, out int result);
         if (result == 0) result = 1;
         LevelManager.Instance.StartLevel(result);
         GameStateManager.Instance.SetGameState(GameState.GamePlay);

@@ -13,7 +13,15 @@ MonoBehaviour:
   m_Name: CharacterDataList_SO
   m_EditorClassIdentifier: 
   characters:
-  - index: 0
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 0
     name: cache coeur
     sprite: {fileID: 21300000, guid: 4ba4c2cbb7973c541ad6b5b18fc2ef40, type: 3}
     prefab: {fileID: 4708548768610898139, guid: 22f9785782a07cb488c018cc31e0c759, type: 3}
@@ -39,7 +47,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 1
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 1
     name: nirvana
     sprite: {fileID: 21300000, guid: ef16a113f0df5ef48b94a3da9c153bd1, type: 3}
     prefab: {fileID: 4708548768610898139, guid: f7f869939984ab645a279417b160dede, type: 3}
@@ -65,7 +81,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 2
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 2
     name: 2
     sprite: {fileID: 21300000, guid: 844981228ae50f5459d5d8ed8fb81506, type: 3}
     prefab: {fileID: 4708548768610898139, guid: 1e69deade4accd14e8bf03d630b1096f, type: 3}
@@ -91,7 +115,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 3
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 3
     name: acacia
     sprite: {fileID: 21300000, guid: aa9207ae36d26d849978a368771f4663, type: 3}
     prefab: {fileID: 4708548768610898139, guid: 1871cdc2ec10017419210b044a2b37bb, type: 3}
@@ -118,7 +150,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 4
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 4
     name: coq au vin
     sprite: {fileID: 21300000, guid: c8f8d1075cf1b454cb4862429fa94bfc, type: 3}
     prefab: {fileID: 4708548768610898139, guid: 2943f504bf029d24384a8e6bb267d775, type: 3}
@@ -144,7 +184,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 5
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 5
     name: white lady
     sprite: {fileID: 21300000, guid: aa9207ae36d26d849978a368771f4663, type: 3}
     prefab: {fileID: 4708548768610898139, guid: cfcc04c9e6af6754c9bda5900c682f18, type: 3}
@@ -171,7 +219,15 @@ MonoBehaviour:
     extraCharacteristicVals: 0500000002000000
     extraData: 
     finished: 0
-  - index: 6
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 6
     name: yellow fly
     sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
     prefab: {fileID: 4708548768610898139, guid: 89f5e3ceebe75534da250b20d6648177, type: 3}
@@ -193,11 +249,19 @@ MonoBehaviour:
     - 
     - "\u53EC\u5524\u7269\u53D8\u6210\u8FDC\u7A0B\u8303\u56F4\u653B\u51FB"
     - "\u6BCF\u6B21\u4EA7\u751F\u4E24\u4E2A\u53EC\u5524\u7269"
-    extraCharacteristics: 
-    extraCharacteristicVals: 
+    extraCharacteristics: 0000000000000000
+    extraCharacteristicVals: 0000000000000000
     extraData: 
     finished: 0
-  - index: 7
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 7
     name: platinum
     sprite: {fileID: 21300000, guid: ef16a113f0df5ef48b94a3da9c153bd1, type: 3}
     prefab: {fileID: 4708548768610898139, guid: 8af2a66e3d9cb864b80d108a29ef5431, type: 3}
@@ -223,7 +287,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 8
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 8
     name: virtuo
     sprite: {fileID: 21300000, guid: 7fcafd8216de34d44b53f761e3b3aff9, type: 3}
     prefab: {fileID: 4708548768610898139, guid: 8fd657a6a87a18043af884fa4ea275ca, type: 3}
@@ -249,7 +321,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 1
-  - index: 9
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 9
     name: 99
     sprite: {fileID: 21300000, guid: ef16a113f0df5ef48b94a3da9c153bd1, type: 3}
     prefab: {fileID: 4708548768610898139, guid: d52dad1265318ec4db87c74e96b61853, type: 3}
@@ -275,7 +355,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 10
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 10
     name: 
     sprite: {fileID: 21300000, guid: 82c6f5d2e6bedd84b9967ad23002e017, type: 3}
     prefab: {fileID: 4708548768610898139, guid: 7a7afb93ed3395e4d80ec0d4301bbe06, type: 3}
@@ -304,7 +392,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 11
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 11
     name: jealous
     sprite: {fileID: 21300000, guid: 926bd79573528c54cbf907716ece4ef9, type: 3}
     prefab: {fileID: 4708548768610898139, guid: 015929db7ca5994418ad71f94a064511, type: 3}
@@ -316,8 +412,8 @@ MonoBehaviour:
     attackSpeed: 7
     attackRange: 6
     desc: "\u5927\u5BCC\u8C6A//Pass..."
-    extraTypes: 
-    extraThresholds: 
+    extraTypes: 010000000400000008000000
+    extraThresholds: 000000000000000000000000
     extraDesire1:
     - 
     - 
@@ -330,7 +426,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 12
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 12
     name: template
     sprite: {fileID: 21300000, guid: 926bd79573528c54cbf907716ece4ef9, type: 3}
     prefab: {fileID: 4708548768610898139, guid: 21bbcd2a19edc03418530dec33b3922a, type: 3}
@@ -342,21 +446,29 @@ MonoBehaviour:
     attackSpeed: 10
     attackRange: 5
     desc: "\u6254\u97AD\u70AE  \u4F1A\u70B8\u961F\u53CB \u70B8\u961F\u53CB"
-    extraTypes: 
-    extraThresholds: 
+    extraTypes: 010000000400000006000000
+    extraThresholds: 000000000000000000000000
     extraDesire1:
     - 
-    - "\u97AD\u70AE\u7206\u70B8\u66F4\u5FEB"
+    - "\u97AD\u70AE\u7206\u70B8\u65F6\u95F4\u53D80.1s"
     - "\u70B8\u961F\u53CB\u76F4\u63A5\u70B8\u81F31\u8840"
     extraDesire2:
     - 
-    - "\u97AD\u70AE\u7206\u70B8\u66F4\u6162 \u4F46\u4F24\u5BB3*=1.2"
+    - "\u97AD\u70AE\u7206\u70B8\u65F6\u95F4\u53D81s \u4F46\u4F24\u5BB3*=1.5"
     - "\u70B8\u961F\u53CB\u4E0D\u6389\u8840"
-    extraCharacteristics: 
-    extraCharacteristicVals: 
+    extraCharacteristics: 0200000003000000
+    extraCharacteristicVals: 0100000001000000
     extraData: 
-    finished: 0
-  - index: 13
+    finished: 1
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 13
     name: template
     sprite: {fileID: 21300000, guid: b5e6cdd306865cd4290644856a957887, type: 3}
     prefab: {fileID: 4708548768610898139, guid: 2c258f43380f5aa478e52487594aed2a, type: 3}
@@ -382,7 +494,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 14
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 14
     name: gray joker
     sprite: {fileID: 21300000, guid: 844981228ae50f5459d5d8ed8fb81506, type: 3}
     prefab: {fileID: 4708548768610898139, guid: 175a98e6060c764469f22476f6576754, type: 3}
@@ -408,7 +528,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 15
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 15
     name: camellia
     sprite: {fileID: 21300000, guid: 05675ee200279684a96c287bc3ff9464, type: 3}
     prefab: {fileID: 4708548768610898139, guid: 7a5890ab96b7f24428ce3caa5a87019f, type: 3}
@@ -428,7 +556,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 16
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 16
     name: copy
     sprite: {fileID: 21300000, guid: ef16a113f0df5ef48b94a3da9c153bd1, type: 3}
     prefab: {fileID: 4708548768610898139, guid: e55b2ba84e4b1dd45afaeab01676d6e8, type: 3}
@@ -454,7 +590,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 17
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 17
     name: gnosis
     sprite: {fileID: 21300000, guid: 6d2196183c1801e479f78254bbc800c0, type: 3}
     prefab: {fileID: 0}
@@ -475,7 +619,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 18
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 18
     name: emerald
     sprite: {fileID: 21300000, guid: 4ba4c2cbb7973c541ad6b5b18fc2ef40, type: 3}
     prefab: {fileID: 4708548768610898139, guid: 6329e88ab9a600d4f843aa79ef281d64, type: 3}
@@ -495,7 +647,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 19
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 19
     name: blend fruit
     sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
     prefab: {fileID: 0}
@@ -515,7 +675,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 20
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 20
     name: 20
     sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
     prefab: {fileID: 0}
@@ -535,7 +703,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 21
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 21
     name: executor
     sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
     prefab: {fileID: 0}
@@ -555,7 +731,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 22
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 22
     name: mimosa
     sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
     prefab: {fileID: 0}
@@ -575,7 +759,15 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 23
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 23
     name: hideout
     sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
     prefab: {fileID: 0}
@@ -595,8 +787,72 @@ MonoBehaviour:
     extraCharacteristicVals: 
     extraData: 
     finished: 0
-  - index: 24
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 24
     name: "\u52C7\u8005/\u9B54\u738B"
+    sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
+    prefab: {fileID: 0}
+    faceToLeft: 0
+    profession: 0
+    attack: 100
+    hp: 2
+    speed: 4
+    attackSpeed: 5
+    attackRange: 5
+    desc: "\u52C7\u8005\u5438\u961F\u53CB\u8840 \u9B54\u738B\u7ED9\u961F\u53CB\u795D\u798F"
+    extraTypes: 020000000600000007000000
+    extraThresholds: 
+    extraDesire1: []
+    extraDesire2: []
+    extraCharacteristics: 
+    extraCharacteristicVals: 
+    extraData: 
+    finished: 0
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 25
+    name: "\u7DD1\u9B54\u9053\u58EB"
+    sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
+    prefab: {fileID: 0}
+    faceToLeft: 0
+    profession: 0
+    attack: 100
+    hp: 2
+    speed: 4
+    attackSpeed: 5
+    attackRange: 5
+    desc: "\u52C7\u8005\u5438\u961F\u53CB\u8840 \u9B54\u738B\u7ED9\u961F\u53CB\u795D\u798F"
+    extraTypes: 020000000600000007000000
+    extraThresholds: 
+    extraDesire1: []
+    extraDesire2: []
+    extraCharacteristics: 
+    extraCharacteristicVals: 
+    extraData: 
+    finished: 0
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 26
+    name: dark elf
     sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
     prefab: {fileID: 0}
     faceToLeft: 0

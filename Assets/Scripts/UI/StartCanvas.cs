@@ -7,7 +7,7 @@ public class StartCanvas : Singleton<StartCanvas>
 {
     public GameObject selectCanvas;
     public GameObject startPanel;
-    public GameObject languagePanel;
+    public LanguagePanel languagePanel;
     public BtnBase btnStart;
     public BtnBase btnQuit;
     public ExtraPanel extraPanel;
@@ -48,6 +48,11 @@ public class StartCanvas : Singleton<StartCanvas>
     }
     public void HideLanguagePanel()
     {
-        languagePanel.SetActive(false);
+        languagePanel.gameObject.SetActive(false);
+    }
+    public void ShowLanguagePanel()
+    {
+        languagePanel.gameObject.SetActive(true);
+        languagePanel.Init();
     }
 }

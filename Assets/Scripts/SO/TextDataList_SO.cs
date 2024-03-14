@@ -11,11 +11,12 @@ public class TextDataList_SO : ScriptableObject
     {
         string ans = "";
         if (key > textDataList.Count) return ans;
-        if (languageIndex > textDataList[key].texts.Count)
+        if (languageIndex >= textDataList[key].texts.Count)
         {
             languageIndex = 1;
         }
         ans = textDataList[key].texts[languageIndex];
+        if(ans=="")ans= textDataList[key].texts[1];//default english
         return ans;
     }
 }

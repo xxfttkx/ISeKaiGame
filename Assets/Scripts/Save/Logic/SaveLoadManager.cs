@@ -9,7 +9,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
 {
     private string jsonFolder;
     private string resultPath;
-    private GameSaveData gameSaveData=null;
+    private GameSaveData gameSaveData = null;
 
     protected override void Awake()
     {
@@ -17,7 +17,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         // jsonFolder = Application.persistentDataPath + "/SAVE DATA/";
         jsonFolder = Application.dataPath + "/SAVE DATA/";
         resultPath = jsonFolder + "data.json";
-        
+
     }
     private void Start()
     {
@@ -122,7 +122,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         var playerKillEnemy = gameSaveData.playerKillEnemy;
         if (playerKillEnemy != null)
         {
-            
+
             if (playerKillEnemy.Count > 0 && playerKillEnemy[0].Count < m)
             {
                 changed = true;
@@ -184,7 +184,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         // AddExpByKillEnemy();
         var exp = e.enemy.exp;
         var player = PlayerManager.Instance.indexToPlayer[playerIndex];
-        if(gameSaveData.playerExps==null|| gameSaveData.playerExps.Count <= playerIndex)
+        if (gameSaveData.playerExps == null || gameSaveData.playerExps.Count <= playerIndex)
         {
             Utils.TryFillList<int>(ref gameSaveData.playerExps, 0, playerIndex + 1);
         }
@@ -209,7 +209,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     }
     public void OnGameOver()
     {
-        
+
     }
 
     public void PassLevel(List<int> charIndexes, int level)
@@ -228,7 +228,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         }
 
         // char 
-        foreach(var i in charIndexes)
+        foreach (var i in charIndexes)
         {
             SetPlayerExtraData(i, ExtraType.ExitLevel, level);
         }
@@ -276,7 +276,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
 
     public List<int> GetLastCharsIndexes()
     {
-        if(gameSaveData!=null && gameSaveData.lastCharsIndexes!=null)
+        if (gameSaveData != null && gameSaveData.lastCharsIndexes != null)
         {
             return gameSaveData.lastCharsIndexes;
         }
@@ -285,19 +285,19 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
 
     public int GetLanguage()
     {
-        return gameSaveData?.language??1;
+        return gameSaveData?.language ?? 1;
     }
     public void SetLanguage(int l)
     {
         var la = gameSaveData.language;
-        if (l!=la)
+        if (l != la)
         {
             gameSaveData.language = l;
             SaveAsync();
         }
     }
 
-    public int GetPlayerKillNum(int playerIndex,int enemyIndex)
+    public int GetPlayerKillNum(int playerIndex, int enemyIndex)
     {
         if (gameSaveData == null || gameSaveData.playerKillEnemy == null) return 0;
         if (gameSaveData.playerKillEnemy.Count <= playerIndex) return 0;
@@ -334,13 +334,30 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         {
             Utils.TryFillList<List<int>>(ref gameSaveData.playerExtras, null, playerIndex + 1);
         }
-        if (gameSaveData.playerExtras[playerIndex] == null || gameSaveData.playerExtras[playerIndex].Count <= extraIndex)
+        int maxIndex = SOManager.Instance.GetPlayerExtraNum(playerIndex) - 1;
+        if (gameSaveData.playerExtras[playerIndex] == null || gameSaveData.playerExtras[playerIndex].Count <= maxIndex)
         {
             List<int> list = gameSaveData.playerExtras[playerIndex];
-            Utils.TryFillList<int>(ref list, 0, extraIndex + 1);
+            Utils.TryFillList<int>(ref list, 0, maxIndex + 1);
             gameSaveData.playerExtras[playerIndex] = list;
         }
         return gameSaveData.playerExtras[playerIndex][extraIndex];
+    }
+    public List<int> GetPlayerExtras(int playerIndex)
+    {
+        var l = gameSaveData.playerExtras;
+        if (l == null || l.Count <= playerIndex)
+        {
+            Utils.TryFillList<List<int>>(ref gameSaveData.playerExtras, null, playerIndex + 1);
+        }
+        int maxIndex = SOManager.Instance.GetPlayerExtraNum(playerIndex) - 1;
+        if (gameSaveData.playerExtras[playerIndex] == null || gameSaveData.playerExtras[playerIndex].Count <= maxIndex)
+        {
+            List<int> list = gameSaveData.playerExtras[playerIndex];
+            Utils.TryFillList<int>(ref list, 0, maxIndex + 1);
+            gameSaveData.playerExtras[playerIndex] = list;
+        }
+        return gameSaveData.playerExtras[playerIndex];
     }
     public int GetPlayerExtraData(int playerIndex, ExtraType extraType)
     {
@@ -358,16 +375,16 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         }
         return gameSaveData.playerExtraData[playerIndex][type];
     }
-    public void SetPlayerExtraData(int playerIndex, ExtraType extraType,int num)
+    public void SetPlayerExtraData(int playerIndex, ExtraType extraType, int num)
     {
         int d = GetPlayerExtraData(playerIndex, extraType);
         switch (extraType)
         {
-            case ExtraType.Hurt:d += num; break;
+            case ExtraType.Hurt: d += num; break;
             case ExtraType.BeHurt: d += num; break;
             case ExtraType.Heal: d += num; break;
             case ExtraType.Kill: d += num; break;
-            case ExtraType.EnterLevel: d = Mathf.Max(num,d); break;
+            case ExtraType.EnterLevel: d = Mathf.Max(num, d); break;
             case ExtraType.ExitLevel: d = Mathf.Max(num, d); break;
             case ExtraType.EnterNum: d += num; break;
             case ExtraType.ExitNum: d += num; break;
@@ -387,7 +404,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         }
         return gameSaveData.volumes[index];
     }
-    public void SetVolume(float val,int index)
+    public void SetVolume(float val, int index)
     {
         var l = gameSaveData.volumes;
         if (l == null || l.Count <= index)
@@ -396,7 +413,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         }
         gameSaveData.volumes[index] = val;
     }
-    public bool CanSelectExtra(int playerIndex,int extraIndex)
+    public bool CanSelectExtra(int playerIndex, int extraIndex)
     {
         var ch = SOManager.Instance.GetPlayerDataByIndex(playerIndex);
         var extraType = ch.extraTypes[extraIndex];

@@ -289,3 +289,26 @@ MonoBehaviour:
     exp: 0
     money: 0
     desc: "\u6B7B\u540E\u7206\u70B8 \u73A9\u5BB6\u4F4D\u7F6E"
+  - creature:
+      faceToLeft: 0
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      desc: 
+    index: 12
+    name: 11
+    sprite: {fileID: 21300000, guid: 6d2196183c1801e479f78254bbc800c0, type: 3}
+    prefab: {fileID: 4708548768610898139, guid: 2b29b3a257f9717409212f7b15b70054, type: 3}
+    faceToLeft: 0
+    enemyType: 1
+    attack: 0
+    hp: 2147483647
+    speed: 0
+    getPlayerPosTimeDelta: 0
+    attackRange: 0
+    attackSpeed: 0
+    exp: 0
+    money: 0
+    desc: "\u5438\u73A9\u5BB6"

@@ -6,12 +6,12 @@ public class Player : Creature
 {
     public CharacterDataList_SO characterData;
     public Character character;
-
     private Rigidbody2D rb;
     private SpriteRenderer sp;
     private Material material;
     [SerializeField]
     private float timeOnTheField;
+    public List<int> extras;
     protected override void Awake()
     {
         base.Awake();
@@ -21,17 +21,19 @@ public class Player : Creature
         character = characterData.GetCharByIndex(character.index);
         sp.sprite = character.sprite;
         material = sp.material;
-        buffs = new Dictionary<string, Buff>();
+        extras = new List<int>(SaveLoadManager.Instance.GetPlayerExtras(GetPlayerIndex()));
     }
     protected virtual void OnEnable()
     {
         EventHandler.EnterLevelEvent += OnEnterLevelEvent;
         EventHandler.ExitLevelEvent += OnExitLevelEvent;
+        EventHandler.ExtraChangeEvent += OnExtraChangeEvent;
     }
     protected virtual void OnDisable()
     {
         EventHandler.EnterLevelEvent -= OnEnterLevelEvent;
         EventHandler.ExitLevelEvent -= OnExitLevelEvent;
+        EventHandler.ExtraChangeEvent -= OnExtraChangeEvent;
     }
     public override void Reset()
     {
@@ -72,7 +74,7 @@ public class Player : Creature
         SaveLoadManager.Instance.SetPlayerExtraData(GetPlayerIndex(), ExtraType.BeHurt, Mathf.Min(character.hp, attack));
         character.hp -= attack;
         UIManager.Instance.HPChange(GetPlayerIndex(), GetHpVal());
-        if (character.hp<=0)
+        if (character.hp <= 0)
         {
             EventHandler.CallPlayerDeadEvent(character.index);
             PlayerManager.Instance.PlayerDead(character.index);
@@ -89,7 +91,7 @@ public class Player : Creature
     {
         return character.hp;
     }
-    public void BeHealed(int heal,int restorer)
+    public void BeHealed(int heal, int restorer)
     {
         if (!IsAlive()) return;
         //todo 能达到的最大hp可不该从so中取。。
@@ -105,7 +107,7 @@ public class Player : Creature
     {
         // test...
         Player target = PlayerManager.Instance.GetPlayerInControl();
-        if (target == null|| !target.IsAlive()) return;
+        if (target == null || !target.IsAlive()) return;
         Vector2 movement = target.transform.position - this.transform.position;
         if (movement.magnitude > GetAttackRange())//todo
         {
@@ -116,22 +118,22 @@ public class Player : Creature
             Stop();
         }
         return;
- /*       switch (character.profession)
-        {
-            case Profession.Warrior:
-                AIWarrior();
-                break;
-            case Profession.Priest:
-                AIPriest();
-                break;
-            case Profession.Mage:
-                AIMage();
-                break;
-            case Profession.Assassin:
-                AIAssassin();
-                break;
-            default: break;
-        }*/ 
+        /*       switch (character.profession)
+               {
+                   case Profession.Warrior:
+                       AIWarrior();
+                       break;
+                   case Profession.Priest:
+                       AIPriest();
+                       break;
+                   case Profession.Mage:
+                       AIMage();
+                       break;
+                   case Profession.Assassin:
+                       AIAssassin();
+                       break;
+                   default: break;
+               }*/
     }
     private void AIWarrior()
     {
@@ -141,7 +143,7 @@ public class Player : Creature
         Player target = PlayerManager.Instance.FindEnemyTarget();
         if (target == null) return;//todo: no warrior
         Vector2 movement = target.transform.position - this.transform.position;
-        if(movement.magnitude>5)//todo
+        if (movement.magnitude > 5)//todo
         {
             Move(movement.normalized, 0.02f);
         }
@@ -149,7 +151,7 @@ public class Player : Creature
         {
             Stop();
         }
-            
+
     }
     private void AIMage()
     {
@@ -174,7 +176,7 @@ public class Player : Creature
             material.SetFloat("_Fade", i);
             yield return new WaitForSeconds(0.1f);
         }
-          
+
     }
 
     public void BeCompanionHurt(int atk)
@@ -197,21 +199,21 @@ public class Player : Creature
     }
 
 
-    public virtual void AddBuff(string name,float bonus)
+    public virtual void AddBuff(string name, float bonus)
     {
         Buff b = base.ApplyBuffNoOverride(name, -1, bonus, bonus, bonus, bonus, 0f);
-        if(b!=null)
-            UIManager.Instance.BuffChange(GetPlayerIndex(),b);
+        if (b != null)
+            UIManager.Instance.BuffChange(GetPlayerIndex(), b);
     }
     public void AddBuff(string name, float atk, float speed, float atkRange, float atkSpeed)
     {
-        if(buffs.ContainsKey(name))
+        if (buffs.ContainsKey(name))
         {
             return;
         }
         Buff b = new Buff(name, atk, speed, atkRange, atkSpeed);
         allBuff.AddBuff(b);
-        if(b.duration>0)
+        if (b.duration > 0)
         {
             //todo startcourtine
         }
@@ -240,7 +242,7 @@ public class Player : Creature
 
     public virtual float GetSkillCD()
     {
-        float attackSpeed = GetAttackSpeed();
+        float attackSpeed = PlayerManager.Instance.GetPlayerSpeed(GetPlayerIndex());
         float cd = 10.0f / attackSpeed;
         return cd;
     }
@@ -301,7 +303,7 @@ public class Player : Creature
     }
     public virtual void AddBuffBeforeStart()
     {
-        
+
     }
     public virtual bool CanSelectExtra(int index)
     {
@@ -310,5 +312,48 @@ public class Player : Creature
     public bool CanAcceptHurt(int atk)
     {
         return character.hp > atk;
+    }
+    public int GetExtra(int index)
+    {
+        if (extras.Count >= index)
+        {
+            Debug.Log("extras.Count >= index");
+            return 0;
+        }
+        return extras[index];
+    }
+    protected virtual void OnExtraChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
+    {
+        //todo... 写在子类判断有没有改。。
+        if (playerIndex != GetPlayerIndex()) return;
+        if (extraIndex == 0)
+        {
+            int last = extras[extraIndex];
+            if (last != selectedIndex)
+            {
+                character = SOManager.Instance.GetPlayerDataByIndex(GetPlayerIndex());
+                if(selectedIndex!=0)
+                {
+                    var i = selectedIndex - 1==0?1:-1;
+                    ChangeCharVal(character.extraCharacteristics[0], i*character.extraCharacteristicVals[0]);
+                    ChangeCharVal(character.extraCharacteristics[1], -i*character.extraCharacteristicVals[1]);
+                    PlayerSettingsPanel.Instance?.ChangeCh(this);
+                }
+            }
+        }
+        extras[extraIndex] = selectedIndex;
+    }
+    void ChangeCharVal(Characteristic type,int val)
+    {
+        //todo...
+        _ = type switch
+        {
+            Characteristic.Hp => character.hp += val,//todo jjj
+            Characteristic.Attack => character.attack += val,
+            Characteristic.Speed => character.hp += val,
+            Characteristic.AttackRange => character.hp += val,
+            Characteristic.AttackSpeed => character.hp += val,
+            _ =>val,
+        };
     }
 }

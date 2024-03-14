@@ -6,9 +6,22 @@ public class Chicken : MonoBehaviour
 {
     private float searchDelta = 0.02f;
     Player player;
+    List<int> extras;
+    int atk;
+    int range;
+    int atkSpeed;
     protected void OnEnable()
     {
         player = PlayerManager.Instance.indexToPlayer[6];
+        //extras = new List<int>(SaveLoadManager.Instance.GetPlayerExtras(6));
+        extras = PlayerManager.Instance.GetPlayerExtras(6);
+        atk = PlayerManager.Instance.GetPlayerAttack(6);
+        range = PlayerManager.Instance.GetPlayerAttackRange(6);
+        atkSpeed = PlayerManager.Instance.GetPlayerAttack(6);
+        if (extras[1]==1)
+        {
+            StartCoroutine(Heal());
+        }
         StartCoroutine(SearchEnemy());
         StartCoroutine(Attack());
         StartCoroutine(AutoRelease());
@@ -45,6 +58,17 @@ public class Chicken : MonoBehaviour
             else
             {
                 yield return null;
+            }
+        }
+    }
+    IEnumerator Heal()
+    {
+        while (true)
+        {
+            var p = PlayerManager.Instance.GetPlayerInControl();
+            if (Utils.TryAttackPlayer(this.gameObject, player, range))
+            {
+                PlayerManager.Instance.PlayerHealPlayer(6, p.GetPlayerIndex(), atk);
             }
         }
     }

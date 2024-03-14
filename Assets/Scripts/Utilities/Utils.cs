@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 public static class Utils
-{ 
+{
     public static float GetSqrDisWithPlayer(Transform curr)
     {
         Player p = PlayerManager.Instance.GetPlayerInControl();
         Vector2 dis = p.transform.position - curr.position;
         return dis.sqrMagnitude;
     }
-    public static List<EnemyBase> GetNearEnemies(Vector2 curr,float range)
+    public static List<EnemyBase> GetNearEnemies(Vector2 curr, float range)
     {
         List<EnemyBase> enemies = new List<EnemyBase>();
         int indexMask = LayerMask.GetMask("Enemy");
@@ -24,7 +24,7 @@ public static class Utils
             }
         }
         if (enemies.Count == 0) return null;
-        for(int i = enemies.Count-1;i>=0;--i)
+        for (int i = enemies.Count - 1; i >= 0; --i)
         {
             if (!enemies[i].IsAlive())
                 enemies.RemoveAt(i);
@@ -67,7 +67,7 @@ public static class Utils
         }
         return res;
     }
-    public static List<EnemyBase> GetNearEnemiesExcludeE(Vector2 curr, float range ,EnemyBase e)
+    public static List<EnemyBase> GetNearEnemiesExcludeE(Vector2 curr, float range, EnemyBase e)
     {
         List<EnemyBase> enemies = new List<EnemyBase>();
         int indexMask = LayerMask.GetMask("Enemy");
@@ -83,7 +83,7 @@ public static class Utils
             }
         }
         if (enemies.Count == 0) return null;
-        for(int i = enemies.Count-1;i>=0;--i)
+        for (int i = enemies.Count - 1; i >= 0; --i)
         {
             if (!enemies[i].IsAlive())
                 enemies.RemoveAt(i);
@@ -101,7 +101,7 @@ public static class Utils
         for (int i = 1; i < enemies.Count; ++i)
         {
             newDis = ((Vector2)enemies[i].transform.position - curr).sqrMagnitude;
-            if(newDis<dis)
+            if (newDis < dis)
             {
                 res = enemies[i];
                 dis = newDis;
@@ -136,7 +136,7 @@ public static class Utils
         if (rSqr >= disSqr) return true;
         return false;
     }
-    public static bool CanAttackPlayer(GameObject go, Player player,float range)
+    public static bool CanAttackPlayer(GameObject go, Player player, float range)
     {
         if (player == null || !player.IsAlive()) return false;
         var disSqr = Vector2.SqrMagnitude(go.transform.position - player.transform.position);
@@ -145,7 +145,7 @@ public static class Utils
         return false;
     }
 
-    public static bool TryAttackPlayer(GameObject go,Player player, float range)
+    public static bool TryAttackPlayer(GameObject go, Player player, float range)
     {
         if (player == null || !player.IsAlive()) return false;
         var disSqr = Vector2.SqrMagnitude(go.transform.position - player.transform.position);
@@ -154,16 +154,16 @@ public static class Utils
         return true;
     }
 
-    public static bool TryFillList<T>(ref List<T> list,T dft,int count)
+    public static bool TryFillList<T>(ref List<T> list, T dft, int count)
     {
         if (list == null)
         {
             list = Enumerable.Repeat(dft, count).ToList();
-            return true;    
+            return true;
         }
-        if(list.Count<count)
+        if (list.Count < count)
         {
-            for(int i = list.Count;i<count;++i)
+            for (int i = list.Count; i < count; ++i)
             {
                 list.Add(dft);
             }
@@ -192,7 +192,7 @@ public static class Utils
             ExtraType.ExitLevel => $"通过第{threshold}层",
             ExtraType.EnterNum => $"总共对敌人33333造成{threshold}伤害",
             ExtraType.ExitNum => $"总共对敌人33333造成{threshold}伤害",
-            _ => "Invalid day" 
+            _ => "Invalid day"
         };
     }
     public static List<EnemyBase> GetEnemiesByDirAndRange(Vector2 curr, Vector2 dir, float range)
@@ -200,7 +200,7 @@ public static class Utils
         dir = dir.normalized;
         List<EnemyBase> enemies = new List<EnemyBase>();
         int indexMask = LayerMask.GetMask("Enemy");
-        var rs = Physics2D.LinecastAll(curr, curr+dir*range, indexMask);
+        var rs = Physics2D.LinecastAll(curr, curr + dir * range, indexMask);
         if (rs.Length == 0) return null;
         foreach (var r in rs)
         {
@@ -216,5 +216,28 @@ public static class Utils
                 enemies.RemoveAt(i);
         }
         return enemies;
+    }
+    public static string GetLanguageString(int l)
+    {
+        return l switch
+        {
+            (int)Language.Chinese => "中文",
+            (int)Language.English => "English",
+            (int)Language.Japanese => "日本語",
+            _ => "English"
+        };
+    }
+    public static string GetStringByCharacteristicAndVal(Characteristic c, int v, bool sign)
+    {
+        string t = sign ? "+=" : "-=";
+        return c switch
+        {
+            Characteristic.Hp => $"hp{t}{v}",
+            Characteristic.Attack => $"atk{t}{v}",
+            Characteristic.Speed => $"speed{t}{v}",
+            Characteristic.AttackRange => $"atkRange{t}{v}",
+            Characteristic.AttackSpeed => $"atkSpeed{t}{v}",
+            _ => "null"
+        };
     }
 }

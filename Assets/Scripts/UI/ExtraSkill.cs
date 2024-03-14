@@ -38,8 +38,21 @@ public class ExtraSkill : MonoBehaviour
         string color = canSelect ? "green" : "red";
         string currState = $"(<color={color}>{curr}</color>/{threshold})";
         extraCost.text = Utils.GetExtraString(ch.extraTypes[extraIndex], ch.extraThresholds[extraIndex])+"\n"+currState;
-        extraDesire1.text = ch.extraDesire1[extraIndex];
-        extraDesire2.text = ch.extraDesire2[extraIndex];
+        if(extraIndex==0)
+        {
+            var c1 = ch.extraCharacteristics[0];
+            var c2 = ch.extraCharacteristics[1];
+            var v1 = ch.extraCharacteristicVals[0];
+            var v2 = ch.extraCharacteristicVals[1];
+            extraDesire1.text = $"{ Utils.GetStringByCharacteristicAndVal(c1, v1, true)}\n{ Utils.GetStringByCharacteristicAndVal(c2, v2, false)}";
+            extraDesire2.text = $"{ Utils.GetStringByCharacteristicAndVal(c1, v1, false)}\n{ Utils.GetStringByCharacteristicAndVal(c2, v2, true)}";
+        }
+        else
+        {
+            extraDesire1.text = ch.extraDesire1[extraIndex];
+            extraDesire2.text = ch.extraDesire2[extraIndex];
+        }
+        
         if(!canSelect)
         {
             btns[0].interactable = false;

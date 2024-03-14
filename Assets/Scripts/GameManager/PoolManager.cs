@@ -130,13 +130,13 @@ public class PoolManager : Singleton<PoolManager>
 
     }
 
-    public void ThrowBianPao(Vector2 start,Vector2 target)
+    public void ThrowBianPao(EnemyBase e, Player p)
     {
         ObjectPool<GameObject> objPool = poolList[4];
         GameObject obj = objPool.Get();
-        obj.transform.position = start;
+        obj.transform.position = p.transform.position;
         BianPao b = obj.GetComponent<BianPao>();
-        b.Throw(target);
+        b.AttackEnemy(e,p);
     }
     public void BianPaoExplosion(Vector2 pos)
     {

@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a30c65055959841a3458c0c3822e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: 1
   btnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -180,8 +181,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Do
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e89f0bb7a23029c488b79672b753d455, type: 2}
-  m_sharedMaterial: {fileID: 1257072017148723111, guid: e89f0bb7a23029c488b79672b753d455, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5df2134d3ceba8d4595a4026288ebb63, type: 2}
+  m_sharedMaterial: {fileID: 8406631458294433560, guid: 5df2134d3ceba8d4595a4026288ebb63, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

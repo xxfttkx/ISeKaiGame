@@ -26,17 +26,20 @@ public class Player_6_Mage : Player
     {
         while (true)
         {
-            var e = Utils.GetNearestEnemy(this.transform.position, this.GetAttackRange());
-            if (e != null)
+            if(extras[2]==2)
             {
-                PoolManager.Instance.CreateChicken(this.transform.position);
-                var cd = new WaitForSeconds(10.0f / GetAttackSpeed());
-                yield return cd;
+                Vector2 pos = this.transform.position;
+                pos.x -= 2;
+                PoolManager.Instance.CreateChicken(pos);
+                pos.x += 4;
+                PoolManager.Instance.CreateChicken(pos);
             }
             else
             {
-                yield return null;
+                PoolManager.Instance.CreateChicken(this.transform.position);
             }
+            
+            yield return new WaitForSeconds(GetSkillCD());
         }
     }
 }

@@ -55,6 +55,7 @@ public enum Language
     Chinese = 0,
     English = 1,
     Japanese = 2,
+    Max,
 
 }
 

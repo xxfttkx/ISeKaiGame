@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,5 +23,11 @@ public class SOManager : Singleton<SOManager>
     public Character GetPlayerDataByIndex(int index)
     {
         return characterDataList_SO.GetCharByIndex(index);
+    }
+
+    internal int GetPlayerExtraNum(int playerIndex)
+    {
+        Character c = GetPlayerDataByIndex(playerIndex);
+        return c.extraTypes == null ? 0 : c.extraTypes.Count;
     }
 }

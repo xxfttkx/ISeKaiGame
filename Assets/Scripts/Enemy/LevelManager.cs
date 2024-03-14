@@ -22,7 +22,27 @@ public class LevelManager : Singleton<LevelManager>
         currEnemyNum = 0;
         currGlobal = 0;
     }
-
+    private void OnEnable()
+    {
+        EventHandler.ExitLevelEvent += OnExitLevelEvent;
+        EventHandler.EndLevelEvent += OnEndLevelEvent;
+    }
+    private void OnDisable()
+    {
+        EventHandler.ExitLevelEvent -= OnExitLevelEvent;
+        EventHandler.EndLevelEvent -= OnEndLevelEvent;
+    }
+    void OnExitLevelEvent(int l)
+    {
+        currGlobal = currCount;
+        currEnemyNum = 0;
+    }
+    void OnEndLevelEvent()
+    {
+        /*currCount = 0;
+        currEnemyNum = 0;
+        currGlobal = 0;*/
+    }
     public void AddEnemyNum(EnemyBase e)
     {
         enemyHash.Add(currCount);
@@ -52,8 +72,6 @@ public class LevelManager : Singleton<LevelManager>
     {
         EventHandler.CallEnterLevelEvent(levelIndex);
         timeEnd = false;
-        currEnemyNum = 0;
-        currGlobal = currCount;
         LevelPanel.Instance.enemyNumChange(currEnemyNum);
         currLevel = levelIndex;
         var l = SOManager.Instance.levelCreatEnemyDataList_SO.GetLevelByIndex(levelIndex);

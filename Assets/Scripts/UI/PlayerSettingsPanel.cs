@@ -14,6 +14,7 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
     private List<ExtraSkill> extraSkills;
     public TextMeshProUGUI desc;
     public bool bInit;
+    public int currIndex;
     protected override void Awake()
     {
         base.Awake();
@@ -46,6 +47,7 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
     {
         Init(PlayerManager.Instance.trueIndexes);
         if (playerIndex == -1) playerIndex = playerImages[0].index;
+        currIndex = playerIndex;
         var ch = SOManager.Instance.GetPlayerDataByIndex(playerIndex);
         var player = PlayerManager.Instance.indexToPlayer[playerIndex];
         desc.text = $"Desc:\n{ch.desc}\nAtk:{player.character.attack}\nSpeed:{player.character.speed}\nAtkSpeed:{player.character.attackSpeed}\nAtkRange:{player.character.attackRange}";
@@ -81,5 +83,10 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
     {
         GameStateManager.Instance.SetGameState(GameState.GamePlay);
         this.gameObject.SetActive(false);
+    }
+    public void ChangeCh(Player player)
+    {
+        if (player.GetPlayerIndex() != currIndex) return;
+        desc.text = $"Desc:\n{player.character.desc}\nAtk:{player.character.attack}\nSpeed:{player.character.speed}\nAtkSpeed:{player.character.attackSpeed}\nAtkRange:{player.character.attackRange}";
     }
 }

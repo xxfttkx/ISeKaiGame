@@ -144,8 +144,8 @@ MonoBehaviour:
 
     (<color=green>1</color>/30)'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c9a4adf8b5e9b09408223a4ec3a585f5, type: 2}
-  m_sharedMaterial: {fileID: 8812938564302615159, guid: c9a4adf8b5e9b09408223a4ec3a585f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5df2134d3ceba8d4595a4026288ebb63, type: 2}
+  m_sharedMaterial: {fileID: 8406631458294433560, guid: 5df2134d3ceba8d4595a4026288ebb63, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -278,8 +278,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: steal heart
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c9a4adf8b5e9b09408223a4ec3a585f5, type: 2}
-  m_sharedMaterial: {fileID: 8812938564302615159, guid: c9a4adf8b5e9b09408223a4ec3a585f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5df2134d3ceba8d4595a4026288ebb63, type: 2}
+  m_sharedMaterial: {fileID: 8406631458294433560, guid: 5df2134d3ceba8d4595a4026288ebb63, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -688,8 +688,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: steal heart
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c9a4adf8b5e9b09408223a4ec3a585f5, type: 2}
-  m_sharedMaterial: {fileID: 8812938564302615159, guid: c9a4adf8b5e9b09408223a4ec3a585f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5df2134d3ceba8d4595a4026288ebb63, type: 2}
+  m_sharedMaterial: {fileID: 8406631458294433560, guid: 5df2134d3ceba8d4595a4026288ebb63, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

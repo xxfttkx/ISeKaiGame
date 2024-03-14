@@ -133,6 +133,7 @@ public class PlayerManager : Singleton<PlayerManager>
     internal void PlayerHurtEnemy(int playerIndex, EnemyBase e,int atk = -1)
     {
         if (atk == -1) atk = GetPlayerAttack(playerIndex);
+        if (atk == 0) return;
         if (indexToPlayer.ContainsKey(2) && indexToPlayer[2].IsAlive())
         {
             int extra = SaveLoadManager.Instance.GetPlayerExtra(2, 2);
@@ -145,6 +146,7 @@ public class PlayerManager : Singleton<PlayerManager>
     internal void PlayerHurtPlayer(int atkIndex, int hurtIndex,int atk = -1)
     {
         if (atk == -1) atk = GetPlayerAttack(atkIndex);
+        if (atk == 0) return;
         indexToPlayer[hurtIndex].BeCompanionHurt(atk);
     }
     public void PlayerHealPlayer(int restorer, int recipient,int heal=-1)
@@ -295,7 +297,7 @@ public class PlayerManager : Singleton<PlayerManager>
         int atk = indexToPlayer[playerIndex].GetAttack();
         float bonus = 1;
         if (currPlayerIndex!= playerIndex)
-            bonus -= 0.5f;
+            bonus += 0.5f;
         atk = Mathf.CeilToInt(atk * bonus);
         return atk;
     }
@@ -305,6 +307,13 @@ public class PlayerManager : Singleton<PlayerManager>
         float bonus = 1;
         if (currPlayerIndex != playerIndex)
             bonus -= 0.5f;
+        r = Mathf.CeilToInt(r * bonus);
+        return r;
+    }
+    public int GetPlayerAttackSpeed(int playerIndex)
+    {
+        int r = indexToPlayer[playerIndex].GetAttackSpeed();
+        float bonus = GetFieldBonus(playerIndex);
         r = Mathf.CeilToInt(r * bonus);
         return r;
     }
@@ -362,5 +371,20 @@ public class PlayerManager : Singleton<PlayerManager>
             }
         }
         return ans;
+    }
+    public int GetPlayerExtra(int playerIndex,int extraIndex)
+    {
+        return indexToPlayer[playerIndex].GetExtra(extraIndex);
+    }
+    public List<int> GetPlayerExtras(int playerIndex)
+    {
+        return new List<int>(indexToPlayer[playerIndex].extras);
+    }
+    public float GetFieldBonus(int playerIndex)
+    {
+        float bonus = 1f;
+        if (currPlayerIndex != playerIndex)
+            bonus += 0.5f;
+        return bonus;
     }
 }
