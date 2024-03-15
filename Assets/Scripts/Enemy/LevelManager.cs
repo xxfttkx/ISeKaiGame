@@ -13,6 +13,7 @@ public class LevelManager : Singleton<LevelManager>
     private HashSet<int> enemyHash;
     private int currCount; // µ±Ç°index
     private int currGlobal; //
+    private LevelCreatEnemy levelData;
 
     protected override void Awake()
     {
@@ -47,6 +48,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         enemyHash.Add(currCount);
         e.SetGlobalIndex(currCount);
+        e.SetLevelBonus(levelData.bonus);
         currCount += 1;
         currEnemyNum += 1;
         LevelPanel.Instance.enemyNumChange(currEnemyNum);
@@ -75,6 +77,7 @@ public class LevelManager : Singleton<LevelManager>
         LevelPanel.Instance.enemyNumChange(currEnemyNum);
         currLevel = levelIndex;
         var l = SOManager.Instance.levelCreatEnemyDataList_SO.GetLevelByIndex(levelIndex);
+        levelData = l;
         int n = l.offset.Length;
         endTime = l.endCreatEnemyTime;
         LevelPanel.Instance.TimeChange(endTime);

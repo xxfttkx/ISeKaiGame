@@ -24,7 +24,7 @@ public class Enemy_8_Melee : EnemyBase
             StartCoroutine(Attack(t));
         }
     }
-    protected override void Reset()
+    public override void Reset()
     {
         base.Reset();
         foreach (var t in tentacles)

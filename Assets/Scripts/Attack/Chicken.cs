@@ -17,13 +17,20 @@ public class Chicken : MonoBehaviour
         extras = PlayerManager.Instance.GetPlayerExtras(6);
         atk = PlayerManager.Instance.GetPlayerAttack(6);
         range = PlayerManager.Instance.GetPlayerAttackRange(6);
-        atkSpeed = PlayerManager.Instance.GetPlayerAttack(6);
-        if (extras[1]==1)
+        atkSpeed = PlayerManager.Instance.GetPlayerAttackSpeed(6);
+        if (extras[1] == 0)
+        {
+            StartCoroutine(Attack());
+            StartCoroutine(SearchEnemy());
+        }
+        else if (extras[1]==1)
         {
             StartCoroutine(Heal());
         }
-        StartCoroutine(SearchEnemy());
-        StartCoroutine(Attack());
+        else
+        {
+            StartCoroutine(RangedAttack());
+        }
         StartCoroutine(AutoRelease());
     }
     IEnumerator SearchEnemy()
@@ -69,6 +76,22 @@ public class Chicken : MonoBehaviour
             if (Utils.TryAttackPlayer(this.gameObject, player, range))
             {
                 PlayerManager.Instance.PlayerHealPlayer(6, p.GetPlayerIndex(), atk);
+            }
+        }
+    }
+    IEnumerator RangedAttack()
+    {
+        while (true)
+        {
+            var e = Utils.GetNearestEnemy(this.transform.position, range);
+            if (e != null)
+            {
+                PlayerManager.Instance.PlayerHurtEnemy(6, e,atk);
+                yield return new WaitForSeconds(10f / atkSpeed);
+            }
+            else
+            {
+                yield return null;
             }
         }
     }

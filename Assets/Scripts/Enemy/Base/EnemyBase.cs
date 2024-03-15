@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBase: MonoBehaviour
+public class EnemyBase: Creature
 {
     public Enemy enemy;
     public EnemyDataList_SO enemyData;
-    public Dictionary<string, Buff> buffs;
-    private Buff allBuff;
     public Rigidbody2D rb;
     public Coroutine moveToPlayer;
     public Vector2 playerPos;
@@ -25,8 +23,9 @@ public class EnemyBase: MonoBehaviour
     public bool canMove;
     private Animator animator;
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         rb = GetComponent<Rigidbody2D>();
         sp = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -34,7 +33,7 @@ public class EnemyBase: MonoBehaviour
     }
     protected virtual void Start()
     {
-        isBegingRepelled = false;
+        
         enemy = SOManager.Instance.enemyDataList_SO.enemies[enemy.index];
         sp.sprite = enemy.sprite;
     }
@@ -54,12 +53,19 @@ public class EnemyBase: MonoBehaviour
         EventHandler.ExitLevelEvent += OnExitLevelEvent;
         EventHandler.ChangePlayerOnTheFieldEvent += OnChangePlayerOnTheFieldEvent;
     }
+
+    
+
     protected virtual void OnDisable()
     {
         movementVec2 = Vector2.zero;  
         EventHandler.ExitLevelEvent -= OnExitLevelEvent;
         EventHandler.ChangePlayerOnTheFieldEvent -= OnChangePlayerOnTheFieldEvent;
         StopAllCoroutines();
+    }
+    internal void SetLevelBonus(float bonus)
+    {
+        enemy.attack = Mathf.FloorToInt(enemy.attack * bonus);
     }
     protected virtual IEnumerator GetPlayerPosition()
     {
@@ -114,11 +120,6 @@ public class EnemyBase: MonoBehaviour
             material.SetFloat("_Red", red);
         }
         material.SetFloat("_Red", 0f);
-    }
-
-    public bool IsAlive()
-    {
-        return enemy.hp > 0;
     }
     public void Release()
     {
@@ -179,10 +180,12 @@ public class EnemyBase: MonoBehaviour
         rb.velocity = Vector2.zero;
         isBegingRepelled = false;
     }
-    protected virtual void Reset()
+    public override void Reset()
     {
+        base.Reset();
         isBegingRepelled = false;
         enemy = SOManager.Instance.enemyDataList_SO.GetEnemyByIndex(enemy.index);
+        hp = enemy.creature.hp;
         attackRandomTime = 0;
         material.SetFloat("_Red", 0f);
         material.SetFloat("_TwistUvAmount", 0f);
@@ -193,6 +196,7 @@ public class EnemyBase: MonoBehaviour
         canMove = true;
         player = PlayerManager.Instance.GetPlayerInControl();
         animator?.SetBool("Dead", false);
+        LevelManager.Instance.AddEnemyNum(this);
     }
     private void OnExitLevelEvent(int level)
     {

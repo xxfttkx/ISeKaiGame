@@ -53,7 +53,7 @@ public class Player_10_Mage : Player_Single
     }
     private float GetStealDelta()
     {
-        if (false) return 0.5f;  
+        if (extras[1] == 2) return 0.5f;
         return 1.0f;
     }
     private int GetStealHeartAtk()

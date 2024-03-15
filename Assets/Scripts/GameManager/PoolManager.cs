@@ -89,8 +89,6 @@ public class PoolManager : Singleton<PoolManager>
         ObjectPool<GameObject> objPool = enemyPoolList[index];
         GameObject obj = objPool.Get();
         obj.transform.position = pos;
-        var e = obj.GetComponent<EnemyBase>();
-        LevelManager.Instance.AddEnemyNum(e);
     }
     public void CreateGuangQiu(GameObject target, Vector3 pos, EnemyBase attacker)
     {

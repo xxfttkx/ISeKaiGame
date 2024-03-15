@@ -236,7 +236,7 @@ MonoBehaviour:
     attack: 1
     hp: 20
     speed: 5
-    attackSpeed: 10
+    attackSpeed: 5
     attackRange: 10
     desc: "\u53EC\u5524\u9B54\u6CD5 \u53EC\u5524\u7269\u627F\u4F24\u7531\u961F\u4F0D\u4E2D\u8840\u91CF\u767E\u5206\u6BD4\u6700\u9AD8\u627F\u62C5//todo"
     extraTypes: 
@@ -249,7 +249,7 @@ MonoBehaviour:
     - 
     - "\u53EC\u5524\u7269\u53D8\u6210\u8FDC\u7A0B\u8303\u56F4\u653B\u51FB"
     - "\u6BCF\u6B21\u4EA7\u751F\u4E24\u4E2A\u53EC\u5524\u7269"
-    extraCharacteristics: 0000000000000000
+    extraCharacteristics: 0200000003000000
     extraCharacteristicVals: 0000000000000000
     extraData: 
     finished: 0

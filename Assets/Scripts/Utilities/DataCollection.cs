@@ -8,13 +8,15 @@ using UnityEngine;
 [System.Serializable]
 public struct CreatureBase
 {
-    public bool faceToLeft;
     [Header("Attributes")]
     public int attack;
     public int hp;
     public int speed;
     public int attackSpeed; // 10sÄÚ¹¥»÷´ÎÊı
     public int attackRange; // ¹¥»÷¾àÀë
+    public bool faceToLeft;
+    public Sprite sprite;
+    public GameObject prefab;
     [TextArea(3, 10)]
     public string desc;
 }
@@ -75,6 +77,7 @@ public struct Enemy
 public struct LevelCreatEnemy
 {
     public int levelIndex;
+    public float bonus;
     public Vector2[] offset;
     public int[] enemyIndex;
     public int[] enemyCreateFirstTime;

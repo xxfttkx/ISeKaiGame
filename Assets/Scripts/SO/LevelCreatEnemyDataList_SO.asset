@@ -14,12 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - levelIndex: 0
+    bonus: 0
     offset: []
     enemyIndex: 
     enemyCreateFirstTime: 
     enemyCreateDeltaTime: 
     endCreatEnemyTime: 0
   - levelIndex: 1
+    bonus: 1
     offset:
     - {x: 10, y: 10}
     - {x: -10, y: 10}
@@ -31,6 +33,7 @@ MonoBehaviour:
     enemyCreateDeltaTime: 0100000001000000010000000100000001000000
     endCreatEnemyTime: 11
   - levelIndex: 2
+    bonus: 0
     offset:
     - {x: 10, y: 10}
     - {x: -10, y: 10}
@@ -39,6 +42,7 @@ MonoBehaviour:
     enemyCreateDeltaTime: 0200000002000000
     endCreatEnemyTime: 40
   - levelIndex: 3
+    bonus: 0
     offset:
     - {x: 10, y: 10}
     - {x: -10, y: 10}
@@ -47,6 +51,7 @@ MonoBehaviour:
     enemyCreateDeltaTime: 0200000002000000
     endCreatEnemyTime: 40
   - levelIndex: 4
+    bonus: 0
     offset:
     - {x: 10, y: 10}
     - {x: -10, y: 10}
@@ -55,6 +60,7 @@ MonoBehaviour:
     enemyCreateDeltaTime: 0200000002000000
     endCreatEnemyTime: 40
   - levelIndex: 5
+    bonus: 0
     offset:
     - {x: 10, y: 10}
     - {x: -10, y: 10}
@@ -63,6 +69,7 @@ MonoBehaviour:
     enemyCreateDeltaTime: 0200000002000000
     endCreatEnemyTime: 40
   - levelIndex: 5
+    bonus: 0
     offset:
     - {x: 10, y: 10}
     - {x: -10, y: 10}

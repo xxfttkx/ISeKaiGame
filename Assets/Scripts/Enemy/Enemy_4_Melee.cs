@@ -27,7 +27,7 @@ public class Enemy_4_Melee : Enemy_Melee
     {
         base.OnEnable();
     }
-    protected override void Reset()
+    public override void Reset()
     {
         base.Reset();
         existTime = 0;

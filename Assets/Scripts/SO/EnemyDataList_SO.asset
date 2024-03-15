@@ -97,7 +97,7 @@ MonoBehaviour:
     faceToLeft: 0
     enemyType: 2
     attack: 5
-    hp: 100
+    hp: 20
     speed: 4
     getPlayerPosTimeDelta: 0.1
     attackRange: 7
@@ -120,7 +120,7 @@ MonoBehaviour:
     faceToLeft: 0
     enemyType: 1
     attack: 5
-    hp: 100
+    hp: 20
     speed: 8
     getPlayerPosTimeDelta: 0.1
     attackRange: 0.6
@@ -143,7 +143,7 @@ MonoBehaviour:
     faceToLeft: 0
     enemyType: 1
     attack: 5
-    hp: 100
+    hp: 20
     speed: 7
     getPlayerPosTimeDelta: 0.1
     attackRange: 6
@@ -166,7 +166,7 @@ MonoBehaviour:
     faceToLeft: 0
     enemyType: 2
     attack: 1
-    hp: 100
+    hp: 20
     speed: 6
     getPlayerPosTimeDelta: 0.1
     attackRange: 8
@@ -189,7 +189,7 @@ MonoBehaviour:
     faceToLeft: 0
     enemyType: 1
     attack: 5
-    hp: 200
+    hp: 20
     speed: 10
     getPlayerPosTimeDelta: 0.1
     attackRange: 8
@@ -212,7 +212,7 @@ MonoBehaviour:
     faceToLeft: 0
     enemyType: 1
     attack: 0
-    hp: 2147483647
+    hp: 2147483646
     speed: 0
     getPlayerPosTimeDelta: 0
     attackRange: 0
