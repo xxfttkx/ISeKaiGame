@@ -12,6 +12,12 @@ public class Player : Creature
     [SerializeField]
     private float timeOnTheField;
     public List<int> extras;
+    private int atk
+    {
+        get => character.creature.attack;
+        set => character.creature.attack = value;
+    }
+
     protected override void Awake()
     {
         base.Awake();
@@ -355,5 +361,14 @@ public class Player : Creature
             Characteristic.AttackSpeed => character.hp += val,
             _ =>val,
         };
+    }
+    void GetPlayerDataByPrefession(Profession p)
+    {
+        var d = SOManager.Instance.GetProfessionDataByProfession(p);
+        character.creature.hp = d.hp;
+        character.creature.attack = d.attack;
+        character.creature.attack = d.speed;
+        character.creature.attack = d.attackSpeed;
+        character.creature.attack = d.attackRange;
     }
 }

@@ -9,6 +9,7 @@ public class SOManager : Singleton<SOManager>
     public EnemyDataList_SO enemyDataList_SO;
     public LevelCreatEnemyDataList_SO levelCreatEnemyDataList_SO;
     public TextDataList_SO textDataList_SO;
+    public ProfessionDataList_SO professionDataList_SO;
 
     public string GetStringByIndex(int index)
     {
@@ -29,5 +30,9 @@ public class SOManager : Singleton<SOManager>
     {
         Character c = GetPlayerDataByIndex(playerIndex);
         return c.extraTypes == null ? 0 : c.extraTypes.Count;
+    }
+    public ProfessionData GetProfessionDataByProfession(Profession p)
+    {
+        return professionDataList_SO.GetProfessionDataByProfession(p);
     }
 }

@@ -168,3 +168,14 @@ public class LanguageToText
     public List<string> texts;
 }
 
+[System.Serializable]
+public struct ProfessionData
+{
+    public Profession profession;
+    public int hp;
+    public int attack;
+    public int speed;
+    public int attackSpeed; // 10sÄÚ¹¥»÷´ÎÊı
+    public int attackRange;
+}
+
