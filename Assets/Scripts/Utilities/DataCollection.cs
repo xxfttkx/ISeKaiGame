@@ -24,8 +24,9 @@ public struct CreatureBase
 [System.Serializable]
 public struct Character
 {
-    public CreatureBase creature;
     public int index;
+    public CreatureBase creature;
+    
     public string name;
     public Sprite sprite;
     public GameObject prefab;
@@ -33,11 +34,11 @@ public struct Character
 
     public Profession profession;
     [Header("Attributes")]
-    public int attack;
+/*    public int attack;
     public int hp;
     public int speed;
     public int attackSpeed; // 10sÄÚ¹¥»÷´ÎÊı
-    public int attackRange; // ¹¥»÷¾àÀë
+    public int attackRange; // ¹¥»÷¾àÀë*/
     [TextArea(3, 10)]
     public string desc;
     public List<ExtraType> extraTypes;

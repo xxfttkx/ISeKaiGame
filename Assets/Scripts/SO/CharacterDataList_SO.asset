@@ -14,13 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characters:
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
-      desc: 
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
+      desc: "\u4F24\u5BB3*1.5 money\u83B7\u5F97\u6548\u73870.2"
     index: 0
     name: cache coeur
     sprite: {fileID: 21300000, guid: 4ba4c2cbb7973c541ad6b5b18fc2ef40, type: 3}
@@ -48,13 +50,15 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
-      desc: 
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
+      desc: "\u7FBD\u6BDB\u653B\u51FB \u961F\u4F0DBuff atk*=1.2  \u961F\u4F0D\u4E2D\u51FB\u6740\u8005attack/=2"
     index: 1
     name: nirvana
     sprite: {fileID: 21300000, guid: ef16a113f0df5ef48b94a3da9c153bd1, type: 3}
@@ -82,13 +86,15 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
-      desc: 
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
+      desc: "\u7ED9\u961F\u53CB\u4E0A\u6240\u6709\u5C6C\u6027\u52A010% \u961F\u4F0D\u4E2D\u51FB\u6740\u4EBA\u7B97\u6211"
     index: 2
     name: 2
     sprite: {fileID: 21300000, guid: 844981228ae50f5459d5d8ed8fb81506, type: 3}
@@ -116,12 +122,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 3
     name: acacia
@@ -151,12 +159,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 4
     name: coq au vin
@@ -185,12 +195,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 5
     name: white lady
@@ -220,12 +232,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 6
     name: yellow fly
@@ -254,12 +268,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 7
     name: platinum
@@ -288,12 +304,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 8
     name: virtuo
@@ -322,12 +340,14 @@ MonoBehaviour:
     extraData: 
     finished: 1
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 9
     name: 99
@@ -356,12 +376,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 10
     name: 
@@ -393,12 +415,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 11
     name: jealous
@@ -427,12 +451,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 12
     name: template
@@ -461,12 +487,14 @@ MonoBehaviour:
     extraData: 
     finished: 1
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 13
     name: template
@@ -495,12 +523,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 14
     name: gray joker
@@ -529,12 +559,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 15
     name: camellia
@@ -557,12 +589,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 16
     name: copy
@@ -591,12 +625,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 17
     name: gnosis
@@ -620,12 +656,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 18
     name: emerald
@@ -648,12 +686,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 19
     name: blend fruit
@@ -676,12 +716,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 20
     name: 20
@@ -704,12 +746,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 21
     name: executor
@@ -732,12 +776,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 22
     name: mimosa
@@ -760,12 +806,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 23
     name: hideout
@@ -788,12 +836,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 24
     name: "\u52C7\u8005/\u9B54\u738B"
@@ -816,12 +866,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 25
     name: "\u7DD1\u9B54\u9053\u58EB"
@@ -844,12 +896,14 @@ MonoBehaviour:
     extraData: 
     finished: 0
   - creature:
-      faceToLeft: 0
       attack: 0
       hp: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
       desc: 
     index: 26
     name: dark elf

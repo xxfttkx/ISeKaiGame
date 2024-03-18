@@ -17,6 +17,21 @@ public class Player : Creature
         get => character.creature.attack;
         set => character.creature.attack = value;
     }
+    private int speed
+    {
+        get => character.creature.speed;
+        set => character.creature.speed = value;
+    }
+    private int atkSpeed
+    {
+        get => character.creature.attackSpeed;
+        set => character.creature.attackSpeed = value;
+    }
+    private int atkRange
+    {
+        get => character.creature.attackRange;
+        set => character.creature.attackRange = value;
+    }
 
     protected override void Awake()
     {
@@ -25,7 +40,7 @@ public class Player : Creature
         rb = GetComponent<Rigidbody2D>();
         sp = GetComponent<SpriteRenderer>();
         character = characterData.GetCharByIndex(character.index);
-        sp.sprite = character.sprite;
+        sp.sprite = character.creature.sprite;
         material = sp.material;
         extras = new List<int>(SaveLoadManager.Instance.GetPlayerExtras(GetPlayerIndex()));
     }
@@ -48,7 +63,8 @@ public class Player : Creature
         allBuff = new Buff("all", 0, 0, 0, 0);
         timeOnTheField = 0;
         character = characterData.GetCharByIndex(character.index);
-        hp = character.hp;
+        GetPlayerDataByPrefession(character.profession);
+        hp = character.creature.hp;
     }
 
     protected virtual void OnEnterLevelEvent(int _)
@@ -62,8 +78,8 @@ public class Player : Creature
 
     public void Move(Vector2 movementInput, float deltaTime)
     {
-        if (movementInput.x < 0) sp.flipX = !character.faceToLeft;
-        else if (movementInput.x > 0) sp.flipX = character.faceToLeft;
+        if (movementInput.x < 0) sp.flipX = !character.creature.faceToLeft;
+        else if (movementInput.x > 0) sp.flipX = character.creature.faceToLeft;
         // rb.MovePosition(rb.position + movementInput * character.speed * deltaTime);
     }
     private void FixedUpdate()
@@ -75,12 +91,12 @@ public class Player : Creature
 
     public virtual void BeHurt(int attack)
     {
-        if (character.hp <= 0) return;
+        if (hp <= 0) return;
         if (attack == 0) return;
-        SaveLoadManager.Instance.SetPlayerExtraData(GetPlayerIndex(), ExtraType.BeHurt, Mathf.Min(character.hp, attack));
-        character.hp -= attack;
+        SaveLoadManager.Instance.SetPlayerExtraData(GetPlayerIndex(), ExtraType.BeHurt, Mathf.Min(hp, attack));
+        hp -= attack;
         UIManager.Instance.HPChange(GetPlayerIndex(), GetHpVal());
-        if (character.hp <= 0)
+        if (hp <= 0)
         {
             EventHandler.CallPlayerDeadEvent(character.index);
             PlayerManager.Instance.PlayerDead(character.index);
@@ -89,7 +105,7 @@ public class Player : Creature
     }
     public float GetHpVal()
     {
-        float val = ((float)character.hp) / GetMaxHP();
+        float val = ((float)hp) / GetMaxHP();
         val = Mathf.Clamp01(val);
         return val;
     }
@@ -255,25 +271,19 @@ public class Player : Creature
 
     public virtual int GetSpeed()
     {
-        int atk = character.speed;
-        atk = Mathf.CeilToInt(atk * (1 + allBuff.speedBonus));
-        return atk;
+        return Mathf.CeilToInt(speed * (1 + allBuff.speedBonus));
     }
 
     public int GetMaxHP()
     {
-        int maxHP = SOManager.Instance.characterDataList_SO.GetCharByIndex(character.index).hp;
+        int maxHP = character.creature.hp;
         maxHP = Mathf.CeilToInt(maxHP * (1 + allBuff.hpBonus));
         return maxHP;
     }
 
-    //todo ´æÆðÀ´ £¿£¿£¿
     public virtual int GetAttackRange()
     {
-        int range = character.attackRange;
-        range = Mathf.CeilToInt(range * (1 + allBuff.attackRangeBonus));
-        range = Mathf.CeilToInt(range * GetTimeBonus());
-        return range;
+        return Mathf.CeilToInt(atkRange * GetTimeBonus() * (1 + allBuff.attackRangeBonus));
     }
 
     public int GetPlayerIndex()
@@ -283,10 +293,10 @@ public class Player : Creature
 
     private float GetTimeBonus()
     {
-        // 0-99  100-1
-        float b = Mathf.Clamp(timeOnTheField, 0, 99);
+        // 0-100  100-0
+        float b = Mathf.Clamp(timeOnTheField, 0, 100);
         b *= 0.01f;
-        return 1 - b;
+        return 1.1f - b;
     }
     public void AddTimeBonus(float f)
     {
@@ -367,8 +377,8 @@ public class Player : Creature
         var d = SOManager.Instance.GetProfessionDataByProfession(p);
         character.creature.hp = d.hp;
         character.creature.attack = d.attack;
-        character.creature.attack = d.speed;
-        character.creature.attack = d.attackSpeed;
-        character.creature.attack = d.attackRange;
+        character.creature.speed = d.speed;
+        character.creature.attackSpeed = d.attackSpeed;
+        character.creature.attackRange = d.attackRange;
     }
 }
