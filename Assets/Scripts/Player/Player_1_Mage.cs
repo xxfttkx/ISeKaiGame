@@ -13,20 +13,16 @@ public class Player_1_Mage : Player_Single
     public override void Reset()
     {
         base.Reset();
-        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 0);
-        if (extra == 0) return;
-        if (extra == 1)
-        {
-            character.attack += 3;
-            character.attackRange -= 1;
-            return;
-        }
-        if (extra == 2)
-        {
-            character.attack -= 1;
-            character.attackRange += 2;
-            return;
-        }
+    }
+    protected override void OnEnable()
+    {
+        EventHandler.PlayerKillEnemyEvent += OnPlayerKillEnemyEvent;
+        base.OnEnable();
+    }
+    protected override void OnDisable()
+    {
+        EventHandler.PlayerKillEnemyEvent -= OnPlayerKillEnemyEvent;
+        base.OnDisable();
     }
 
     protected override IEnumerator AttackAnim(EnemyBase e)
@@ -44,10 +40,17 @@ public class Player_1_Mage : Player_Single
     }
     private float GetBuffBonus()
     {
-        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 2);
-        if (extra == 0) return 0.2f;
-        if (extra == 1) return 0.5f;
-        if (extra == 2) return 0.1f;
+        if (extras[2] == 0) return 0.2f;
+        if (extras[2] == 1) return 0.5f;
+        if (extras[2] == 2) return 0.1f;
         return 0f;
+    }
+    void OnPlayerKillEnemyEvent(int playerIndex)
+    {
+        var p = PlayerManager.Instance.GetPlayerByPlayerIndex(playerIndex);
+        if (extras[2] == 0) p.ChangeAttack(0.5f);
+        if (extras[2] == 1) p.ChangeAttackToNum(1);
+        if (extras[2] == 2) return;
+            
     }
 }

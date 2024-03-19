@@ -65,8 +65,8 @@ public enum Characteristic
     Hp,
     Attack,
     Speed,
-    AttackRange,
     AttackSpeed,
+    AttackRange,
 }
 
 public enum ApplyBuffType

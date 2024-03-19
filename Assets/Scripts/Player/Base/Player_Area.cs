@@ -8,6 +8,11 @@ public class Player_Area : Player
     public override void Reset()
     {
         base.Reset();
+        
+    }
+    public override void StartAttack()
+    {
+        base.StartAttack();
         StartCoroutine(Attack());
     }
     protected virtual IEnumerator Attack()

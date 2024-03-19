@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Priest : Player
-{
-    protected override void OnEnterLevelEvent(int l)
+{ 
+    public override void StartAttack()
     {
-        base.OnEnterLevelEvent(l);
         StartCoroutine(Heal());
     }
     public virtual IEnumerator Heal()
@@ -15,7 +14,7 @@ public class Priest : Player
         while (true)
         {
             HealSkill();
-            yield return new WaitForSeconds(10 / character.attackSpeed);
+            yield return new WaitForSeconds(GetSkillCD());
         }
 
     }

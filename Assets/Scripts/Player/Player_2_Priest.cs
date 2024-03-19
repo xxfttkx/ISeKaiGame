@@ -24,20 +24,6 @@ public class Player_2_Priest : Priest
     public override void Reset()
     {
         base.Reset();
-        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 0);
-        if (extra == 0) return;
-        if (extra == 1)
-        {
-            character.attack += 10;
-            character.hp -= 5;
-            return;
-        }
-        if (extra == 2)
-        {
-            character.attack -= 1;
-            character.hp += 10;
-            return;
-        }
     }
     public override void HealSkill()
     {
@@ -70,7 +56,7 @@ public class Player_2_Priest : Priest
         {
             int extra = SaveLoadManager.Instance.GetPlayerExtra(2, 1);
             if (extra == 0) return;
-            if (extra == 1) character.attack+=1;
+            if (extra == 1) maxHp += 1;
             if (extra == 2) PlayerManager.Instance.PlayerHealPlayer(2,2,1);
         }
     }

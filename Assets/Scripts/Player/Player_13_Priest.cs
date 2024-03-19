@@ -32,7 +32,7 @@ public class Player_13_Priest : Priest
             {
                 val = minVal;
                 healIndex = p.GetPlayerIndex();
-                needHealHp = p.character.hp;
+                needHealHp = p.GetHp();
             }
 
         }

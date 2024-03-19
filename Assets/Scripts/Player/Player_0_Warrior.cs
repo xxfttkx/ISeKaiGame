@@ -15,26 +15,16 @@ public class Player_0_Warrior : Player_Area
     protected override void OnEnterLevelEvent(int l)
     {
         base.OnEnterLevelEvent(l);
-        StartCoroutine(CreateShield());
     }
     public override void Reset()
     {
         base.Reset();
         circle.SetActive(false);
-        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 0);
-        if (extra == 0) return;
-        if (extra == 1)
-        {
-            character.attack += 3;
-            character.speed -= 1;
-            return;
-        }
-        if (extra == 2)
-        {
-            character.attack = 0;
-            character.speed += 3;
-            return;
-        }
+    }
+    public override void StartAttack()
+    {
+        base.StartAttack();
+        StartCoroutine(CreateShield());
     }
 
     protected override IEnumerator AttackAnim(List<EnemyBase> enemies)
@@ -51,7 +41,7 @@ public class Player_0_Warrior : Player_Area
         while(true)
         {
             int extra= SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 1);
-            if (extra == 0) yield return null;
+            if (extra == 0) yield return new WaitForSeconds(1f);
             else if(extra == 1)
             {
                 shield = 15;
@@ -68,7 +58,11 @@ public class Player_0_Warrior : Player_Area
     public override int GetAttack()
     {
         int atk = base.GetAttack();
-        atk = Mathf.CeilToInt(atk * (1.5f));
+        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 2);
+        if (extra == 0) atk = Mathf.CeilToInt(atk * (1.5f));
+        if (extra == 1) atk = Mathf.CeilToInt(atk * (2.0f));
+        if (extra == 2) atk = Mathf.CeilToInt(atk * (1.0f));
+
         return atk;
     }
 
@@ -76,7 +70,7 @@ public class Player_0_Warrior : Player_Area
     {
         int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 2);
         if(extra == 0) return 0.2f;
-        if(extra == 1) return 2.0f;
+        if (extra == 1) return 0.1f;
         if(extra == 2) return 1.0f;
         return 1.0f;
     }

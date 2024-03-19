@@ -27,20 +27,12 @@ public class Player_5_Mage : Player
     {
         base.Reset();
         laserSp.size = new Vector2(0, laserSp.size.y);
-        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 0);
-        if (extra == 1)
-        {
-            character.attack += 5;
-            character.attackRange -= 2;
-        }
-        else if (extra == 2)
-        {
-            character.attack -= 5;
-            character.attackRange += 2;
-        }
+        
+    }
+    public override void StartAttack()
+    {
         StartCoroutine(Attack());
     }
-
     IEnumerator Attack()
     {
         while (true)

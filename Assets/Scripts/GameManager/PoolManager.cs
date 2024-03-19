@@ -112,7 +112,7 @@ public class PoolManager : Singleton<PoolManager>
         GameObject obj = objPool.Get();
         obj.transform.position = pos;
         Feather f = obj.GetComponent<Feather>();
-        f.AttackEnemy(e);
+        f.AttackEnemy(e,PlayerManager.Instance.GetPlayerByPlayerIndex(1));
     }
     public void ClearPools()
     {

@@ -120,7 +120,7 @@ public class PlayerManager : Singleton<PlayerManager>
         // SaveLoadManager.Instance.PlayerKillEnemy(pIndex, enemy);
         if (indexToPlayer.ContainsKey(1))
         {
-            indexToPlayer[pIndex].character.attack = Mathf.CeilToInt(indexToPlayer[pIndex].character.attack / 2f);
+            indexToPlayer[pIndex].ChangeAttack(0.5f);
         }
         SaveLoadManager.Instance.SetPlayerExtraData(playerIndex, ExtraType.Kill, 1);
         EventHandler.CallPlayerKillEnemyEvent(pIndex);
@@ -232,13 +232,13 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void PlayerDead(int index)
     {
-        if (players[currIndex].character.hp > 0)
+        if (players[currIndex].GetHp() > 0)
         {
             return;
         }
         for (int i = 0; i < players.Count; ++i)
         {
-            if (players[i].character.hp > 0)
+            if (players[i].GetHp() > 0)
             {
                 ChangePlayerOnTheField(i);
                 return;
@@ -355,6 +355,10 @@ public class PlayerManager : Singleton<PlayerManager>
         {
             p.AddBuffBeforeStart();
         }
+        foreach (var p in players)
+        {
+            p.StartAttack();
+        }
     }
     public Player GetMinHpValPlayer()
     {
@@ -386,5 +390,9 @@ public class PlayerManager : Singleton<PlayerManager>
         if (currPlayerIndex != playerIndex)
             bonus += 0.5f;
         return bonus;
+    }
+    public Player GetPlayerByPlayerIndex(int i)
+    {
+        return indexToPlayer[i];
     }
 }

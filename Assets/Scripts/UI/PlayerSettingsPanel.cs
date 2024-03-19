@@ -47,11 +47,10 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
     {
         Init(PlayerManager.Instance.trueIndexes);
         if (playerIndex == -1) playerIndex = playerImages[0].index;
-        currIndex = playerIndex;
         var ch = SOManager.Instance.GetPlayerDataByIndex(playerIndex);
-        var player = PlayerManager.Instance.indexToPlayer[playerIndex];
-        desc.text = $"Desc:\n{ch.desc}\nAtk:{player.character.attack}\nSpeed:{player.character.speed}\nAtkSpeed:{player.character.attackSpeed}\nAtkRange:{player.character.attackRange}";
-        foreach(var btn in playerImages)
+        var player = PlayerManager.Instance.GetPlayerByPlayerIndex(playerIndex);
+        ChangeCh(player);
+        foreach (var btn in playerImages)
         {
             if (btn.index == playerIndex) btn.Select();
             else btn.CancelSelect();
@@ -86,7 +85,9 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
     }
     public void ChangeCh(Player player)
     {
-        if (player.GetPlayerIndex() != currIndex) return;
-        desc.text = $"Desc:\n{player.character.desc}\nAtk:{player.character.attack}\nSpeed:{player.character.speed}\nAtkSpeed:{player.character.attackSpeed}\nAtkRange:{player.character.attackRange}";
+        int playerIndex = player.GetPlayerIndex();
+        if (playerIndex == currIndex) return;
+        currIndex = playerIndex;
+        desc.text = $"Desc:\n{player.character.desc}\nAtk:{player.GetRawAtk()}\nSpeed:{player.GetRawSpeed()}\nAtkSpeed:{player.GetRawAtkSpeed()}\nAtkRange:{player.GetRawAtkRange()}";
     }
 }

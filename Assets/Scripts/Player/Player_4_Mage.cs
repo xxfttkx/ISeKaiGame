@@ -13,17 +13,6 @@ public class Player_4_Mage : Player_Single
     public override void Reset()
     {
         base.Reset();
-        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 0);
-        if (extra == 1)
-        {
-            character.attack += 2;
-            character.attackRange -= 1;
-        }
-        else if (extra == 2)
-        {
-            character.attack += 1;
-            character.attackRange -= 2;
-        }
     }
     protected override IEnumerator AttackAnim(EnemyBase e)
     {

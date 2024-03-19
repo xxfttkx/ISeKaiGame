@@ -37,18 +37,7 @@ public class Player_3_Assassin : Player
         {
             go.SetActive(false);
         }
-        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 0);
-        if (extra == 1)
-        {
-            character.attack += 1;
-            character.attackRange -= 1;
-        }
-        else if (extra == 2)
-        {
-            character.attack -= 1;
-            character.attackRange += 3;
-        }
-        extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 1);
+        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 1);
         if(extra==0)StartCoroutine(Attack());
         else if (extra == 1)
         {
@@ -66,8 +55,8 @@ public class Player_3_Assassin : Player
         if (3 == playerIndex)
         {
             int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 2);
-            if (extra == 0) BeHurt(Mathf.FloorToInt(character.hp / 2f));
-            if (extra == 1) BeHurt(character.hp - 1);
+            if (extra == 0) BeHurt(Mathf.FloorToInt(hp / 2f));
+            if (extra == 1) BeHurt(hp - 1);
             if (extra == 2) return;
         }
     }

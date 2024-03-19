@@ -8,6 +8,10 @@ public class Player_Single : Player
     public override void Reset()
     {
         base.Reset();
+    }
+    public override void StartAttack()
+    {
+        base.StartAttack();
         StartCoroutine(Attack());
     }
     protected virtual IEnumerator Attack()

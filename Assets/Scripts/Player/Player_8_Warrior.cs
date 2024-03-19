@@ -16,17 +16,6 @@ public class Player_8_Warrior : Player_Area
     {
         base.Reset();
         water.enabled = false;
-        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 0);
-        if (extra == 1)
-        {
-            character.attack += 1;
-            character.attackRange -= 1;
-        }
-        else if (extra == 2)
-        {
-            character.attack -= 1;
-            character.attackRange += 1;
-        }
     }
     protected override IEnumerator AttackAnim(List<EnemyBase> enemies)
     {

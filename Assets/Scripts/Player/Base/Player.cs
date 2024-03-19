@@ -12,22 +12,24 @@ public class Player : Creature
     [SerializeField]
     private float timeOnTheField;
     public List<int> extras;
-    private int atk
+    public int maxHp;
+    public int addHp;
+    protected int atk
     {
         get => character.creature.attack;
         set => character.creature.attack = value;
     }
-    private int speed
+    protected int speed
     {
         get => character.creature.speed;
         set => character.creature.speed = value;
     }
-    private int atkSpeed
+    protected int atkSpeed
     {
         get => character.creature.attackSpeed;
         set => character.creature.attackSpeed = value;
     }
-    private int atkRange
+    protected int atkRange
     {
         get => character.creature.attackRange;
         set => character.creature.attackRange = value;
@@ -65,6 +67,9 @@ public class Player : Creature
         character = characterData.GetCharByIndex(character.index);
         GetPlayerDataByPrefession(character.profession);
         hp = character.creature.hp;
+        maxHp = hp;
+        addHp = 0;
+        ChangeCharValByExtra();
     }
 
     protected virtual void OnEnterLevelEvent(int _)
@@ -98,8 +103,8 @@ public class Player : Creature
         UIManager.Instance.HPChange(GetPlayerIndex(), GetHpVal());
         if (hp <= 0)
         {
-            EventHandler.CallPlayerDeadEvent(character.index);
-            PlayerManager.Instance.PlayerDead(character.index);
+            EventHandler.CallPlayerDeadEvent(GetPlayerIndex());
+            PlayerManager.Instance.PlayerDead(GetPlayerIndex());
             Dead();
         }
     }
@@ -111,17 +116,17 @@ public class Player : Creature
     }
     public int GetHp()
     {
-        return character.hp;
+        return hp;
     }
     public void BeHealed(int heal, int restorer)
     {
         if (!IsAlive()) return;
         //todo 能达到的最大hp可不该从so中取。。
-        var tempHP = character.hp + heal;
+        var tempHP = hp+ heal;
         var maxHP = GetMaxHP();
-        heal = tempHP <= maxHP ? heal : maxHP - character.hp;
+        heal = hp <= maxHP ? heal : maxHP - hp;
         SaveLoadManager.Instance.SetPlayerExtraData(restorer, ExtraType.Heal, heal);
-        character.hp += heal;
+        hp += heal;
         UIManager.Instance.HPChange(character.index, GetHpVal());
     }
 
@@ -203,20 +208,14 @@ public class Player : Creature
 
     public void BeCompanionHurt(int atk)
     {
-        if (character.hp <= 0)
+        if (!IsAlive())
         {
             Debug.Log("Char hp<0 error...??");
             return;
         }
-        SaveLoadManager.Instance.SetPlayerExtraData(GetPlayerIndex(), ExtraType.BeHurt, Mathf.Min(character.hp - 1, atk));
-        if (character.hp <= atk)
-        {
-            character.hp = 1;
-        }
-        else
-        {
-            character.hp -= atk;
-        }
+        atk = Mathf.Min(hp - 1, atk);
+        SaveLoadManager.Instance.SetPlayerExtraData(GetPlayerIndex(), ExtraType.BeHurt, atk);
+        hp -= atk;
         UIManager.Instance.HPChange(character.index, GetHpVal());
     }
 
@@ -245,16 +244,11 @@ public class Player : Creature
     public virtual int GetAttack()
     {
         if (!IsAlive()) return 1;
-        int atk = character.attack;
-        atk = Mathf.CeilToInt(atk * (1 + allBuff.attackBonus));
-        atk = Mathf.CeilToInt(atk * GetTimeBonus());
-        return atk;
+        return Mathf.CeilToInt(atk * (1 + allBuff.attackBonus) * GetTimeBonus());
     }
     public virtual int GetAttackSpeed()
     {
-        int a = character.attackSpeed;
-        a = Mathf.CeilToInt(a * (1 + allBuff.attackSpeedBonus));
-        return a;
+        return Mathf.CeilToInt(atkSpeed * (1 + allBuff.attackSpeedBonus));
     }
 
     public virtual float GetMoneyEfficiency()
@@ -264,9 +258,8 @@ public class Player : Creature
 
     public virtual float GetSkillCD()
     {
-        float attackSpeed = PlayerManager.Instance.GetPlayerSpeed(GetPlayerIndex());
-        float cd = 10.0f / attackSpeed;
-        return cd;
+        float attackSpeed = PlayerManager.Instance.GetPlayerAttackSpeed(GetPlayerIndex());
+        return 10.0f / attackSpeed;
     }
 
     public virtual int GetSpeed()
@@ -327,7 +320,7 @@ public class Player : Creature
     }
     public bool CanAcceptHurt(int atk)
     {
-        return character.hp > atk;
+        return hp > atk;
     }
     public int GetExtra(int index)
     {
@@ -359,16 +352,27 @@ public class Player : Creature
         }
         extras[extraIndex] = selectedIndex;
     }
+    void ChangeCharValByExtra()
+    {
+        var selectedIndex = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 0);
+        if (selectedIndex != 0)
+        {
+            var i = selectedIndex - 1 == 0 ? 1 : -1;
+            ChangeCharVal(character.extraCharacteristics[0], i * character.extraCharacteristicVals[0]);
+            ChangeCharVal(character.extraCharacteristics[1], -i * character.extraCharacteristicVals[1]);
+            PlayerSettingsPanel.Instance?.ChangeCh(this);
+        }
+    }
     void ChangeCharVal(Characteristic type,int val)
     {
         //todo...
         _ = type switch
         {
-            Characteristic.Hp => character.hp += val,//todo jjj
-            Characteristic.Attack => character.attack += val,
-            Characteristic.Speed => character.hp += val,
-            Characteristic.AttackRange => character.hp += val,
-            Characteristic.AttackSpeed => character.hp += val,
+            Characteristic.Hp => hp += val,//todo jjj
+            Characteristic.Attack => atk += val,
+            Characteristic.Speed => speed += val,
+            Characteristic.AttackSpeed => atkSpeed += val,
+            Characteristic.AttackRange => atkRange += val,
             _ =>val,
         };
     }
@@ -380,5 +384,37 @@ public class Player : Creature
         character.creature.speed = d.speed;
         character.creature.attackSpeed = d.attackSpeed;
         character.creature.attackRange = d.attackRange;
+    }
+    public void ChangeAttackToNum(int num)
+    {
+        atk = num;
+    }
+    public void ChangeAttack(int add)
+    {
+        atk += add;
+    }
+    public void ChangeAttack(float bonus)
+    {
+        atk = Mathf.CeilToInt(atk * bonus);
+    }
+    public virtual void StartAttack()
+    {
+
+    }
+    public int GetRawAtk()
+    {
+        return atk;
+    }
+    public int GetRawSpeed()
+    {
+        return speed;
+    }
+    public int GetRawAtkSpeed()
+    {
+        return atkSpeed;
+    }
+    public int GetRawAtkRange()
+    {
+        return atkRange;
     }
 }
