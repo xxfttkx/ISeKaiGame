@@ -39,7 +39,7 @@ public class Player_2_Priest : Priest
         float b = GetBuffBonus();
         foreach (var p in PlayerManager.Instance.players)
         {
-            p.AddBuff("player2", b);
+            p.ApplyBuff("player2", -1, b, b, b, b, b, ApplyBuffType.Override);
         }
     }
     private float GetBuffBonus()
@@ -54,10 +54,21 @@ public class Player_2_Priest : Priest
     {
         if(playerIndex==2)
         {
-            int extra = SaveLoadManager.Instance.GetPlayerExtra(2, 1);
+            int extra = extras[1];
             if (extra == 0) return;
-            if (extra == 1) maxHp += 1;
+            if (extra == 1)
+            {
+                addHp += 1;
+            }
             if (extra == 2) PlayerManager.Instance.PlayerHealPlayer(2,2,1);
+        }
+    }
+    protected override void OnExtraChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
+    {
+        base.OnExtraChangeEvent(playerIndex, extraIndex, selectedIndex);
+        if(extraIndex==2)
+        {
+            AddBuffBeforeStart();
         }
     }
 }

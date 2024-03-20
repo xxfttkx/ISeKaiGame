@@ -74,6 +74,5 @@ public enum ApplyBuffType
     None = 0,
     NoOverride, //不覆盖
     Override, //覆盖
-    Add, //添加 时间独立
-    AddTime, //添加 时间共享
+    Add, //添加 时间共享 .. 太麻烦了 先默认共享的都是Buff时间永久的
 }

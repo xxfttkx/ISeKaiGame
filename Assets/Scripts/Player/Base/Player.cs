@@ -12,8 +12,7 @@ public class Player : Creature
     [SerializeField]
     private float timeOnTheField;
     public List<int> extras;
-    public int maxHp;
-    public int addHp;
+    
     protected int atk
     {
         get => character.creature.attack;
@@ -108,12 +107,7 @@ public class Player : Creature
             Dead();
         }
     }
-    public float GetHpVal()
-    {
-        float val = ((float)hp) / GetMaxHP();
-        val = Mathf.Clamp01(val);
-        return val;
-    }
+    
     public int GetHp()
     {
         return hp;
@@ -267,19 +261,14 @@ public class Player : Creature
         return Mathf.CeilToInt(speed * (1 + allBuff.speedBonus));
     }
 
-    public int GetMaxHP()
-    {
-        int maxHP = character.creature.hp;
-        maxHP = Mathf.CeilToInt(maxHP * (1 + allBuff.hpBonus));
-        return maxHP;
-    }
+    
 
     public virtual int GetAttackRange()
     {
         return Mathf.CeilToInt(atkRange * GetTimeBonus() * (1 + allBuff.attackRangeBonus));
     }
 
-    public int GetPlayerIndex()
+    public override int GetPlayerIndex()
     {
         return character.index;
     }
@@ -333,7 +322,6 @@ public class Player : Creature
     }
     protected virtual void OnExtraChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
     {
-        //todo... 写在子类判断有没有改。。
         if (playerIndex != GetPlayerIndex()) return;
         if (extraIndex == 0)
         {

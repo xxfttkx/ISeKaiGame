@@ -444,3 +444,4 @@ FodyWeavers.xsd
 /Assembly-CSharp.csproj
 /.vsconfig
 /.vscode
+/redistributable_bin

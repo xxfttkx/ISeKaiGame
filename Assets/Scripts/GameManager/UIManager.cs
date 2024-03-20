@@ -48,10 +48,12 @@ public class UIManager : Singleton<UIManager>
     private void OnEnable()
     {
         EventHandler.EndLevelEvent += OnEndLevelEvent;
+        EventHandler.PlayerHpValChangeEvent += OnPlayerHpValChangeEvent;
     }
     private void OnDisable()
     {
         EventHandler.EndLevelEvent -= OnEndLevelEvent;
+        EventHandler.PlayerHpValChangeEvent -= OnPlayerHpValChangeEvent;
     }
     void OnEndLevelEvent()
     {
@@ -90,6 +92,10 @@ public class UIManager : Singleton<UIManager>
             indexToPlayerData.Add(p.character.index, playerData);
             playerData.Init(p.character.index, p.character.sprite);
         }
+    }
+    void OnPlayerHpValChangeEvent(int index, float val)
+    {
+        HPChange(index, val);
     }
     public void HPChange(int index, float val)
     {

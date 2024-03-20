@@ -21,8 +21,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      sprite: {fileID: 21300000, guid: 844981228ae50f5459d5d8ed8fb81506, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: 22f9785782a07cb488c018cc31e0c759, type: 3}
       desc: "\u4F24\u5BB3*1.5 money\u83B7\u5F97\u6548\u73870.2"
     name: cache coeur
     sprite: {fileID: 21300000, guid: 4ba4c2cbb7973c541ad6b5b18fc2ef40, type: 3}
@@ -52,8 +52,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      sprite: {fileID: 21300000, guid: 844981228ae50f5459d5d8ed8fb81506, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: f7f869939984ab645a279417b160dede, type: 3}
       desc: "\u7FBD\u6BDB\u653B\u51FB \u961F\u4F0DBuff atk*=1.2  \u961F\u4F0D\u4E2D\u51FB\u6740\u8005attack/=2"
     name: nirvana
     sprite: {fileID: 21300000, guid: ef16a113f0df5ef48b94a3da9c153bd1, type: 3}
@@ -71,8 +71,39 @@ MonoBehaviour:
     - atkrange+=2 atk-=1
     - "\u6295\u5C04\u7269\u80FD\u5728\u654C\u4EBA\u95F4\u53CD\u5F39\uFF0C\u4F24\u5BB3\u4E0D\u53D8\uFF0C\u6700\u591A\u53CD\u5F39\u4E24\u6B21"
     - "\u961F\u4F0D\u4F24\u5BB3*1.1  \u961F\u4F0D\u4E2D\u51FB\u6740\u8005attack\u4E0D\u53D8"
-    extraCharacteristics: 
-    extraCharacteristicVals: 
+    extraCharacteristics: 0200000005000000
+    extraCharacteristicVals: 0300000003000000
+    extraData: 
+    finished: 0
+  - index: 2
+    creature:
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
+      desc: "\u7ED9\u961F\u53CB\u4E0A\u6240\u6709\u5C6C\u6027\u52A010% \u961F\u4F0D\u4E2D\u51FB\u6740\u4EBA\u7B97\u6211"
+    name: 2
+    sprite: {fileID: 21300000, guid: 844981228ae50f5459d5d8ed8fb81506, type: 3}
+    prefab: {fileID: 4708548768610898139, guid: 1e69deade4accd14e8bf03d630b1096f, type: 3}
+    faceToLeft: 1
+    profession: 1
+    desc: "\u7ED9\u961F\u53CB\u4E0A\u6240\u6709\u5C6C\u6027\u52A010% \u961F\u4F0D\u4E2D\u51FB\u6740\u4EBA\u7B97\u6211"
+    extraTypes: 030000000400000006000000
+    extraThresholds: bc0100001700000002000000
+    extraDesire1:
+    - atk+=10 hp-=5
+    - "\u6BCF\u6740\u4E00\u540D\u654C\u4EBA\u4E0A\u9650+1"
+    - "\u7ED9\u961F\u53CB\u4E0A\u6240\u6709\u5C6C\u6027\u52A050% \u961F\u4F0D\u4E2D\u9020\u6210\u4F24\u5BB3\u4E5F\u7B97\u6211"
+    extraDesire2:
+    - atk-=1 hp+=10
+    - "\u6BCF\u6740\u4E00\u540D\u654C\u4EBAhp\u56DE\u590D1"
+    - "\u7ED9\u961F\u53CB\u4E0A\u6240\u6709\u5C6C\u6027\u52A05% \u961F\u4F0D\u4E2D\u51FB\u6740\u4EBA\u4E0D\u7B97\u6211"
+    extraCharacteristics: 0200000003000000
+    extraCharacteristicVals: 0100000001000000
     extraData: 
     finished: 0
   - index: 3
@@ -103,8 +134,8 @@ MonoBehaviour:
     - atkrange+=3  atk-=1
     - "\u6B66\u5668+1 \u53EA\u653B\u51FB\u4E0D\u81F3\u4E8E\u81F4\u6B7B\u7684\u654C\u4EBA"
     - "\u6740\u654C\u540Ehp\u4E0D\u53D8 speed+10%"
-    extraCharacteristics: 
-    extraCharacteristicVals: 
+    extraCharacteristics: 0200000005000000
+    extraCharacteristicVals: 0300000003000000
     extraData: 
     finished: 0
   - index: 4
@@ -755,37 +786,6 @@ MonoBehaviour:
     extraThresholds: 
     extraDesire1: []
     extraDesire2: []
-    extraCharacteristics: 
-    extraCharacteristicVals: 
-    extraData: 
-    finished: 0
-  - index: 2
-    creature:
-      attack: 0
-      hp: 0
-      speed: 0
-      attackSpeed: 0
-      attackRange: 0
-      faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
-      desc: "\u7ED9\u961F\u53CB\u4E0A\u6240\u6709\u5C6C\u6027\u52A010% \u961F\u4F0D\u4E2D\u51FB\u6740\u4EBA\u7B97\u6211"
-    name: 2
-    sprite: {fileID: 21300000, guid: 844981228ae50f5459d5d8ed8fb81506, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 1e69deade4accd14e8bf03d630b1096f, type: 3}
-    faceToLeft: 1
-    profession: 1
-    desc: "\u7ED9\u961F\u53CB\u4E0A\u6240\u6709\u5C6C\u6027\u52A010% \u961F\u4F0D\u4E2D\u51FB\u6740\u4EBA\u7B97\u6211"
-    extraTypes: 030000000400000006000000
-    extraThresholds: bc0100001700000002000000
-    extraDesire1:
-    - atk+=10 hp-=5
-    - "\u6BCF\u6740\u4E00\u540D\u654C\u4EBA\u4E0A\u9650+1"
-    - "\u7ED9\u961F\u53CB\u4E0A\u6240\u6709\u5C6C\u6027\u52A050% \u961F\u4F0D\u4E2D\u9020\u6210\u4F24\u5BB3\u4E5F\u7B97\u6211"
-    extraDesire2:
-    - atk-=1 hp+=10
-    - "\u6BCF\u6740\u4E00\u540D\u654C\u4EBAhp\u56DE\u590D1"
-    - "\u7ED9\u961F\u53CB\u4E0A\u6240\u6709\u5C6C\u6027\u52A05% \u961F\u4F0D\u4E2D\u51FB\u6740\u4EBA\u4E0D\u7B97\u6211"
     extraCharacteristics: 
     extraCharacteristicVals: 
     extraData: 

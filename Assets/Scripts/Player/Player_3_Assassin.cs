@@ -154,7 +154,7 @@ public class Player_3_Assassin : Player
     public override void AddBuffBeforeStart()
     {
         float b = GetBuffBonus();
-        this.AddBuff("player3", 0, b, 0, 0);
+        ApplyBuff("player3", -1, 0f, b, 0f, 0f, 0f, ApplyBuffType.Override);
     }
     private float GetBuffBonus()
     {
@@ -163,5 +163,13 @@ public class Player_3_Assassin : Player
         if (extra == 1) return 1.0f;
         if (extra == 2) return 0.1f;
         return 0f;
+    }
+    protected override void OnExtraChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
+    {
+        base.OnExtraChangeEvent(playerIndex, extraIndex, selectedIndex);
+        if (extraIndex == 2)
+        {
+            AddBuffBeforeStart();
+        }
     }
 }

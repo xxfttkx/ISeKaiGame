@@ -240,4 +240,12 @@ public static class Utils
             _ => "null"
         };
     }
+    public static Vector2 Vec2Translate(Vector2 vec2,float angle)
+    {
+        var cos = Mathf.Cos(angle);
+        var sin = Mathf.Sin(angle);
+        var x = vec2.x;
+        var y = vec2.y;
+        return new Vector2(x * cos - y * sin, x * sin + y * cos);
+    }
 }

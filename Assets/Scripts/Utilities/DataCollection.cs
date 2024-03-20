@@ -139,6 +139,7 @@ public class Buff
         this.speedBonus += b.speedBonus;
         this.attackRangeBonus += b.attackRangeBonus;
         this.attackSpeedBonus += b.attackSpeedBonus;
+        this.hpBonus += b.hpBonus;
     }
     public void AddBuff(float bonus)
     {
@@ -146,6 +147,7 @@ public class Buff
         this.speedBonus += bonus;
         this.attackRangeBonus += bonus;
         this.attackSpeedBonus += bonus;
+        this.hpBonus += bonus;
     }
     public void SubBuff(Buff b)
     {
@@ -153,6 +155,7 @@ public class Buff
         this.speedBonus -= b.speedBonus;
         this.attackRangeBonus -= b.attackRangeBonus;
         this.attackSpeedBonus -= b.attackSpeedBonus;
+        this.hpBonus -= b.hpBonus;
     }
     public void Clear()
     {
@@ -160,6 +163,16 @@ public class Buff
         this.speedBonus = 0f;
         this.attackRangeBonus = 0f;
         this.attackSpeedBonus = 0f;
+        this.hpBonus = 0f;
+    }
+
+    public void AddBuff(float atk, float speed, float atkRange, float atkSpeed, float hp)
+    {
+        this.attackBonus += atk;
+        this.speedBonus += speed;
+        this.attackRangeBonus += atkRange;
+        this.attackSpeedBonus += atkSpeed;
+        this.hpBonus += hp;
     }
 }
 

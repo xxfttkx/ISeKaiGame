@@ -111,7 +111,7 @@ public class PlayerManager : Singleton<PlayerManager>
     internal void PlayerKillEnemy(int playerIndex, EnemyBase enemy)
     {
         var pIndex = playerIndex;
-        if (indexToPlayer.ContainsKey(2) && indexToPlayer[2].IsAlive())
+        if (indexToPlayer.ContainsKey(2))
         {
             int extra = SaveLoadManager.Instance.GetPlayerExtra(2, 2);
             if(extra!=2)
@@ -348,7 +348,8 @@ public class PlayerManager : Singleton<PlayerManager>
         foreach(var p in players)
         {
             p.Reset();
-            UIManager.Instance.HPChange(p.GetPlayerIndex(),1.0f);
+            EventHandler.CallPlayerHpValChangeEvent(p.GetPlayerIndex(), 1.0f);
+            //todo change.
             UIManager.Instance.FieldTimeChange(p.GetPlayerIndex(), 0.0f);
         }
         foreach (var p in players)

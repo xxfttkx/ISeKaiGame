@@ -257,4 +257,10 @@ public static class EventHandler
     {
         LanguageChange?.Invoke();
     }
+
+    public static event Action<int,float> PlayerHpValChangeEvent;
+    public static void CallPlayerHpValChangeEvent(int index,float val)
+    {
+        PlayerHpValChangeEvent?.Invoke(index,val);
+    }
 }
