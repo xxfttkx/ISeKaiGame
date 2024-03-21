@@ -35,7 +35,7 @@ public class Player_1_Mage : Player_Single
     {
         foreach (var p in PlayerManager.Instance.players)
         {
-            p.AddBuff("player2", GetBuffBonus(), 0f, 0f, 0f);
+            p.ApplyBuffOverride("player1", -1, GetBuffBonus(), 0f, 0f, 0f, 0f);
         }
     }
     private float GetBuffBonus()

@@ -15,6 +15,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public Dictionary<int, Player> indexToPlayer;
     public Dictionary<int, SpriteRenderer> indexToSpriteRenderer;
     public List<int> trueIndexes;
+    Coroutine curSorMove;
 
     protected override void Awake()
     {
@@ -395,5 +396,27 @@ public class PlayerManager : Singleton<PlayerManager>
     public Player GetPlayerByPlayerIndex(int i)
     {
         return indexToPlayer[i];
+    }
+    public void MoveToPos(Vector2 pos)
+    {
+        if(curSorMove!=null)
+        {
+            StopCoroutine(curSorMove);
+        }
+        curSorMove = StartCoroutine(MoveToPosCo(pos));
+    }
+    IEnumerator MoveToPosCo(Vector2 pos)
+    {
+        var dir = pos - (Vector2)this.transform.position;
+        dir = dir.normalized;
+        while (((Vector2)this.transform.position - pos).sqrMagnitude > 0.1f)
+        {
+            var speed = GetPlayerSpeed(currPlayerIndex);
+            Vector2 move = dir * speed * Time.deltaTime;
+            Vector3 m = new Vector3(move.x, move.y, 0.0f);
+            this.transform.position = this.transform.position + m;
+            players[currIndex].Move(dir, Time.deltaTime);
+            yield return null;
+        }
     }
 }

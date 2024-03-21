@@ -50,8 +50,7 @@ public class SelectPanel : Singleton<SelectPanel>
         }
         foreach (var c in SOManager.Instance.characterDataList_SO.characters)
         {
-            if (c.prefab == null) continue;
-            
+            if (!c.finished) continue;
             var go  = Instantiate(selectPrefab, professionToPlayers[c.profession].transform);
             var b = go.GetComponent<SelectPlayerButton>();
             buttons.Add(c.index,b);

@@ -16,10 +16,9 @@ public class Player_4_Mage : Player_Single
     }
     protected override IEnumerator AttackAnim(EnemyBase e)
     {
-        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 1);
+        int extra = extras[1];
         Vector2 dir = e.transform.position - this.transform.position;
         PoolManager.Instance.CreateBubble(dir, this.transform.position, this);
-        Debug.Log("hit");
         if (extra == 1)
         {
             StartCoroutine(DelayShoot(dir));
@@ -37,15 +36,26 @@ public class Player_4_Mage : Player_Single
     }
     public override void AddBuffBeforeStart()
     {
-        float b = GetBuffBonus();
-        this.AddBuff("player3", 0, b, 0, 0);
+        foreach(var p in PlayerManager.Instance.players)
+        {
+            p.ApplyBuff("player4", -1, 0f, GetBuffBonus(), 0f, 0f, 0f, ApplyBuffType.Override);
+        }
+        
     }
     private float GetBuffBonus()
     {
-        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 2);
+        int extra = extras[2];
         if (extra == 0) return 0.1f;
         if (extra == 1) return -0.1f;
         if (extra == 2) return -0.2f;
         return 0f;
+    }
+    protected override void OnExtraChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
+    {
+        base.OnExtraChangeEvent(playerIndex, extraIndex, selectedIndex);
+        if (extraIndex == 2)
+        {
+            AddBuffBeforeStart();
+        }
     }
 }

@@ -49,11 +49,15 @@ public class UIManager : Singleton<UIManager>
     {
         EventHandler.EndLevelEvent += OnEndLevelEvent;
         EventHandler.PlayerHpValChangeEvent += OnPlayerHpValChangeEvent;
+        EventHandler.BuffChangeEvent += OnBuffChangeEvent;
+        EventHandler.BuffRemoveEvent += OnBuffRemoveEvent;
     }
     private void OnDisable()
     {
         EventHandler.EndLevelEvent -= OnEndLevelEvent;
         EventHandler.PlayerHpValChangeEvent -= OnPlayerHpValChangeEvent;
+        EventHandler.BuffChangeEvent -= OnBuffChangeEvent;
+        EventHandler.BuffRemoveEvent -= OnBuffRemoveEvent;
     }
     void OnEndLevelEvent()
     {
@@ -105,6 +109,14 @@ public class UIManager : Singleton<UIManager>
     public void BuffChange(int index, Buff buff)
     {
         indexToPlayerData[index].SetBuffList(buff);
+    }
+    void OnBuffChangeEvent(int index, Buff buff)
+    {
+        BuffChange(index, buff);
+    }
+    void OnBuffRemoveEvent(int i,Buff b)
+    {
+        indexToPlayerData[i].RemoveBuff(b);
     }
     public void FieldTimeChange(int index, float time)
     {

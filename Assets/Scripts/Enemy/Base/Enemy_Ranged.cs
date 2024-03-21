@@ -7,10 +7,15 @@ public abstract class Enemy_Ranged : EnemyBase
     protected override void OnEnable()
     {
         base.OnEnable();
+
+    }
+    public override void Reset()
+    {
+        base.Reset();
         StartCoroutine(YuanChengAttack());
     }
 
-    
+
     IEnumerator YuanChengAttack()
     {
         yield return null;

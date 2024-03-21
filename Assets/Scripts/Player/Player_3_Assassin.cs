@@ -7,11 +7,13 @@ public class Player_3_Assassin : Player
 {
     public List<GameObject> knives;
     private HashSet<int> atkingEnemies;
+    private List<Coroutine> atks;
     protected override void Awake()
     {
         character.index = 3 ;
         base.Awake();
         atkingEnemies = new HashSet<int>();
+        atks = new List<Coroutine>();
     }
 
     protected override void OnEnable()
@@ -37,18 +39,13 @@ public class Player_3_Assassin : Player
         {
             go.SetActive(false);
         }
-        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 1);
-        if(extra==0)StartCoroutine(Attack());
-        else if (extra == 1)
-        {
-            StartCoroutine(AttackExtra1(0));
-            StartCoroutine(AttackExtra1(1));
-        }
-        else if (extra == 2)
-        {
-            StartCoroutine(AttackExtra2(0));
-            StartCoroutine(AttackExtra2(1));
-        }
+        
+    }
+    public override void StartAttack()
+    {
+        base.StartAttack();
+        AttackByExtra(0);
+        AttackByExtra(1);
     }
     private void OnPlayerKillEnemyEvent(int playerIndex)
     {
@@ -61,73 +58,69 @@ public class Player_3_Assassin : Player
         }
     }
         
-    IEnumerator Attack()
+    IEnumerator Attack(int index)
     {
-        while (true)
+        if(index==0)
         {
             var e = Utils.GetNearestEnemy(this.transform.position, GetAttackRange());
             if (e != null)
             {
-                yield return AttackAnim(e, knives[0]);
-                yield return new WaitForSeconds(GetSkillCD());
-                continue;
+                yield return AttackAnim(e, knives[index]);
+                yield return WaitCDAndJudgeExtra(index);
+                yield break;
             }
-            yield return null;
-            continue;
         }
+        yield return null;
+        AttackByExtra(index);
     }
     IEnumerator AttackExtra1(int index)
     {
-        while (true)
+        var enemies = Utils.GetNearEnemiesByDistance(this.transform.position, GetAttackRange());
+        if (enemies != null && enemies.Count > 0)
         {
-            var enemies = Utils.GetNearEnemiesByDistance(this.transform.position, GetAttackRange());
-            if (enemies != null && enemies.Count > 0)
+            foreach (var e in enemies)
             {
-                foreach (var e in enemies)
+                if ((e.transform.position.y - this.transform.position.y) * (0.5f - index) >= 0)
                 {
-                    if((e.transform.position.y-this.transform.position.y)*(0.5f-index)>=0)
-                    {
-                        yield return AttackAnim(e, knives[index]);
-                        break;
-                    }
+                    yield return AttackAnim(e, knives[index]);
+                    break;
                 }
-                yield return new WaitForSeconds(GetSkillCD());
-                continue;
             }
-            yield return null;
-            continue;
+            yield return WaitCDAndJudgeExtra(index);
+            yield break;
         }
+        yield return null;
+        AttackByExtra(index);
     }
     IEnumerator AttackExtra2(int index)
     {
-        while (true)
+        var enemies = Utils.GetNearEnemiesByDistance(this.transform.position, GetAttackRange());
+        if (enemies != null && enemies.Count > 0)
         {
-            var enemies = Utils.GetNearEnemiesByDistance(this.transform.position, GetAttackRange());
-            if (enemies != null && enemies.Count > 0)
+            int a = PlayerManager.Instance.GetPlayerAttack(3);
+            foreach (var e in enemies)
             {
-                int a = PlayerManager.Instance.GetPlayerAttack(3);
-                foreach (var e in enemies)
+                if (atkingEnemies.Contains(e.GetGlobalIndex())) continue;
+                if (a < e.GetHP())
                 {
-                    if (atkingEnemies.Contains(e.GetGlobalIndex())) continue;
-                    if (a < e.GetHP())
-                    {
-                        atkingEnemies.Contains(e.GetGlobalIndex());
-                        yield return AttackAnim(e, knives[index]);
-                        atkingEnemies.Remove(e.GetGlobalIndex());
-                        break;
-                    }
+                    atkingEnemies.Contains(e.GetGlobalIndex());
+                    yield return AttackAnim(e, knives[index]);
+                    atkingEnemies.Remove(e.GetGlobalIndex());
+                    break;
                 }
-                yield return new WaitForSeconds(GetSkillCD());
-                continue;
             }
-            yield return null;
-            continue;
+            yield return WaitCDAndJudgeExtra(index);
+            yield break;
         }
+        yield return null;
+        AttackByExtra(index);
     }
     IEnumerator AttackAnim(EnemyBase e, GameObject knife)
     {
-        
+        // 0.1f 5
         Vector2 dir = e.transform.position - this.transform.position;
+        Vector2 bas = dir.normalized;
+        Vector2 curr = Vector2.zero;
         float angle = Vector2.Angle(Vector2.up, dir);
         if (dir.x > 0)
         {
@@ -135,19 +128,19 @@ public class Player_3_Assassin : Player
         }
         knife.transform.rotation = Quaternion.Euler(0, 0, angle);
         knife.SetActive(true);
-        for(float i = 0;i<1;i+=0.1f)
+        while(curr.sqrMagnitude<dir.sqrMagnitude)
         {
-            knife.transform.localPosition = Vector2.Lerp(Vector2.zero, dir, i);
-
+            curr += bas / 2f;
+            knife.transform.localPosition = curr;
             yield return new WaitForSeconds(0.01f);
         }
         PlayerManager.Instance.PlayerHurtEnemy(GetPlayerIndex(), e);
-        for (float i = 0; i < 1; i += 0.1f)
+        while (Vector2.Dot(curr, bas) > 0)
         {
-            knife.transform.localPosition = Vector2.Lerp(dir, Vector2.zero, i);
+            curr -= bas / 2f;
+            knife.transform.localPosition = curr;
             yield return new WaitForSeconds(0.01f);
         }
-        // yield return new WaitForSeconds(0.2f);
         knife.SetActive(false);
         
     }
@@ -170,6 +163,27 @@ public class Player_3_Assassin : Player
         if (extraIndex == 2)
         {
             AddBuffBeforeStart();
+        }
+    }
+    IEnumerator WaitCDAndJudgeExtra(int index)
+    {
+        yield return new WaitForSeconds(GetSkillCD());
+        AttackByExtra(index);
+    }
+    void AttackByExtra(int index)
+    {
+        int extra = extras[1];
+        if (extra == 0)
+        {
+            StartCoroutine(Attack(index));
+        }
+        else if (extra == 1)
+        {
+            StartCoroutine(AttackExtra1(index));
+        }
+        else if (extra == 2)
+        {
+            StartCoroutine(AttackExtra2(index));
         }
     }
 }

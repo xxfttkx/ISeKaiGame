@@ -33,7 +33,6 @@ public class EnemyBase: Creature
     }
     protected virtual void Start()
     {
-        
         enemy = SOManager.Instance.enemyDataList_SO.enemies[enemy.index];
         sp.sprite = enemy.sprite;
     }
@@ -89,11 +88,11 @@ public class EnemyBase: Creature
     {
         if (IsAlive())
         {
-            damage = Mathf.Min(enemy.hp, damage);
+            damage = Mathf.Min(hp, damage);
             HPPanel.Instance.Show(this.transform.position, damage);
             SaveLoadManager.Instance.SetPlayerExtraData(playerIndex, ExtraType.Hurt,damage);
-            enemy.hp -= damage;
-            if (enemy.hp <= 0)
+            hp -= damage;
+            if (hp <= 0)
             {
                 //TODO
                 PlayerManager.Instance.PlayerKillEnemy(playerIndex, this);
@@ -108,7 +107,6 @@ public class EnemyBase: Creature
     }
     IEnumerator BeRed()
     {
-         
         for(float red = material.GetFloat("_Red");red<1.0f;red+=0.2f)
         {
             material.SetFloat("_Red", red);
@@ -125,7 +123,7 @@ public class EnemyBase: Creature
     {
         if (!beReleased)
         {
-            enemy.hp = 0;
+            hp = 0;
             beReleased = true;
             animator?.SetBool("Dead", true);
             StartCoroutine(Dead());
@@ -186,12 +184,13 @@ public class EnemyBase: Creature
         isBegingRepelled = false;
         enemy = SOManager.Instance.enemyDataList_SO.GetEnemyByIndex(enemy.index);
         hp = enemy.creature.hp;
+        //todo del
+        hp = enemy.hp;
         attackRandomTime = 0;
         material.SetFloat("_Red", 0f);
         material.SetFloat("_TwistUvAmount", 0f);
         material.SetFloat("_TwistUvRadius", 0.8f);
         material.SetFloat("_ZoomUvAmount", 1.0f);
-        allBuff = new Buff("all", 0, 0, 0, 0);
         beReleased = false;
         canMove = true;
         player = PlayerManager.Instance.GetPlayerInControl();

@@ -261,6 +261,19 @@ public static class EventHandler
     public static event Action<int,float> PlayerHpValChangeEvent;
     public static void CallPlayerHpValChangeEvent(int index,float val)
     {
+        if (index < 0) return;
         PlayerHpValChangeEvent?.Invoke(index,val);
+    }
+    public static event Action<int,Buff> BuffChangeEvent;
+    public static void CallBuffChangeEvent(int index, Buff b)
+    {
+        if (index < 0) return;
+        BuffChangeEvent?.Invoke(index,b);
+    }
+    public static event Action<int, Buff> BuffRemoveEvent;
+    public static void CallBuffRemoveEvent(int index, Buff b)
+    {
+        if (index < 0) return;
+        BuffRemoveEvent?.Invoke(index, b);
     }
 }

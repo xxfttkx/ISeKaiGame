@@ -57,6 +57,14 @@ public class PlayerData : MonoBehaviour
 
         tip.SetBuff(buff);
     }
+    public void RemoveBuff(Buff b)
+    {
+        if (buffNameToBuffTip.TryGetValue(b.buffName, out Bufftip tip))
+        {
+            buffNameToBuffTip.Remove(b.buffName);
+            Destroy(tip.gameObject);
+        }
+    }
     public void ShowPlayerSettings()
     {
         UIManager.Instance.ShowPlayerSettingsPanel(index);

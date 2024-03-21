@@ -83,8 +83,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      sprite: {fileID: 21300000, guid: 844981228ae50f5459d5d8ed8fb81506, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: 1e69deade4accd14e8bf03d630b1096f, type: 3}
       desc: "\u7ED9\u961F\u53CB\u4E0A\u6240\u6709\u5C6C\u6027\u52A010% \u961F\u4F0D\u4E2D\u51FB\u6740\u4EBA\u7B97\u6211"
     name: 2
     sprite: {fileID: 21300000, guid: 844981228ae50f5459d5d8ed8fb81506, type: 3}
@@ -114,8 +114,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      sprite: {fileID: 21300000, guid: aa9207ae36d26d849978a368771f4663, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: 1871cdc2ec10017419210b044a2b37bb, type: 3}
       desc: 
     name: acacia
     sprite: {fileID: 21300000, guid: aa9207ae36d26d849978a368771f4663, type: 3}
@@ -137,7 +137,7 @@ MonoBehaviour:
     extraCharacteristics: 0200000005000000
     extraCharacteristicVals: 0300000003000000
     extraData: 
-    finished: 0
+    finished: 1
   - index: 4
     creature:
       attack: 0
@@ -146,8 +146,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      sprite: {fileID: 21300000, guid: c8f8d1075cf1b454cb4862429fa94bfc, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: 2943f504bf029d24384a8e6bb267d775, type: 3}
       desc: 
     name: coq au vin
     sprite: {fileID: 21300000, guid: c8f8d1075cf1b454cb4862429fa94bfc, type: 3}
@@ -165,10 +165,10 @@ MonoBehaviour:
     - atkrange+=1 atk-=2
     - "\u53D1\u5C04\u65F6 \u5F80\u53CD\u65B9\u5411\u518D\u53D1\u5C04\u4E00\u4E2A"
     - "\u654C\u4EBA\u8D8A\u591A\u4F24\u5BB3\u8D8A\u9AD8,\u5168\u961Fspeed-20%"
-    extraCharacteristics: 
-    extraCharacteristicVals: 
+    extraCharacteristics: 0200000005000000
+    extraCharacteristicVals: 0200000002000000
     extraData: 
-    finished: 0
+    finished: 1
   - index: 5
     creature:
       attack: 0
