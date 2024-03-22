@@ -1,34 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class TMPStatic : MonoBehaviour
 {
-    private TextMeshProUGUI tmp;
+    public TextMeshProUGUI tmp;
     public int index;
+    public int language;
+    public TextDataList_SO textDataList_SO;
 
     private void Awake()
     {
-        tmp = GetComponent<TextMeshProUGUI>();
     }
     private void OnEnable()
     {
         EventHandler.LanguageChange+= OnLanguageChange;
-        Init();
+        EventHandler.LoadFinishEvent+= OnLoadFinishEvent;
     }
     private void OnDisable()
     {
         EventHandler.LanguageChange -= OnLanguageChange;
+        EventHandler.LoadFinishEvent -= OnLoadFinishEvent;
     }
 
+    [ContextMenu("Init")]
     void Init()
     {
-        tmp.text = SOManager.Instance.GetStringByIndex(index);
+        tmp.text = textDataList_SO.GetTextString(index, language);
     }
 
-    private void OnLanguageChange()
+    private void OnLanguageChange(int l)
     {
+        language = l;
+        Init();
+    }
+    void OnLoadFinishEvent()
+    {
+        language = SaveLoadManager.Instance.GetLanguage();
         Init();
     }
 }

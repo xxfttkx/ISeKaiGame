@@ -322,6 +322,7 @@ public class Player : Creature
     }
     protected virtual void OnExtraChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
     {
+        selectedIndex++;
         if (playerIndex != GetPlayerIndex()) return;
         if (extraIndex == 0)
         {

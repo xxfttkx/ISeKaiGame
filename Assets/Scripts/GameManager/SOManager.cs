@@ -19,7 +19,11 @@ public class SOManager : Singleton<SOManager>
 
     public GameObject GetPlayerPrefabByIndex(int index)
     {
-        return characterDataList_SO.characters[index].prefab;
+        return characterDataList_SO.characters[index].creature.prefab;
+    }
+    public Sprite GetPlayerSpriteByIndex(int index)
+    {
+        return characterDataList_SO.characters[index].creature.sprite;
     }
     public Character GetPlayerDataByIndex(int index)
     {

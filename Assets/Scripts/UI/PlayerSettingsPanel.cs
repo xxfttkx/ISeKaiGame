@@ -36,7 +36,7 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
         {
             var go = Instantiate(imagePrefab, imageParent.transform);
             var b = go.GetComponent<PlayerBtn>();
-            var sp = SOManager.Instance.GetPlayerDataByIndex(i).sprite;
+            var sp = SOManager.Instance.GetPlayerSpriteByIndex(i);
             b.InitButton(i, sp);
             playerImages.Add(b);
         }

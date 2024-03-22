@@ -25,9 +25,6 @@ MonoBehaviour:
       prefab: {fileID: 4708548768610898139, guid: 22f9785782a07cb488c018cc31e0c759, type: 3}
       desc: "\u4F24\u5BB3*1.5 money\u83B7\u5F97\u6548\u73870.2"
     name: cache coeur
-    sprite: {fileID: 21300000, guid: 4ba4c2cbb7973c541ad6b5b18fc2ef40, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 22f9785782a07cb488c018cc31e0c759, type: 3}
-    faceToLeft: 1
     profession: 0
     desc: "\u4F24\u5BB3*1.5 money\u83B7\u5F97\u6548\u73870.2"
     extraTypes: 010000000200000006000000
@@ -56,9 +53,6 @@ MonoBehaviour:
       prefab: {fileID: 4708548768610898139, guid: f7f869939984ab645a279417b160dede, type: 3}
       desc: "\u7FBD\u6BDB\u653B\u51FB \u961F\u4F0DBuff atk*=1.2  \u961F\u4F0D\u4E2D\u51FB\u6740\u8005attack/=2"
     name: nirvana
-    sprite: {fileID: 21300000, guid: ef16a113f0df5ef48b94a3da9c153bd1, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: f7f869939984ab645a279417b160dede, type: 3}
-    faceToLeft: 1
     profession: 2
     desc: "\u7FBD\u6BDB\u653B\u51FB \u961F\u4F0DBuff atk*=1.2  \u961F\u4F0D\u4E2D\u51FB\u6740\u8005attack/=2"
     extraTypes: 010000000400000006000000
@@ -74,7 +68,7 @@ MonoBehaviour:
     extraCharacteristics: 0200000005000000
     extraCharacteristicVals: 0300000003000000
     extraData: 
-    finished: 0
+    finished: 1
   - index: 2
     creature:
       attack: 0
@@ -87,9 +81,6 @@ MonoBehaviour:
       prefab: {fileID: 4708548768610898139, guid: 1e69deade4accd14e8bf03d630b1096f, type: 3}
       desc: "\u7ED9\u961F\u53CB\u4E0A\u6240\u6709\u5C6C\u6027\u52A010% \u961F\u4F0D\u4E2D\u51FB\u6740\u4EBA\u7B97\u6211"
     name: 2
-    sprite: {fileID: 21300000, guid: 844981228ae50f5459d5d8ed8fb81506, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 1e69deade4accd14e8bf03d630b1096f, type: 3}
-    faceToLeft: 1
     profession: 1
     desc: "\u7ED9\u961F\u53CB\u4E0A\u6240\u6709\u5C6C\u6027\u52A010% \u961F\u4F0D\u4E2D\u51FB\u6740\u4EBA\u7B97\u6211"
     extraTypes: 030000000400000006000000
@@ -105,7 +96,7 @@ MonoBehaviour:
     extraCharacteristics: 0200000003000000
     extraCharacteristicVals: 0100000001000000
     extraData: 
-    finished: 0
+    finished: 1
   - index: 3
     creature:
       attack: 0
@@ -118,9 +109,6 @@ MonoBehaviour:
       prefab: {fileID: 4708548768610898139, guid: 1871cdc2ec10017419210b044a2b37bb, type: 3}
       desc: 
     name: acacia
-    sprite: {fileID: 21300000, guid: aa9207ae36d26d849978a368771f4663, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 1871cdc2ec10017419210b044a2b37bb, type: 3}
-    faceToLeft: 1
     profession: 3
     desc: "\u6740\u654C\u8840\u91CF\u53D850% \u653B\u901F\u53D7\u4E0E\u654C\u4EBA\u8DDD\u79BB\u5F71\u54CD
       \u81EA\u8EABspeed+50%"
@@ -150,9 +138,6 @@ MonoBehaviour:
       prefab: {fileID: 4708548768610898139, guid: 2943f504bf029d24384a8e6bb267d775, type: 3}
       desc: 
     name: coq au vin
-    sprite: {fileID: 21300000, guid: c8f8d1075cf1b454cb4862429fa94bfc, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 2943f504bf029d24384a8e6bb267d775, type: 3}
-    faceToLeft: 1
     profession: 2
     desc: "\u7206\u70B8\u6CE1\u6CE1 \u654C\u4EBA\u8D8A\u591A\u4F24\u5BB3\u8D8A\u4F4E,\u5168\u961Fspeed+10%"
     extraTypes: 010000000400000006000000
@@ -176,14 +161,11 @@ MonoBehaviour:
       speed: 0
       attackSpeed: 0
       attackRange: 0
-      faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      faceToLeft: 1
+      sprite: {fileID: 21300000, guid: 6f847332087b514459911504f41b46a2, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: cfcc04c9e6af6754c9bda5900c682f18, type: 3}
       desc: 
     name: white lady
-    sprite: {fileID: 21300000, guid: aa9207ae36d26d849978a368771f4663, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: cfcc04c9e6af6754c9bda5900c682f18, type: 3}
-    faceToLeft: 1
     profession: 2
     desc: "\u653B\u51FB\u4E0E\u8840\u91CF\u767E\u5206\u6BD4\u6709\u5173\uFF0C\u5C04\u6FC0\u5149
       \u5168\u961Fatk+20%"
@@ -197,10 +179,10 @@ MonoBehaviour:
     - attack += -5;attackRange -= -2;
     - "\u6FC0\u5149\u80FD\u591F\u7A7F\u900F"
     - "hp=1\u65F6\u9020\u62102\u500D\u4F24\u5BB3,\u5426\u52190.3"
-    extraCharacteristics: 0200000004000000
+    extraCharacteristics: 0200000005000000
     extraCharacteristicVals: 0500000002000000
     extraData: 
-    finished: 0
+    finished: 1
   - index: 6
     creature:
       attack: 0
@@ -208,30 +190,29 @@ MonoBehaviour:
       speed: 0
       attackSpeed: 0
       attackRange: 0
-      faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      faceToLeft: 1
+      sprite: {fileID: 21300000, guid: 82c6f5d2e6bedd84b9967ad23002e017, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: 89f5e3ceebe75534da250b20d6648177, type: 3}
       desc: 
     name: yellow fly
-    sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 89f5e3ceebe75534da250b20d6648177, type: 3}
-    faceToLeft: 1
     profession: 2
     desc: "\u53EC\u5524\u9B54\u6CD5 \u53EC\u5524\u7269\u627F\u4F24\u7531\u961F\u4F0D\u4E2D\u8840\u91CF\u767E\u5206\u6BD4\u6700\u9AD8\u627F\u62C5//todo"
-    extraTypes: 
-    extraThresholds: 000000000000000000000000
+    extraTypes: 01000000040000000600000003000000
+    extraThresholds: 00000000000000000000000000000000
     extraDesire1:
     - 
     - "\u53EC\u5524\u7269\u529F\u80FD\u53D8\u4E3A\u6CBB\u7597"
     - "\u53EC\u5524\u7269\u627F\u4F24\u7531\u961F\u4F0D\u4E2D\u8840\u91CF\u767E\u5206\u6BD4\u6700\u4F4E\u627F\u62C5"
+    - "\u53EC\u5524\u7269\u5B58\u572820s \u53EC\u5524\u4EE3\u4EF720hp"
     extraDesire2:
     - 
     - "\u53EC\u5524\u7269\u53D8\u6210\u8FDC\u7A0B\u8303\u56F4\u653B\u51FB"
     - "\u6BCF\u6B21\u4EA7\u751F\u4E24\u4E2A\u53EC\u5524\u7269"
-    extraCharacteristics: 0200000003000000
-    extraCharacteristicVals: 0000000000000000
+    - "\u53EC\u5524\u7269\u5B58\u57288s \u53EC\u5524\u4EE3\u4EF70hp"
+    extraCharacteristics: 0200000005000000
+    extraCharacteristicVals: 0300000003000000
     extraData: 
-    finished: 0
+    finished: 1
   - index: 7
     creature:
       attack: 0
@@ -244,9 +225,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: platinum
-    sprite: {fileID: 21300000, guid: ef16a113f0df5ef48b94a3da9c153bd1, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 8af2a66e3d9cb864b80d108a29ef5431, type: 3}
-    faceToLeft: 1
     profession: 0
     desc: "\u6536\u5230\u4F24\u5BB3\u961F\u53CB\u5747\u644A \u4E0D\u81F4\u6B7B\uFF0C\u767D\u91D1\u4E4B\u661F\u3002\u3002"
     extraTypes: 
@@ -259,8 +237,8 @@ MonoBehaviour:
     - 
     - "\u653B\u51FB\u53D8\u6210\u8303\u56F4 \u51FB\u9000\u6548\u679C\u51CF\u5F31"
     - "\u6536\u5230\u4F24\u5BB3\u8F6C\u7ED9\u8840\u91CF\u767E\u5206\u6BD4\u6700\u4F4E\u961F\u53CB"
-    extraCharacteristics: 
-    extraCharacteristicVals: 
+    extraCharacteristics: 0200000005000000
+    extraCharacteristicVals: 0200000002000000
     extraData: 
     finished: 0
   - index: 8
@@ -275,9 +253,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: virtuo
-    sprite: {fileID: 21300000, guid: 7fcafd8216de34d44b53f761e3b3aff9, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 8fd657a6a87a18043af884fa4ea275ca, type: 3}
-    faceToLeft: 1
     profession: 0
     desc: "\u65E0\u6CD5\u5BF9\u654C\u65B9\u81F4\u6B7B\uFF0Cdef=1"
     extraTypes: 020000000100000006000000
@@ -306,9 +281,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: 99
-    sprite: {fileID: 21300000, guid: ef16a113f0df5ef48b94a3da9c153bd1, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: d52dad1265318ec4db87c74e96b61853, type: 3}
-    faceToLeft: 1
     profession: 1
     desc: "\u53EA\u80FD\u5976\u573A\u4E0A"
     extraTypes: 
@@ -337,9 +309,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: 
-    sprite: {fileID: 21300000, guid: 82c6f5d2e6bedd84b9967ad23002e017, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 7a7afb93ed3395e4d80ec0d4301bbe06, type: 3}
-    faceToLeft: 0
     profession: 2
     desc: "\u6BCF\u6740\u4E00\u4E2A\u654C\u4EBA\uFF0C\u6240\u6709\u5C5E\u6027\u52A05%\uFF0C\u6700\u591A100%\n\u602A\u76D7
       \u5077\u5FC3,\u654C\u4EBAhp\u6162\u6162\u4E0B\u964D\uFF0C\u6301\u7EED10s"
@@ -371,9 +340,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: jealous
-    sprite: {fileID: 21300000, guid: 926bd79573528c54cbf907716ece4ef9, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 015929db7ca5994418ad71f94a064511, type: 3}
-    faceToLeft: 0
     profession: 2
     desc: "\u5927\u5BCC\u8C6A//Pass..."
     extraTypes: 010000000400000008000000
@@ -402,9 +368,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: template
-    sprite: {fileID: 21300000, guid: 926bd79573528c54cbf907716ece4ef9, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 21bbcd2a19edc03418530dec33b3922a, type: 3}
-    faceToLeft: 1
     profession: 2
     desc: "\u6254\u97AD\u70AE  \u4F1A\u70B8\u961F\u53CB \u70B8\u961F\u53CB"
     extraTypes: 010000000400000006000000
@@ -433,9 +396,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: template
-    sprite: {fileID: 21300000, guid: b5e6cdd306865cd4290644856a957887, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 2c258f43380f5aa478e52487594aed2a, type: 3}
-    faceToLeft: 0
     profession: 1
     desc: "\u5976=hp*1.5"
     extraTypes: 
@@ -464,9 +424,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: gray joker
-    sprite: {fileID: 21300000, guid: 844981228ae50f5459d5d8ed8fb81506, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 175a98e6060c764469f22476f6576754, type: 3}
-    faceToLeft: 1
     profession: 0
     desc: "\u66FF\u961F\u53CB\u627F\u53D7\u654C\u4EBA\u4F24\u5BB3,\u6CA1\u6709\u653B\u51FB\u80FD\u529B?"
     extraTypes: 
@@ -495,9 +452,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: camellia
-    sprite: {fileID: 21300000, guid: 05675ee200279684a96c287bc3ff9464, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 7a5890ab96b7f24428ce3caa5a87019f, type: 3}
-    faceToLeft: 1
     profession: 0
     desc: "\u6BCF5\u6B21\u53D7\u51FB\u4E0B\u4E00\u6B21\u4E0D\u53D7\u4F24\uFF0C\u4E0D\u80FD\u653B\u51FB"
     extraTypes: 
@@ -520,9 +474,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: copy
-    sprite: {fileID: 21300000, guid: ef16a113f0df5ef48b94a3da9c153bd1, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: e55b2ba84e4b1dd45afaeab01676d6e8, type: 3}
-    faceToLeft: 1
     profession: 3
     desc: "\u5728\u654C\u4EBA\u95F4\u53CD\u5F39\u7684\u96F7\u7535\uFF0C\u4F1A\u95EA\u5230\u5DF1\u65B9\uFF0C\u95EA\u7535\u6700\u591A\u653B\u51FB10\u6B21"
     extraTypes: 000000000000000000000000
@@ -551,9 +502,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: gnosis
-    sprite: {fileID: 21300000, guid: 6d2196183c1801e479f78254bbc800c0, type: 3}
-    prefab: {fileID: 0}
-    faceToLeft: 1
     profession: 0
     desc: "\u5F02\u7AEF\u8005 \u548C\u6076\u9B54\u8BA2\u7ACB\u5951\u7EA6 \u6740\u654C\u4F1A\u89E6\u53D1\u7206\u70B8
       \u7206\u70B8\u4F1A\u70B8\u961F\u53CB"
@@ -577,9 +525,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: emerald
-    sprite: {fileID: 21300000, guid: 4ba4c2cbb7973c541ad6b5b18fc2ef40, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 6329e88ab9a600d4f843aa79ef281d64, type: 3}
-    faceToLeft: 1
     profession: 2
     desc: "\u9700\u8981\u541F\u5531\u201Cyiwuvili hodj faue\u201D\uFF0C\u624D\u80FD\u4F7F\u7528\u9B54\u6CD5,\u541F\u55313\u79D2"
     extraTypes: 
@@ -602,9 +547,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: blend fruit
-    sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
-    prefab: {fileID: 0}
-    faceToLeft: 0
     profession: 2
     desc: yg..
     extraTypes: 
@@ -627,9 +569,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: 20
-    sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
-    prefab: {fileID: 0}
-    faceToLeft: 0
     profession: 2
     desc: "\u8840\u91CF\u4E3A1\u65F6\u52A0\u5C5E\u6027 \u95EA\u907F\u3002\u3002"
     extraTypes: 
@@ -652,9 +591,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: executor
-    sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
-    prefab: {fileID: 0}
-    faceToLeft: 0
     profession: 2
     desc: "\u5F02\u7AEF\u5BA1\u95EE\u8005"
     extraTypes: 
@@ -677,9 +613,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: mimosa
-    sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
-    prefab: {fileID: 0}
-    faceToLeft: 0
     profession: 2
     desc: "\u521B\u9020\u767D\u96FE\uFF0C\u4E0D\u4F1A\u88AB\u654C\u4EBA\u770B\u5230\uFF0C\u4E5F\u770B\u4E0D\u5230\u654C\u4EBA\u3002\u3002"
     extraTypes: 
@@ -702,9 +635,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: hideout
-    sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
-    prefab: {fileID: 0}
-    faceToLeft: 0
     profession: 0
     desc: "\u6BCF\u79D2\u62631\u6EF4\u8840\uFF0C\u56DE\u907F\u578B\u8089\u76FE30%"
     extraTypes: 020000000600000007000000
@@ -727,9 +657,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: "\u52C7\u8005/\u9B54\u738B"
-    sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
-    prefab: {fileID: 0}
-    faceToLeft: 0
     profession: 0
     desc: "\u52C7\u8005\u5438\u961F\u53CB\u8840 \u9B54\u738B\u7ED9\u961F\u53CB\u795D\u798F"
     extraTypes: 020000000600000007000000
@@ -752,9 +679,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: "\u7DD1\u9B54\u9053\u58EB"
-    sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
-    prefab: {fileID: 0}
-    faceToLeft: 0
     profession: 0
     desc: "\u52C7\u8005\u5438\u961F\u53CB\u8840 \u9B54\u738B\u7ED9\u961F\u53CB\u795D\u798F"
     extraTypes: 020000000600000007000000
@@ -777,9 +701,6 @@ MonoBehaviour:
       prefab: {fileID: 0}
       desc: 
     name: dark elf
-    sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
-    prefab: {fileID: 0}
-    faceToLeft: 0
     profession: 0
     desc: "\u52C7\u8005\u5438\u961F\u53CB\u8840 \u9B54\u738B\u7ED9\u961F\u53CB\u795D\u798F"
     extraTypes: 020000000600000007000000

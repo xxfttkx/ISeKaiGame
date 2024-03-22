@@ -38,15 +38,15 @@ public class BtnBase : MonoBehaviour, IPointerClickHandler,IPointerEnterHandler,
     }
     public virtual void BtnEnter() 
     {
-        btnEnter?.Invoke();
+
     }
     public virtual void BtnExit() 
     {
-        btnExit?.Invoke();
+
     }
     public virtual void BtnClick() 
     {
-        btnClick?.Invoke();
+
     }
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -74,5 +74,34 @@ public class BtnBase : MonoBehaviour, IPointerClickHandler,IPointerEnterHandler,
         right = r;
         up = u;
         down = d;
+    }
+    public void SetLeftBtn(BtnBase b)
+    {
+        left = b;
+    }
+    public void SetRightBtn(BtnBase b)
+    {
+        right = b;
+    }
+    public void SetUpBtn(BtnBase b)
+    {
+        up = b;
+    
+    }
+    public void SetDownBtn(BtnBase b)
+    {
+        down = b;
+    }
+    public void OnEnter()
+    {
+        btnEnter?.Invoke();
+    }
+    public void OnExit()
+    {
+        btnExit?.Invoke();
+    }
+    public void OnClick()
+    {
+        btnClick?.Invoke();
     }
 }

@@ -33,15 +33,15 @@ public class PausePanel : MonoBehaviour
         UIManager.Instance.EscOnePanel();
         EventHandler.CallExitLevelEvent(-1);
         EventHandler.CallEndLevelEvent();
-        StartCanvas.Instance.EnterSelect();
-        
+        UIManager.Instance.EnterSelect();
+
     }
     public void BackToTitle()
     {
         UIManager.Instance.EscOnePanel();
         EventHandler.CallExitLevelEvent(-1);
         EventHandler.CallEndLevelEvent();
-        StartCanvas.Instance.EnterTitle();
+        UIManager.Instance.EnterTitle();
     }
     public void BackToGame()
     {

@@ -39,7 +39,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
 
     private void OnExitLevelEvent(int _)
     {
-        Save();
+        SaveAsync();
     }
     void OnExtraChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
     {
@@ -177,7 +177,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     public void SaveLastCharsIndexes(List<int> l)
     {
         gameSaveData.lastCharsIndexes = l;
-        Save();
+        SaveAsync();
     }
     internal void PlayerKillEnemy(int playerIndex, EnemyBase e)
     {

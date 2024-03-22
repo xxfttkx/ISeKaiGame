@@ -26,12 +26,7 @@ public struct Character
 {
     public int index;
     public CreatureBase creature;
-    
     public string name;
-    public Sprite sprite;
-    public GameObject prefab;
-    public bool faceToLeft;
-
     public Profession profession;
     [Header("Attributes")]
 /*    public int attack;

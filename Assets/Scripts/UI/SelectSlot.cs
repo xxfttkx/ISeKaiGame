@@ -15,7 +15,7 @@ public class SelectSlot : MonoBehaviour
         }
         else
         {
-            playerImage.sprite = SOManager.Instance.characterDataList_SO.characters[charIndex].sprite;
+            playerImage.sprite = SOManager.Instance.GetPlayerSpriteByIndex(charIndex);
             playerImage.gameObject.SetActive(true);
         }
         

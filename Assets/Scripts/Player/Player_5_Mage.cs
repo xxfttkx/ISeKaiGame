@@ -40,7 +40,7 @@ public class Player_5_Mage : Player
             var e = Utils.GetNearestEnemy(this.transform.position, this.GetAttackRange());
             if (e != null)
             {
-                int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 1);
+                int extra = extras[1];
                 if (extra == 0||extra==1)
                 {
                     // 可以分开 。。现在直接切换会享受最高加成。。
@@ -143,11 +143,11 @@ public class Player_5_Mage : Player
     public override int GetAttack()
     {
         float bonus = 1;
-        int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 2);
+        int extra = extras[2];
         if (extra == 0) bonus = Mathf.Clamp01(1.5f - GetHpVal());
         else if (extra == 1) bonus = 1f;
         else if (extra == 2) bonus = GetHp() == 1 ? 2f : 0.5f;
-        extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 1);
+        extra = extras[1];
         if(extra==1)
         {
             bonus *= Mathf.Lerp(1f, 3f, hitTargetTime / 3);
@@ -159,5 +159,29 @@ public class Player_5_Mage : Player
     {
         targetIndex = -1;
         hitTargetTime = 0f;
+    }
+    public override void AddBuffBeforeStart()
+    {
+        foreach (var p in PlayerManager.Instance.players)
+        {
+            p.ApplyBuff("player5", -1, GetBuffBonus(), 0f,  0f, 0f, 0f, ApplyBuffType.Override);
+        }
+
+    }
+    private float GetBuffBonus()
+    {
+        int extra = extras[2];
+        if (extra == 0) return 0.2f;
+        if (extra == 1) return 0.1f;
+        if (extra == 2) return 0.3f;
+        return 0f;
+    }
+    protected override void OnExtraChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
+    {
+        base.OnExtraChangeEvent(playerIndex, extraIndex, selectedIndex);
+        if (extraIndex == 2)
+        {
+            AddBuffBeforeStart();
+        }
     }
 }

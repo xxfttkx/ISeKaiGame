@@ -252,10 +252,10 @@ public static class EventHandler
         ExtraChangeEvent?.Invoke(playerIndex, extraIndex, selectedIndex);
     }
 
-    public static event Action LanguageChange;
-    public static void CallLanguageChange()
+    public static event Action<int> LanguageChange;
+    public static void CallLanguageChange(int l)
     {
-        LanguageChange?.Invoke();
+        LanguageChange?.Invoke(l);
     }
 
     public static event Action<int,float> PlayerHpValChangeEvent;

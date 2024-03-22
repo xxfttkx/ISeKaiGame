@@ -23,8 +23,8 @@ public class ExtraPanel : Singleton<ExtraPanel>
             var btn = go.GetComponent<PlayerBtnInExtraPanel>();
             playerBtns.Add(btn);
             
-            var index = SOManager.Instance.characterDataList_SO.characters[i].index;
-            var sp = SOManager.Instance.characterDataList_SO.characters[i].sprite;
+            var index = i;
+            var sp = SOManager.Instance.GetPlayerSpriteByIndex(i);
             btn.InitButton(index, sp);
         }
         Select(0);

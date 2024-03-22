@@ -39,7 +39,7 @@ public class ButtonPanel : Singleton<ButtonPanel>
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            StartCanvas.Instance.EnterTitle();
+            UIManager.Instance.EnterTitle();
         }
     }
     public void BuyButton()

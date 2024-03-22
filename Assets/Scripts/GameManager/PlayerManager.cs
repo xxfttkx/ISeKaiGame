@@ -378,6 +378,22 @@ public class PlayerManager : Singleton<PlayerManager>
         }
         return ans;
     }
+    public Player GetMaxHpValPlayer()
+    {
+        Player ans = null;
+        float max = 0f;
+        foreach (var p in players)
+        {
+            if (!p.IsAlive()) continue;
+            var v = p.GetHpVal();
+            if (v > max)
+            {
+                max = v;
+                ans = p;
+            }
+        }
+        return ans;
+    }
     public int GetPlayerExtra(int playerIndex,int extraIndex)
     {
         return indexToPlayer[playerIndex].GetExtra(extraIndex);

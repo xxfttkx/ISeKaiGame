@@ -64,7 +64,7 @@ public class EndCanvas : Singleton<EndCanvas>
 
         EventHandler.CallExitLevelEvent(-1);
         EventHandler.CallEndLevelEvent();
-        StartCanvas.Instance.EnterTitle();
+        UIManager.Instance.EnterTitle();
     }
     public void ReturnToCharacterSelection()
     {
@@ -73,6 +73,6 @@ public class EndCanvas : Singleton<EndCanvas>
 
         EventHandler.CallExitLevelEvent(-1);
         EventHandler.CallEndLevelEvent();
-        StartCanvas.Instance.EnterSelect();
+        UIManager.Instance.EnterSelect();
     }
 }

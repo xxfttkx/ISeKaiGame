@@ -17,7 +17,7 @@ public class SelectedCharPanel : Singleton<SelectedCharPanel>
     public void SelectChar(int playerIndex)
     {
         var ch = SOManager.Instance.characterDataList_SO.characters[playerIndex];
-        selectedChar.sprite = ch.sprite;
+        selectedChar.sprite = ch.creature.sprite;
         desc.text = ch.index+": "+ch.desc;
     }
     public void CancelSelectChar()

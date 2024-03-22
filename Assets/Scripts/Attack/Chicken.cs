@@ -10,20 +10,32 @@ public class Chicken : MonoBehaviour
     int atk;
     int range;
     int atkSpeed;
-    protected void OnEnable()
+    int speed;
+    float cd;
+    bool bReleased;
+    Vector2 _pos
+    {
+        get => this.transform.position;
+    }
+
+    /// <summary>
+    /// Init
+    /// </summary>
+    public void Init()
     {
         player = PlayerManager.Instance.indexToPlayer[6];
-        //extras = new List<int>(SaveLoadManager.Instance.GetPlayerExtras(6));
         extras = PlayerManager.Instance.GetPlayerExtras(6);
         atk = PlayerManager.Instance.GetPlayerAttack(6);
         range = PlayerManager.Instance.GetPlayerAttackRange(6);
+        speed = PlayerManager.Instance.GetPlayerSpeed(6);
         atkSpeed = PlayerManager.Instance.GetPlayerAttackSpeed(6);
+        cd = 10f / atkSpeed;
         if (extras[1] == 0)
         {
             StartCoroutine(Attack());
             StartCoroutine(SearchEnemy());
         }
-        else if (extras[1]==1)
+        else if (extras[1] == 1)
         {
             StartCoroutine(Heal());
         }
@@ -31,7 +43,17 @@ public class Chicken : MonoBehaviour
         {
             StartCoroutine(RangedAttack());
         }
+
         StartCoroutine(AutoRelease());
+    }
+    protected void OnEnable()
+    {
+        bReleased = false;
+        EventHandler.ExitLevelEvent += OnExitLevelEvent;
+    }
+    private void OnDisable()
+    {
+        EventHandler.ExitLevelEvent -= OnExitLevelEvent;
     }
     IEnumerator SearchEnemy()
     {
@@ -41,7 +63,7 @@ public class Chicken : MonoBehaviour
             if(e!=null)
             {
                 Vector2 dir = e.transform.position - this.transform.position;
-                Vector2 dis = dir.normalized * searchDelta * player.GetSpeed();
+                Vector2 dis = dir.normalized * searchDelta * speed;
                 this.transform.position = this.transform.position + (Vector3)dis;
                 yield return new WaitForSeconds(searchDelta);
             }
@@ -61,6 +83,7 @@ public class Chicken : MonoBehaviour
             if(e!=null)
             {
                 PlayerManager.Instance.PlayerHurtEnemy(6, e);
+                yield return new WaitForSeconds(cd);
             }
             else
             {
@@ -75,7 +98,12 @@ public class Chicken : MonoBehaviour
             var p = PlayerManager.Instance.GetPlayerInControl();
             if (Utils.TryAttackPlayer(this.gameObject, player, range))
             {
-                PlayerManager.Instance.PlayerHealPlayer(6, p.GetPlayerIndex(), atk);
+                PoolManager.Instance.CreateEgg(p, null, _pos,atk);
+                yield return new WaitForSeconds(cd);
+            }
+            else
+            {
+                yield return null;
             }
         }
     }
@@ -86,8 +114,8 @@ public class Chicken : MonoBehaviour
             var e = Utils.GetNearestEnemy(this.transform.position, range);
             if (e != null)
             {
-                PlayerManager.Instance.PlayerHurtEnemy(6, e,atk);
-                yield return new WaitForSeconds(10f / atkSpeed);
+                PoolManager.Instance.CreateEgg(null, e, _pos, atk);
+                yield return new WaitForSeconds(cd);
             }
             else
             {
@@ -97,7 +125,21 @@ public class Chicken : MonoBehaviour
     }
     IEnumerator AutoRelease()
     {
-        yield return new WaitForSeconds(10f);
+        float time = 10f;
+        if (extras[3] == 0)time = 10f;
+        else if (extras[3] == 1)time = 20f;
+        else if (extras[3] == 2)time = 8f;
+        yield return new WaitForSeconds(time);
+        Release();
+    }
+    void OnExitLevelEvent(int _)
+    {
+        Release();
+    }
+    void Release()
+    {
+        if (bReleased) return;
+        bReleased = true;
         PoolManager.Instance.ReleaseObj(this.gameObject, 7);
     }
 }

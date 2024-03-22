@@ -182,11 +182,18 @@ public class PoolManager : Singleton<PoolManager>
         soundQueue.Enqueue(obj);
     }
 
+
+    /// <summary>
+    /// Player7’ŸªΩŒÔ
+    /// </summary>
+    /// <param name="pos"></param>
     public void CreateChicken(Vector2 pos)
     {
         ObjectPool<GameObject> objPool = poolList[7];
         GameObject obj = objPool.Get();
         obj.transform.position = pos;
+        Chicken c = obj.GetComponent<Chicken>();
+        c.Init();
     }
     public void CreateLightning(Player p,EnemyBase e, Vector3 pos)
     {
@@ -195,5 +202,13 @@ public class PoolManager : Singleton<PoolManager>
         obj.transform.position = pos;
         Lightning f = obj.GetComponent<Lightning>();
         f.AttackEnemy(e,p);
+    }
+    public void CreateEgg(Player p, EnemyBase e, Vector3 pos,int a)
+    {
+        ObjectPool<GameObject> objPool = poolList[9];
+        GameObject obj = objPool.Get();
+        obj.transform.position = pos;
+        Egg f = obj.GetComponent<Egg>();
+        f.AttackEnemyOrPlayer(e, p,a);
     }
 }

@@ -9,7 +9,6 @@ public class UIManager : Singleton<UIManager>
 {
     public CharacterDataList_SO characterDataList_SO;
     public Text moneyText;
-    public GameObject startCanvas;
     public GameObject endCanvas;
 
     public GameObject playerDataPrefab;
@@ -22,6 +21,8 @@ public class UIManager : Singleton<UIManager>
     public GameObject playerPanel;
     public List<PlayerData> PlayerDataList;
     private Stack<GameObject> openPanel;
+    public SelectCanvas selectCanvas;
+    public StartCanvas startCanvas;
 
 
     private void Start()
@@ -29,6 +30,7 @@ public class UIManager : Singleton<UIManager>
         indexToPlayerData = new Dictionary<int, PlayerData>();
         PlayerDataList = new List<PlayerData>();
         openPanel = new Stack<GameObject>();
+        EnterTitle();
     }
     private void Update()
     {
@@ -94,7 +96,7 @@ public class UIManager : Singleton<UIManager>
             playerData = d.GetComponent<PlayerData>();
             PlayerDataList.Add(playerData);
             indexToPlayerData.Add(p.character.index, playerData);
-            playerData.Init(p.character.index, p.character.sprite);
+            playerData.Init(p.GetPlayerIndex(), p.character.creature.sprite);
         }
     }
     void OnPlayerHpValChangeEvent(int index, float val)
@@ -161,4 +163,15 @@ public class UIManager : Singleton<UIManager>
     {
 
     }
+    public void EnterSelect()
+    {
+        selectCanvas.gameObject.SetActive(true);
+        selectCanvas.InitSelecePanel();
+        startCanvas.gameObject.SetActive(false);
+    }
+    public void EnterTitle()
+    {
+        startCanvas.gameObject.SetActive(true);
+    }
+
 }

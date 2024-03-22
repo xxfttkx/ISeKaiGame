@@ -54,10 +54,10 @@ public class SelectPanel : Singleton<SelectPanel>
             var go  = Instantiate(selectPrefab, professionToPlayers[c.profession].transform);
             var b = go.GetComponent<SelectPlayerButton>();
             buttons.Add(c.index,b);
-            b.InitButton(c.index, c.sprite);
+            b.InitButton(c.index, c.creature.sprite);
             allPlayerButtons[(int)c.profession].Add(b);
         }
-        this.GetComponent<BtnCtl>().SetBtnRows(allPlayerButtons);
+        InitKeyboardRelation();
         selectedIndexes = SaveLoadManager.Instance.GetLastCharsIndexes();
         if (selectedIndexes == null || selectedIndexes.Count == 0)
         {
@@ -127,5 +127,28 @@ public class SelectPanel : Singleton<SelectPanel>
         {
             if (selectedIndexes[i] != -1) CancelSelectPlayer(selectedIndexes[i]);
         }
+    }
+    void InitKeyboardRelation()
+    {
+        for (int i = 0; i < allPlayerButtons.Count; ++i)
+        {
+            for (int j = 0; j < allPlayerButtons[i].Count; ++j)
+            {
+                allPlayerButtons[i][j].SetKeyboardRelation(GetBtnByXY(i - 1, j), GetBtnByXY(i + 1, j), GetBtnByXY(i, j + 1), GetBtnByXY(i, j - 1));
+            }
+        }
+    }
+    public BtnBase goBtn;
+    BtnBase GetBtnByXY(int i,int j)
+    {
+        int n = allPlayerButtons.Count;
+        if (i < 0) return null;
+        if (i > n) return null;
+        if (i == n) return goBtn;
+        int m = allPlayerButtons[i].Count;
+        if (j < 0) return null;
+        if (j > m) return null;
+        if (j == m) return goBtn;
+        return allPlayerButtons[i][j];
     }
 }

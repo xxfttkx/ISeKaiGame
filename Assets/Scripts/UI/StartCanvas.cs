@@ -8,6 +8,7 @@ public class StartCanvas : Singleton<StartCanvas>
     public GameObject selectCanvas;
     public GameObject startPanel;
     public LanguagePanel languagePanel;
+    public SettingsPanel settingsPanel;
     public BtnBase btnStart;
     public BtnBase btnQuit;
     public ExtraPanel extraPanel;
@@ -20,9 +21,7 @@ public class StartCanvas : Singleton<StartCanvas>
     }
     public void EnterSelect()
     {
-        selectCanvas.SetActive(true);
-        SelectCanvas.Instance.InitSelecePanel();
-        startPanel.SetActive(false);
+        UIManager.Instance.EnterSelect();
     }
 
     public void EnterTitle()
@@ -46,13 +45,23 @@ public class StartCanvas : Singleton<StartCanvas>
     {
         extraPanel.gameObject.SetActive(false);
     }
-    public void HideLanguagePanel()
-    {
-        languagePanel.gameObject.SetActive(false);
-    }
     public void ShowLanguagePanel()
     {
         languagePanel.gameObject.SetActive(true);
         languagePanel.Init();
     }
+    public void HideLanguagePanel()
+    {
+        languagePanel.gameObject.SetActive(false);
+    }
+    public void ShowSettingsPanel()
+    {
+        settingsPanel.gameObject.SetActive(true);
+        settingsPanel.Init();
+    }
+    public void HideSettingsPanel()
+    {
+        settingsPanel.gameObject.SetActive(false);
+    }
+    
 }
