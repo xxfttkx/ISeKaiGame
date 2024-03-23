@@ -127,9 +127,9 @@ public class Player : Creature
     {
         if (!IsAlive()) return;
         //todo 能达到的最大hp可不该从so中取。。
-        var tempHP = hp+ heal;
+        var tempHP = hp + heal;
         var maxHP = GetMaxHP();
-        heal = hp <= maxHP ? heal : maxHP - hp;
+        heal = tempHP <= maxHP ? heal : maxHP - hp;
         SaveLoadManager.Instance.SetPlayerExtraData(restorer, ExtraType.Heal, heal);
         hp += heal;
         UIManager.Instance.HPChange(character.index, GetHpVal());
