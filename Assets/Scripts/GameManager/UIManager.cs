@@ -136,6 +136,10 @@ public class UIManager : Singleton<UIManager>
         GameStateManager.Instance.SetGameState(GameState.GamePause);
         playerSettingsPanel.ShowPlayerExtra(playerIndex);
     }
+    public void UpdatePlayerSettingsPanel(Player p)
+    {
+        playerSettingsPanel.ChangeCh(p);
+    }
     public void ShowSoundSettingsPanel()
     {
         TryAddToOpenPanelStack(soundSettingsPanel.gameObject);

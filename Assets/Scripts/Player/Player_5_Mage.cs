@@ -176,9 +176,9 @@ public class Player_5_Mage : Player
         if (extra == 2) return 0.3f;
         return 0f;
     }
-    protected override void OnExtraChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
+    protected override void OnDesireChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
     {
-        base.OnExtraChangeEvent(playerIndex, extraIndex, selectedIndex);
+        base.OnDesireChangeEvent(playerIndex, extraIndex, selectedIndex);
         if (extraIndex == 2)
         {
             AddBuffBeforeStart();

@@ -27,14 +27,14 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     private void OnEnable()
     {
         EventHandler.ExitLevelEvent += OnExitLevelEvent;
-        EventHandler.ExtraChangeEvent += OnExtraChangeEvent;
+        EventHandler.DesireChangeEvent += OnExtraChangeEvent;
 
     }
 
     private void OnDisable()
     {
         EventHandler.ExitLevelEvent -= OnExitLevelEvent;
-        EventHandler.ExtraChangeEvent -= OnExtraChangeEvent;
+        EventHandler.DesireChangeEvent -= OnExtraChangeEvent;
     }
 
     private void OnExitLevelEvent(int _)

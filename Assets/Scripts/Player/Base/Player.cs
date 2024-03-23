@@ -12,7 +12,10 @@ public class Player : Creature
     [SerializeField]
     private float timeOnTheField;
     public List<int> extras;
-    
+    public float _range
+    {
+        get => PlayerManager.Instance.GetPlayerAttackRange(character.index);
+    }
     protected int atk
     {
         get => character.creature.attack;
@@ -49,13 +52,13 @@ public class Player : Creature
     {
         EventHandler.EnterLevelEvent += OnEnterLevelEvent;
         EventHandler.ExitLevelEvent += OnExitLevelEvent;
-        EventHandler.ExtraChangeEvent += OnExtraChangeEvent;
+        EventHandler.DesireChangeEvent += OnDesireChangeEvent;
     }
     protected virtual void OnDisable()
     {
         EventHandler.EnterLevelEvent -= OnEnterLevelEvent;
         EventHandler.ExitLevelEvent -= OnExitLevelEvent;
-        EventHandler.ExtraChangeEvent -= OnExtraChangeEvent;
+        EventHandler.DesireChangeEvent -= OnDesireChangeEvent;
     }
     public override void Reset()
     {
@@ -68,7 +71,7 @@ public class Player : Creature
         hp = character.creature.hp;
         maxHp = hp;
         addHp = 0;
-        ChangeCharValByExtra();
+        ChangeCharValByExtra(0);
     }
 
     protected virtual void OnEnterLevelEvent(int _)
@@ -320,35 +323,32 @@ public class Player : Creature
         }
         return extras[index];
     }
-    protected virtual void OnExtraChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
+    protected virtual void OnDesireChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
     {
         selectedIndex++;
         if (playerIndex != GetPlayerIndex()) return;
+        int last = extras[extraIndex];
+        extras[extraIndex] = selectedIndex;
         if (extraIndex == 0)
         {
-            int last = extras[extraIndex];
             if (last != selectedIndex)
             {
-                character = SOManager.Instance.GetPlayerDataByIndex(GetPlayerIndex());
-                if(selectedIndex!=0)
-                {
-                    var i = selectedIndex - 1==0?1:-1;
-                    ChangeCharVal(character.extraCharacteristics[0], i*character.extraCharacteristicVals[0]);
-                    ChangeCharVal(character.extraCharacteristics[1], -i*character.extraCharacteristicVals[1]);
-                    PlayerSettingsPanel.Instance?.ChangeCh(this);
-                }
+                ChangeCharValByExtra(last);
             }
         }
-        extras[extraIndex] = selectedIndex;
+        
     }
-    void ChangeCharValByExtra()
+    void ChangeCharValByExtra(int lastDesire)
     {
-        var selectedIndex = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 0);
-        if (selectedIndex != 0)
+        var newDesire = extras[0];
+        if (lastDesire != newDesire)
         {
-            var i = selectedIndex - 1 == 0 ? 1 : -1;
-            ChangeCharVal(character.extraCharacteristics[0], i * character.extraCharacteristicVals[0]);
-            ChangeCharVal(character.extraCharacteristics[1], -i * character.extraCharacteristicVals[1]);
+            int mul = lastDesire == 0 || newDesire == 0 ? 1 : 2;
+            int max = Mathf.Max(lastDesire, newDesire);
+            // 0 1 + 1 0 -   0 2 - 2 0 +   1 2 - 2 1 +
+            int sign = (lastDesire < newDesire ? 1 : -1) * (max == 2 ? -1 : 1);
+            ChangeCharVal(character.extraCharacteristics[0], mul * sign * character.extraCharacteristicVals[0]);
+            ChangeCharVal(character.extraCharacteristics[1], -1 * mul * sign * character.extraCharacteristicVals[1]);
             PlayerSettingsPanel.Instance?.ChangeCh(this);
         }
     }

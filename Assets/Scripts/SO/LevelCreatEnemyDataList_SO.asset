@@ -37,9 +37,9 @@ MonoBehaviour:
     offset:
     - {x: 10, y: 10}
     - {x: -10, y: 10}
-    enemyIndex: 0100000001000000
+    enemyIndex: 0600000006000000
     enemyCreateFirstTime: 0000000000000000
-    enemyCreateDeltaTime: 0200000002000000
+    enemyCreateDeltaTime: 1600000016000000
     endCreatEnemyTime: 40
   - levelIndex: 3
     bonus: 0

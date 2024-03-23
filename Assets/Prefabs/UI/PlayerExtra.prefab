@@ -617,7 +617,11 @@ MonoBehaviour:
   btnClick:
     m_PersistentCalls:
       m_Calls: []
-  right: {fileID: 1244392758205219021}
+  leftBtn: {fileID: 0}
+  rightBtn: {fileID: 0}
+  upBtn: {fileID: 0}
+  downBtn: {fileID: 0}
+  mark: {fileID: 1244392758205219021}
   slot: {fileID: 6225738091870208462}
   index: 0
   selected: 0
@@ -855,7 +859,11 @@ MonoBehaviour:
   btnClick:
     m_PersistentCalls:
       m_Calls: []
-  right: {fileID: 3813458662980816023}
+  leftBtn: {fileID: 0}
+  rightBtn: {fileID: 0}
+  upBtn: {fileID: 0}
+  downBtn: {fileID: 0}
+  mark: {fileID: 3813458662980816023}
   slot: {fileID: 125023825705970787}
   index: 0
   selected: 0

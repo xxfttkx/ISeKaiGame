@@ -55,10 +55,12 @@ public class Enemy_Melee : EnemyBase
             if (distance < 0.1f)
             {
                 rb.velocity = Vector2.zero;
+                IsMoving = false;
             }
             else
             {
-                rb.MovePosition(rb.position + movementVec2 * enemy.speed * moveDelta);
+                IsMoving = true;
+                rb.MovePosition(rb.position + movementVec2 * GetSpeed() * moveDelta);
             }
 
             yield return new WaitForSeconds(moveDelta);

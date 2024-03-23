@@ -33,9 +33,9 @@ public class Bubble : PlayerAtk
     protected override IEnumerator AttackEnemy(Vector2 dir)
     {
         dir = dir.normalized;
+        StartCoroutine(AutoRelease());
         while (true)
         {
-            StartCoroutine(AutoRelease());
             var tempE = Utils.GetNearestEnemy(this.transform.position, bubbleSmallRadius);
             if (tempE != null)
             {
@@ -43,7 +43,7 @@ public class Bubble : PlayerAtk
                 var enemies = Utils.GetNearEnemies(this.transform.position, bubbleBigRadius);
                 if (enemies != null && enemies.Count > 0)
                 {
-                    int extra = SaveLoadManager.Instance.GetPlayerExtra(playerIndex, 1);
+                    int extra = extras[1];
                     if (extra == 0)
                         atk = Mathf.CeilToInt(atk * 1.0f / enemies.Count);
                     foreach (var enemy in enemies)
@@ -63,13 +63,6 @@ public class Bubble : PlayerAtk
         Release();
     }
 
-
-    IEnumerator AutoRelease()
-    {
-        yield return new WaitForSeconds(Settings.guangQiuExistTime);
-        Release();
-    }
-
     IEnumerator BubuleBigger()
     {
         for (int i = 1; i <= 3; ++i)
@@ -81,6 +74,6 @@ public class Bubble : PlayerAtk
     }
     private void Reset()
     {
-        this.transform.localScale = new Vector3(1, 1, 1);
+        _localScale = new Vector3(1, 1, 1);
     }
 }

@@ -15,10 +15,10 @@ public class BtnBase : MonoBehaviour, IPointerClickHandler,IPointerEnterHandler,
     public BtnEvent btnEnter;
     public BtnEvent btnExit;
     public BtnEvent btnClick;
-    public BtnBase left;
-    public BtnBase right;
-    public BtnBase up;
-    public BtnBase down;
+    public BtnBase leftBtn;
+    public BtnBase rightBtn;
+    public BtnBase upBtn;
+    public BtnBase downBtn;
     
 
     public virtual void Awake()
@@ -70,27 +70,27 @@ public class BtnBase : MonoBehaviour, IPointerClickHandler,IPointerEnterHandler,
     }
     public void SetKeyboardRelation(BtnBase l, BtnBase r, BtnBase u, BtnBase d)
     {
-        left = l;
-        right = r;
-        up = u;
-        down = d;
+        leftBtn = l;
+        rightBtn = r;
+        upBtn = u;
+        downBtn = d;
     }
     public void SetLeftBtn(BtnBase b)
     {
-        left = b;
+        leftBtn = b;
     }
     public void SetRightBtn(BtnBase b)
     {
-        right = b;
+        rightBtn = b;
     }
     public void SetUpBtn(BtnBase b)
     {
-        up = b;
+        upBtn = b;
     
     }
     public void SetDownBtn(BtnBase b)
     {
-        down = b;
+        downBtn = b;
     }
     public void OnEnter()
     {

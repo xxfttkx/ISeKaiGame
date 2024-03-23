@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SelectDesireButton : BtnBase
 {
-    public Image right;
+    public Image mark;
     public Image slot;
     public int index;
     public bool selected;
@@ -19,14 +19,14 @@ public class SelectDesireButton : BtnBase
 
     public override void BtnEnter()
     {
-        right.enabled = true;
-        right.color = new Color(0f, 0f, 0f, 0.5f);
+        mark.enabled = true;
+        mark.color = new Color(0f, 0f, 0f, 0.5f);
     }
     public override void BtnExit()
     {
         if(!selected)
-            right.enabled = false;
-        right.color = new Color(0f, 0f, 0f, 1f);
+            mark.enabled = false;
+        mark.color = new Color(0f, 0f, 0f, 1f);
     }
     public override void BtnClick()
     {
@@ -40,13 +40,13 @@ public class SelectDesireButton : BtnBase
 
     internal void Select()
     {
-        right.enabled = true;
+        mark.enabled = true;
         selected = true;
     }
 
     internal void CancelSelect()
     {
-        right.enabled = false;
+        mark.enabled = false;
         selected = false;
     }
 }

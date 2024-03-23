@@ -79,7 +79,7 @@ public class ExtraSkill : MonoBehaviour
         selectedIndex = index;
         if(manual)
         {
-            EventHandler.CallExtraChangeEvent(playerIndex, extraIndex, selectedIndex);
+            EventHandler.CallDesireChangeEvent(playerIndex, extraIndex, selectedIndex);
         }
         
     }

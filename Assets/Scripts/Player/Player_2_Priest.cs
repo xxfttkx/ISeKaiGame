@@ -63,9 +63,9 @@ public class Player_2_Priest : Priest
             if (extra == 2) PlayerManager.Instance.PlayerHealPlayer(2,2,1);
         }
     }
-    protected override void OnExtraChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
+    protected override void OnDesireChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
     {
-        base.OnExtraChangeEvent(playerIndex, extraIndex, selectedIndex);
+        base.OnDesireChangeEvent(playerIndex, extraIndex, selectedIndex);
         if(extraIndex==2)
         {
             AddBuffBeforeStart();

@@ -32,7 +32,7 @@ public static class Utils
         return enemies;
     }
 
-    public static List<EnemyBase> GetNearEnemiesByDistance(Vector2 curr, float range)
+    public static List<EnemyBase> GetNearEnemiesSortByDistance(Vector2 curr, float range)
     {
         List<EnemyBase> enemies = new List<EnemyBase>();
         int indexMask = LayerMask.GetMask("Enemy");
@@ -56,9 +56,9 @@ public static class Utils
         return enemies;
     }
 
-    public static List<EnemyBase> GetNearEnemiesByDistance(Vector2 curr, float range, int count)
+    public static List<EnemyBase> GetNearEnemiesSortByDistance(Vector2 curr, float range, int count)
     {
-        List<EnemyBase> enemies = GetNearEnemiesByDistance(curr, range);
+        List<EnemyBase> enemies = GetNearEnemiesSortByDistance(curr, range);
         if (enemies == null || enemies.Count <= count) return enemies;
         List<EnemyBase> res = new List<EnemyBase>(count);
         for (int i = 0; i < count; ++i)
@@ -108,6 +108,19 @@ public static class Utils
             }
         }
         return res;
+    }
+    public static List<EnemyBase> GetSectorEnemies(Vector2 curr, Vector2 dir, float angle, float range)
+    {
+        var ans = GetNearEnemies(curr, range);
+        if (ans == null || ans.Count == 0) return ans;
+        for (int i = ans.Count - 1; i >= 0; --i)
+        {
+            if (Vector2.Angle(dir, ans[i]._pos - curr) > angle)
+            {
+                ans.RemoveAt(i);
+            }
+        }
+        return ans;
     }
     public static EnemyBase GetNearestEnemyExcludeE(Vector2 curr, float range, EnemyBase e)
     {

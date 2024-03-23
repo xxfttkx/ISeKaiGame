@@ -86,8 +86,7 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
     public void ChangeCh(Player player)
     {
         int playerIndex = player.GetPlayerIndex();
-        if (playerIndex == currIndex) return;
         currIndex = playerIndex;
-        desc.text = $"Desc:\n{player.character.desc}\nAtk:{player.GetRawAtk()}\nSpeed:{player.GetRawSpeed()}\nAtkSpeed:{player.GetRawAtkSpeed()}\nAtkRange:{player.GetRawAtkRange()}";
+        desc.text = $"Desc:\n{player.character.desc}\nHp:{player.GetHp()}\nAtk:{player.GetRawAtk()}\nSpeed:{player.GetRawSpeed()}\nAtkSpeed:{player.GetRawAtkSpeed()}\nAtkRange:{player.GetRawAtkRange()}";
     }
 }

@@ -73,9 +73,9 @@ public class Player_3_Assassin : Player
         yield return null;
         AttackByExtra(index);
     }
-    IEnumerator AttackExtra1(int index)
+    IEnumerator AttackDesire1(int index)
     {
-        var enemies = Utils.GetNearEnemiesByDistance(this.transform.position, GetAttackRange());
+        var enemies = Utils.GetNearEnemiesSortByDistance(this.transform.position, GetAttackRange());
         if (enemies != null && enemies.Count > 0)
         {
             foreach (var e in enemies)
@@ -92,9 +92,9 @@ public class Player_3_Assassin : Player
         yield return null;
         AttackByExtra(index);
     }
-    IEnumerator AttackExtra2(int index)
+    IEnumerator AttackDesire2(int index)
     {
-        var enemies = Utils.GetNearEnemiesByDistance(this.transform.position, GetAttackRange());
+        var enemies = Utils.GetNearEnemiesSortByDistance(this.transform.position, GetAttackRange());
         if (enemies != null && enemies.Count > 0)
         {
             int a = PlayerManager.Instance.GetPlayerAttack(3);
@@ -157,9 +157,9 @@ public class Player_3_Assassin : Player
         if (extra == 2) return 0.1f;
         return 0f;
     }
-    protected override void OnExtraChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
+    protected override void OnDesireChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
     {
-        base.OnExtraChangeEvent(playerIndex, extraIndex, selectedIndex);
+        base.OnDesireChangeEvent(playerIndex, extraIndex, selectedIndex);
         if (extraIndex == 2)
         {
             AddBuffBeforeStart();
@@ -172,18 +172,18 @@ public class Player_3_Assassin : Player
     }
     void AttackByExtra(int index)
     {
-        int extra = extras[1];
-        if (extra == 0)
+        int desire = extras[1];
+        if (desire == 0)
         {
             StartCoroutine(Attack(index));
         }
-        else if (extra == 1)
+        else if (desire == 1)
         {
-            StartCoroutine(AttackExtra1(index));
+            StartCoroutine(AttackDesire1(index));
         }
-        else if (extra == 2)
+        else if (desire == 2)
         {
-            StartCoroutine(AttackExtra2(index));
+            StartCoroutine(AttackDesire2(index));
         }
     }
 }

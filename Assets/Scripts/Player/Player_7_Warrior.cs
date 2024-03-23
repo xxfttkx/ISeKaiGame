@@ -22,7 +22,13 @@ public class Player_7_Warrior : Player
     }
     public override void Reset()
     {
+        stand.SetActive(false);
         base.Reset();
+        StartCoroutine(Attack());
+    }
+    public override void StartAttack()
+    {
+        base.StartAttack();
         StartCoroutine(Attack());
     }
     IEnumerator Attack()
@@ -33,7 +39,7 @@ public class Player_7_Warrior : Player
             if (e != null)
             {
                 StartCoroutine(AttackAnim(e));
-                var cd = new WaitForSeconds(10.0f / GetAttackSpeed());
+                var cd = new WaitForSeconds(GetSkillCD());
                 yield return cd;
             }
             else
@@ -46,33 +52,95 @@ public class Player_7_Warrior : Player
     IEnumerator AttackAnim(EnemyBase e)
     {
         stand.SetActive(true);
-        PlayerManager.Instance.PlayerKnockbackEnemy(GetPlayerIndex(), e,GetKnockbackPower());
+        PlayerManager.Instance.PlayerKnockbackEnemy(GetPlayerIndex(), e, GetKnockbackPower());
         PlayerManager.Instance.PlayerHurtEnemy(GetPlayerIndex(), e);
+        if (extras[1] == 2)
+        {
+            var l = Utils.GetSectorEnemies(_pos, e._pos - _pos, GetSectorAngle(), _range);
+            if (l != null && l.Count > 0)
+            {
+                foreach (var ene in l)
+                {
+                    PlayerManager.Instance.PlayerKnockbackEnemy(GetPlayerIndex(), ene, GetKnockbackPower());
+                    PlayerManager.Instance.PlayerHurtEnemy(GetPlayerIndex(), ene);
+                }
+            }
+        }
         yield return new WaitForSeconds(0.2f);
         stand.SetActive(false);
     }
     public override void BeHurt(int attack)
     {
-        int count = 0;
-        foreach (var p in PlayerManager.Instance.players)
+        if (extras[2] == 0)
         {
-            if(p.IsAlive())
+            int count = 0;
+            foreach (var p in PlayerManager.Instance.players)
             {
-                count++; 
+                if (p.IsAlive())
+                {
+                    count++;
+                }
+            }
+            int atk = Mathf.FloorToInt(attack / count);
+            int remain = attack % count;
+            foreach (var p in PlayerManager.Instance.players)
+            {
+                if (!p.IsAlive()) continue;
+                if (p.character.index == 7) continue;
+                if (p.CanAcceptHurt(attack))
+                {
+                    PlayerManager.Instance.EnemyHurtPlayer(null, p, attack);
+                }
+                else
+                {
+                    var a = p.GetHp() - 1;
+                    PlayerManager.Instance.EnemyHurtPlayer(null, p, a);
+                    remain += (atk - a);
+                }
+            }
+            base.BeHurt(remain + atk);
+        }
+        else
+        {
+            Player p = null;
+            if (extras[2] == 1)
+                p = PlayerManager.Instance.GetMaxHpValPlayer();
+            else if (extras[2] == 2)
+            {
+                p = PlayerManager.Instance.GetMinHpValPlayer();
+            }
+            if (p == this || p == null)
+            {
+                base.BeHurt(attack);
+            }
+            else
+            {
+                if (p.CanAcceptHurt(attack))
+                {
+                    PlayerManager.Instance.EnemyHurtPlayer(null, p, attack);
+                }
+                else
+                {
+                    var a = p.GetHp() - 1;
+                    PlayerManager.Instance.EnemyHurtPlayer(null, p, a);
+                    base.BeHurt(atk - a);
+                }
             }
         }
-        int atk = attack / count;
-        int remain = attack % count;
-        foreach (var p in PlayerManager.Instance.players)
-        {
-            if (!p.IsAlive()) continue;
-            if (p.character.index == 7) continue;
-            PlayerManager.Instance.PlayerHurtPlayer(GetPlayerIndex(), p.GetPlayerIndex(), atk);
-        }
-        base.BeHurt(remain+atk);
+
     }
     private int GetKnockbackPower()
     {
-        return 3;
+        return extras[1] switch
+        {
+            0 => 3,
+            1 => 4,
+            2 => 2,
+            _ => 3,
+        };
+    }
+    float GetSectorAngle()
+    {
+        return 30;
     }
 }

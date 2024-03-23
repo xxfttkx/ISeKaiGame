@@ -77,15 +77,15 @@ SpriteRenderer:
   m_SortingLayerID: -987052999
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c7dbe3efae9dd5e409b17fc8d5701523, type: 3}
+  m_Sprite: {fileID: -559471264, guid: 0feeece6ba8a71d42b3e18f14e92896e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &946828664450863040
@@ -150,10 +150,10 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -172,7 +172,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db75252801790624b85dc85732e8ea59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
+  maxHp: 0
+  addHp: 0
   enemy:
+    creature:
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
+      desc: 
     index: 0
     name: 0
     sprite: {fileID: 0}
@@ -207,7 +220,7 @@ Animator:
   m_GameObject: {fileID: 4708548768610898139}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 855d21f3a6a9f0c4792fc1e4527eba55, type: 2}
+  m_Controller: {fileID: 22100000, guid: 3c487d9d183806c46b7f32ff8b481d86, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

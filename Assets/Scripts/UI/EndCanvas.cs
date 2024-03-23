@@ -11,6 +11,7 @@ public class EndCanvas : Singleton<EndCanvas>
     public Button backButton;
     public Button returnSelectButton;
     public GameObject saveSucc;
+    private Coroutine saveSuccCo;
 
     protected override void Awake()
     {
@@ -31,7 +32,9 @@ public class EndCanvas : Singleton<EndCanvas>
     }
     void OnSaveFinishEvent()
     {
-        StartCoroutine(DelayHide());
+        if (saveSuccCo != null)
+            StopCoroutine(saveSuccCo);
+        saveSuccCo = StartCoroutine(DelayHide());
     }
     IEnumerator DelayHide()
     {

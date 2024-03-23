@@ -19,17 +19,25 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties: _ZoomUvAmount
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 623d2ffb32f943c4ab192527739d7738, type: 3}
+        m_Texture: {fileID: 2800000, guid: afae735b16d356342aa40983f2b8d9e0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Ints: []
+    - _Noise:
+        m_Texture: {fileID: 2800000, guid: 294c8f9d14ec2cd479f1d4ce2845d3bb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints:
+    - _Count: -22
     m_Floats:
+    - _Count: 1.86
+    - _NoiseCount: 1
     - _Red: 0
+    - _Reslove: 0.442
     - _TwistUvAmount: 0
     - _TwistUvRadius: 0.8
     - _ZoomUvAmount: 1

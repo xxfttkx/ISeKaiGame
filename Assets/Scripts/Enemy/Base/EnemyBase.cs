@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBase: Creature
+public class EnemyBase : Creature
 {
     public Enemy enemy;
     public EnemyDataList_SO enemyData;
@@ -22,6 +22,19 @@ public class EnemyBase: Creature
     private bool beReleased;
     public bool canMove;
     private Animator animator;
+    protected bool IsMoving
+    {
+        get => isMoveing;
+        set
+        {
+            if(isMoveing!=value)
+            {
+                isMoveing = value;
+                animator?.SetBool("Move", isMoveing);
+            }
+        }
+    }
+    private bool isMoveing;
 
     protected override void Awake()
     {
@@ -94,7 +107,6 @@ public class EnemyBase: Creature
             hp -= damage;
             if (hp <= 0)
             {
-                //TODO
                 PlayerManager.Instance.PlayerKillEnemy(playerIndex, this);
                 Release();
             }
@@ -125,7 +137,7 @@ public class EnemyBase: Creature
         {
             hp = 0;
             beReleased = true;
-            animator?.SetBool("Dead", true);
+            IsMoving = false;
             StartCoroutine(Dead());
             
         }
@@ -133,18 +145,10 @@ public class EnemyBase: Creature
     }
     protected virtual IEnumerator Dead()
     {
-        float twistAmount = 0f;
-        float twistRadius = 0.8f;
-        float zoomAmount = 1f;
-        
-        for(float t=0;t<=1.0f;t+=0.1f)
+        for(float t=0f;t<=1.0f;t+=0.1f)
         {
-            twistAmount += 0.15f;
-            twistRadius += 0.1f;
-            zoomAmount = Mathf.SmoothStep(1, 10, t);
-            material.SetFloat("_TwistUvAmount", twistAmount);
-            material.SetFloat("_TwistUvRadius", twistRadius);
-            material.SetFloat("_ZoomUvAmount", zoomAmount);
+            float a = Mathf.SmoothStep(0f, 1.01f, t);
+            material.SetFloat("_Reslove", a);
             yield return new WaitForSecondsRealtime(0.1f);
         }
         PoolManager.Instance.ReleaseEnemy(this.gameObject, enemy.index);
@@ -186,15 +190,14 @@ public class EnemyBase: Creature
         hp = enemy.creature.hp;
         //todo del
         hp = enemy.hp;
+        maxHp = hp;
         attackRandomTime = 0;
         material.SetFloat("_Red", 0f);
-        material.SetFloat("_TwistUvAmount", 0f);
-        material.SetFloat("_TwistUvRadius", 0.8f);
-        material.SetFloat("_ZoomUvAmount", 1.0f);
+        material.SetFloat("_Reslove", 0f);
         beReleased = false;
         canMove = true;
         player = PlayerManager.Instance.GetPlayerInControl();
-        animator?.SetBool("Dead", false);
+        isMoveing = false;
         LevelManager.Instance.AddEnemyNum(this);
     }
     private void OnExitLevelEvent(int level)
@@ -242,7 +245,7 @@ public class EnemyBase: Creature
     }
     public virtual int GetHP()
     {
-        return enemy.hp;
+        return hp;
     }
     public float GetRandomOffset()
     {

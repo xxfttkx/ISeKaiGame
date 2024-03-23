@@ -221,14 +221,14 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      sprite: {fileID: 21300000, guid: ef16a113f0df5ef48b94a3da9c153bd1, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: 8af2a66e3d9cb864b80d108a29ef5431, type: 3}
       desc: 
     name: platinum
     profession: 0
     desc: "\u6536\u5230\u4F24\u5BB3\u961F\u53CB\u5747\u644A \u4E0D\u81F4\u6B7B\uFF0C\u767D\u91D1\u4E4B\u661F\u3002\u3002"
-    extraTypes: 
-    extraThresholds: 
+    extraTypes: 010000000200000006000000
+    extraThresholds: 000000000000000000000000
     extraDesire1:
     - 
     - "\u51FB\u9000\u6548\u679C\u589E\u52A0"
@@ -238,9 +238,9 @@ MonoBehaviour:
     - "\u653B\u51FB\u53D8\u6210\u8303\u56F4 \u51FB\u9000\u6548\u679C\u51CF\u5F31"
     - "\u6536\u5230\u4F24\u5BB3\u8F6C\u7ED9\u8840\u91CF\u767E\u5206\u6BD4\u6700\u4F4E\u961F\u53CB"
     extraCharacteristics: 0200000005000000
-    extraCharacteristicVals: 0200000002000000
+    extraCharacteristicVals: 0200000001000000
     extraData: 
-    finished: 0
+    finished: 1
   - index: 8
     creature:
       attack: 0

@@ -246,10 +246,10 @@ public static class EventHandler
     /// <summary>
     /// extra chaange
     /// </summary>
-    public static event Action<int,int,int> ExtraChangeEvent;
-    public static void CallExtraChangeEvent(int playerIndex,int extraIndex, int selectedIndex)
+    public static event Action<int,int,int> DesireChangeEvent;
+    public static void CallDesireChangeEvent(int playerIndex,int extraIndex, int selectedIndex)
     {
-        ExtraChangeEvent?.Invoke(playerIndex, extraIndex, selectedIndex);
+        DesireChangeEvent?.Invoke(playerIndex, extraIndex, selectedIndex);
     }
 
     public static event Action<int> LanguageChange;

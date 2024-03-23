@@ -153,6 +153,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public void PlayerHealPlayer(int restorer, int recipient,int heal=-1)
     {
         if (heal == -1) heal = GetPlayerAttack(restorer);
+        if (heal == 0) return;
         indexToPlayer[recipient].BeHealed(heal, restorer);
         
     }
@@ -160,6 +161,7 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         if (p == null) p = GetPlayerInControl();
         if (attack == -1) attack = e.GetAttack();
+        if (attack == 0) return;
         if(indexToPlayer.ContainsKey(14))
         {
             var player = indexToPlayer[14];
@@ -307,7 +309,7 @@ public class PlayerManager : Singleton<PlayerManager>
         int r = indexToPlayer[playerIndex].GetAttackRange();
         float bonus = 1;
         if (currPlayerIndex != playerIndex)
-            bonus -= 0.5f;
+            bonus += 0.5f;
         r = Mathf.CeilToInt(r * bonus);
         return r;
     }
@@ -365,7 +367,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public Player GetMinHpValPlayer()
     {
         Player ans=null;
-        float min = 1f;
+        float min = 1.1f;
         foreach (var p in players)
         {
             if (!p.IsAlive()) continue;

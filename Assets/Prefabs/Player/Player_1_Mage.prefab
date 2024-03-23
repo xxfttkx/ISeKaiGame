@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: efaa9d592b6f886498b3948eda85863e, type: 2}
+  - {fileID: 2100000, guid: 0aa6652971baba14285fc8c2dc02fcb3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -171,19 +171,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc5524e3e0df444ebb13a1b39692e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
+  maxHp: 0
+  addHp: 0
   characterData: {fileID: 0}
   character:
     index: 0
+    creature:
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
+      desc: 
     name: 
-    sprite: {fileID: 0}
-    prefab: {fileID: 0}
-    faceToLeft: 0
     profession: 0
-    attack: 0
-    hp: 0
-    speed: 0
-    attackSpeed: 0
-    attackRange: 0
     desc: 
     extraTypes: 
     extraThresholds: 
@@ -191,4 +196,7 @@ MonoBehaviour:
     extraDesire2: []
     extraCharacteristics: 
     extraCharacteristicVals: 
+    extraData: 
+    finished: 0
   timeOnTheField: 0
+  extras: 

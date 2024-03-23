@@ -62,11 +62,21 @@ public abstract class Enemy_Ranged : EnemyBase
             if (movementVec2.x < 0) sp.flipX = !enemy.faceToLeft;
             else if (movementVec2.x > 0) sp.flipX = enemy.faceToLeft;
             if (distance < GetAttackRange() - 2)
-                rb.MovePosition(rb.position - movementVec2 * enemy.speed * moveDelta);
+            {
+                IsMoving = true;
+                rb.MovePosition(rb.position - movementVec2 * GetSpeed() * moveDelta);
+            }
             else if (distance > GetAttackRange() - 1)
-                rb.MovePosition(rb.position + movementVec2 * enemy.speed * moveDelta);
+            {
+                IsMoving = true;
+                rb.MovePosition(rb.position + movementVec2 * GetSpeed() * moveDelta);
+            }
             else
+            {
+                IsMoving = false;
                 rb.velocity = Vector2.zero;
+            }
+                
             yield return new WaitForSeconds(moveDelta);
         }
     }

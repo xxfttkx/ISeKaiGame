@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _TwistUvAmount: 0.77
-    - _TwistUvRadius: 0.75
+    - _TwistUvAmount: 2.03
+    - _TwistUvRadius: 0.84
     m_Colors: []
   m_BuildTextureStacks: []
