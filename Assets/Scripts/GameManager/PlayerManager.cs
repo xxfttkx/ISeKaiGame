@@ -380,6 +380,23 @@ public class PlayerManager : Singleton<PlayerManager>
         }
         return ans;
     }
+    public Player GetMinHpValPlayerUnder()
+    {
+        Player ans=null;
+        float min = 1.1f;
+        foreach (var p in players)
+        {
+            if (!p.IsAlive()) continue;
+            if (currPlayerIndex == p.GetPlayerIndex()) continue;
+            var v = p.GetHpVal();
+            if (v < min)
+            {
+                min = v;
+                ans = p;
+            }
+        }
+        return ans;
+    }
     public Player GetMaxHpValPlayer()
     {
         Player ans = null;

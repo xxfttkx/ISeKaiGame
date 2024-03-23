@@ -21,8 +21,57 @@ public class Player_9_Priest : Priest
 
     public override void HealSkill()
     {
-        var p = PlayerManager.Instance.GetPlayerInControl();
-        PlayerManager.Instance.PlayerHealPlayer(GetPlayerIndex(), p.GetPlayerIndex());
+        var p = GetHealTarget();
+        if(p!=null)
+            PlayerManager.Instance.PlayerHealPlayer(GetPlayerIndex(), p.GetPlayerIndex());
+    }
+
+    Player GetHealTarget()
+    {
+        return extras[2] switch
+        {
+            0=> PlayerManager.Instance.GetPlayerInControl(),
+            1=> PlayerManager.Instance.GetMinHpValPlayerUnder(),
+            2 => PlayerManager.Instance.GetMinHpValPlayer(),
+            _ => null,
+        };
+    }
+    public override void AddBuffBeforeStart()
+    {
+        foreach (var p in PlayerManager.Instance.players)
+        {
+            p.RemoveBuff("player9");
+        }
+        if (extras[1]==1)
+        {
+            var p = PlayerManager.Instance.GetPlayerInControl();
+            p.ApplyBuff("player9", -1, 0f, 0f, 0f, GetBuffBonus(), 0f, ApplyBuffType.Override);
+        }
+        else if (extras[1] == 2)
+        {
+            foreach (var p in PlayerManager.Instance.players)
+            {
+                p.ApplyBuff("player9", -1, 0f, 0f, 0f, GetBuffBonus(), 0f, ApplyBuffType.Override);
+            }
+        }
+    }
+    private float GetBuffBonus()
+    {
+        return extras[1] switch
+        {
+            0 => 0f,
+            1 => 0.6f,
+            2 => 0.3f,
+            _ => 0f,
+        };
+    }
+    protected override void OnDesireChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
+    {
+        base.OnDesireChangeEvent(playerIndex, extraIndex, selectedIndex);
+        if (playerIndex == GetPlayerIndex() && extraIndex == 2)
+        {
+            AddBuffBeforeStart();
+        }
     }
 
 }

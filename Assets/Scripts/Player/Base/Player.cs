@@ -84,6 +84,10 @@ public class Player : Creature
     }
     protected virtual void OnExitLevelEvent(int _)
     {
+        foreach(var b in buffs)
+        {
+            RemoveBuff(b.Key);
+        }
         StopAllCoroutines();
     }
 
