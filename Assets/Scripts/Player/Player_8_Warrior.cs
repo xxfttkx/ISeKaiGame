@@ -29,25 +29,25 @@ public class Player_8_Warrior : Player_Area
     protected override IEnumerator AttackAnim(List<EnemyBase> enemies)
     {
         Player p=null;
-        int extra1 = SaveLoadManager.Instance.GetPlayerExtra(8, 2);
-        if (extra1==1)
+        int extra1 = extras[1];
+        if (extra1 == 1)
         {
             p = PlayerManager.Instance.GetPlayerInControl();
         }
-        else if(extra1==2)
+        else if (extra1 == 2)
         {
             p = PlayerManager.Instance.GetMinHpValPlayer();
         }
-        int a = PlayerManager.Instance.GetPlayerAttack(8);
+        int a = _atk;
         int remain = 0;
-        int extra2 = SaveLoadManager.Instance.GetPlayerExtra(8, 2);
-        if(extra1!=0&&extra2 == 2)
+        int extra2 = extras[2];
+        if (extra1 != 0 && extra2 == 2)
         {
             remain = a * enemies.Count;
-            PlayerManager.Instance.PlayerHealPlayer(8,p.GetPlayerIndex(),remain);
+            PlayerManager.Instance.PlayerHealPlayer(8, p.GetPlayerIndex(), remain);
             yield break;
         }
-        int r = PlayerManager.Instance.GetPlayerAttackRange(8);
+        float r = _range;
         r *= 2;
         water.size = new Vector2(r, r);
         water.enabled = true;

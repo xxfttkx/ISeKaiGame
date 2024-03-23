@@ -12,27 +12,31 @@ public class Player : Creature
     [SerializeField]
     private float timeOnTheField;
     public List<int> extras;
+    public int _atk
+    {// 游戏中
+        get => PlayerManager.Instance.GetPlayerAttack(character.index);
+    }
     public float _range
-    {
+    {// 游戏中
         get => PlayerManager.Instance.GetPlayerAttackRange(character.index);
     }
     protected int atk
-    {
+    {// 面板
         get => character.creature.attack;
         set => character.creature.attack = value;
     }
     protected int speed
-    {
+    {// 面板
         get => character.creature.speed;
         set => character.creature.speed = value;
     }
     protected int atkSpeed
-    {
+    {// 面板
         get => character.creature.attackSpeed;
         set => character.creature.attackSpeed = value;
     }
     protected int atkRange
-    {
+    {// 面板
         get => character.creature.attackRange;
         set => character.creature.attackRange = value;
     }
