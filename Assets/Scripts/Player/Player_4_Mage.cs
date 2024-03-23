@@ -53,7 +53,7 @@ public class Player_4_Mage : Player_Single
     protected override void OnDesireChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
     {
         base.OnDesireChangeEvent(playerIndex, extraIndex, selectedIndex);
-        if (extraIndex == 2)
+        if (playerIndex==GetPlayerIndex() &&extraIndex == 2)
         {
             AddBuffBeforeStart();
         }

@@ -6,6 +6,15 @@ using UnityEngine;
 public class Player_8_Warrior : Player_Area
 {
     public SpriteRenderer water;
+    private int _def
+    {
+        get
+        {
+            if (extras[2] == 0) return 1;
+            else if (extras[2] == 2) return 3;
+            return 0;
+        }
+    }
     protected override void Awake()
     {
         character.index = 8;
@@ -68,10 +77,6 @@ public class Player_8_Warrior : Player_Area
     }
     public override void BeHurt(int attack)
     {
-        int def = 1;
-        int extra2 = SaveLoadManager.Instance.GetPlayerExtra(8, 2);
-        if (extra2 == 1) def = 0;
-        else if (extra2 == 2) def = 3;
-        base.BeHurt(attack - def);
+        base.BeHurt(attack - _def);
     }
 }
