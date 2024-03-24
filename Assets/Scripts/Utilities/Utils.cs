@@ -184,13 +184,13 @@ public static class Utils
         }
         return false;
     }
-    public static void ShuffleArray<T>(List<T> array)
+    public static void Shuffle<T>(List<T> list)
     {
-        int n = array.Count;
+        int n = list.Count;
         for (int i = n - 1; i > 0; i--)
         {
             int j = Random.Range(0, i + 1);
-            (array[i], array[j]) = (array[j], array[i]);
+            (list[i], list[j]) = (list[j], list[i]);
         }
     }
     public static string GetExtraString(ExtraType extraType, int threshold)

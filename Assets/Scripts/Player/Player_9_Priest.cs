@@ -42,18 +42,32 @@ public class Player_9_Priest : Priest
     {
         foreach (var p in PlayerManager.Instance.players)
         {
-            p.RemoveBuff("player9");
+            p.RemoveBuff("player9_extra1");
+            p.RemoveBuff("player9_extra3");
         }
         if (extras[1]==1)
         {
             var p = PlayerManager.Instance.GetPlayerInControl();
-            p.ApplyBuff("player9", -1, 0f, 0f, 0f, GetBuffBonus(), 0f, ApplyBuffType.Override);
+            p.ApplyBuff("player9_extra1", -1, 0f, 0f, 0f, GetBuffBonus(), 0f, ApplyBuffType.Override);
         }
         else if (extras[1] == 2)
         {
             foreach (var p in PlayerManager.Instance.players)
             {
-                p.ApplyBuff("player9", -1, 0f, 0f, 0f, GetBuffBonus(), 0f, ApplyBuffType.Override);
+                p.ApplyBuff("player9_extra1", -1, 0f, 0f, 0f, GetBuffBonus(), 0f, ApplyBuffType.Override);
+            }
+        }
+        // extra3
+        if (extras[3] == 1)
+        {
+            var p = PlayerManager.Instance.GetPlayerInControl();
+            p.ApplyBuff("player9_extra3",-1, Characteristic.Attack, 3, ApplyBuffType.Override);
+        }
+        else if (extras[3] == 2)
+        {
+            foreach (var p in PlayerManager.Instance.players)
+            {
+                p.ApplyBuff("player9_extra3",-1, Characteristic.Attack, 1, ApplyBuffType.Override);
             }
         }
     }
@@ -70,7 +84,7 @@ public class Player_9_Priest : Priest
     protected override void OnDesireChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
     {
         base.OnDesireChangeEvent(playerIndex, extraIndex, selectedIndex);
-        if (playerIndex == GetPlayerIndex() && extraIndex == 1)
+        if (playerIndex == GetPlayerIndex() && (extraIndex == 1|| extraIndex == 3))
         {
             AddBuffBeforeStart();
         }
@@ -81,9 +95,9 @@ public class Player_9_Priest : Priest
         {
             foreach (var p in PlayerManager.Instance.players)
             {
-                p.RemoveBuff("player9");
+                p.RemoveBuff("player9_extra1");
             }
-            player.ApplyBuff("player9", -1, 0f, 0f, 0f, GetBuffBonus(), 0f, ApplyBuffType.Override);
+            player.ApplyBuff("player9_extra1", -1, 0f, 0f, 0f, GetBuffBonus(), 0f, ApplyBuffType.Override);
         }
     }
 

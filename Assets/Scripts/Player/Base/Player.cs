@@ -22,21 +22,21 @@ public class Player : Creature
     }
     protected int atk
     {// 面板
-        get => character.creature.attack;
+        get => character.creature.attack + allBuff.atkNum;
         set => character.creature.attack = value;
     }
     protected int speed
-    {// 面板
+    {// nama
         get => character.creature.speed;
         set => character.creature.speed = value;
     }
     protected int atkSpeed
-    {// 面板
+    {// nama
         get => character.creature.attackSpeed;
         set => character.creature.attackSpeed = value;
     }
     protected int atkRange
-    {// 面板
+    {// nama
         get => character.creature.attackRange;
         set => character.creature.attackRange = value;
     }
@@ -84,10 +84,7 @@ public class Player : Creature
     }
     protected virtual void OnExitLevelEvent(int _)
     {
-        foreach(var b in buffs)
-        {
-            RemoveBuff(b.Key);
-        }
+        RemoveAllBuff();
         StopAllCoroutines();
     }
 
@@ -126,7 +123,6 @@ public class Player : Creature
     public void BeHealed(int heal, int restorer)
     {
         if (!IsAlive()) return;
-        //todo 能达到的最大hp可不该从so中取。。
         var tempHP = hp + heal;
         var maxHP = GetMaxHP();
         heal = tempHP <= maxHP ? heal : maxHP - hp;
@@ -413,5 +409,18 @@ public class Player : Creature
     public int GetRawAtkRange()
     {
         return atkRange;
+    }
+    public int GetProfessionData(Characteristic ch)
+    {
+        var d = SOManager.Instance.GetProfessionDataByProfession(character.profession);
+        return ch switch
+        {
+            Characteristic.Hp => d.hp,
+            Characteristic.Attack => d.attack,
+            Characteristic.Speed => d.speed,
+            Characteristic.AttackSpeed => d.attackSpeed,
+            Characteristic.AttackRange => d.attackRange,
+            _ => 0,
+        };
     }
 }

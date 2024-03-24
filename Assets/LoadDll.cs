@@ -12,7 +12,7 @@ using UnityEngine.Networking;
 public class LoadDll : MonoBehaviour
 {
 
-    void Start()
+    void OnEnable()
     {
         // Editor环境下，HotUpdate.dll.bytes已经被自动加载，不需要加载，重复加载反而会出问题。
 #if !UNITY_EDITOR

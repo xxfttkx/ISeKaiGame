@@ -275,7 +275,7 @@ public class PlayerManager : Singleton<PlayerManager>
             players.Add(go.GetComponent<Player>());
             indexToSpriteRenderer.Add(i, go.GetComponent<SpriteRenderer>());
         }
-        ChangePlayerOnTheField(0);
+        
         InitPlayerHash();
 
     }
@@ -363,6 +363,7 @@ public class PlayerManager : Singleton<PlayerManager>
         {
             p.StartAttack();
         }
+        ChangePlayerOnTheField(0);
     }
     public Player GetMinHpValPlayer()
     {

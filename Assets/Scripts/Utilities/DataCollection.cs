@@ -113,7 +113,24 @@ public class Buff
     public float attackRangeBonus;
     public float attackSpeedBonus;
     public float hpBonus;
-    // 其他可能的影响属性
+    public int hpNum;
+    public int atkNum;
+    public int speedNum;
+    public int atkSpeedNum;
+    public int atkRangeNum;
+    public Buff(string name, Characteristic characteristic, int val)
+    {
+        this.buffName = name;
+        _ = characteristic switch
+        {
+            Characteristic.Hp => hpNum = val,
+            Characteristic.Attack => atkNum = val,
+            Characteristic.Speed => speedNum = val,
+            Characteristic.AttackSpeed => atkSpeedNum = val,
+            Characteristic.AttackRange => atkRangeNum = val,
+            _ => val,
+        };
+    }
     public Buff(string name, float atk, float speed, float atkRange, float atkSpeed)
     {
         this.buffName = name;
@@ -135,14 +152,11 @@ public class Buff
         this.attackRangeBonus += b.attackRangeBonus;
         this.attackSpeedBonus += b.attackSpeedBonus;
         this.hpBonus += b.hpBonus;
-    }
-    public void AddBuff(float bonus)
-    {
-        this.attackBonus += bonus;
-        this.speedBonus += bonus;
-        this.attackRangeBonus += bonus;
-        this.attackSpeedBonus += bonus;
-        this.hpBonus += bonus;
+        this.hpNum += b.hpNum;
+        this.atkNum += b.atkNum;
+        this.speedNum += b.speedNum;
+        this.atkSpeedNum += b.atkSpeedNum;
+        this.atkRangeNum += b.atkRangeNum;
     }
     public void SubBuff(Buff b)
     {
@@ -151,6 +165,11 @@ public class Buff
         this.attackRangeBonus -= b.attackRangeBonus;
         this.attackSpeedBonus -= b.attackSpeedBonus;
         this.hpBonus -= b.hpBonus;
+        this.hpNum -= b.hpNum;
+        this.atkNum -= b.atkNum;
+        this.speedNum -= b.speedNum;
+        this.atkSpeedNum -= b.atkSpeedNum;
+        this.atkRangeNum -= b.atkRangeNum;
     }
     public void Clear()
     {
@@ -159,6 +178,11 @@ public class Buff
         this.attackRangeBonus = 0f;
         this.attackSpeedBonus = 0f;
         this.hpBonus = 0f;
+        this.hpNum = 0;
+        this.atkNum = 0;
+        this.speedNum = 0;
+        this.atkSpeedNum = 0;
+        this.atkRangeNum = 0;
     }
 
     public void AddBuff(float atk, float speed, float atkRange, float atkSpeed, float hp)
@@ -168,6 +192,18 @@ public class Buff
         this.attackRangeBonus += atkRange;
         this.attackSpeedBonus += atkSpeed;
         this.hpBonus += hp;
+    }
+    public void AddBuff(Characteristic characteristic, int val)
+    {
+        _ = characteristic switch
+        {
+            Characteristic.Hp => hpNum = val,
+            Characteristic.Attack => atkNum = val,
+            Characteristic.Speed => speedNum = val,
+            Characteristic.AttackSpeed => atkSpeedNum = val,
+            Characteristic.AttackRange => atkRangeNum = val,
+            _ => val,
+        };
     }
 }
 

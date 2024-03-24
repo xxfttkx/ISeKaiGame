@@ -72,8 +72,9 @@ public class Bubble : PlayerAtk
         }
         
     }
-    private void Reset()
+    protected override void Reset()
     {
+        base.Reset();
         _localScale = new Vector3(1, 1, 1);
     }
 }

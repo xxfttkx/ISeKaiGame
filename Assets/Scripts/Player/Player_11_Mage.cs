@@ -32,7 +32,7 @@ public class Player_11_Mage : Player_Single
         {
             yield return new WaitForSeconds(10.0f);
             List<int> list = new List<int> { atk, speed, atkSpeed, atkRange };
-            Utils.ShuffleArray(list);
+            Utils.Shuffle(list);
             atk = list[0];
             speed = list[1];
             atkSpeed = list[2];

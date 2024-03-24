@@ -421,4 +421,21 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         var curr = GetPlayerExtraData(playerIndex, extraType);
         return curr >= threshold;
     }
+    public bool IsCharacterUnlocked(int characterIndex)
+    {
+        var l = gameSaveData.unlockedCharacters;
+        if (l == null || l.Count <= characterIndex)
+        {
+            Utils.TryFillList<bool>(ref gameSaveData.unlockedCharacters, false, characterIndex + 1);
+        }
+        return gameSaveData.unlockedCharacters[characterIndex];
+    }
+    public void UnlockCharacter(int characterIndex)
+    {
+        gameSaveData.unlockedCharacters[characterIndex] = true;
+    }
+    public List<bool> GetUnlockedCharacters()
+    {
+        return gameSaveData.unlockedCharacters;
+    }
 }

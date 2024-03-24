@@ -27,4 +27,6 @@ public class GameSaveData
     public List<List<int>> playerExtraData;
     // Volume
     public List<float> volumes;
+    //½âËø½ÇÉ«
+    public List<bool> unlockedCharacters;
 }

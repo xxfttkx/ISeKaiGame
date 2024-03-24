@@ -277,8 +277,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      sprite: {fileID: 21300000, guid: 844981228ae50f5459d5d8ed8fb81506, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: d52dad1265318ec4db87c74e96b61853, type: 3}
       desc: 
     name: 99
     profession: 1
@@ -298,7 +298,7 @@ MonoBehaviour:
     extraCharacteristics: 0200000004000000
     extraCharacteristicVals: 0300000003000000
     extraData: 
-    finished: 0
+    finished: 1
   - index: 10
     creature:
       attack: 0
