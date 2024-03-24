@@ -22,22 +22,22 @@ public class Player : Creature
     }
     protected int atk
     {// Ãæ°å
-        get => character.creature.attack + allBuff.atkNum;
+        get => GetRawAtk();
         set => character.creature.attack = value;
     }
     protected int speed
     {// nama
-        get => character.creature.speed;
+        get => GetRawSpeed();
         set => character.creature.speed = value;
     }
     protected int atkSpeed
     {// nama
-        get => character.creature.attackSpeed;
+        get => GetRawAtkSpeed();
         set => character.creature.attackSpeed = value;
     }
     protected int atkRange
     {// nama
-        get => character.creature.attackRange;
+        get => GetRawAtkRange();
         set => character.creature.attackRange = value;
     }
 
@@ -115,7 +115,7 @@ public class Player : Creature
             Dead();
         }
     }
-    
+
     public int GetHp()
     {
         return hp;
@@ -268,7 +268,7 @@ public class Player : Creature
         return Mathf.CeilToInt(speed * (1 + allBuff.speedBonus));
     }
 
-    
+
 
     public virtual int GetAttackRange()
     {
@@ -340,7 +340,7 @@ public class Player : Creature
                 ChangeCharValByExtra(last);
             }
         }
-        
+
     }
     void ChangeCharValByExtra(int lastDesire)
     {
@@ -356,7 +356,7 @@ public class Player : Creature
             PlayerSettingsPanel.Instance?.ChangeCh(this);
         }
     }
-    void ChangeCharVal(Characteristic type,int val)
+    void ChangeCharVal(Characteristic type, int val)
     {
         //todo...
         _ = type switch
@@ -366,7 +366,7 @@ public class Player : Creature
             Characteristic.Speed => speed += val,
             Characteristic.AttackSpeed => atkSpeed += val,
             Characteristic.AttackRange => atkRange += val,
-            _ =>val,
+            _ => val,
         };
     }
     void GetPlayerDataByPrefession(Profession p)
@@ -394,21 +394,21 @@ public class Player : Creature
     {
 
     }
-    public int GetRawAtk()
+    public virtual int GetRawAtk()
     {
-        return atk;
+        return character.creature.attack + allBuff.atkNum;
     }
-    public int GetRawSpeed()
+    public virtual int GetRawSpeed()
     {
-        return speed;
+        return character.creature.speed + allBuff.speedNum;
     }
-    public int GetRawAtkSpeed()
+    public virtual int GetRawAtkSpeed()
     {
-        return atkSpeed;
+        return character.creature.attackSpeed + allBuff.atkSpeedNum;
     }
-    public int GetRawAtkRange()
+    public virtual int GetRawAtkRange()
     {
-        return atkRange;
+        return character.creature.attackRange + allBuff.atkRangeNum;
     }
     public int GetProfessionData(Characteristic ch)
     {

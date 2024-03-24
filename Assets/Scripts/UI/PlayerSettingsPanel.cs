@@ -83,10 +83,10 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
         GameStateManager.Instance.SetGameState(GameState.GamePlay);
         this.gameObject.SetActive(false);
     }
-    public void ChangeCh(Player player)
+    public void ChangeCh(Player p)
     {
-        int playerIndex = player.GetPlayerIndex();
+        int playerIndex = p.GetPlayerIndex();
         currIndex = playerIndex;
-        desc.text = $"Desc:\n{player.character.desc}\nHp:{player.GetHp()}\nAtk:{player.GetRawAtk()}\nSpeed:{player.GetRawSpeed()}\nAtkSpeed:{player.GetRawAtkSpeed()}\nAtkRange:{player.GetRawAtkRange()}";
+        desc.text = $"Desc:\n{p.character.desc}\nHp:{p.GetHp()}/{p.GetMaxHP()}\nAtk:{p.GetRawAtk()}\nSpeed:{p.GetRawSpeed()}\nAtkSpeed:{p.GetRawAtkSpeed()}\nAtkRange:{p.GetRawAtkRange()}";
     }
 }

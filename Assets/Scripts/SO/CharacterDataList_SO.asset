@@ -314,8 +314,8 @@ MonoBehaviour:
     profession: 2
     desc: "\u6BCF\u6740\u4E00\u4E2A\u654C\u4EBA\uFF0C\u6240\u6709\u5C5E\u6027\u52A05%\uFF0C\u6700\u591A100%\n\u602A\u76D7
       \u5077\u5FC3,\u654C\u4EBAhp\u6162\u6162\u4E0B\u964D\uFF0C\u6301\u7EED10s"
-    extraTypes: 
-    extraThresholds: 
+    extraTypes: 01000000040000000600000007000000
+    extraThresholds: 000000000000000000000000
     extraDesire1:
     - 
     - "\u6BCF\u6B21\u653B\u51FB\u4E24\u540D\u654C\u4EBA"
@@ -326,8 +326,8 @@ MonoBehaviour:
     - "\u5077\u5FC3\u901F\u5EA6\u53D8\u5FEB"
     - "\u521D\u59CBatk = 10,\u4E0D\u5177\u6709\u5077\u5FC3\u80FD\u529B"
     - "\u6BCF\u6B21\u5077\u5FC3\u8840\u91CF\u589E\u591A"
-    extraCharacteristics: 
-    extraCharacteristicVals: 
+    extraCharacteristics: 0200000004000000
+    extraCharacteristicVals: 0500000005000000
     extraData: 
     finished: 0
   - index: 11

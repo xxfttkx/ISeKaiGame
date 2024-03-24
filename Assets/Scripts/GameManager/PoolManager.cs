@@ -211,4 +211,20 @@ public class PoolManager : Singleton<PoolManager>
         Egg f = obj.GetComponent<Egg>();
         f.AttackEnemyOrPlayer(e, p,a);
     }
+    public void CreateLetter(Player p, EnemyBase e, Vector3 pos)
+    {
+        ObjectPool<GameObject> objPool = poolList[10];
+        GameObject obj = objPool.Get();
+        obj.transform.position = pos;
+        PlayerAtk f = obj.GetComponent<PlayerAtk>();
+        f.AttackEnemy(e, p);
+    }
+    public void CreateLetterFollowEnemy(EnemyBase e, int atk, Vector2 pos,List<int>extras)
+    {
+        ObjectPool<GameObject> objPool = poolList[10];
+        GameObject obj = objPool.Get();
+        obj.transform.position = pos;
+        Letter l = obj.GetComponent<Letter>();
+        l.HurtEnemy(e, atk, extras);
+    }
 }

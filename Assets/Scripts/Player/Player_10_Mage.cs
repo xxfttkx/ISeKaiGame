@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player_10_Mage : Player_Single
 {
-
+    int count;
     protected override void Awake()
     {
         character.index = 10;
@@ -21,43 +21,39 @@ public class Player_10_Mage : Player_Single
         base.OnDisable();
         EventHandler.PlayerKillEnemyEvent -= OnPlayerKillEnemyEvent;
     }
+    public override void Reset()
+    {
+        base.Reset();
+        count = 0;
+    }
     protected override IEnumerator AttackAnim(EnemyBase e)
     {
-        PlayerManager.Instance.PlayerHurtEnemy(GetPlayerIndex(), e);
-        StartCoroutine(StealHeart(e));
+        PoolManager.Instance.CreateLetter(this, e, _pos);
         AudioManager.Instance.PlaySoundEffect(SoundName.Atk);
         yield break;
     }
-    IEnumerator StealHeart(EnemyBase e)
-    {
-        int globalIndex = e.GetGlobalIndex();
-        while(true)
-        {
-            int index = e.GetGlobalIndex();
-            if(index!=globalIndex)
-            {
-                Debug.Log("À¿¡À°£°£°£°£");
-                break;
-            }
-            int h = e.GetHP();
-            PlayerManager.Instance.PlayerHurtEnemy(GetPlayerIndex(), e , GetStealHeartAtk());
-            yield return new WaitForSeconds(GetStealDelta());
-        }
-    }
     private void OnPlayerKillEnemyEvent(int playerIndex)
     {
-        if(playerIndex==GetPlayerIndex())
+        if(playerIndex==GetPlayerIndex()&&extras[2]!=2)
         {
-            AddBuff("Player10", 0.1f);
+            if(count<_maxCount)
+            {
+                ++count;
+                float b = _bonus;
+                ApplyBuff("Player10", -1, b, b, b, b, b, ApplyBuffType.Add);
+            }
         }
     }
-    private float GetStealDelta()
+    float _bonus
     {
-        if (extras[1] == 2) return 0.5f;
-        return 1.0f;
+        get=> extras[2] == 1 ? 0.04f : 0.05f;
     }
-    private int GetStealHeartAtk()
+    int _maxCount
     {
-        return 1;
+        get => extras[2] == 1 ? 50 : 20;
+    }
+    public override int GetRawAtk()
+    {
+        return base.GetRawAtk() + (extras[2] == 2 ? 0 : -5);
     }
 }
