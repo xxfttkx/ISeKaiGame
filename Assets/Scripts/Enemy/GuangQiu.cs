@@ -79,9 +79,9 @@ public class GuangQiu : MonoBehaviour
             }
             else
             {
-                rb.MovePosition(rb.position + direction * seekingEnemyInterval * velocity);
+                rb.MovePosition(rb.position + direction * Time.deltaTime * velocity);
             }
-            yield return new WaitForSeconds(seekingEnemyInterval);
+            yield return null;
         }
     }
 

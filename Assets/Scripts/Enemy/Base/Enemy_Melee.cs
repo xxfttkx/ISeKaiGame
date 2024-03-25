@@ -60,10 +60,10 @@ public class Enemy_Melee : EnemyBase
             else
             {
                 IsMoving = true;
-                rb.MovePosition(rb.position + movementVec2 * GetSpeed() * moveDelta);
+                rb.MovePosition(rb.position + movementVec2 * GetSpeed() * Time.deltaTime);
             }
 
-            yield return new WaitForSeconds(moveDelta);
+            yield return null;
         }
     }
 }

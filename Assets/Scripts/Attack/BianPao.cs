@@ -4,23 +4,31 @@ using UnityEngine;
 
 public class BianPao : PlayerAtk
 {
-    private Animator animator;
-    public float explosionRange = 1f;
+    public float _explosionRange
+    {
+        get => extras[3] switch
+        {
+            0 => 1f,
+            1 => 2f,
+            2 => 0.5f,
+            _ => 1f,
+        };
+    }
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        poolIndex = 4;
+        autoReleaseTime = -1;
     }
 
     protected override IEnumerator AttackEnemy(EnemyBase e)
     {
-        atk = Mathf.CeilToInt(atk*GetAtkBonus());
         Vector2 start = this.transform.position;
         Vector2 target = e.transform.position;
         Vector2 dir = target - start;
         bool hidarimuki = dir.x > 0;
         for (int i = 0; i < 10; i += 1)
         {
-            this.transform.position = Vector2.Lerp(start, target, i * 0.1f);
+            _pos = Vector2.Lerp(start, target, i * 0.1f);
             this.transform.rotation = Quaternion.Euler(0, 0, (i) * 36 * (hidarimuki ? 1 : -1));
             yield return new WaitForSeconds(0.01f);
         }
@@ -28,31 +36,27 @@ public class BianPao : PlayerAtk
     }
     public void Burn()
     {
-        animator.SetBool("start", true);
         StartCoroutine(StartExplosion());
     }
 
     IEnumerator StartExplosion()
     {
         yield return new WaitForSeconds(GetExplosionTime());
-        animator.SetBool("start", false);
-        PoolManager.Instance.BianPaoExplosion(this.transform.position);
-        var enemyIndexMask = LayerMask.GetMask("Enemy");
-        var playerIndexMask = LayerMask.GetMask("Player");
-        Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(this.transform.position, explosionRange, enemyIndexMask);
-        foreach (var coll in enemyColliders)
+        PoolManager.Instance.BianPaoExplosion(_pos);
+        var enemies = Utils.GetNearEnemies(_pos, _explosionRange);
+        if(enemies!=null)
         {
-            if (coll.gameObject.CompareTag("Enemy"))
+            foreach (var e in enemies)
             {
-                var e = coll.gameObject.GetComponent<EnemyBase>();
-                PlayerManager.Instance.PlayerHurtEnemy(12,e,atk);
+                PlayerManager.Instance.PlayerHurtEnemy(12, e, GetAtk());
             }
         }
+        
         var p = PlayerManager.Instance.GetPlayerInControl();
-        if(Utils.CanAttackPlayer(this.gameObject, p, explosionRange))
+        if(Utils.CanAttackPlayer(this.gameObject, p, _explosionRange))
             PlayerManager.Instance.PlayerHurtPlayer(12, p.character.index, GetAtkPlayerVal());
 
-        PoolManager.Instance.ReleaseObj(this.gameObject,4);
+        Release();
     }
     float GetExplosionTime()
     {
@@ -64,9 +68,19 @@ public class BianPao : PlayerAtk
             _=>0.4f,
         };
     }
-    float GetAtkBonus()
+    float GetAtkTimeBonus()
     {
         return extras[1] switch
+        {
+            0 => 1f,
+            1 => 1f,
+            2 => 1.5f,
+            _ => 1f,
+        };
+    }
+    float GetAtkRangeBonus()
+    {
+        return extras[3] switch
         {
             0 => 1f,
             1 => 1f,
@@ -78,10 +92,14 @@ public class BianPao : PlayerAtk
     {
         return extras[2] switch
         {
-            0 => atk,
+            0 => GetAtk(),
             1 => int.MaxValue,
             2 => 0,
-            _ => atk,
+            _ => GetAtk(),
         };
+    }
+    int GetAtk()
+    {
+        return Mathf.CeilToInt(atk * GetAtkTimeBonus()* GetAtkRangeBonus());
     }
 }

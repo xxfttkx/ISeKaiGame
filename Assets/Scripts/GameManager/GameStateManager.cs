@@ -9,6 +9,7 @@ public class GameStateManager : Singleton<GameStateManager>
     private void Start()
     {
         SetGameState(GameState.GameEnd);
+        //Application.targetFrameRate = 60;
     }
     private void Update()
     {

@@ -38,9 +38,11 @@ public abstract class Enemy_Ranged : EnemyBase
             }
             else
             {
+                float randomOffset = GetPositiveRandom();
+                yield return new WaitForSeconds(randomOffset);
+                if (!IsAlive()) break;
                 AttackPlayer();
-                float randomOffset = GetRandomOffset();
-                yield return new WaitForSeconds(10 / GetAttackSpeed() + randomOffset);
+                yield return new WaitForSeconds(10 / GetAttackSpeed());
             }
 
         }
@@ -64,12 +66,12 @@ public abstract class Enemy_Ranged : EnemyBase
             if (distance < GetAttackRange() - 2)
             {
                 IsMoving = true;
-                rb.MovePosition(rb.position - movementVec2 * GetSpeed() * moveDelta);
+                rb.MovePosition(rb.position - movementVec2 * GetSpeed() * Time.deltaTime);
             }
             else if (distance > GetAttackRange() - 1)
             {
                 IsMoving = true;
-                rb.MovePosition(rb.position + movementVec2 * GetSpeed() * moveDelta);
+                rb.MovePosition(rb.position + movementVec2 * GetSpeed() * Time.deltaTime);
             }
             else
             {
@@ -77,7 +79,7 @@ public abstract class Enemy_Ranged : EnemyBase
                 rb.velocity = Vector2.zero;
             }
                 
-            yield return new WaitForSeconds(moveDelta);
+            yield return null;
         }
     }
 

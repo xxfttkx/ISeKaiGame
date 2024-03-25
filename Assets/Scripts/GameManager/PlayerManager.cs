@@ -33,16 +33,18 @@ public class PlayerManager : Singleton<PlayerManager>
     private void OnEnable()
     {
         EventHandler.EnterLevelEvent += OnEnterLevelEvent;
+        EventHandler.ExitLevelEvent += OnExitLevelEvent;
     }
     private void OnDisable()
     {
         EventHandler.EnterLevelEvent -= OnEnterLevelEvent;
+        EventHandler.ExitLevelEvent -= OnExitLevelEvent;
     }
     private void InitPlayerHash()
     {
         playerTypeToPlayer.Clear();
         indexToPlayer.Clear();
-        
+
         foreach (var p in players)
         {
             if (!playerTypeToPlayer.ContainsKey(p.character.profession))
@@ -59,7 +61,7 @@ public class PlayerManager : Singleton<PlayerManager>
         if (!GameStateManager.Instance.InGamePlay()) return;
         ChangePlayerInput();
         PlayerMoveInput();
-        for(int i =0;i<players.Count;++i)
+        for (int i = 0; i < players.Count; ++i)
         {
             var p = players[i];
             if (!p.IsAlive()) continue;
@@ -106,6 +108,8 @@ public class PlayerManager : Singleton<PlayerManager>
         inputX = Input.GetAxisRaw("Horizontal");
         inputY = Input.GetAxisRaw("Vertical");
         movementInput = new Vector2(inputX, inputY);
+        if (curSorMove != null && movementInput.sqrMagnitude != 0)
+            StopCoroutine(curSorMove);
         movementInput = movementInput.normalized;
     }
 
@@ -115,7 +119,7 @@ public class PlayerManager : Singleton<PlayerManager>
         if (indexToPlayer.ContainsKey(2))
         {
             int extra = SaveLoadManager.Instance.GetPlayerExtra(2, 2);
-            if(extra!=2)
+            if (extra != 2)
                 pIndex = 2;
         }
         // SaveLoadManager.Instance.PlayerKillEnemy(pIndex, enemy);
@@ -127,11 +131,11 @@ public class PlayerManager : Singleton<PlayerManager>
         EventHandler.CallPlayerKillEnemyEvent(pIndex);
     }
 
-    public void PlayerKnockbackEnemy(int playerIndex, EnemyBase e,int power)
+    public void PlayerKnockbackEnemy(int playerIndex, EnemyBase e, int power)
     {
-        e.BeRepelled(indexToPlayer[playerIndex],power);
+        e.BeRepelled(indexToPlayer[playerIndex], power);
     }
-    internal void PlayerHurtEnemy(int playerIndex, EnemyBase e,int atk = -1)
+    internal void PlayerHurtEnemy(int playerIndex, EnemyBase e, int atk = -1)
     {
         if (atk == -1) atk = GetPlayerAttack(playerIndex);
         if (atk == 0) return;
@@ -144,28 +148,28 @@ public class PlayerManager : Singleton<PlayerManager>
         e.BeHurt(atk, playerIndex);
         RecordManager.Instance.AddDamage(atk);
     }
-    internal void PlayerHurtPlayer(int atkIndex, int hurtIndex,int atk = -1)
+    internal void PlayerHurtPlayer(int atkIndex, int hurtIndex, int atk = -1)
     {
         if (atk == -1) atk = GetPlayerAttack(atkIndex);
         if (atk == 0) return;
         indexToPlayer[hurtIndex].BeCompanionHurt(atk);
     }
-    public void PlayerHealPlayer(int restorer, int recipient,int heal=-1)
+    public void PlayerHealPlayer(int restorer, int recipient, int heal = -1)
     {
         if (heal == -1) heal = GetPlayerAttack(restorer);
         if (heal == 0) return;
         indexToPlayer[recipient].BeHealed(heal, restorer);
-        
+
     }
-    public void EnemyHurtPlayer(EnemyBase e,Player p = null,int attack=-1)
+    public void EnemyHurtPlayer(EnemyBase e, Player p = null, int attack = -1)
     {
         if (p == null) p = GetPlayerInControl();
         if (attack == -1) attack = e.GetAttack();
         if (attack == 0) return;
-        if(indexToPlayer.ContainsKey(14))
+        if (indexToPlayer.ContainsKey(14))
         {
             var player = indexToPlayer[14];
-            if(player.CanAcceptHurt(attack))
+            if (player.CanAcceptHurt(attack))
             {
                 player.BeHurt(attack);
                 return;
@@ -205,8 +209,8 @@ public class PlayerManager : Singleton<PlayerManager>
         {
             if (p.character.profession == Profession.Warrior)
             {
-                if(!p.IsAlive())
-                return p;
+                if (!p.IsAlive())
+                    return p;
             }
         }
         return null;
@@ -257,9 +261,9 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         //todo »¹Ã» ÅÐ¶Ï {-1£¬-1£¬-1}
         SaveLoadManager.Instance.SaveLastCharsIndexes(playerIndexes);
-        if(players!=null)
+        if (players != null)
         {
-            foreach(var p in players)
+            foreach (var p in players)
             {
                 Destroy(p.gameObject);
             }
@@ -275,7 +279,7 @@ public class PlayerManager : Singleton<PlayerManager>
             players.Add(go.GetComponent<Player>());
             indexToSpriteRenderer.Add(i, go.GetComponent<SpriteRenderer>());
         }
-        
+
         InitPlayerHash();
 
     }
@@ -283,7 +287,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public List<int> GetCharsIndexes()
     {
         List<int> indexes = new List<int>(players.Count);
-        foreach(var p in players)
+        foreach (var p in players)
         {
             indexes.Add(p.character.index);
         }
@@ -299,7 +303,7 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         int atk = indexToPlayer[playerIndex].GetAttack();
         float bonus = 1;
-        if (currPlayerIndex!= playerIndex)
+        if (currPlayerIndex != playerIndex)
             bonus += 0.5f;
         atk = Mathf.CeilToInt(atk * bonus);
         return atk;
@@ -331,7 +335,7 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         currIndex = i;
         currPlayerIndex = players[i].character.index;
-        foreach(var p in players)
+        foreach (var p in players)
         {
             var index = p.character.index;
             if (index == currPlayerIndex)
@@ -348,7 +352,8 @@ public class PlayerManager : Singleton<PlayerManager>
 
     protected void OnEnterLevelEvent(int _)
     {
-        foreach(var p in players)
+        this.transform.position = Vector3.zero;
+        foreach (var p in players)
         {
             p.Reset();
             EventHandler.CallPlayerHpValChangeEvent(p.GetPlayerIndex(), 1.0f);
@@ -365,9 +370,13 @@ public class PlayerManager : Singleton<PlayerManager>
         }
         ChangePlayerOnTheField(0);
     }
+    protected void OnExitLevelEvent(int _)
+    {
+
+    }
     public Player GetMinHpValPlayer()
     {
-        Player ans=null;
+        Player ans = null;
         float min = 1.1f;
         foreach (var p in players)
         {
@@ -383,7 +392,7 @@ public class PlayerManager : Singleton<PlayerManager>
     }
     public Player GetMinHpValPlayerUnder()
     {
-        Player ans=null;
+        Player ans = null;
         float min = 1.1f;
         foreach (var p in players)
         {
@@ -414,7 +423,7 @@ public class PlayerManager : Singleton<PlayerManager>
         }
         return ans;
     }
-    public int GetPlayerExtra(int playerIndex,int extraIndex)
+    public int GetPlayerExtra(int playerIndex, int extraIndex)
     {
         return indexToPlayer[playerIndex].GetExtra(extraIndex);
     }
@@ -435,7 +444,7 @@ public class PlayerManager : Singleton<PlayerManager>
     }
     public void MoveToPos(Vector2 pos)
     {
-        if(curSorMove!=null)
+        if (curSorMove != null)
         {
             StopCoroutine(curSorMove);
         }

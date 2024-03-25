@@ -89,4 +89,9 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
         currIndex = playerIndex;
         desc.text = $"Desc:\n{p.character.desc}\nHp:{p.GetHp()}/{p.GetMaxHP()}\nAtk:{p.GetRawAtk()}\nSpeed:{p.GetRawSpeed()}\nAtkSpeed:{p.GetRawAtkSpeed()}\nAtkRange:{p.GetRawAtkRange()}";
     }
+    public void ChangeCh()
+    {
+        var p = PlayerManager.Instance.GetPlayerByPlayerIndex(currIndex);
+        desc.text = $"Desc:\n{p.character.desc}\nHp:{p.GetHp()}/{p.GetMaxHP()}\nAtk:{p.GetRawAtk()}\nSpeed:{p.GetRawSpeed()}\nAtkSpeed:{p.GetRawAtkSpeed()}\nAtkRange:{p.GetRawAtkRange()}";
+    }
 }

@@ -22,6 +22,7 @@ public class EnemyBase : Creature
     private bool beReleased;
     public bool canMove;
     private Animator animator;
+    private float levelBonus;
     protected bool IsMoving
     {
         get => isMoveing;
@@ -102,7 +103,7 @@ public class EnemyBase : Creature
         if (IsAlive())
         {
             damage = Mathf.Min(hp, damage);
-            HPPanel.Instance.Show(this.transform.position, damage);
+            HPPanel.Instance.Show(this, damage);
             SaveLoadManager.Instance.SetPlayerExtraData(playerIndex, ExtraType.Hurt,damage);
             hp -= damage;
             if (hp <= 0)
@@ -257,6 +258,11 @@ public class EnemyBase : Creature
         }
         else
             attackRandomTime += randomOffset;
+        return randomOffset;
+    }
+    public float GetPositiveRandom()
+    {
+        float randomOffset = UnityEngine.Random.Range(0, 10.0f);
         return randomOffset;
     }
     protected virtual void AttackPlayer()

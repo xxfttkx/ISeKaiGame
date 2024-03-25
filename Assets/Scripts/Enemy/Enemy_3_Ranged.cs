@@ -22,6 +22,10 @@ public class Enemy_Ranged_3 : Enemy_Ranged
     protected override void AttackPlayer()
     {
         Vector2 dir = player.transform.position - this.transform.position;
-        PoolManager.Instance.CreateGuangQiu(dir, this,1,3);
+        PoolManager.Instance.CreateGuangQiu(dir, this, 1, GetGuangQiuSpeed());
+    }
+    private float GetGuangQiuSpeed()
+    {
+        return 30f;
     }
 }
