@@ -149,6 +149,8 @@ public class UIManager : Singleton<UIManager>
     {
         if (!openPanel.Contains(go))
         {
+            if(openPanel.Count>0)
+                openPanel.Peek().SetActive(false);
             openPanel.Push(go);
             go.SetActive(true);
         }
@@ -161,6 +163,10 @@ public class UIManager : Singleton<UIManager>
         if (openPanel.Count == 0)
         {
             GameStateManager.Instance.SetGameState(GameState.GamePlay);
+        }
+        else
+        {
+            openPanel.Peek().SetActive(true);
         }
     }
     public void HideAllUI()

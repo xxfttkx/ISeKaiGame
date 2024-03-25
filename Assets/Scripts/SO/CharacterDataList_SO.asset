@@ -372,16 +372,18 @@ MonoBehaviour:
     name: template
     profession: 2
     desc: "\u6254\u97AD\u70AE  \u4F1A\u70B8\u961F\u53CB \u70B8\u961F\u53CB"
-    extraTypes: 010000000400000006000000
-    extraThresholds: 000000000000000000000000
+    extraTypes: 01000000040000000600000007000000
+    extraThresholds: 00000000000000000000000000000000
     extraDesire1:
     - 
     - "\u97AD\u70AE\u7206\u70B8\u65F6\u95F4\u53D80.1s"
     - "\u70B8\u961F\u53CB\u76F4\u63A5\u70B8\u81F31\u8840"
+    - "\u7206\u70B8\u8303\u56F42"
     extraDesire2:
     - 
     - "\u97AD\u70AE\u7206\u70B8\u65F6\u95F4\u53D81s \u4F46\u4F24\u5BB3*=1.5"
     - "\u70B8\u961F\u53CB\u4E0D\u6389\u8840"
+    - "\u7206\u70B8\u8303\u56F4 = 0.5  \u4F24\u5BB3*1.5"
     extraCharacteristics: 0200000003000000
     extraCharacteristicVals: 0300000003000000
     extraData: 
@@ -394,14 +396,14 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      sprite: {fileID: 21300000, guid: 05675ee200279684a96c287bc3ff9464, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: 2c258f43380f5aa478e52487594aed2a, type: 3}
       desc: 
     name: template
     profession: 1
     desc: "\u5976=hp*1.5"
-    extraTypes: 
-    extraThresholds: 
+    extraTypes: 030000000200000006000000
+    extraThresholds: 000000000000000000000000
     extraDesire1:
     - 
     - "\u961F\u53CB\u6295\u5C04\u7269\u901F\u5EA6*=1.5"
@@ -410,10 +412,10 @@ MonoBehaviour:
     - 
     - "\u961F\u53CB\u6295\u5C04\u7269\u901F\u5EA6*=0.6"
     - "\u5976=hp*2.0"
-    extraCharacteristics: 
-    extraCharacteristicVals: 
+    extraCharacteristics: 0400000004000000
+    extraCharacteristicVals: 0300000003000000
     extraData: 
-    finished: 0
+    finished: 1
   - index: 14
     creature:
       attack: 0

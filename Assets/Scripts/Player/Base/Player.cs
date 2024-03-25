@@ -12,6 +12,7 @@ public class Player : Creature
     [SerializeField]
     private float timeOnTheField;
     public List<int> extras;
+
     public int _atk
     {// ÓÎÏ·ÖÐ
         get => PlayerManager.Instance.GetPlayerAttack(character.index);
@@ -422,5 +423,9 @@ public class Player : Creature
             Characteristic.AttackRange => d.attackRange,
             _ => 0,
         };
+    }
+    public float GetProjectileSpeedBonus()
+    {
+        return 1.0f+allBuff.ProjectileSpeedBonus;
     }
 }

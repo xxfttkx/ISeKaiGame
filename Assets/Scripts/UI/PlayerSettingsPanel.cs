@@ -14,10 +14,17 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
     private List<ExtraSkill> extraSkills;
     public TextMeshProUGUI desc;
     public bool bInit;
-    public int currIndex;
+    public int currPlayerIndex;
+    int extrasCount;
+    public int _currIndex
+    {
+        get => playerImages.FindIndex(i => i.index == currPlayerIndex);
+    }
+    BtnBaseCtl btnCtl;
     protected override void Awake()
     {
         base.Awake();
+        btnCtl = GetComponent<BtnBaseCtl>();
         playerImages = new List<PlayerBtn>();
         extraSkills = new List<ExtraSkill>();
     }
@@ -40,6 +47,7 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
             b.InitButton(i, sp);
             playerImages.Add(b);
         }
+
         ShowPlayerExtra(playerIndexes[0]);
     }
 
@@ -55,11 +63,11 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
             if (btn.index == playerIndex) btn.Select();
             else btn.CancelSelect();
         }
-        var count = ch.extraTypes.Count;
-        for (int i = 0; i < count; ++i)
+        extrasCount = ch.extraTypes.Count;
+        for (int i = 0; i < extrasCount; ++i)
         {
             ExtraSkill extraSkill;
-            if (extraSkills.Count>i)
+            if (extraSkills.Count > i)
             {
                 extraSkill = extraSkills[i];
             }
@@ -72,26 +80,38 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
             extraSkill.SetExtraSkill(playerIndex, i);
             extraSkill.gameObject.SetActive(true);
         }
-        for (int i = extraSkills.Count - 1; i >= count; --i)
+        for (int i = extraSkills.Count - 1; i >= extrasCount; --i)
         {
             extraSkills[i].gameObject.SetActive(false);
         }
+        SetBtnCtl();
     }
 
-    public void HideSelf()
+    void SetBtnCtl()
     {
-        GameStateManager.Instance.SetGameState(GameState.GamePlay);
-        this.gameObject.SetActive(false);
+        btnCtl.firstBtn = playerImages[0];
+        int n = playerImages.Count;
+        var desireBtn = extraSkills[0].btns[0];
+        for (int i = 0; i < n; ++i)
+        {
+            playerImages[i].SetKeyboardRelation(null, desireBtn, i > 0 ? playerImages[i - 1] : null, i < n - 1 ? playerImages[i + 1] : null); ;
+        }
+        n = extrasCount;
+        for (int i = 0; i < n; ++i)
+        {
+            extraSkills[i].btns[0].SetKeyboardRelation(i==0? playerImages[_currIndex]: extraSkills[i-1].btns[0], i < n - 1 ? extraSkills[i + 1].btns[0] : null, null, extraSkills[i].btns[1]);
+            extraSkills[i].btns[1].SetKeyboardRelation(i==0? playerImages[_currIndex]: extraSkills[i-1].btns[1], i < n - 1 ? extraSkills[i + 1].btns[1] : null, extraSkills[i].btns[0], null);
+        }
     }
     public void ChangeCh(Player p)
     {
         int playerIndex = p.GetPlayerIndex();
-        currIndex = playerIndex;
+        currPlayerIndex = playerIndex;
         desc.text = $"Desc:\n{p.character.desc}\nHp:{p.GetHp()}/{p.GetMaxHP()}\nAtk:{p.GetRawAtk()}\nSpeed:{p.GetRawSpeed()}\nAtkSpeed:{p.GetRawAtkSpeed()}\nAtkRange:{p.GetRawAtkRange()}";
     }
     public void ChangeCh()
     {
-        var p = PlayerManager.Instance.GetPlayerByPlayerIndex(currIndex);
+        var p = PlayerManager.Instance.GetPlayerByPlayerIndex(currPlayerIndex);
         desc.text = $"Desc:\n{p.character.desc}\nHp:{p.GetHp()}/{p.GetMaxHP()}\nAtk:{p.GetRawAtk()}\nSpeed:{p.GetRawSpeed()}\nAtkSpeed:{p.GetRawAtkSpeed()}\nAtkRange:{p.GetRawAtkRange()}";
     }
 }

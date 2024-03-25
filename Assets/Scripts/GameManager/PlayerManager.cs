@@ -16,7 +16,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public Dictionary<int, SpriteRenderer> indexToSpriteRenderer;
     public List<int> trueIndexes;
     Coroutine curSorMove;
-
+    bool bInit;
     protected override void Awake()
     {
         base.Awake();
@@ -59,6 +59,7 @@ public class PlayerManager : Singleton<PlayerManager>
     private void Update()
     {
         if (!GameStateManager.Instance.InGamePlay()) return;
+        if (!bInit) return;
         ChangePlayerInput();
         PlayerMoveInput();
         for (int i = 0; i < players.Count; ++i)
@@ -72,7 +73,7 @@ public class PlayerManager : Singleton<PlayerManager>
     private void FixedUpdate()
     {
         if (GameStateManager.Instance.gameState != GameState.GamePlay) return;
-
+        if (!bInit) return;
         Movement();
     }
 
@@ -178,12 +179,13 @@ public class PlayerManager : Singleton<PlayerManager>
         p.BeHurt(attack);
     }
 
+    Vector2 moveVec2;
+    Vector3 moveVec3;
     private void Movement()
     {
-        var speed = GetPlayerSpeed(currPlayerIndex);
-        Vector2 move = movementInput * speed * Time.deltaTime;
-        Vector3 m = new Vector3(move.x, move.y, 0.0f);
-        this.transform.position = this.transform.position + m;
+        moveVec2 = movementInput * GetPlayerSpeed(currPlayerIndex) * Time.deltaTime;
+        moveVec3 = new Vector3(moveVec2.x, moveVec2.y, 0.0f);
+        this.transform.position = this.transform.position + moveVec3;
         players[currIndex].Move(movementInput, Time.deltaTime);
 
 
@@ -369,10 +371,11 @@ public class PlayerManager : Singleton<PlayerManager>
             p.StartAttack();
         }
         ChangePlayerOnTheField(0);
+        bInit = true;
     }
     protected void OnExitLevelEvent(int _)
     {
-
+        bInit = false;
     }
     public Player GetMinHpValPlayer()
     {

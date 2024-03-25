@@ -130,6 +130,7 @@ public class SelectPanel : Singleton<SelectPanel>
     }
     void InitKeyboardRelation()
     {
+        clearBtn.SetDownBtn(allPlayerButtons[0][0]);
         for (int i = 0; i < allPlayerButtons.Count; ++i)
         {
             for (int j = 0; j < allPlayerButtons[i].Count; ++j)
@@ -137,12 +138,14 @@ public class SelectPanel : Singleton<SelectPanel>
                 allPlayerButtons[i][j].SetKeyboardRelation(GetBtnByXY(i - 1, j), GetBtnByXY(i + 1, j), GetBtnByXY(i, j + 1), GetBtnByXY(i, j - 1));
             }
         }
+        goBtn.SetLeftBtn(allPlayerButtons[allPlayerButtons.Count-1][allPlayerButtons[allPlayerButtons.Count - 1].Count-1]);
     }
     public BtnBase goBtn;
+    public BtnBase clearBtn;
     BtnBase GetBtnByXY(int i,int j)
     {
         int n = allPlayerButtons.Count;
-        if (i < 0) return null;
+        if (i < 0) return clearBtn;
         if (i > n) return null;
         if (i == n) return goBtn;
         int m = allPlayerButtons[i].Count;

@@ -5,65 +5,11 @@ using UnityEngine;
 
 public static class EventHandler
 {
-    public static event Action<GameObject, Vector3> CreateEnemyEvent;
-    public static void CallCreateEnemyEvent(GameObject enemy, Vector3 pos)
-    {
-        CreateEnemyEvent?.Invoke(enemy, pos);
-    }
+
     public static event Action SwitchBackgroundEvent;
     public static void CallSwitchBackgroundEvent()
     {
         SwitchBackgroundEvent?.Invoke();
-    }
-    //
-    public static event Action WinCurrLevelEvent;
-    public static void CallWinCurrLevelEvent()
-    {
-        WinCurrLevelEvent?.Invoke();
-    }
-
-    // 创造羽毛 索敌 生成位置
-    public static event Action<GameObject, Vector3> CreateFeatherEvent;
-    public static void CallCreateFeatherEvent(GameObject enemy, Vector3 pos)
-    {
-        CreateFeatherEvent?.Invoke(enemy, pos);
-    }
-    // 创造光球 索敌 生成位置
-    public static event Action<GameObject, Vector3> CreateGuangQiuEvent;
-    public static void CallCreateGuangQiuEvent(GameObject enemy, Vector3 pos)
-    {
-        CreateGuangQiuEvent?.Invoke(enemy, pos);
-    }
-
-    // 创造泡泡 索敌 生成位置
-    public static event Action<GameObject, Vector3> CreateBubbleEvent;
-    public static void CallCreateBubbleEvent(GameObject enemy, Vector3 pos)
-    {
-        CreateBubbleEvent?.Invoke(enemy, pos);
-    }
-
-    public static event Action<Vector3, Vector2> CreateBulletEvent;
-    public static void CallCreateBulletEvent(Vector3 pos, Vector2 force)
-    {
-        CreateBulletEvent?.Invoke(pos, force);
-    }
-
-    public static event Action<GameObject> ReleaseBulletEvent;
-    public static void CallReleaseBulletEvent(GameObject obj)
-    {
-        ReleaseBulletEvent?.Invoke(obj);
-    }
-
-    public static event Action<Vector3> CreateDeadEnemyEvent;
-    public static void CallCreateDeadEnemyEvent(Vector3 pos)
-    {
-        CreateDeadEnemyEvent?.Invoke(pos);
-    }
-
-    public static event Action StartNewGameEvent;
-    public static void CallStartNewGameEvent()
-    {
-        StartNewGameEvent?.Invoke();
     }
 
     public static event Action EndLevelEvent;

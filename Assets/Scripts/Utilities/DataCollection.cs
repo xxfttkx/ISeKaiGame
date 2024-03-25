@@ -118,6 +118,7 @@ public class Buff
     public int speedNum;
     public int atkSpeedNum;
     public int atkRangeNum;
+    public float ProjectileSpeedBonus;
     public Buff(string name, Characteristic characteristic, int val)
     {
         this.buffName = name;
@@ -128,6 +129,16 @@ public class Buff
             Characteristic.Speed => speedNum = val,
             Characteristic.AttackSpeed => atkSpeedNum = val,
             Characteristic.AttackRange => atkRangeNum = val,
+            
+            _ => val,
+        };
+    }
+    public Buff(string name, Characteristic characteristic, float val)
+    {
+        this.buffName = name;
+        _ = characteristic switch
+        {
+            Characteristic.ProjectileSpeedBonus => ProjectileSpeedBonus = val,
             _ => val,
         };
     }
@@ -157,6 +168,7 @@ public class Buff
         this.speedNum += b.speedNum;
         this.atkSpeedNum += b.atkSpeedNum;
         this.atkRangeNum += b.atkRangeNum;
+        this.ProjectileSpeedBonus += b.ProjectileSpeedBonus;
     }
     public void SubBuff(Buff b)
     {
@@ -170,6 +182,7 @@ public class Buff
         this.speedNum -= b.speedNum;
         this.atkSpeedNum -= b.atkSpeedNum;
         this.atkRangeNum -= b.atkRangeNum;
+        this.ProjectileSpeedBonus -= b.ProjectileSpeedBonus;
     }
     public void Clear()
     {
@@ -183,6 +196,7 @@ public class Buff
         this.speedNum = 0;
         this.atkSpeedNum = 0;
         this.atkRangeNum = 0;
+        this.ProjectileSpeedBonus = 0;
     }
 
     public void AddBuff(float atk, float speed, float atkRange, float atkSpeed, float hp)
@@ -197,11 +211,20 @@ public class Buff
     {
         _ = characteristic switch
         {
-            Characteristic.Hp => hpNum = val,
-            Characteristic.Attack => atkNum = val,
-            Characteristic.Speed => speedNum = val,
-            Characteristic.AttackSpeed => atkSpeedNum = val,
-            Characteristic.AttackRange => atkRangeNum = val,
+            Characteristic.Hp => hpNum += val,
+            Characteristic.Attack => atkNum += val,
+            Characteristic.Speed => speedNum += val,
+            Characteristic.AttackSpeed => atkSpeedNum += val,
+            Characteristic.AttackRange => atkRangeNum += val,
+            Characteristic.ProjectileSpeedBonus => ProjectileSpeedBonus += val,
+            _ => val,
+        };
+    }
+    public void AddBuff(Characteristic characteristic, float val)
+    {
+        _ = characteristic switch
+        {
+            Characteristic.ProjectileSpeedBonus => ProjectileSpeedBonus += val,
             _ => val,
         };
     }

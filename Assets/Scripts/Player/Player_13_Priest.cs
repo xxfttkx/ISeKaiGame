@@ -21,23 +21,65 @@ public class Player_13_Priest : Priest
 
     public override void HealSkill()
     {
-        int healIndex = -1;
-        float minVal = 1;
-        int needHealHp = 0;
-        foreach (var p in PlayerManager.Instance.players)
+        if(extras[2]==0|| extras[2] == 2)
         {
-            if (!p.IsAlive()) continue;
-            float val = p.GetHpVal();
-            if(val < minVal)
-            {
-                val = minVal;
-                healIndex = p.GetPlayerIndex();
-                needHealHp = p.GetHp();
-            }
-
+            var p = PlayerManager.Instance.GetMinHpValPlayer();
+            PlayerManager.Instance.PlayerHealPlayer(GetPlayerIndex(), p.GetPlayerIndex(), GetHealNum(p));
         }
-        if(healIndex!=-1)
-            PlayerManager.Instance.PlayerHealPlayer(character.index, healIndex, needHealHp);
+        else if (extras[2] == 1)
+        {
+            foreach(var p in PlayerManager.Instance.players)
+            {
+                if (p.IsAlive())
+                {
+                    PlayerManager.Instance.PlayerHealPlayer(GetPlayerIndex(), p.GetPlayerIndex(), GetHealNum(p));
+                }
+            }
+        }
+
+
     }
 
+    int GetHealNum(Player p)
+    {
+        return Mathf.CeilToInt(p.GetHp() * GetHealVal());
+    }
+    float GetHealVal()
+    {
+        return extras[2] switch
+        {
+            0 => 0.3f,
+            1 => 0.2f,
+            2 => 0.5f,
+            _ => 0.3f,
+        };
+    }
+
+    protected override void OnDesireChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
+    {
+        base.OnDesireChangeEvent(playerIndex, extraIndex, selectedIndex);
+        if (playerIndex == GetPlayerIndex() && extraIndex == 1)
+        {
+            AddBuffBeforeStart();
+        }
+    }
+    public override void AddBuffBeforeStart()
+    {
+        if(extras[1]!=0)
+        {
+            float b = extras[1] == 1 ? 1.0f : -0.8f;
+            foreach (var p in PlayerManager.Instance.players)
+            {
+                p.ApplyBuff("player13_extra1", -1, Characteristic.ProjectileSpeedBonus, b, ApplyBuffType.Override);
+            }
+        }
+        else
+        {
+            foreach (var p in PlayerManager.Instance.players)
+            {
+                p.RemoveBuff("player13_extra1");
+            }
+        }
+        
+    }
 }

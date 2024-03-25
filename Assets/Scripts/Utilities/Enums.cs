@@ -67,6 +67,7 @@ public enum Characteristic
     Speed,
     AttackSpeed,
     AttackRange,
+    ProjectileSpeedBonus,
 }
 
 public enum ApplyBuffType

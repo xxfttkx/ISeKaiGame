@@ -9,6 +9,10 @@ public class Bubble : PlayerAtk
     public float seekingEnemyInterval = 0.05f;
     public float bubbleSmallRadius = 0.5f;
     public float bubbleBigRadius = 1.5f;
+    float _velocity
+    {
+        get => GetProjectileSpeedBonus() * velocity;
+    }
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -56,9 +60,9 @@ public class Bubble : PlayerAtk
             }
             else
             {
-                rb.MovePosition(rb.position + dir * seekingEnemyInterval * velocity);
+                rb.MovePosition(rb.position + dir * Time.deltaTime * _velocity);
             }
-            yield return new WaitForSeconds(seekingEnemyInterval);
+            yield return null;
         }
         Release();
     }
