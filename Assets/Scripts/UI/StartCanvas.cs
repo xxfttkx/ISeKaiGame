@@ -12,6 +12,7 @@ public class StartCanvas : Singleton<StartCanvas>
     public BtnBase btnStart;
     public BtnBase btnQuit;
     public ExtraPanel extraPanel;
+    public DataPanel dataPanel;
     protected override void Awake()
     {
         base.Awake();
@@ -63,5 +64,14 @@ public class StartCanvas : Singleton<StartCanvas>
     {
         settingsPanel.gameObject.SetActive(false);
     }
-    
+    public void ShowDataPanel()
+    {
+        dataPanel.gameObject.SetActive(true);
+        dataPanel.TryInit();
+    }
+    public void HideDataPanel()
+    {
+        dataPanel.gameObject.SetActive(false);
+    }
+
 }

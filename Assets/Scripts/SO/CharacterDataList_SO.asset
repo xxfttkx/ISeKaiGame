@@ -430,8 +430,8 @@ MonoBehaviour:
     name: gray joker
     profession: 0
     desc: "\u66FF\u961F\u53CB\u627F\u53D7\u654C\u4EBA\u4F24\u5BB3,\u6CA1\u6709\u653B\u51FB\u80FD\u529B?"
-    extraTypes: 
-    extraThresholds: 
+    extraTypes: 010000000200000007000000
+    extraThresholds: 000000000000000000000000
     extraDesire1:
     - 
     - 
@@ -440,8 +440,8 @@ MonoBehaviour:
     - 
     - 
     - 
-    extraCharacteristics: 
-    extraCharacteristicVals: 
+    extraCharacteristics: 0300000001000000
+    extraCharacteristicVals: 030000000a000000
     extraData: 
     finished: 0
   - index: 15

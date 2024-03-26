@@ -25,6 +25,10 @@ public class SOManager : Singleton<SOManager>
     {
         return characterDataList_SO.characters[index].creature.sprite;
     }
+    public Sprite GetPlayerSpriteSquareByIndex(int index)
+    {
+        return characterDataList_SO.characters[index].creature.sprite;
+    }
     public Character GetPlayerDataByIndex(int index)
     {
         return characterDataList_SO.GetCharByIndex(index);
@@ -38,5 +42,13 @@ public class SOManager : Singleton<SOManager>
     public ProfessionData GetProfessionDataByProfession(Profession p)
     {
         return professionDataList_SO.GetProfessionDataByProfession(p);
+    }
+    public int GetMaxPlayerIndex()
+    {
+        return characterDataList_SO.characters.Length - 1;
+    }
+    public int GetPlayerCount()
+    {
+        return characterDataList_SO.characters.Length;
     }
 }

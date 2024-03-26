@@ -41,9 +41,4 @@ public class SoundSettingsPanel : Singleton<SoundSettingsPanel>
         else if (index==1) ambient.text = Mathf.RoundToInt(val * 100f) + "%";
         else if (index==2) effect.text = Mathf.RoundToInt(val * 100f) + "%";
     }
-
-    public void HideSelf()
-    {
-        this.gameObject.SetActive(false);
-    }
 }

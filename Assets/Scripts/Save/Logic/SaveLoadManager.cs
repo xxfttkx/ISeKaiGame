@@ -359,6 +359,22 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         }
         return gameSaveData.playerExtras[playerIndex];
     }
+    public List<int> GetPlayerExtraDataList(int playerIndex)
+    {
+        var l = gameSaveData.playerExtraData;
+        var playerCount = SOManager.Instance.GetPlayerCount();
+        if (l == null || l.Count < playerCount)
+        {
+            Utils.TryFillList<List<int>>(ref gameSaveData.playerExtraData, null, playerCount);
+        }
+        if (gameSaveData.playerExtraData[playerIndex] == null || gameSaveData.playerExtraData[playerIndex].Count < (int)ExtraType.Max)
+        {
+            List<int> list = gameSaveData.playerExtraData[playerIndex];
+            Utils.TryFillList<int>(ref list, 0, (int)ExtraType.Max);
+            gameSaveData.playerExtraData[playerIndex] = list;
+        }
+        return gameSaveData.playerExtraData[playerIndex];
+    }
     public int GetPlayerExtraData(int playerIndex, ExtraType extraType)
     {
         int type = (int)extraType;

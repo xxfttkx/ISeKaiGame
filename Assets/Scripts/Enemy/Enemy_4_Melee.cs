@@ -11,13 +11,6 @@ public class Enemy_4_Melee : Enemy_Melee
         base.Awake();
     }
 
-    protected override void Update()
-    {
-        base.Update();
-        if(existTime<10.0f)
-            existTime += Time.deltaTime;
-    }
-
     protected override void Start()
     {
         base.Start();
@@ -31,8 +24,15 @@ public class Enemy_4_Melee : Enemy_Melee
     {
         base.Reset();
         existTime = 0;
+        StartCoroutine(CountTime());
     }
-    protected override void AttackPlayer()
+    IEnumerator CountTime()
+    {
+        if (existTime >= 10.0f) yield break;
+        existTime += Time.deltaTime;
+        yield return null;
+    }
+    public override void AttackPlayer()
     {
         PlayerManager.Instance.EnemyHurtPlayer(this, player);
     }

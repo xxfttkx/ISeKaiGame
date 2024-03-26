@@ -21,7 +21,7 @@ public class Enemy_1_Ranged : Enemy_Ranged
         base.OnEnable();
     }
 
-    protected override void AttackPlayer()
+    public override void AttackPlayer()
     {
         Vector2 dir = player.transform.position - this.transform.position;
         PoolManager.Instance.CreateGuangQiu(dir, this);

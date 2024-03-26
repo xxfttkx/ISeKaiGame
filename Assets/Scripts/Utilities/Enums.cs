@@ -20,7 +20,6 @@ public enum SoundName
 //TODO:武器类型定义
 public enum ExtraType
 {
-    None = 0,
     Hurt,
     BeHurt,
     Heal,
@@ -29,7 +28,7 @@ public enum ExtraType
     ExitLevel,
     EnterNum,
     ExitNum,
-    Else,
+    Max,
 }
 
 //职业

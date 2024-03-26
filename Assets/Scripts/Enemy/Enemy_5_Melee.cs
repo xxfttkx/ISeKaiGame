@@ -9,69 +9,48 @@ public class Enemy_5_Melee : Enemy_Melee
         enemy.index = 5;
         base.Awake();
     }
-
-    protected override void Start()
-    {
-        base.Start();
-    }
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-        StartCoroutine(MeleeAttack());
-    }
-    protected override IEnumerator MeleeAttack()
+    protected override IEnumerator Attack()
     {
         yield return null;
         while (true)
         {
-            if (!IsAlive()) break;
-            bool attackSuccess = false;
-            do
+            if (CanAttack && (player._pos - _pos).sqrMagnitude <= GetSqrAttackRange())
             {
-                if (isBegingRepelled) break;
-                player = PlayerManager.Instance.GetPlayerInControl();
-                if (player == null) break;
-                Vector2 dis = player.transform.position - this.transform.position;
-                if (dis.sqrMagnitude > GetSqrAttackRange()) break;
-                attackSuccess = true;
-            } while (false);
-            if (!attackSuccess)
-            {
-                yield return null;
-                continue;
+                yield return AttackAnim();
+                yield return new WaitForSeconds(GetSkillCD());
             }
             else
-            {
-                yield return Attack();
-                yield return new WaitForSeconds(10 / GetAttackSpeed());
-            }
-
+                yield return null;
         }
     }
 
-    IEnumerator Attack()
+    IEnumerator AttackAnim()
     {
-        canMove = false;
+        inAtkAnim = true;
         Vector2 dir = player.transform.position - this.transform.position;
         dir = dir.normalized;
-        yield return new WaitForSeconds(1.0f);
+        IsMoving = false;
+        yield return new WaitForSeconds(WaitChongCiTime());
         bool bAttackSuccess = false;
-        for (float t = 0; t < 0.5; t += moveDelta)
+        for (float t = 0; t < 0.5; t += Time.deltaTime)
         {
-            rb.MovePosition(rb.position + dir * GetSpeed()*5 * moveDelta);
-            if(!bAttackSuccess)
+            IsMoving = true;
+            rb.MovePosition(rb.position + dir * GetSpeed() * 5 * Time.deltaTime);
+            if (!bAttackSuccess)
             {
                 float dis = Utils.GetSqrDisWithPlayer(this.transform);
-                if(dis<0.6*0.6)
+                if (dis < Settings.hitPlayerDis * Settings.hitPlayerDis)
                 {
                     bAttackSuccess = true;
                     PlayerManager.Instance.EnemyHurtPlayer(this);
                 }
             }
-            yield return new WaitForSeconds(moveDelta);
+            yield return null;
         }
-        canMove = true;
+        inAtkAnim = false;
     }
-
+    float WaitChongCiTime()
+    {
+        return 1.0f / levelBonus;
+    }
 }

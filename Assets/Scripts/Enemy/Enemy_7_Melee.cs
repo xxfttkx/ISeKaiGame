@@ -33,7 +33,7 @@ public class Enemy_7_Melee : Enemy_Melee
             sp.size = new Vector2(base.sp.size.x, 0);
         }
     }
-    protected override IEnumerator MeleeAttack()
+    protected override IEnumerator Attack()
     {
         yield break;
     }

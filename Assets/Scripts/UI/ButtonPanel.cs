@@ -37,10 +37,7 @@ public class ButtonPanel : Singleton<ButtonPanel>
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            UIManager.Instance.EnterTitle();
-        }
+        
     }
     public void BuyButton()
     {

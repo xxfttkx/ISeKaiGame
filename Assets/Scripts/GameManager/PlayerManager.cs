@@ -183,6 +183,7 @@ public class PlayerManager : Singleton<PlayerManager>
     Vector3 moveVec3;
     private void Movement()
     {
+        if (!players[currIndex].IsAlive()) return;
         moveVec2 = movementInput * GetPlayerSpeed(currPlayerIndex) * Time.deltaTime;
         moveVec3 = new Vector3(moveVec2.x, moveVec2.y, 0.0f);
         this.transform.position = this.transform.position + moveVec3;
@@ -241,13 +242,13 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void PlayerDead(int index)
     {
-        if (players[currIndex].GetHp() > 0)
+        if (players[currIndex].IsAlive())
         {
             return;
         }
         for (int i = 0; i < players.Count; ++i)
         {
-            if (players[i].GetHp() > 0)
+            if (players[i].IsAlive())
             {
                 ChangePlayerOnTheField(i);
                 return;
@@ -256,7 +257,7 @@ public class PlayerManager : Singleton<PlayerManager>
         // TODO: GameEnd
         SaveLoadManager.Instance.OnGameOver();
         EventHandler.CallEndLevelEvent();
-        EndCanvas.Instance.EndGame(0);
+        UIManager.Instance.EndGame(0);
     }
 
     public void InitPlayer(List<int> playerIndexes)
@@ -376,6 +377,8 @@ public class PlayerManager : Singleton<PlayerManager>
     protected void OnExitLevelEvent(int _)
     {
         bInit = false;
+        if (curSorMove != null)
+            StopCoroutine(curSorMove);
     }
     public Player GetMinHpValPlayer()
     {

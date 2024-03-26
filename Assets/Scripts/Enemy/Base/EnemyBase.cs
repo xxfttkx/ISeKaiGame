@@ -8,34 +8,40 @@ public class EnemyBase : Creature
     public Enemy enemy;
     public EnemyDataList_SO enemyData;
     public Rigidbody2D rb;
-    public Coroutine moveToPlayer;
     public Vector2 playerPos;
     public Vector2 movementVec2;
     public Player player;
     public bool isBegingRepelled;
     protected SpriteRenderer sp;
     private Material material;
-    public float moveDelta = 0.01f;
-    public float attackRandomTime = 0f;
     private Coroutine red;
     private int globalIndex;
     private bool beReleased;
-    public bool canMove;
     private Animator animator;
-    private float levelBonus;
+    protected float levelBonus;
+    protected bool inAtkAnim;
+
+    protected bool CanMove
+    {
+        get => IsAlive() && !isBegingRepelled && !inAtkAnim;
+    }
+    protected bool CanAttack
+    {
+        get => player != null && IsAlive() && !isBegingRepelled;
+    }
     protected bool IsMoving
     {
-        get => isMoveing;
+        get => isMoving;
         set
         {
-            if(isMoveing!=value)
+            if (isMoving != value)
             {
-                isMoveing = value;
-                animator?.SetBool("Move", isMoveing);
+                isMoving = value;
+                animator?.SetBool("Move", isMoving);
             }
         }
     }
-    private bool isMoveing;
+    private bool isMoving;
 
     protected override void Awake()
     {
@@ -50,41 +56,36 @@ public class EnemyBase : Creature
         enemy = SOManager.Instance.enemyDataList_SO.enemies[enemy.index];
         sp.sprite = enemy.sprite;
     }
-    protected virtual void Update()
-    {
-
-    }
-    protected virtual void FixedUpdate()
-    {
-        
-    }
     protected virtual void OnEnable()
     {
         Reset();
         StartCoroutine(GetPlayerPosition());
         StartCoroutine(MoveToPlayer());
+        StartCoroutine(Attack());
         EventHandler.ExitLevelEvent += OnExitLevelEvent;
         EventHandler.ChangePlayerOnTheFieldEvent += OnChangePlayerOnTheFieldEvent;
     }
 
-    
+
 
     protected virtual void OnDisable()
     {
-        movementVec2 = Vector2.zero;  
+        movementVec2 = Vector2.zero;
+        IsMoving = false;
         EventHandler.ExitLevelEvent -= OnExitLevelEvent;
         EventHandler.ChangePlayerOnTheFieldEvent -= OnChangePlayerOnTheFieldEvent;
         StopAllCoroutines();
     }
     internal void SetLevelBonus(float bonus)
     {
-        enemy.attack = Mathf.FloorToInt(enemy.attack * bonus);
+        levelBonus = bonus;
     }
+    protected virtual IEnumerator Attack() { yield break; }
     protected virtual IEnumerator GetPlayerPosition()
     {
         while (true)
         {
-            if(player==null)
+            if (player == null)
             {
                 yield return null;
                 continue;
@@ -98,13 +99,13 @@ public class EnemyBase : Creature
 
     }
 
-    public void BeHurt(int damage,int playerIndex = -1)
+    public void BeHurt(int damage, int playerIndex = -1)
     {
         if (IsAlive())
         {
             damage = Mathf.Min(hp, damage);
             HPPanel.Instance.Show(this, damage);
-            SaveLoadManager.Instance.SetPlayerExtraData(playerIndex, ExtraType.Hurt,damage);
+            SaveLoadManager.Instance.SetPlayerExtraData(playerIndex, ExtraType.Hurt, damage);
             hp -= damage;
             if (hp <= 0)
             {
@@ -113,14 +114,14 @@ public class EnemyBase : Creature
             }
             else
             {
-                if (red!=null) StopCoroutine(red);
+                if (red != null) StopCoroutine(red);
                 red = StartCoroutine(BeRed());
             }
         }
     }
     IEnumerator BeRed()
     {
-        for(float red = material.GetFloat("_Red");red<1.0f;red+=0.2f)
+        for (float red = material.GetFloat("_Red"); red < 1.0f; red += 0.2f)
         {
             material.SetFloat("_Red", red);
             yield return new WaitForSeconds(0.02f);
@@ -140,13 +141,12 @@ public class EnemyBase : Creature
             beReleased = true;
             IsMoving = false;
             StartCoroutine(Dead());
-            
         }
-        
+
     }
     protected virtual IEnumerator Dead()
     {
-        for(float t=0f;t<=1.0f;t+=0.1f)
+        for (float t = 0f; t <= 1.0f; t += 0.1f)
         {
             float a = Mathf.SmoothStep(0f, 1.01f, t);
             material.SetFloat("_Reslove", a);
@@ -159,8 +159,8 @@ public class EnemyBase : Creature
     {
         yield break;
     }
-    
-    
+
+
     //±»»÷ÍË
     public void BeRepelled(Player p, float force)
     {
@@ -175,7 +175,7 @@ public class EnemyBase : Creature
     {
         isBegingRepelled = true;
         rb.velocity = dir * force;
-        for (float t = 0.1f; t < time; t+=0.1f)
+        for (float t = 0.1f; t < time; t += 0.1f)
         {
             yield return new WaitForSeconds(0.1f);
             rb.velocity = Vector2.Lerp(dir * force, Vector2.zero, t / time);
@@ -186,20 +186,19 @@ public class EnemyBase : Creature
     public override void Reset()
     {
         base.Reset();
+        LevelManager.Instance.AddEnemyNum(this);
         isBegingRepelled = false;
         enemy = SOManager.Instance.enemyDataList_SO.GetEnemyByIndex(enemy.index);
         hp = enemy.creature.hp;
         //todo del
         hp = enemy.hp;
         maxHp = hp;
-        attackRandomTime = 0;
         material.SetFloat("_Red", 0f);
         material.SetFloat("_Reslove", 0f);
         beReleased = false;
-        canMove = true;
         player = PlayerManager.Instance.GetPlayerInControl();
-        isMoveing = false;
-        LevelManager.Instance.AddEnemyNum(this);
+        isMoving = false;
+        inAtkAnim = false;
     }
     private void OnExitLevelEvent(int level)
     {
@@ -218,7 +217,7 @@ public class EnemyBase : Creature
     public virtual float GetAttackRange()
     {
         float range = enemy.attackRange;
-        range = (range * (1 + allBuff.attackRangeBonus));
+        range = (range * (1 + allBuff.attackRangeBonus) * levelBonus);
         return range;
     }
     public float GetSqrAttackRange()
@@ -229,14 +228,18 @@ public class EnemyBase : Creature
     public virtual int GetAttack()
     {
         int a = enemy.attack;
-        a = Mathf.CeilToInt(a * (1 + allBuff.attackBonus));
+        a = Mathf.CeilToInt(a * (1 + allBuff.attackBonus) * levelBonus);
         return a;
     }
     public virtual float GetAttackSpeed()
     {
         float s = enemy.attackSpeed;
-        s = (s * (1 + allBuff.attackSpeedBonus));
+        s = (s * (1 + allBuff.attackSpeedBonus) * levelBonus);
         return s;
+    }
+    public virtual float GetSkillCD()
+    {
+        return 10.0f / GetAttackSpeed();
     }
     public virtual int GetSpeed()
     {
@@ -248,24 +251,12 @@ public class EnemyBase : Creature
     {
         return hp;
     }
-    public float GetRandomOffset()
-    {
-        float randomOffset = UnityEngine.Random.Range(0, 1.0f);
-        if (attackRandomTime > 0)
-        {
-            attackRandomTime -= randomOffset;
-            randomOffset = -randomOffset;
-        }
-        else
-            attackRandomTime += randomOffset;
-        return randomOffset;
-    }
     public float GetPositiveRandom()
     {
         float randomOffset = UnityEngine.Random.Range(0, 10.0f);
         return randomOffset;
     }
-    protected virtual void AttackPlayer()
+    public virtual void AttackPlayer()
     {
         PlayerManager.Instance.EnemyHurtPlayer(this, player);
 

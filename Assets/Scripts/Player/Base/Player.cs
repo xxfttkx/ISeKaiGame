@@ -68,6 +68,7 @@ public class Player : Creature
     public override void Reset()
     {
         base.Reset();
+        material.SetFloat("_Fade", 1f);
         buffs.Clear();
         allBuff = new Buff("all", 0, 0, 0, 0);
         timeOnTheField = 0;
@@ -111,8 +112,7 @@ public class Player : Creature
         UIManager.Instance.HPChange(GetPlayerIndex(), GetHpVal());
         if (hp <= 0)
         {
-            EventHandler.CallPlayerDeadEvent(GetPlayerIndex());
-            PlayerManager.Instance.PlayerDead(GetPlayerIndex());
+            
             Dead();
         }
     }
@@ -205,6 +205,8 @@ public class Player : Creature
             material.SetFloat("_Fade", i);
             yield return new WaitForSeconds(0.1f);
         }
+        EventHandler.CallPlayerDeadEvent(GetPlayerIndex());
+        PlayerManager.Instance.PlayerDead(GetPlayerIndex());
 
     }
 

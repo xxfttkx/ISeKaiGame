@@ -90,14 +90,6 @@ public class PoolManager : Singleton<PoolManager>
         GameObject obj = objPool.Get();
         obj.transform.position = pos;
     }
-    public void CreateGuangQiu(GameObject target, Vector3 pos, EnemyBase attacker)
-    {
-        ObjectPool<GameObject> objPool = poolList[1];
-        GameObject obj = objPool.Get();
-        obj.transform.position = pos;
-        GuangQiu b = obj.GetComponent<GuangQiu>();
-        b.AttackEnemy(target, attacker);
-    }
     public void CreateGuangQiu(Vector2 dir, EnemyBase attacker,float size = -1,float speed = -1)
     {
         ObjectPool<GameObject> objPool = poolList[1];

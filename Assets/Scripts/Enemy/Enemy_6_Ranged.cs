@@ -19,7 +19,7 @@ public class Enemy_6_Ranged : Enemy_Ranged
     {
         base.OnEnable();
     }
-    protected override void AttackPlayer()
+    public override void AttackPlayer()
     {
         Vector2 dir = player.transform.position - this.transform.position;
         
@@ -27,9 +27,13 @@ public class Enemy_6_Ranged : Enemy_Ranged
         {
             Quaternion rotation = Quaternion.Euler(0, 0, angle);
             Vector2 d = rotation * dir;
-            PoolManager.Instance.CreateGuangQiu(d, this);
+            PoolManager.Instance.CreateGuangQiu(d, this, 0.3f, GetGuangQiuSpeed());
         }
         
+    }
+    private float GetGuangQiuSpeed()
+    {
+        return 50f;
     }
 
 }

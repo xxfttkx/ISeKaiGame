@@ -9,7 +9,7 @@ public class SelectPanel : Singleton<SelectPanel>
 {
     public GameObject selectPrefab;
     public GameObject professionPrefab;
-    private Dictionary<int,SelectPlayerButton> buttons;
+    private Dictionary<int, SelectPlayerButton> buttons;
     public List<List<BtnBase>> allPlayerButtons;
     public List<int> selectedIndexes;
     private Dictionary<Profession, GameObject> professionToPlayers;
@@ -51,9 +51,9 @@ public class SelectPanel : Singleton<SelectPanel>
         foreach (var c in SOManager.Instance.characterDataList_SO.characters)
         {
             if (!c.finished) continue;
-            var go  = Instantiate(selectPrefab, professionToPlayers[c.profession].transform);
+            var go = Instantiate(selectPrefab, professionToPlayers[c.profession].transform);
             var b = go.GetComponent<SelectPlayerButton>();
-            buttons.Add(c.index,b);
+            buttons.Add(c.index, b);
             b.InitButton(c.index, c.creature.sprite);
             allPlayerButtons[(int)c.profession].Add(b);
         }
@@ -74,7 +74,7 @@ public class SelectPanel : Singleton<SelectPanel>
         for (int i = 0; i < selectedIndexes.Count; ++i)
         {
             var charIndex = selectedIndexes[i];
-            
+
             SlotPanel.Instance.Select(i, charIndex);
             if (charIndex == -1) continue;
             buttons[charIndex].Select();
@@ -82,9 +82,9 @@ public class SelectPanel : Singleton<SelectPanel>
     }
     public void SelectPlayer(int playerIndex)
     {
-        for(int i = 0;i< selectedIndexes.Count;++i)
+        for (int i = 0; i < selectedIndexes.Count; ++i)
         {
-            if(selectedIndexes[i]==-1)
+            if (selectedIndexes[i] == -1)
             {
                 selectedIndexes[i] = playerIndex;
                 SlotPanel.Instance.Select(i, playerIndex);
@@ -135,14 +135,14 @@ public class SelectPanel : Singleton<SelectPanel>
         {
             for (int j = 0; j < allPlayerButtons[i].Count; ++j)
             {
-                allPlayerButtons[i][j].SetKeyboardRelation(GetBtnByXY(i - 1, j), GetBtnByXY(i + 1, j), GetBtnByXY(i, j + 1), GetBtnByXY(i, j - 1));
+                allPlayerButtons[i][j].SetKeyboardRelation(GetBtnByXY(i, j - 1), GetBtnByXY(i, j + 1), GetBtnByXY(i - 1, j), GetBtnByXY(i + 1, j));
             }
         }
-        goBtn.SetLeftBtn(allPlayerButtons[allPlayerButtons.Count-1][allPlayerButtons[allPlayerButtons.Count - 1].Count-1]);
+        goBtn.SetLeftBtn(allPlayerButtons[allPlayerButtons.Count - 1][allPlayerButtons[allPlayerButtons.Count - 1].Count - 1]);
     }
     public BtnBase goBtn;
     public BtnBase clearBtn;
-    BtnBase GetBtnByXY(int i,int j)
+    BtnBase GetBtnByXY(int i, int j)
     {
         int n = allPlayerButtons.Count;
         if (i < 0) return clearBtn;

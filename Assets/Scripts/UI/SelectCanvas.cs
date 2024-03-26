@@ -1,12 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SelectCanvas : Singleton<SelectCanvas>
 {
     public SelectPanel selectPanel;
     private bool bInit = false;
-    public void InitSelecePanel()
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            UIManager.Instance.EnterTitle();
+        }
+    }
+    public void TryInitSelectPanel()
     {
         if (bInit) return;
         bInit = true;

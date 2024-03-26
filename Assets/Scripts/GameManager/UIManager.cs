@@ -9,7 +9,6 @@ public class UIManager : Singleton<UIManager>
 {
     public CharacterDataList_SO characterDataList_SO;
     public Text moneyText;
-    public GameObject endCanvas;
 
     public GameObject playerDataPrefab;
     public PausePanel pausePanel;
@@ -23,6 +22,7 @@ public class UIManager : Singleton<UIManager>
     private Stack<GameObject> openPanel;
     public SelectCanvas selectCanvas;
     public StartCanvas startCanvas;
+    public EndCanvas endCanvas;
 
 
     private void Start()
@@ -176,12 +176,17 @@ public class UIManager : Singleton<UIManager>
     public void EnterSelect()
     {
         selectCanvas.gameObject.SetActive(true);
-        selectCanvas.InitSelecePanel();
+        selectCanvas.TryInitSelectPanel();
         startCanvas.gameObject.SetActive(false);
     }
     public void EnterTitle()
     {
         startCanvas.gameObject.SetActive(true);
+        selectCanvas.gameObject.SetActive(false);
     }
-
+    public void EndGame(int t)
+    {
+        endCanvas.gameObject.SetActive(true);
+        endCanvas.EndGame(t);
+    }
 }

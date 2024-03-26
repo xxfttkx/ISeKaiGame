@@ -9,18 +9,8 @@ public class Enemy_0_Melee : Enemy_Melee
         enemy.index = 0;
         base.Awake();
     }
-
-    protected override void Start()
+    public override void AttackPlayer()
     {
-        base.Start();
-    }
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-    }
-
-    protected override void AttackPlayer()
-    {
-        PlayerManager.Instance.EnemyHurtPlayer(this, player);
+        base.AttackPlayer();
     }
 }

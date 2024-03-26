@@ -7,18 +7,18 @@ public class EndCanvas : Singleton<EndCanvas>
 {
     public GameObject overPanel;
     public GameObject winPanel;
-    public Button retryButton;
-    public Button backButton;
-    public Button returnSelectButton;
+    public BtnBase retryButton;
+    public BtnBase backButton;
+    public BtnBase returnSelectButton;
     public GameObject saveSucc;
     private Coroutine saveSuccCo;
 
     protected override void Awake()
     {
         base.Awake();
-        retryButton.onClick.AddListener(Retry);
-        backButton.onClick.AddListener(BackToTitle);
-        returnSelectButton.onClick.AddListener(ReturnToCharacterSelection);
+        retryButton.btnClick.AddListener(Retry);
+        backButton.btnClick.AddListener(BackToTitle);
+        returnSelectButton.btnClick.AddListener(ReturnToCharacterSelection);
         overPanel.SetActive(false);
         saveSucc.SetActive(false);
     }

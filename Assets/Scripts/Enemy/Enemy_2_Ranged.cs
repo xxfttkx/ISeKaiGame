@@ -19,7 +19,7 @@ public class Enemy_2_Ranged : Enemy_Ranged
         base.OnEnable();
     }
 
-    protected override void AttackPlayer()
+    public override void AttackPlayer()
     {
         Vector2 dir = player.transform.position - this.transform.position;
         Quaternion rotation1 = Quaternion.Euler(0, 0, 30);

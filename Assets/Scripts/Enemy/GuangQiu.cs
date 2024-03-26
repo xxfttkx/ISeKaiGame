@@ -45,17 +45,7 @@ public class GuangQiu : MonoBehaviour
         this.size = size;
         if (speed == -1) velocity = 6f;
         else velocity = speed;
-        atkRange = 0.8f;
         beReleased = false;
-    }
-    public void AttackEnemy(GameObject target,EnemyBase attacker, float size = -1, float speed = -1)
-    {
-        Reset(size, speed);
-        Vector2 dir = target.transform.position - transform.position;
-        dir = dir.normalized;
-        this.attacker = attacker;
-        atk = attacker.GetAttack();
-        StartCoroutine(AttackEnemyIE(dir));
     }
     public void AttackEnemy(Vector2 dir, EnemyBase attacker, float size = -1, float speed = -1)
     {
@@ -98,6 +88,15 @@ public class GuangQiu : MonoBehaviour
         {
             beReleased = true;
             PoolManager.Instance.ReleaseObj(this.gameObject, 1);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        int indexMask = LayerMask.NameToLayer("Player");
+        if (collision.gameObject.layer == indexMask)
+        {
+            Debug.Log("atk player");
+            Release();
         }
     }
 }
