@@ -13,10 +13,13 @@ public class GuangQiu : MonoBehaviour
     private bool beReleased;
     private SpriteRenderer sp;
     private float size;
+    int playerLayerIndex;
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sp = GetComponent<SpriteRenderer>();
+        playerLayerIndex = LayerMask.NameToLayer("Player");
     }
     private void OnEnable()
     {
@@ -90,12 +93,12 @@ public class GuangQiu : MonoBehaviour
             PoolManager.Instance.ReleaseObj(this.gameObject, 1);
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        int indexMask = LayerMask.NameToLayer("Player");
-        if (collision.gameObject.layer == indexMask)
+        if (collision.gameObject.layer == playerLayerIndex)
         {
-            Debug.Log("atk player");
+            var p = PlayerManager.Instance.GetPlayerInControl();
+            PlayerManager.Instance.EnemyHurtPlayer(null, p, atk);
             Release();
         }
     }

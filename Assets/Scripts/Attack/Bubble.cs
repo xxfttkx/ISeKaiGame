@@ -6,15 +6,15 @@ public class Bubble : PlayerAtk
 {
     public Rigidbody2D rb;
     public float velocity = 10;
-    public float seekingEnemyInterval = 0.05f;
     public float bubbleSmallRadius = 0.5f;
     public float bubbleBigRadius = 1.5f;
     float _velocity
     {
         get => GetProjectileSpeedBonus() * velocity;
     }
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         rb = GetComponent<Rigidbody2D>();
         poolIndex = 0;
     }
@@ -40,31 +40,10 @@ public class Bubble : PlayerAtk
         StartCoroutine(AutoRelease());
         while (true)
         {
-            var tempE = Utils.GetNearestEnemy(this.transform.position, bubbleSmallRadius);
-            if (tempE != null)
-            {
-                yield return BubuleBigger();
-                var enemies = Utils.GetNearEnemies(this.transform.position, bubbleBigRadius);
-                if (enemies != null && enemies.Count > 0)
-                {
-                    int extra = extras[1];
-                    if (extra == 0)
-                        atk = Mathf.CeilToInt(atk * 1.0f / enemies.Count);
-                    foreach (var enemy in enemies)
-                    {
-                        PlayerManager.Instance.PlayerHurtEnemy(playerIndex, enemy, atk);
-                        if (extra == 2) atk += 1;
-                    }
-                }
-                break;
-            }
-            else
-            {
-                rb.MovePosition(rb.position + dir * Time.deltaTime * _velocity);
-            }
+            rb.MovePosition(rb.position + dir * Time.deltaTime * _velocity);
             yield return null;
         }
-        Release();
+
     }
 
     IEnumerator BubuleBigger()
@@ -75,10 +54,29 @@ public class Bubble : PlayerAtk
             yield return new WaitForSeconds(0.025f);
         }
         
+
     }
     protected override void Reset()
     {
         base.Reset();
         _localScale = new Vector3(1, 1, 1);
+    }
+    protected override IEnumerator HitEnemy(EnemyBase e)
+    {
+        yield return StartCoroutine(BubuleBigger());
+        var enemies = Utils.GetNearEnemies(this.transform.position, bubbleBigRadius);
+        if (enemies != null && enemies.Count > 0)
+        {
+            int extra = extras[1];
+            if (extra == 0)
+                atk = Mathf.CeilToInt(atk * 1.0f / enemies.Count);
+            else if (extra == 2) atk += enemies.Count;
+            foreach (var enemy in enemies)
+            {
+                PlayerManager.Instance.PlayerHurtEnemy(playerIndex, enemy, atk);
+            }
+        }
+        Release();
+        yield break;
     }
 }

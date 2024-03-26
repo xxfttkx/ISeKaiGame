@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3299812017554254596}
   - component: {fileID: 3299812017554254619}
   - component: {fileID: 3299812017554254597}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite-BianPao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,4 +98,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bReleased: 0
-  explosionRange: 1

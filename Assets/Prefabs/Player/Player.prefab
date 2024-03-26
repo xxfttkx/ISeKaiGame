@@ -99,19 +99,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96e878df53ec3cc4f96250eaf5d21798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
+  maxHp: 0
+  addHp: 0
+  allBuff:
+    buffName: 
+    duration: 0
+    attackBonus: 0
+    speedBonus: 0
+    attackRangeBonus: 0
+    attackSpeedBonus: 0
+    hpBonus: 0
+    hpNum: 0
+    atkNum: 0
+    speedNum: 0
+    atkSpeedNum: 0
+    atkRangeNum: 0
+    ProjectileSpeedBonus: 0
   characterData: {fileID: 11400000, guid: f2a05b3ade33dd841bef6e24f393cf9d, type: 2}
   character:
     index: 0
+    creature:
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
+      desc: 
     name: 0
-    sprite: {fileID: 0}
-    prefab: {fileID: 0}
-    faceToLeft: 0
     profession: 0
-    attack: 0
-    hp: 0
-    speed: 0
-    attackSpeed: 0
-    attackRange: 0
     desc: 
     extraTypes: 
     extraThresholds: 
@@ -119,7 +138,10 @@ MonoBehaviour:
     extraDesire2: []
     extraCharacteristics: 
     extraCharacteristicVals: 
+    extraData: 
+    finished: 0
   timeOnTheField: 0
+  extras: 
 --- !u!50 &946828664450863040
 Rigidbody2D:
   serializedVersion: 4
@@ -176,7 +198,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

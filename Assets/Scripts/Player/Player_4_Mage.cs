@@ -46,8 +46,8 @@ public class Player_4_Mage : Player_Single
     {
         int extra = extras[2];
         if (extra == 0) return 0.1f;
-        if (extra == 1) return -0.1f;
-        if (extra == 2) return -0.2f;
+        if (extra == 1) return -0.2f;
+        if (extra == 2) return -0.4f;
         return 0f;
     }
     protected override void OnDesireChangeEvent(int playerIndex, int extraIndex, int selectedIndex)

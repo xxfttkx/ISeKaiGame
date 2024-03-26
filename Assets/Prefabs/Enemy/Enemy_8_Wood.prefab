@@ -398,7 +398,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -426,7 +426,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0538bab5e88614d4898c8bc3fc207c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
+  maxHp: 0
+  addHp: 0
+  allBuff:
+    buffName: 
+    duration: 0
+    attackBonus: 0
+    speedBonus: 0
+    attackRangeBonus: 0
+    attackSpeedBonus: 0
+    hpBonus: 0
+    hpNum: 0
+    atkNum: 0
+    speedNum: 0
+    atkSpeedNum: 0
+    atkRangeNum: 0
+    ProjectileSpeedBonus: 0
   enemy:
+    creature:
+      attack: 0
+      hp: 0
+      speed: 0
+      attackSpeed: 0
+      attackRange: 0
+      faceToLeft: 0
+      sprite: {fileID: 0}
+      prefab: {fileID: 0}
+      desc: 
     index: 0
     name: 
     sprite: {fileID: 0}
@@ -448,7 +475,4 @@ MonoBehaviour:
   movementVec2: {x: 0, y: 0}
   player: {fileID: 0}
   isBegingRepelled: 0
-  moveDelta: 0.01
-  attackRandomTime: 0
-  canMove: 0
   tentacles: []
