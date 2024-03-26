@@ -5,18 +5,15 @@ using UnityEngine;
 public class Bubble : PlayerAtk
 {
     public Rigidbody2D rb;
-    public float velocity = 10;
     public float bubbleSmallRadius = 0.5f;
     public float bubbleBigRadius = 1.5f;
-    float _velocity
-    {
-        get => GetProjectileSpeedBonus() * velocity;
-    }
+    
     protected override void Awake()
     {
         base.Awake();
         rb = GetComponent<Rigidbody2D>();
         poolIndex = 0;
+        velocity = 10;
     }
     protected override void OnEnable()
     {

@@ -5,25 +5,65 @@ using UnityEngine;
 
 public class Player_14_Warrior : Player_Area
 {
+    int addHpLimit;
+    public SpriteRenderer circle;
     protected override void Awake()
     {
         character.index = 14;
         base.Awake();
     }
-    protected override void OnEnable()
+    public override void Reset()
     {
-        base.OnEnable();
+        base.Reset();
+        addHpLimit = 50;
+        circle.enabled = false;
     }
-    protected override void OnDisable()
+    public override void StartAttack()
     {
-        base.OnDisable();
+        base.StartAttack();
+        StartCoroutine(DoExtra1());
     }
     protected override IEnumerator AttackAnim(List<EnemyBase> enemies)
     {
-        yield break;
+        while(true)
+        {
+            if(extras[2]==2)
+            {
+                //TODO Anim
+                StartCoroutine(AtkAnim());
+                AttackEnemies(enemies);
+            }
+            else
+            {
+                yield return null;
+            }
+        }
     }
-    protected override void AttackEnemies(List<EnemyBase> _)
+    IEnumerator AtkAnim()
     {
-        return;
+        circle.size = new Vector2(_range, _range);
+        circle.enabled = true;
+        yield return new WaitForSeconds(Settings.circleAnimTime);
+        circle.enabled = false;
+    }
+    IEnumerator DoExtra1()
+    {
+        while(true)
+        {
+            if(extras[1]==1)
+            {
+                PlayerManager.Instance.PlayerHealPlayer(GetPlayerIndex(), GetPlayerIndex(), 1);
+            }
+            else if (extras[1] == 2 )
+            {
+                if(addHpLimit>0)
+                {
+                    --addHpLimit;
+                    addHp++;
+                    EventHandler.CallPlayerHpValChangeEvent(GetPlayerIndex(), GetHpVal());
+                }
+            }
+            yield return null;
+        }
     }
 }

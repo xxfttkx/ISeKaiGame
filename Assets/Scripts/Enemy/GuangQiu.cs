@@ -6,7 +6,6 @@ public class GuangQiu : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float velocity = 5;
-    public float seekingEnemyInterval = 0.01f;
     private EnemyBase attacker;
     private float atkRange = 0.3f;
     private int atk;// 需获取发出时的快照
@@ -35,15 +34,9 @@ public class GuangQiu : MonoBehaviour
     {
         Release();
     }
-    private void Update()
-    {
-    }
     private void Reset(float size = -1, float speed = -1)
     {
-        if (size == -1)
-        {
-            size = 0.25f;
-        }
+        if (size == -1) size = 0.25f;
         sp.size = new Vector2(size, size);
         this.size = size;
         if (speed == -1) velocity = 6f;
@@ -60,20 +53,10 @@ public class GuangQiu : MonoBehaviour
     }
     IEnumerator AttackEnemyIE(Vector2 direction)
     {
+        StartCoroutine(AutoRelease());
         while (true)
         {
-            StartCoroutine(AutoRelease());
-            Player p = PlayerManager.Instance.GetPlayerInControl();
-            if(Utils.TryAttackPlayer(this.gameObject, p, size/2+atkRange))
-            {
-                PlayerManager.Instance.EnemyHurtPlayer(null, p, atk);
-                Release();
-                break;
-            }
-            else
-            {
-                rb.MovePosition(rb.position + direction * Time.deltaTime * velocity);
-            }
+            rb.MovePosition(rb.position + direction * Time.deltaTime * velocity);
             yield return null;
         }
     }

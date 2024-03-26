@@ -35,7 +35,15 @@ public class Player_1_Mage : Player_Single
     {
         foreach (var p in PlayerManager.Instance.players)
         {
-            p.ApplyBuffOverride("player1", -1, GetBuffBonus(), 0f, 0f, 0f, 0f);
+            p.ApplyBuff("player1", -1, GetBuffBonus(), 0f, 0f, 0f, 0f, ApplyBuffType.Override);
+        }
+    }
+    protected override void OnDesireChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
+    {
+        base.OnDesireChangeEvent(playerIndex, extraIndex, selectedIndex);
+        if (playerIndex == GetPlayerIndex() && extraIndex == 2)
+        {
+            AddBuffBeforeStart();
         }
     }
     private float GetBuffBonus()

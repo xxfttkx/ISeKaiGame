@@ -52,8 +52,8 @@ public class Player_3_Assassin : Player
         if (3 == playerIndex)
         {
             int extra = SaveLoadManager.Instance.GetPlayerExtra(GetPlayerIndex(), 2);
-            if (extra == 0) BeHurt(Mathf.FloorToInt(hp / 2f));
-            if (extra == 1) BeHurt(hp - 1);
+            if (extra == 0) PlayerManager.Instance.PlayerHurtPlayer(GetPlayerIndex(), GetPlayerIndex(), Mathf.FloorToInt(hp / 2f));
+            if (extra == 1) PlayerManager.Instance.PlayerHurtPlayer(GetPlayerIndex(), GetPlayerIndex(), hp-1);
             if (extra == 2) return;
         }
     }

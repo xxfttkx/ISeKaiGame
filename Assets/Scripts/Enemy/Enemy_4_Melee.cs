@@ -28,9 +28,14 @@ public class Enemy_4_Melee : Enemy_Melee
     }
     IEnumerator CountTime()
     {
-        if (existTime >= 10.0f) yield break;
-        existTime += Time.deltaTime;
-        yield return null;
+
+        while(true)
+        {
+            if (existTime >= 10.0f) yield break;
+            existTime += Time.deltaTime;
+            yield return null;
+        }
+        
     }
     public override void AttackPlayer()
     {

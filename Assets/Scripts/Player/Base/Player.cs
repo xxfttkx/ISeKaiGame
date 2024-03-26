@@ -76,7 +76,6 @@ public class Player : Creature
         GetPlayerDataByPrefession(character.profession);
         hp = character.creature.hp;
         maxHp = hp;
-        addHp = 0;
         ChangeCharValByExtra(0);
     }
 
@@ -103,16 +102,17 @@ public class Player : Creature
         // AIControl();
     }
 
-    public virtual void BeHurt(int attack)
+    public virtual void BeHurt(int attack, EnemyBase e)
     {
-        if (hp <= 0) return;
-        if (attack == 0) return;
-        SaveLoadManager.Instance.SetPlayerExtraData(GetPlayerIndex(), ExtraType.BeHurt, Mathf.Min(hp, attack));
+        if (!IsAlive()) return;
+        if (attack <= 0) return;
+        attack = Mathf.Min(hp, attack);
+        EventHandler.CallEnemyHurtPlayerEvent(e, GetPlayerIndex(), attack);
+        SaveLoadManager.Instance.SetPlayerExtraData(GetPlayerIndex(), ExtraType.BeHurt, attack);
         hp -= attack;
         UIManager.Instance.HPChange(GetPlayerIndex(), GetHpVal());
         if (hp <= 0)
         {
-            
             Dead();
         }
     }
@@ -210,16 +210,16 @@ public class Player : Creature
 
     }
 
-    public void BeCompanionHurt(int atk)
+    public virtual void BeCompanionHurt(int atk,int atkIndex)
     {
         if (!IsAlive())
         {
-            Debug.Log("Char hp<0 error...??");
             return;
         }
         atk = Mathf.Min(hp - 1, atk);
         SaveLoadManager.Instance.SetPlayerExtraData(GetPlayerIndex(), ExtraType.BeHurt, atk);
         hp -= atk;
+        EventHandler.CallPlayerHurtPlayerEvent(atkIndex, GetPlayerIndex(),atk);
         UIManager.Instance.HPChange(character.index, GetHpVal());
     }
 
@@ -429,5 +429,13 @@ public class Player : Creature
     public float GetProjectileSpeedBonus()
     {
         return 1.0f+allBuff.ProjectileSpeedBonus;
+    }
+    public void EnterField()
+    {
+        sp.enabled = true;
+    }
+    public void ExitField()
+    {
+        sp.enabled = false;
     }
 }

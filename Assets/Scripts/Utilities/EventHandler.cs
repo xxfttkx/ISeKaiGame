@@ -222,4 +222,17 @@ public static class EventHandler
         if (index < 0) return;
         BuffRemoveEvent?.Invoke(index, b);
     }
+
+
+    public static event Action<int, int,int> PlayerHurtPlayerEvent;
+    public static void CallPlayerHurtPlayerEvent(int atkIndex, int hurtIndex, int atk)
+    {
+        PlayerHurtPlayerEvent?.Invoke(atkIndex, hurtIndex,atk);
+    }
+
+    public static event Action<EnemyBase, int,int> EnemyHurtPlayerEvent;
+    public static void CallEnemyHurtPlayerEvent(EnemyBase e, int hurtIndex, int atk)
+    {
+        EnemyHurtPlayerEvent?.Invoke(e, hurtIndex,atk);
+    }
 }

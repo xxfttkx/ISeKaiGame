@@ -35,7 +35,7 @@ Material:
     m_Floats:
     - _OutlineAlpha: 1
     - _OutlineDistortAmount: 0
-    - _OutlineDistortTexXSpeed: -29.9
+    - _OutlineDistortTexXSpeed: -34.2
     - _OutlineDistortTexYSpeed: -50
     - _OutlinePixelWidth: 1
     m_Colors:

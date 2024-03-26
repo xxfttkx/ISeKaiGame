@@ -92,8 +92,8 @@ public class EnemyBase : Creature
             }
             Vector2 deltaPos = player.transform.position - this.transform.position;
             movementVec2 = deltaPos.normalized;
-            Quaternion rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-20, 20));
-            movementVec2 = rotation * movementVec2;
+/*            Quaternion rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-20, 20));
+            movementVec2 = rotation * movementVec2;*/
             yield return new WaitForSeconds(enemy.getPlayerPosTimeDelta);
         }
 

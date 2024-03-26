@@ -31,10 +31,10 @@ public class Player_23_Warrior : Player_Area
     {
         return;
     }
-    public override void BeHurt(int attack)
+    public override void BeHurt(int attack, EnemyBase e)
     {
         if (UnityEngine.Random.Range(0f, 1f)> GetEvasionRate())
-            base.BeHurt(attack);
+            base.BeHurt(attack,e);
     }
     protected  IEnumerator HurtSelf()
     {

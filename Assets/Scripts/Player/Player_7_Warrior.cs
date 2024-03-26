@@ -69,7 +69,7 @@ public class Player_7_Warrior : Player
         yield return new WaitForSeconds(0.2f);
         stand.SetActive(false);
     }
-    public override void BeHurt(int attack)
+    public override void BeHurt(int attack,EnemyBase e)
     {
         if (extras[2] == 0)
         {
@@ -89,16 +89,16 @@ public class Player_7_Warrior : Player
                 if (p.character.index == 7) continue;
                 if (p.CanAcceptHurt(attack))
                 {
-                    PlayerManager.Instance.EnemyHurtPlayer(null, p, attack);
+                    PlayerManager.Instance.EnemyHurtPlayer(e, p, attack);
                 }
                 else
                 {
                     var a = p.GetHp() - 1;
-                    PlayerManager.Instance.EnemyHurtPlayer(null, p, a);
+                    PlayerManager.Instance.EnemyHurtPlayer(e, p, a);
                     remain += (atk - a);
                 }
             }
-            base.BeHurt(remain + atk);
+            base.BeHurt(remain + atk,e);
         }
         else
         {
@@ -111,7 +111,7 @@ public class Player_7_Warrior : Player
             }
             if (p == this || p == null)
             {
-                base.BeHurt(attack);
+                base.BeHurt(attack,e);
             }
             else
             {
@@ -123,7 +123,7 @@ public class Player_7_Warrior : Player
                 {
                     var a = p.GetHp() - 1;
                     PlayerManager.Instance.EnemyHurtPlayer(null, p, a);
-                    base.BeHurt(atk - a);
+                    base.BeHurt(atk - a,e);
                 }
             }
         }

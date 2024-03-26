@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - creature:
-      attack: 0
-      hp: 0
-      speed: 0
-      attackSpeed: 0
-      attackRange: 0
+      attack: 1
+      hp: 10
+      speed: 7
+      attackSpeed: 10
+      attackRange: 1
       faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      sprite: {fileID: 1571574046, guid: 8cc5cb484953ca94fae100c5c9b6f354, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: d3470c4045ebf444b82348e1abed035c, type: 3}
       desc: 
     index: 0
     name: 77ko
@@ -156,7 +156,7 @@ MonoBehaviour:
     enemyType: 1
     attack: 5
     hp: 20
-    speed: 7
+    speed: 10
     getPlayerPosTimeDelta: 0.1
     attackRange: 6
     attackSpeed: 10

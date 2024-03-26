@@ -28,12 +28,12 @@ MonoBehaviour:
     - {x: 10, y: -10}
     - {x: 10, y: 10}
     - {x: -10, y: 10}
-    enemyIndex: 0300000004000000050000000600000004000000
-    enemyCreateFirstTime: 0000000000000000000000000000000000000000
-    enemyCreateDeltaTime: 0100000001000000010000000100000001000000
+    enemyIndex: 0000000004000000050000000600000004000000
+    enemyCreateFirstTime: 000000000c0000000c0000000c0000000c000000
+    enemyCreateDeltaTime: 0c00000001000000010000000100000001000000
     endCreatEnemyTime: 11
   - levelIndex: 2
-    bonus: 0
+    bonus: 1
     offset:
     - {x: 10, y: 10}
     - {x: -10, y: 10}

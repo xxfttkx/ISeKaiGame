@@ -74,7 +74,7 @@ public class Player_0_Warrior : Player_Area
         if(extra == 2) return 1.0f;
         return 1.0f;
     }
-    public override void BeHurt(int attack)
+    public override void BeHurt(int attack, EnemyBase e)
     {
         if(attack<=shield)
         {
@@ -86,6 +86,6 @@ public class Player_0_Warrior : Player_Area
             attack -= shield;
             shield = 0;
         }
-        base.BeHurt(attack);
+        base.BeHurt(attack,e);
     }
 }

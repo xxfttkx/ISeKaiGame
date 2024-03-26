@@ -75,8 +75,8 @@ public class Player_8_Warrior : Player_Area
         yield return new WaitForSeconds(time);
         water.enabled = false;
     }
-    public override void BeHurt(int attack)
+    public override void BeHurt(int attack,EnemyBase e)
     {
-        base.BeHurt(attack - _def);
+        base.BeHurt(attack - _def,e);
     }
 }

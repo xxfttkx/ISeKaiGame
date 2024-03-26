@@ -14,6 +14,7 @@ public class LevelManager : Singleton<LevelManager>
     private int currCount; // µ±Ç°index
     private int currGlobal; //
     private LevelCreatEnemy levelData;
+    public float currLevelTime;
 
     protected override void Awake()
     {
@@ -63,12 +64,13 @@ public class LevelManager : Singleton<LevelManager>
         {
             currEnemyNum -= 1;
             LevelPanel.Instance.enemyNumChange(currEnemyNum);
-            if (timeEnd && currEnemyNum == 0)
-            {
-                PassLevel();
-            }
+
         }
-        
+        if (timeEnd && currEnemyNum == 0)
+        {
+            PassLevel();
+        }
+
     }
     public void StartLevel(int levelIndex)
     {
@@ -81,8 +83,10 @@ public class LevelManager : Singleton<LevelManager>
         int n = l.offset.Length;
         endTime = l.endCreatEnemyTime;
         LevelPanel.Instance.TimeChange(endTime);
+        currLevelTime = 0;
         StopAllCoroutines();
         StartCoroutine(Countdown());
+        StartCoroutine(CountLevelTime());
         if (creatEnemyPointList.Count < n)
         {
             for (int i = creatEnemyPointList.Count; i < n; ++i)
@@ -117,7 +121,7 @@ public class LevelManager : Singleton<LevelManager>
         }
         else
         {
-            EventHandler.CallTransitionEvent(currLevel+1);
+            EventHandler.CallTransitionEvent(currLevel + 1);
         }
 
 
@@ -133,6 +137,14 @@ public class LevelManager : Singleton<LevelManager>
         }
         timeEnd = true;
         SubEnemyNum(-1);
+    }
+    IEnumerator CountLevelTime()
+    {
+        while (true)
+        {
+            currLevelTime += Time.deltaTime;
+            yield return null;
+        }
     }
     public void Retry()
     {

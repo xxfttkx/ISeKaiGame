@@ -13,7 +13,6 @@ public class PlayerManager : Singleton<PlayerManager>
     public List<Player> players;
     public Dictionary<Profession, List<Player>> playerTypeToPlayer;
     public Dictionary<int, Player> indexToPlayer;
-    public Dictionary<int, SpriteRenderer> indexToSpriteRenderer;
     public List<int> trueIndexes;
     Coroutine curSorMove;
     bool bInit;
@@ -28,7 +27,6 @@ public class PlayerManager : Singleton<PlayerManager>
         players = new List<Player>();
         playerTypeToPlayer = new Dictionary<Profession, List<Player>>();
         indexToPlayer = new Dictionary<int, Player>();
-        indexToSpriteRenderer = new Dictionary<int, SpriteRenderer>();
     }
     private void OnEnable()
     {
@@ -153,7 +151,16 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         if (atk == -1) atk = GetPlayerAttack(atkIndex);
         if (atk == 0) return;
-        indexToPlayer[hurtIndex].BeCompanionHurt(atk);
+        if (indexToPlayer.ContainsKey(14))
+        {
+            var player = indexToPlayer[14];
+            if (player.GetExtra(2)==1&&player.CanAcceptHurt(atk))
+            {
+                player.BeCompanionHurt(atk, atkIndex);
+                return;
+            }
+        }
+        indexToPlayer[hurtIndex].BeCompanionHurt(atk, atkIndex);
     }
     public void PlayerHealPlayer(int restorer, int recipient, int heal = -1)
     {
@@ -170,13 +177,13 @@ public class PlayerManager : Singleton<PlayerManager>
         if (indexToPlayer.ContainsKey(14))
         {
             var player = indexToPlayer[14];
-            if (player.CanAcceptHurt(attack))
+            if (player.GetExtra(2) != 2 && player.CanAcceptHurt(attack))
             {
-                player.BeHurt(attack);
+                player.BeHurt(attack,e);
                 return;
             }
         }
-        p.BeHurt(attack);
+        p.BeHurt(attack,e);
     }
 
     Vector2 moveVec2;
@@ -184,10 +191,10 @@ public class PlayerManager : Singleton<PlayerManager>
     private void Movement()
     {
         if (!players[currIndex].IsAlive()) return;
-        moveVec2 = movementInput * GetPlayerSpeed(currPlayerIndex) * Time.deltaTime;
+        moveVec2 = movementInput * GetPlayerSpeed(currPlayerIndex) * Time.fixedDeltaTime;
         moveVec3 = new Vector3(moveVec2.x, moveVec2.y, 0.0f);
         this.transform.position = this.transform.position + moveVec3;
-        players[currIndex].Move(movementInput, Time.deltaTime);
+        players[currIndex].Move(movementInput, Time.fixedDeltaTime);
 
 
         /* if (inputX != 0 || inputY != 0)
@@ -272,7 +279,6 @@ public class PlayerManager : Singleton<PlayerManager>
             }
         }
         players.Clear();
-        indexToSpriteRenderer.Clear();
         trueIndexes.Clear();
         foreach (var i in playerIndexes)
         {
@@ -280,7 +286,6 @@ public class PlayerManager : Singleton<PlayerManager>
             trueIndexes.Add(i);
             var go = Instantiate(SOManager.Instance.GetPlayerPrefabByIndex(i), this.transform);
             players.Add(go.GetComponent<Player>());
-            indexToSpriteRenderer.Add(i, go.GetComponent<SpriteRenderer>());
         }
 
         InitPlayerHash();
@@ -343,11 +348,11 @@ public class PlayerManager : Singleton<PlayerManager>
             var index = p.character.index;
             if (index == currPlayerIndex)
             {
-                indexToSpriteRenderer[index].enabled = true;
+                p.EnterField();
             }
             else
             {
-                indexToSpriteRenderer[index].enabled = false;
+                p.ExitField();
             }
         }
         EventHandler.CallChangePlayerOnTheFieldEvent(players[i]);
