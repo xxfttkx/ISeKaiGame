@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\Player\Player_8_Warrior.cs" />
     <Compile Include="Assets\Scripts\Player\Player_23_Warrior.cs" />
     <Compile Include="Assets\Scripts\Player\Player_2_Priest.cs" />
+    <Compile Include="Assets\Scripts\Player\Player_17_Mage.cs" />
     <Compile Include="Assets\Scripts\Player\Player_5_Mage.cs" />
     <Compile Include="Assets\Scripts\Player\Player_18_Mage.cs" />
     <Compile Include="Assets\Scripts\Player\Player_11_Mage.cs" />

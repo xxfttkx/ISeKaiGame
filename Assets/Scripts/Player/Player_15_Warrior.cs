@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player_15_Warrior : Player_Area
 {
     public SpriteRenderer circle;
+    public SpriteRenderer outlineSp;
     public Material outline;
     private int count;
     private int maxAddHpCount;
@@ -13,6 +14,7 @@ public class Player_15_Warrior : Player_Area
     protected override void Awake()
     {
         character.index = 15;
+        outline = outlineSp.material;
         base.Awake();
     }
     protected override void OnEnable()
@@ -58,10 +60,7 @@ public class Player_15_Warrior : Player_Area
     }
     public override void AddBuffBeforeStart()
     {
-        foreach (var p in PlayerManager.Instance.players)
-        {
-            p.ApplyBuff("player15", -1, 0f, _bonus, 0f, 0f, 0f, ApplyBuffType.Override);
-        }
+        ApplyBuff("player15", -1, 0f, _bonus, 0f, 0f, 0f, ApplyBuffType.Override);
     }
     protected override void OnDesireChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
     {

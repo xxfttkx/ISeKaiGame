@@ -51,8 +51,7 @@ public class BtnBase : MonoBehaviour, IPointerClickHandler,IPointerEnterHandler,
     public void OnPointerClick(PointerEventData eventData)
     {
         if (!interactable) return;
-        if (btnClick != null)
-            btnClick.Invoke();
+        btnClick?.Invoke();
     }
 
     public void OnPointerEnter(PointerEventData eventData)

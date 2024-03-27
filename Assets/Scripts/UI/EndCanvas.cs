@@ -7,6 +7,7 @@ public class EndCanvas : Singleton<EndCanvas>
 {
     public GameObject overPanel;
     public GameObject winPanel;
+    public GameObject btnPanel;
     public BtnBase retryButton;
     public BtnBase backButton;
     public BtnBase returnSelectButton;
@@ -20,6 +21,8 @@ public class EndCanvas : Singleton<EndCanvas>
         backButton.btnClick.AddListener(BackToTitle);
         returnSelectButton.btnClick.AddListener(ReturnToCharacterSelection);
         overPanel.SetActive(false);
+        winPanel.SetActive(false);
+        btnPanel.SetActive(false);
         saveSucc.SetActive(false);
     }
     private void OnEnable()
@@ -50,13 +53,14 @@ public class EndCanvas : Singleton<EndCanvas>
             overPanel.SetActive(true);
         }
         else winPanel.SetActive(true);
+        btnPanel.SetActive(true);
     }
 
     public void Retry()
     {
         overPanel.SetActive(false);
         winPanel.SetActive(false);
-        
+        btnPanel.SetActive(false);
         EventHandler.CallExitLevelEvent(-1);
         LevelManager.Instance.Retry();
     }
@@ -64,7 +68,7 @@ public class EndCanvas : Singleton<EndCanvas>
     {
         overPanel.SetActive(false);
         winPanel.SetActive(false);
-
+        btnPanel.SetActive(false);
         EventHandler.CallExitLevelEvent(-1);
         EventHandler.CallExitDungeonEvent();
         UIManager.Instance.EnterTitle();
@@ -73,7 +77,7 @@ public class EndCanvas : Singleton<EndCanvas>
     {
         overPanel.SetActive(false);
         winPanel.SetActive(false);
-
+        btnPanel.SetActive(false);
         EventHandler.CallExitLevelEvent(-1);
         EventHandler.CallExitDungeonEvent();
         UIManager.Instance.EnterSelect();

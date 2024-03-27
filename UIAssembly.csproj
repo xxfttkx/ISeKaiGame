@@ -88,12 +88,11 @@
     <Compile Include="Assets\Scripts\UI\PlayerPanel.cs" />
     <Compile Include="Assets\Scripts\UI\DataRaw.cs" />
     <Compile Include="Assets\Scripts\UI\SlotPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Button\ImageBtn.cs" />
     <Compile Include="Assets\Scripts\UI\LanguagePanel.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\UI\ButtonPanel.cs" />
     <Compile Include="Assets\Scripts\UI\SelectCanvas.cs" />
-    <Compile Include="Assets\Scripts\UI\Button\ButtonCtlBase.cs" />
-    <Compile Include="Assets\Scripts\UI\Button\BtnCtl.cs" />
     <Compile Include="Assets\Scripts\UI\SelectedCharPanel.cs" />
     <Compile Include="Assets\Scripts\UI\BuffTip.cs" />
     <Compile Include="Assets\Scripts\UI\ShadowImage.cs" />

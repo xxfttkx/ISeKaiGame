@@ -396,6 +396,7 @@ MonoBehaviour:
   - {fileID: 6800246112238404377, guid: 0d8e735cda4bce14a840d749d6358e9c, type: 3}
   - {fileID: 6800246112238404377, guid: d315bb58e30024b4bb77740e10c68db1, type: 3}
   - {fileID: 6800246112238404377, guid: c5289061272340b41804838e2c0de5a5, type: 3}
+  - {fileID: 6800246112238404377, guid: b23fc8509deb15b43b593f532475ef79, type: 3}
   enemyPrefabs:
   - {fileID: 4708548768610898139, guid: d3470c4045ebf444b82348e1abed035c, type: 3}
   - {fileID: 4708548768610898139, guid: 8e01a792c675b0242b13b04c952bf1c1, type: 3}
@@ -1693,6 +1694,7 @@ MonoBehaviour:
   currLevel: 0
   timeEnd: 0
   currEnemyNum: 0
+  currLevelTime: 0
 --- !u!1 &1718561912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1829,7 +1831,6 @@ GameObject:
   - component: {fileID: 1917856952}
   - component: {fileID: 1917856953}
   - component: {fileID: 1917856954}
-  - component: {fileID: 1917856955}
   m_Layer: 0
   m_Name: ConsoleToScreen
   m_TagString: Untagged
@@ -1941,18 +1942,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1917856955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1917856949}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f6ee9a9cc487fe48aecfe2cdcd7fe47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1943720998
 GameObject:
   m_ObjectHideFlags: 0
