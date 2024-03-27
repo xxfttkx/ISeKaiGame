@@ -14,22 +14,26 @@ public class LevelPanel : Singleton<LevelPanel>
     public void OnEnable()
     {
         EventHandler.EnterLevelEvent += OnEnterLevelEvent;
+        EventHandler.CreateEnemyTimeChangeEvent += OnCreateEnemyTimeChangeEvent;
+        EventHandler.EnemyNumChangeEvent += OnEnemyNumChangeEvent;
     }
     public void OnDisable()
     {
         EventHandler.EnterLevelEvent -= OnEnterLevelEvent;
+        EventHandler.EnterLevelEvent -= OnCreateEnemyTimeChangeEvent;
+        EventHandler.EnemyNumChangeEvent -= OnEnemyNumChangeEvent;
     }
 
     void OnEnterLevelEvent(int l)
     {
         levelNum.text = $"{l}";
     }
-    public void TimeChange(int time)
+    public void OnCreateEnemyTimeChangeEvent(int time)
     {
         timeText.text = time+"";
     }
 
-    public void enemyNumChange(int num)
+    public void OnEnemyNumChangeEvent(int num)
     {
         enemyText.text = num + "";
     }

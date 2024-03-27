@@ -66,7 +66,7 @@ public class EndCanvas : Singleton<EndCanvas>
         winPanel.SetActive(false);
 
         EventHandler.CallExitLevelEvent(-1);
-        EventHandler.CallEndLevelEvent();
+        EventHandler.CallExitDungeonEvent();
         UIManager.Instance.EnterTitle();
     }
     public void ReturnToCharacterSelection()
@@ -75,7 +75,7 @@ public class EndCanvas : Singleton<EndCanvas>
         winPanel.SetActive(false);
 
         EventHandler.CallExitLevelEvent(-1);
-        EventHandler.CallEndLevelEvent();
+        EventHandler.CallExitDungeonEvent();
         UIManager.Instance.EnterSelect();
     }
 }

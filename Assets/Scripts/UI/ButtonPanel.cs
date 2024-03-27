@@ -110,7 +110,7 @@ public class ButtonPanel : Singleton<ButtonPanel>
         else
         {
             
-            int level = SaveLoadManager.Instance.GetLevelByPlayerIndexes(indexes);
+            int level = SaveLoadManager.Instance.GetLevelByPlayerIndexes(indexes); 
             if (level==Settings.levelMaxNum)
             {
                 max = level;

@@ -38,8 +38,8 @@ public class Enemy_5_Melee : Enemy_Melee
             rb.MovePosition(rb.position + dir * GetSpeed() * 5 * Time.deltaTime);
             if (!bAttackSuccess)
             {
-                float dis = Utils.GetSqrDisWithPlayer(this.transform);
-                if (dis < Settings.hitPlayerDis * Settings.hitPlayerDis)
+                Vector2 diff = player._pos - _pos;
+                if (diff.sqrMagnitude < Settings.hitPlayerDis * Settings.hitPlayerDis)
                 {
                     bAttackSuccess = true;
                     PlayerManager.Instance.EnemyHurtPlayer(this);

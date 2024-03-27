@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
+public class PlayerSettingsPanel : MonoBehaviour
 {
     public GameObject imagePrefab;
     public GameObject imageParent;
@@ -21,12 +21,19 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
         get => playerImages.FindIndex(i => i.index == currPlayerIndex);
     }
     BtnBaseCtl btnCtl;
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
         btnCtl = GetComponent<BtnBaseCtl>();
         playerImages = new List<PlayerBtn>();
         extraSkills = new List<ExtraSkill>();
+    }
+    void OnEnable()
+    {
+        EventHandler.PlayerCharacteristicChangeEvent += OnPlayerCharacteristicChangeEvent;
+    }
+    private void OnDisable()
+    {
+        EventHandler.PlayerCharacteristicChangeEvent -= OnPlayerCharacteristicChangeEvent;
     }
 
     public void Init(List<int> playerIndexes)
@@ -44,7 +51,7 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
             var go = Instantiate(imagePrefab, imageParent.transform);
             var b = go.GetComponent<PlayerBtn>();
             var sp = SOManager.Instance.GetPlayerSpriteByIndex(i);
-            b.InitButton(i, sp);
+            b.InitButton(i, sp,()=> ShowPlayerExtra(i));
             playerImages.Add(b);
         }
 
@@ -113,5 +120,9 @@ public class PlayerSettingsPanel : Singleton<PlayerSettingsPanel>
     {
         var p = PlayerManager.Instance.GetPlayerByPlayerIndex(currPlayerIndex);
         desc.text = $"Desc:\n{p.character.desc}\nHp:{p.GetHp()}/{p.GetMaxHP()}\nAtk:{p.GetRawAtk()}\nSpeed:{p.GetRawSpeed()}\nAtkSpeed:{p.GetRawAtkSpeed()}\nAtkRange:{p.GetRawAtkRange()}";
+    }
+    void OnPlayerCharacteristicChangeEvent(Player p)
+    {
+        ChangeCh(p);
     }
 }

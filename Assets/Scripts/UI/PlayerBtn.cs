@@ -10,6 +10,7 @@ public class PlayerBtn : BtnBase
     public Image slot;
     public int index;
     public bool selected;
+    Action selectCurr;
     public override void Awake()
     {
         base.Awake();
@@ -36,15 +37,16 @@ public class PlayerBtn : BtnBase
         else
         {
             Select();
-            PlayerSettingsPanel.Instance.ShowPlayerExtra(index);
+            selectCurr?.Invoke();
         }
         
         
     }
-    public void InitButton(int index, Sprite sp)
+    public void InitButton(int index, Sprite sp,Action fun)
     {
         chara.sprite = sp;
         this.index = index;
+        selectCurr = fun;
     }
 
     internal void Select()

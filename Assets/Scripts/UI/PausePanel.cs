@@ -23,7 +23,7 @@ public class PausePanel : MonoBehaviour
     public void Retry()
     {
         EventHandler.CallExitLevelEvent(-1);
-        EventHandler.CallEndLevelEvent();
+        EventHandler.CallExitDungeonEvent();
         LevelManager.Instance.Retry();
 
         UIManager.Instance.EscOnePanel();
@@ -32,7 +32,7 @@ public class PausePanel : MonoBehaviour
     {
         UIManager.Instance.EscOnePanel();
         EventHandler.CallExitLevelEvent(-1);
-        EventHandler.CallEndLevelEvent();
+        EventHandler.CallExitDungeonEvent();
         UIManager.Instance.EnterSelect();
 
     }
@@ -40,7 +40,7 @@ public class PausePanel : MonoBehaviour
     {
         UIManager.Instance.EscOnePanel();
         EventHandler.CallExitLevelEvent(-1);
-        EventHandler.CallEndLevelEvent();
+        EventHandler.CallExitDungeonEvent();
         UIManager.Instance.EnterTitle();
     }
     public void BackToGame()

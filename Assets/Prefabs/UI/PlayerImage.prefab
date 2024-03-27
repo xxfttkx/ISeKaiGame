@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9ce412594bbc1a442971bc7bde6782c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fdfa4a335a72bbe48b51fa710f0a4e7a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f2c2691796b624da43740bef9378f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: 1
   btnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -98,6 +99,10 @@ MonoBehaviour:
   btnClick:
     m_PersistentCalls:
       m_Calls: []
+  leftBtn: {fileID: 0}
+  rightBtn: {fileID: 0}
+  upBtn: {fileID: 0}
+  downBtn: {fileID: 0}
   chara: {fileID: 8393299398496625333}
   slot: {fileID: 8393299398224871944}
   index: 0
