@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2408b070cc5cd42a1906d055c454be, type: 3}
+  m_Name: LevelCreatEnemyDataList_SO
+  m_EditorClassIdentifier: 
+  levels:
+  - levelIndex: 0
+    bonus: 0
+    offset: []
+    enemyIndex: 
+    enemyCreateFirstTime: 
+    enemyCreateDeltaTime: 
+    endCreatEnemyTime: 0
+  - levelIndex: 1
+    bonus: 1
+    offset:
+    - {x: 10, y: 10}
+    - {x: -10, y: 10}
+    - {x: 10, y: -10}
+    - {x: 10, y: 10}
+    - {x: -10, y: 10}
+    enemyIndex: 0000000004000000050000000600000004000000
+    enemyCreateFirstTime: 000000000c0000000c0000000c0000000c000000
+    enemyCreateDeltaTime: 0c00000001000000010000000100000001000000
+    endCreatEnemyTime: 11
+  - levelIndex: 2
+    bonus: 1
+    offset:
+    - {x: 10, y: 10}
+    - {x: -10, y: 10}
+    enemyIndex: 0600000006000000
+    enemyCreateFirstTime: 0000000000000000
+    enemyCreateDeltaTime: 1600000016000000
+    endCreatEnemyTime: 40
+  - levelIndex: 3
+    bonus: 0
+    offset:
+    - {x: 10, y: 10}
+    - {x: -10, y: 10}
+    enemyIndex: 0100000001000000
+    enemyCreateFirstTime: 0000000000000000
+    enemyCreateDeltaTime: 0200000002000000
+    endCreatEnemyTime: 40
+  - levelIndex: 4
+    bonus: 0
+    offset:
+    - {x: 10, y: 10}
+    - {x: -10, y: 10}
+    enemyIndex: 0100000001000000
+    enemyCreateFirstTime: 0000000000000000
+    enemyCreateDeltaTime: 0200000002000000
+    endCreatEnemyTime: 40
+  - levelIndex: 5
+    bonus: 0
+    offset:
+    - {x: 10, y: 10}
+    - {x: -10, y: 10}
+    enemyIndex: 0100000001000000
+    enemyCreateFirstTime: 0000000000000000
+    enemyCreateDeltaTime: 0200000002000000
+    endCreatEnemyTime: 40
+  - levelIndex: 5
+    bonus: 0
+    offset:
+    - {x: 10, y: 10}
+    - {x: -10, y: 10}
+    enemyIndex: 0100000001000000
+    enemyCreateFirstTime: 0000000000000000
+    enemyCreateDeltaTime: 0200000002000000
+    endCreatEnemyTime: 40

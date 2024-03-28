@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6042a76530731a54db66585d2bd910ff, type: 3}
+  m_Name: ProfessionDataList_SO
+  m_EditorClassIdentifier: 
+  professionDataList:
+  - profession: 0
+    hp: 50
+    attack: 8
+    speed: 4
+    attackSpeed: 3
+    attackRange: 2
+  - profession: 1
+    hp: 20
+    attack: 10
+    speed: 6
+    attackSpeed: 5
+    attackRange: 5
+  - profession: 2
+    hp: 10
+    attack: 10
+    speed: 5
+    attackSpeed: 5
+    attackRange: 6
+  - profession: 3
+    hp: 8
+    attack: 15
+    speed: 6
+    attackSpeed: 10
+    attackRange: 3
