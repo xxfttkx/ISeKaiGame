@@ -69,8 +69,6 @@ public class EnemyBase : Creature
     }
     protected virtual void Start()
     {
-        enemy = SOManager.Instance.enemyDataList_SO.enemies[enemy.index];
-        sp.sprite = enemy.creature.sprite;
     }
     protected virtual void OnEnable()
     {
@@ -205,6 +203,7 @@ public class EnemyBase : Creature
         LevelManager.Instance.AddEnemyNum(this);
         isBegingRepelled = false;
         enemy = SOManager.Instance.enemyDataList_SO.GetEnemyByIndex(enemy.index);
+        sp.sprite = enemy.creature.sprite;
         hp = enemy.creature.hp;
         maxHp = hp;
         material.SetFloat("_Red", 0f);

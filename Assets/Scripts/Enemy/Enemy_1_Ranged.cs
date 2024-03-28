@@ -14,7 +14,6 @@ public class Enemy_1_Ranged : Enemy_Ranged
     protected override void Start()
     {
         base.Start();
-        enemy = SOManager.Instance.enemyDataList_SO.enemies[1];
     }
     protected override void OnEnable()
     {
