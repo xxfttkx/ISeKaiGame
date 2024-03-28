@@ -9,6 +9,11 @@ public class TransitionManager : Singleton<TransitionManager>
 {
     private SpriteRenderer hole;
     private CinemachineVirtualCamera virtualCamera;
+    public int num;
+    private void Update()
+    {
+        Application.targetFrameRate = num;
+    }
     protected override void Awake()
     {
         base.Awake();
@@ -43,19 +48,18 @@ public class TransitionManager : Singleton<TransitionManager>
     {
         var p = PlayerManager.Instance.GetPlayerInControl();
         this.transform.position = p.transform.position;
-        for (int i = 0; i <= 10; ++i)
+        for (float i = 0; i <= 10; i+=0.5f)
         {
             hole.size = new Vector2(i, i);
             yield return new WaitForSecondsRealtime(0.02f);
         }
-        for (int i = 10; i >= 2; --i)
+        for (float i = 10; i >= 2; i-=0.5f)
         {
             virtualCamera.m_Lens.OrthographicSize = i;
-            // virtualCamera.UpdateCameraState(Vector3.zero, 0f);
             yield return new WaitForSecondsRealtime(0.02f);
         }
         hole.size = new Vector2(50, 50);
-        for (int i = 2; i <= 10; ++i)
+        for (float i = 2; i <= 10; i += 0.5f)
         {
             virtualCamera.m_Lens.OrthographicSize = i;
             yield return new WaitForSecondsRealtime(0.02f);

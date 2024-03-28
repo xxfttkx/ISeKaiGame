@@ -5,7 +5,8 @@ using UnityEngine;
 public class CreateEnemyPoint : MonoBehaviour
 {
     public float currTime;
-    public float randomPos = 4;
+    public float randomPosS = 7;
+    public float randomPosB = 10;
     public int enemyIndex;
     public int firstTime;
     public int deltaTime;
@@ -50,7 +51,7 @@ public class CreateEnemyPoint : MonoBehaviour
                 yield return null;
                 continue;
             }
-            Vector3 pos = this.transform.position + new Vector3(Random.Range(-randomPos, randomPos), Random.Range(-randomPos, randomPos), 0);
+            Vector3 pos = this.transform.position + new Vector3(Mathf.Sign(Random.Range(-1f,1f))*Random.Range(randomPosS, randomPosB), Mathf.Sign(Random.Range(-1f, 1f)) * Random.Range(randomPosS, randomPosB), 0);
             PoolManager.Instance.CreateEnemy(enemyIndex, pos);
             
             yield return new WaitForSeconds(deltaTime);

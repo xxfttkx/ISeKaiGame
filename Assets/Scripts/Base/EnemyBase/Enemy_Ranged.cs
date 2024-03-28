@@ -28,17 +28,17 @@ public abstract class Enemy_Ranged : EnemyBase
             {
                 Vector2 deltaPos = player._pos - _pos;
                 float distance = deltaPos.magnitude;
-                if (movementVec2.x < 0) sp.flipX = !enemy.faceToLeft;
-                else if (movementVec2.x > 0) sp.flipX = enemy.faceToLeft;
+                if (movementVec2.x < 0) sp.flipX = !enemy.creature.faceToLeft;
+                else if (movementVec2.x > 0) sp.flipX = enemy.creature.faceToLeft;
                 if (distance < GetAttackRange() - 2)
                 {
                     IsMoving = true;
-                    rb.MovePosition(rb.position - movementVec2 * GetSpeed() * Time.deltaTime);
+                    rb.velocity = -movementVec2 * GetSpeed();
                 }
                 else if (distance > GetAttackRange() - 1)
                 {
                     IsMoving = true;
-                    rb.MovePosition(rb.position + movementVec2 * GetSpeed() * Time.deltaTime);
+                    rb.velocity = movementVec2 * GetSpeed();
                 }
                 else
                 {

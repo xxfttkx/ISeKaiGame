@@ -93,7 +93,7 @@ public class Player : Creature
     {
         if (movementInput.x < 0) sp.flipX = !character.creature.faceToLeft;
         else if (movementInput.x > 0) sp.flipX = character.creature.faceToLeft;
-         rb.MovePosition(rb.position + movementInput);
+        rb.velocity = movementInput;
     }
     private void FixedUpdate()
     {

@@ -54,7 +54,7 @@ public class Feather : PlayerAtk
                     angle = -angle;
                 }
                 this.transform.rotation = Quaternion.Euler(0, 0, angle);
-                rb.MovePosition(rb.position + dir * Time.deltaTime * velocity);
+                rb.velocity = dir * _velocity;
             }
             yield return null;
         }

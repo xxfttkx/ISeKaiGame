@@ -15,65 +15,37 @@ MonoBehaviour:
   levels:
   - levelIndex: 0
     bonus: 0
-    offset: []
-    enemyIndex: 
-    enemyCreateFirstTime: 
-    enemyCreateDeltaTime: 
-    endCreatEnemyTime: 0
+    enemyIndex: 08000000
+    enemyCreateFirstTime: 00000000
+    enemyCreateDeltaTime: 0a000000
+    endCreatEnemyTime: 1
   - levelIndex: 1
     bonus: 1
-    offset:
-    - {x: 10, y: 10}
-    - {x: -10, y: 10}
-    - {x: 10, y: -10}
-    - {x: 10, y: 10}
-    - {x: -10, y: 10}
-    enemyIndex: 0000000004000000050000000600000004000000
-    enemyCreateFirstTime: 000000000c0000000c0000000c0000000c000000
-    enemyCreateDeltaTime: 0c00000001000000010000000100000001000000
-    endCreatEnemyTime: 11
+    enemyIndex: 0000000001000000020000000100000000000000
+    enemyCreateFirstTime: 0000000000000000000000000000000000000000
+    enemyCreateDeltaTime: 0100000002000000030000000200000002000000
+    endCreatEnemyTime: 20
   - levelIndex: 2
     bonus: 1
-    offset:
-    - {x: 10, y: 10}
-    - {x: -10, y: 10}
-    enemyIndex: 0600000006000000
-    enemyCreateFirstTime: 0000000000000000
-    enemyCreateDeltaTime: 1600000016000000
-    endCreatEnemyTime: 40
+    enemyIndex: 0100000001000000010000000100000001000000
+    enemyCreateFirstTime: 0000000000000000000000000000000000000000
+    enemyCreateDeltaTime: 0100000001000000010000000100000001000000
+    endCreatEnemyTime: 20
   - levelIndex: 3
-    bonus: 0
-    offset:
-    - {x: 10, y: 10}
-    - {x: -10, y: 10}
-    enemyIndex: 0100000001000000
-    enemyCreateFirstTime: 0000000000000000
-    enemyCreateDeltaTime: 0200000002000000
-    endCreatEnemyTime: 40
+    bonus: 1
+    enemyIndex: 03000000040000000500000006000000
+    enemyCreateFirstTime: 00000000000000000000000000000000
+    enemyCreateDeltaTime: 01000000010000000100000001000000
+    endCreatEnemyTime: 20
   - levelIndex: 4
-    bonus: 0
-    offset:
-    - {x: 10, y: 10}
-    - {x: -10, y: 10}
-    enemyIndex: 0100000001000000
-    enemyCreateFirstTime: 0000000000000000
-    enemyCreateDeltaTime: 0200000002000000
-    endCreatEnemyTime: 40
+    bonus: 1
+    enemyIndex: 03000000040000000500000006000000
+    enemyCreateFirstTime: 00000000000000000000000000000000
+    enemyCreateDeltaTime: 01000000010000000100000001000000
+    endCreatEnemyTime: 20
   - levelIndex: 5
-    bonus: 0
-    offset:
-    - {x: 10, y: 10}
-    - {x: -10, y: 10}
-    enemyIndex: 0100000001000000
-    enemyCreateFirstTime: 0000000000000000
-    enemyCreateDeltaTime: 0200000002000000
-    endCreatEnemyTime: 40
-  - levelIndex: 5
-    bonus: 0
-    offset:
-    - {x: 10, y: 10}
-    - {x: -10, y: 10}
-    enemyIndex: 0100000001000000
-    enemyCreateFirstTime: 0000000000000000
-    enemyCreateDeltaTime: 0200000002000000
-    endCreatEnemyTime: 40
+    bonus: 1
+    enemyIndex: 03000000040000000500000006000000
+    enemyCreateFirstTime: 00000000000000000000000000000000
+    enemyCreateDeltaTime: 01000000010000000100000001000000
+    endCreatEnemyTime: 20

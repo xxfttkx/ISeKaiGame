@@ -294,6 +294,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1355416297}
     - target: {fileID: 2963835385546287236, guid: a12831bbd2bfe0b4da7512371337716b, type: 3}
+      propertyPath: leftBtn
+      value: 
+      objectReference: {fileID: 1152594732}
+    - target: {fileID: 2963835385546287236, guid: a12831bbd2bfe0b4da7512371337716b, type: 3}
       propertyPath: rightBtn
       value: 
       objectReference: {fileID: 1727507163}
@@ -4251,6 +4255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbce18cdaea40344f9c47e7ee3869e86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDataPrefab: {fileID: 940315417661000982, guid: 4ba5550256dafbe4fb886d6849bc1d39, type: 3}
 --- !u!1 &546371338
 GameObject:
   m_ObjectHideFlags: 0
@@ -9523,6 +9528,10 @@ PrefabInstance:
       propertyPath: left
       value: 
       objectReference: {fileID: 1355416297}
+    - target: {fileID: 2963835385546287236, guid: a12831bbd2bfe0b4da7512371337716b, type: 3}
+      propertyPath: rightBtn
+      value: 
+      objectReference: {fileID: 1989405353}
     - target: {fileID: 7624574200462747326, guid: a12831bbd2bfe0b4da7512371337716b, type: 3}
       propertyPath: m_Name
       value: go
@@ -12391,14 +12400,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb1ed2b4aebbca34d81febcc131cd9f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterDataList_SO: {fileID: 11400000, guid: f2a05b3ade33dd841bef6e24f393cf9d, type: 2}
   moneyText: {fileID: 1259331948}
-  playerDataPrefab: {fileID: 940315417661000982, guid: 4ba5550256dafbe4fb886d6849bc1d39, type: 3}
   pausePanel: {fileID: 920386108}
+  playPanel: {fileID: 0}
   playerSettingsPanel: {fileID: 1859881544}
   soundSettingsPanel: {fileID: 1678893753}
-  playerPanel: {fileID: 540644444}
-  PlayerDataList: []
   selectCanvas: {fileID: 78709796}
   startCanvas: {fileID: 1975058415}
   endCanvas: {fileID: 393771704}
@@ -17322,7 +17328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1975058411
 MonoBehaviour:
   m_ObjectHideFlags: 0

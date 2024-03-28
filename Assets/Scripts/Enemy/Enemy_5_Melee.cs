@@ -31,11 +31,12 @@ public class Enemy_5_Melee : Enemy_Melee
         dir = dir.normalized;
         IsMoving = false;
         yield return new WaitForSeconds(WaitChongCiTime());
+        if (!IsAlive()) yield break;
         bool bAttackSuccess = false;
         for (float t = 0; t < 0.5; t += Time.deltaTime)
         {
             IsMoving = true;
-            rb.MovePosition(rb.position + dir * GetSpeed() * 5 * Time.deltaTime);
+            rb.velocity = dir * GetSpeed() * 5;
             if (!bAttackSuccess)
             {
                 Vector2 diff = player._pos - _pos;

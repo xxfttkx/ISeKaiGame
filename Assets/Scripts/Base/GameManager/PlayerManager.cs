@@ -56,12 +56,6 @@ public class PlayerManager : Singleton<PlayerManager>
             else p.SubTimeBonus(Time.deltaTime * 10);
         }
     }
-    private void FixedUpdate()
-    {
-        if (GameStateManager.Instance.gameState != GameState.GamePlay) return;
-        if (!bInit) return;
-        Movement();
-    }
 
     private void ChangePlayerInput()
     {
@@ -79,11 +73,31 @@ public class PlayerManager : Singleton<PlayerManager>
         inputX = Input.GetAxisRaw("Horizontal");
         inputY = Input.GetAxisRaw("Vertical");
         movementInput = new Vector2(inputX, inputY);
-        if (curSorMove != null && movementInput.sqrMagnitude != 0)
-            StopCoroutine(curSorMove);
-        movementInput = movementInput.normalized;
+        if (movementInput.sqrMagnitude != 0)
+        {
+            movementInput = movementInput.normalized;
+            Movement(movementInput);
+            if (curSorMove != null)
+            {
+                StopCoroutine(curSorMove);
+                curSorMove = null;
+            }
+        }
+        else
+        {
+            if (curSorMove == null)
+                Movement(movementInput);
+        }
     }
-
+    void Movement(Vector2 dir)
+    {
+        if (!players[currIndex].IsAlive())
+            moveVec2 = Vector2.zero;
+        else
+            moveVec2 = dir * GetPlayerSpeed(currPlayerIndex);
+        foreach (var p in players)
+            p.Move(moveVec2);
+    }
     internal void PlayerKillEnemy(int playerIndex, EnemyBase enemy)
     {
         var pIndex = playerIndex;
@@ -159,13 +173,6 @@ public class PlayerManager : Singleton<PlayerManager>
     }
 
     Vector2 moveVec2;
-    private void Movement()
-    {
-        if (!players[currIndex].IsAlive()) return;
-        moveVec2 = movementInput * GetPlayerSpeed(currPlayerIndex) * Time.fixedDeltaTime;
-        foreach(var p in players)
-            p.Move(moveVec2);
-    }
     public Player FindWarrior()
     {
         foreach (var p in players)
@@ -443,16 +450,16 @@ public class PlayerManager : Singleton<PlayerManager>
     }
     IEnumerator MoveToPosCo(Vector2 pos)
     {
-        var dir = pos - (Vector2)this.transform.position;
+        Player p = players[currIndex];
+        var dir = pos - p._pos;
         dir = dir.normalized;
-        while (((Vector2)this.transform.position - pos).sqrMagnitude > 0.1f)
+        movementInput = dir;
+        while ((pos - p._pos).sqrMagnitude > 0.1f)
         {
-            var speed = GetPlayerSpeed(currPlayerIndex);
-            Vector2 move = dir * speed * Time.deltaTime;
-            Vector3 m = new Vector3(move.x, move.y, 0.0f);
-            this.transform.position = this.transform.position + m;
-            players[currIndex].Move(dir*Time.deltaTime);
+            Movement(dir);
             yield return null;
         }
+        Movement(Vector2.zero);
+        curSorMove = null;
     }
 }

@@ -53,7 +53,7 @@ public class ButtonPanel : Singleton<ButtonPanel>
             return;
         }
         var l = SelectPanel.Instance.GetSelectedIndexes();
-        if(Utils.JudgeListValid(l))
+        if(!Utils.JudgeListValid(l))
         {
             Debug.Log("Invalid player indexes");
             return;

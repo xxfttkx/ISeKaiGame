@@ -70,7 +70,7 @@ public class EnemyBase : Creature
     protected virtual void Start()
     {
         enemy = SOManager.Instance.enemyDataList_SO.enemies[enemy.index];
-        sp.sprite = enemy.sprite;
+        sp.sprite = enemy.creature.sprite;
     }
     protected virtual void OnEnable()
     {
@@ -213,6 +213,7 @@ public class EnemyBase : Creature
         player = PlayerManager.Instance.GetPlayerInControl();
         isMoving = false;
         inAtkAnim = false;
+        rb.velocity = Vector2.zero;
     }
     private void OnExitLevelEvent(int level)
     {

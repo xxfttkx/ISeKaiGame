@@ -56,7 +56,7 @@ public class Lightning : PlayerAtk
                 angle = -angle;
             }
             this.transform.rotation = Quaternion.Euler(0, 0, angle);
-            rb.MovePosition(rb.position + dir * Time.deltaTime * _velocity);
+            rb.velocity = dir * _velocity;
             yield return null;
         }
     }
@@ -87,7 +87,7 @@ public class Lightning : PlayerAtk
                     angle = -angle;
                 }
                 this.transform.rotation = Quaternion.Euler(0, 0, angle);
-                rb.MovePosition(rb.position + dir * Time.deltaTime * _velocity);
+                rb.velocity = dir * _velocity;
             }
             yield return null;
         }

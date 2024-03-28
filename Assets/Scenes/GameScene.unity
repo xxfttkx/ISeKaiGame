@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba1039b371eb044593ef80901fb417e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  num: 188
 --- !u!1 &349427400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,7 +1133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8898a995b0c6a47be5c433fb2a7e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
   mapTilePrefab: {fileID: 6291908276529682305, guid: ef399c67c8b9bbb428ada8fc2d75cd0f, type: 3}
   tileX: 35.65
   tileY: 20.75

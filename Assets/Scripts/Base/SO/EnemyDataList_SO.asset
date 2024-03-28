@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - creature:
-      attack: 1
+      attack: 3
       hp: 10
-      speed: 7
-      attackSpeed: 10
+      speed: 5
+      attackSpeed: 5
       attackRange: 1
       faceToLeft: 0
       sprite: {fileID: 1571574046, guid: 8cc5cb484953ca94fae100c5c9b6f354, type: 3}
@@ -25,219 +25,147 @@ MonoBehaviour:
       desc: 
     index: 0
     name: 77ko
-    sprite: {fileID: 1571574046, guid: 8cc5cb484953ca94fae100c5c9b6f354, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: d3470c4045ebf444b82348e1abed035c, type: 3}
-    faceToLeft: 0
     enemyType: 1
-    attack: 1
-    hp: 10
-    speed: 6
     getPlayerPosTimeDelta: 0.1
-    attackRange: 0.1
-    attackSpeed: 10
     exp: 2
-    money: 5
+    money: 2
     desc: "\u666E\u901A\u8FD1\u6218"
   - creature:
-      attack: 0
-      hp: 0
-      speed: 0
-      attackSpeed: 0
-      attackRange: 0
+      attack: 2
+      hp: 10
+      speed: 5
+      attackSpeed: 5
+      attackRange: 6
       faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      sprite: {fileID: 21300000, guid: 7ecf2779827a3eb4b90c5fad2eb62d90, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: 8e01a792c675b0242b13b04c952bf1c1, type: 3}
       desc: 
     index: 1
     name: scarlet rain
-    sprite: {fileID: 21300000, guid: 7ecf2779827a3eb4b90c5fad2eb62d90, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 8e01a792c675b0242b13b04c952bf1c1, type: 3}
-    faceToLeft: 0
     enemyType: 2
-    attack: 1
-    hp: 10
-    speed: 2
     getPlayerPosTimeDelta: 0.1
-    attackRange: 8
-    attackSpeed: 5
     exp: 2
-    money: 5
+    money: 2
     desc: "\u666E\u901A\u8FDC"
   - creature:
-      attack: 0
-      hp: 0
-      speed: 0
-      attackSpeed: 0
-      attackRange: 0
+      attack: 5
+      hp: 15
+      speed: 6
+      attackSpeed: 6
+      attackRange: 6
       faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
-      desc: 
+      sprite: {fileID: 21300000, guid: 7ecf2779827a3eb4b90c5fad2eb62d90, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: 8966b92e5303bff4bae67499f71fa73b, type: 3}
+      desc: "\u666E\u901A\u8FDC \u4E00\u6B21\u4E24\u53D1"
     index: 2
     name: purple hairpin
-    sprite: {fileID: 21300000, guid: 7648092ef88916f4bbde1408e4e2c38e, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 8966b92e5303bff4bae67499f71fa73b, type: 3}
-    faceToLeft: 0
     enemyType: 2
-    attack: 5
-    hp: 5
-    speed: 5
     getPlayerPosTimeDelta: 0.1
-    attackRange: 8
-    attackSpeed: 5
-    exp: 10
-    money: 5
+    exp: 3
+    money: 3
     desc: "\u666E\u901A\u8FDC \u4E00\u6B21\u4E24\u53D1"
   - creature:
-      attack: 0
-      hp: 0
-      speed: 0
-      attackSpeed: 0
-      attackRange: 0
+      attack: 7
+      hp: 20
+      speed: 7
+      attackSpeed: 7
+      attackRange: 7
       faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      sprite: {fileID: 185015456, guid: cf02c0a9f1491e64c8d15535002ba275, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: fe2ab76247283a345b7569a04b8e8c79, type: 3}
       desc: 
     index: 3
     name: gateau
-    sprite: {fileID: 21300000, guid: 09b2ca96e83780e4692f9a4a0e900e6d, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: fe2ab76247283a345b7569a04b8e8c79, type: 3}
-    faceToLeft: 0
     enemyType: 2
-    attack: 5
-    hp: 20
-    speed: 4
     getPlayerPosTimeDelta: 0.1
-    attackRange: 7
-    attackSpeed: 10
-    exp: 2
-    money: 5
+    exp: 4
+    money: 4
     desc: "boqi \u666E\u901A\u8FDC \u4E00\u6B211\u53D1 \u5149\u7403\u5927\u4E14\u6162"
   - creature:
-      attack: 0
-      hp: 0
-      speed: 0
-      attackSpeed: 0
-      attackRange: 0
+      attack: 7
+      hp: 20
+      speed: 7
+      attackSpeed: 7
+      attackRange: 7
       faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
-      desc: 
+      sprite: {fileID: -255441356, guid: a0266521ea847534286bef3bbacbcc95, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: 94179feecd9f36f48bc042a1d8bc2bab, type: 3}
+      desc: "\u5B58\u6D3B\u65F6\u95F4\u8D8A\u957F\u901F\u5EA6\u8D8A\u5FEB"
     index: 4
     name: nijika
-    sprite: {fileID: 21300000, guid: dd4a95dd14ce03c4983df3a75f7425ce, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 94179feecd9f36f48bc042a1d8bc2bab, type: 3}
-    faceToLeft: 0
     enemyType: 1
-    attack: 5
-    hp: 20
-    speed: 8
     getPlayerPosTimeDelta: 0.1
-    attackRange: 0.6
-    attackSpeed: 5
-    exp: 2
-    money: 5
-    desc: "\u5B58\u6D3B\u65F6\u95F4\u8D8A\u957F\u901F\u5EA6\u8D8A\u5FEB"
+    exp: 4
+    money: 4
+    desc: 
   - creature:
-      attack: 0
-      hp: 0
-      speed: 0
-      attackSpeed: 0
-      attackRange: 0
+      attack: 7
+      hp: 20
+      speed: 7
+      attackSpeed: 7
+      attackRange: 7
       faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      sprite: {fileID: -559471264, guid: 0feeece6ba8a71d42b3e18f14e92896e, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: 95aa2ee42593c784dbc543523da4a01c, type: 3}
       desc: 
     index: 5
     name: kita
-    sprite: {fileID: 21300000, guid: c7dbe3efae9dd5e409b17fc8d5701523, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 95aa2ee42593c784dbc543523da4a01c, type: 3}
-    faceToLeft: 0
     enemyType: 1
-    attack: 5
-    hp: 20
-    speed: 10
     getPlayerPosTimeDelta: 0.1
-    attackRange: 6
-    attackSpeed: 10
-    exp: 2
-    money: 5
+    exp: 4
+    money: 4
     desc: "\u7A81\u7136\u51B2\u523A"
   - creature:
-      attack: 0
-      hp: 0
-      speed: 0
-      attackSpeed: 0
-      attackRange: 0
+      attack: 7
+      hp: 20
+      speed: 7
+      attackSpeed: 7
+      attackRange: 7
       faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      sprite: {fileID: -13341008, guid: afae735b16d356342aa40983f2b8d9e0, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: a853ea4871a1c8d48b621041d4cec8f7, type: 3}
       desc: 
     index: 6
     name: ryou
-    sprite: {fileID: 21300000, guid: b020fb3341ca2c945a553cc9b73b98ee, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: a853ea4871a1c8d48b621041d4cec8f7, type: 3}
-    faceToLeft: 0
     enemyType: 2
-    attack: 5
-    hp: 20
-    speed: 6
     getPlayerPosTimeDelta: 0.1
-    attackRange: 8
-    attackSpeed: 5
-    exp: 2
-    money: 5
+    exp: 4
+    money: 4
     desc: "\u4E00\u6B215\u53D1"
   - creature:
-      attack: 0
-      hp: 0
-      speed: 0
-      attackSpeed: 0
-      attackRange: 0
-      faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      attack: 8
+      hp: 50
+      speed: 6
+      attackSpeed: 6
+      attackRange: 6
+      faceToLeft: 1
+      sprite: {fileID: 21300000, guid: 6d2196183c1801e479f78254bbc800c0, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: 2b29b3a257f9717409212f7b15b70054, type: 3}
       desc: 
     index: 7
     name: chaser
-    sprite: {fileID: 21300000, guid: 6d2196183c1801e479f78254bbc800c0, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 2b29b3a257f9717409212f7b15b70054, type: 3}
-    faceToLeft: 0
     enemyType: 1
-    attack: 5
-    hp: 20
-    speed: 10
     getPlayerPosTimeDelta: 0.1
-    attackRange: 8
-    attackSpeed: 10
-    exp: 100
-    money: 50
+    exp: 10
+    money: 10
     desc: "\u89E6\u624B\u653B\u51FB"
   - creature:
       attack: 0
-      hp: 0
+      hp: 2147483647
       speed: 0
       attackSpeed: 0
       attackRange: 0
-      faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
-      desc: 
+      faceToLeft: 1
+      sprite: {fileID: 21300000, guid: 6d2196183c1801e479f78254bbc800c0, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: ac0e0e3782f6685469c137ff458a3467, type: 3}
+      desc: "\u6728\u6869"
     index: 8
     name: chaser
-    sprite: {fileID: 21300000, guid: 6d2196183c1801e479f78254bbc800c0, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 2b29b3a257f9717409212f7b15b70054, type: 3}
-    faceToLeft: 0
     enemyType: 1
-    attack: 0
-    hp: 2147483646
-    speed: 0
     getPlayerPosTimeDelta: 0
-    attackRange: 0
-    attackSpeed: 0
     exp: 0
     money: 0
-    desc: "\u6728\u6869"
+    desc: 
   - creature:
       attack: 0
       hp: 0
@@ -250,16 +178,8 @@ MonoBehaviour:
       desc: 
     index: 9
     name: 9
-    sprite: {fileID: 21300000, guid: 6d2196183c1801e479f78254bbc800c0, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 2b29b3a257f9717409212f7b15b70054, type: 3}
-    faceToLeft: 0
     enemyType: 1
-    attack: 0
-    hp: 2147483647
-    speed: 0
     getPlayerPosTimeDelta: 0
-    attackRange: 0
-    attackSpeed: 0
     exp: 0
     money: 0
     desc: "\u6BCF\u53D7\u5230\u4F24\u5BB3 \u5C31\u4F1A\u5F80\u4F24\u5BB3\u6765\u6E90\u53D1\u51FA\u67AA"
@@ -275,16 +195,8 @@ MonoBehaviour:
       desc: 
     index: 10
     name: 10
-    sprite: {fileID: 21300000, guid: 6d2196183c1801e479f78254bbc800c0, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 2b29b3a257f9717409212f7b15b70054, type: 3}
-    faceToLeft: 0
     enemyType: 1
-    attack: 0
-    hp: 2147483647
-    speed: 0
     getPlayerPosTimeDelta: 0
-    attackRange: 0
-    attackSpeed: 0
     exp: 0
     money: 0
     desc: "\u6B7B\u540E\u7206\u70B8 \u539F\u5730"
@@ -300,16 +212,8 @@ MonoBehaviour:
       desc: 
     index: 11
     name: 11
-    sprite: {fileID: 21300000, guid: 6d2196183c1801e479f78254bbc800c0, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 2b29b3a257f9717409212f7b15b70054, type: 3}
-    faceToLeft: 0
     enemyType: 1
-    attack: 0
-    hp: 2147483647
-    speed: 0
     getPlayerPosTimeDelta: 0
-    attackRange: 0
-    attackSpeed: 0
     exp: 0
     money: 0
     desc: "\u6B7B\u540E\u7206\u70B8 \u73A9\u5BB6\u4F4D\u7F6E"
@@ -325,16 +229,8 @@ MonoBehaviour:
       desc: 
     index: 12
     name: 11
-    sprite: {fileID: 21300000, guid: 6d2196183c1801e479f78254bbc800c0, type: 3}
-    prefab: {fileID: 4708548768610898139, guid: 2b29b3a257f9717409212f7b15b70054, type: 3}
-    faceToLeft: 0
     enemyType: 1
-    attack: 0
-    hp: 2147483647
-    speed: 0
     getPlayerPosTimeDelta: 0
-    attackRange: 0
-    attackSpeed: 0
     exp: 0
     money: 0
     desc: "\u5438\u73A9\u5BB6"

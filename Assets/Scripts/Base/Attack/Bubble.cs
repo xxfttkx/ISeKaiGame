@@ -37,7 +37,7 @@ public class Bubble : PlayerAtk
         StartCoroutine(AutoRelease());
         while (true)
         {
-            rb.MovePosition(rb.position + dir * Time.deltaTime * _velocity);
+            rb.velocity = dir * _velocity;
             yield return null;
         }
 

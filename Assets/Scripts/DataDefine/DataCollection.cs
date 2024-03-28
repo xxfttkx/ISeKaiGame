@@ -52,9 +52,6 @@ public struct Enemy
     public CreatureBase creature;
     public int index;
     public string name;
-    public Sprite sprite;
-    public GameObject prefab;
-    public bool faceToLeft;
     public EnemyType enemyType;
     [Header("Attributes")]
     public float getPlayerPosTimeDelta;
@@ -62,6 +59,7 @@ public struct Enemy
     public int money;
     [TextArea(3, 10)]
     public string desc;
+    // 我心里有数。。。。public bool finished;
 }
 
 [System.Serializable]

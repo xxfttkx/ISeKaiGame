@@ -59,7 +59,7 @@ public class Letter : PlayerAtk
                     angle = -angle;
                 }
                 this.transform.rotation = Quaternion.Euler(0, 0, angle);
-                _pos = _pos + dir * Time.deltaTime * velocity;
+                _pos = _pos + dir * Time.deltaTime * _velocity;
             }
             yield return null;
         }

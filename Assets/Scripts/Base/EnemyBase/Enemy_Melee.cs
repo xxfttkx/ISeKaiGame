@@ -31,8 +31,8 @@ public class Enemy_Melee : EnemyBase
             {
                 Vector2 deltaPos = player._pos - _pos;
                 float distance = deltaPos.magnitude;
-                if (movementVec2.x < 0) sp.flipX = !enemy.faceToLeft;
-                else if (movementVec2.x > 0) sp.flipX = enemy.faceToLeft;
+                if (movementVec2.x < 0) sp.flipX = !enemy.creature.faceToLeft;
+                else if (movementVec2.x > 0) sp.flipX = enemy.creature.faceToLeft;
                 if (distance < 0.1f)
                 {
                     rb.velocity = Vector2.zero;
@@ -41,7 +41,7 @@ public class Enemy_Melee : EnemyBase
                 else
                 {
                     IsMoving = true;
-                    rb.MovePosition(rb.position + movementVec2 * GetSpeed() * Time.deltaTime);
+                    rb.velocity = movementVec2 * GetSpeed();
                 }
             }
             else

@@ -33,11 +33,11 @@ public class GuangQiu : MonoBehaviour
     private void Reset(float size = -1, float speed = -1)
     {
         if (size == -1) size = 0.25f;
-        var s = size / 0.25f;
-        transform.localScale = new Vector2(s, s);
+        transform.localScale = new Vector2(size, size);
         if (speed == -1) velocity = 6f;
         else velocity = speed;
         beReleased = false;
+        rb.velocity = Vector2.zero;
     }
     public void AttackEnemy(Vector2 dir, EnemyBase attacker, float size = -1, float speed = -1)
     {
@@ -52,7 +52,7 @@ public class GuangQiu : MonoBehaviour
         StartCoroutine(AutoRelease());
         while (true)
         {
-            rb.MovePosition(rb.position + direction * Time.deltaTime * velocity);
+            rb.velocity = direction * velocity;
             yield return null;
         }
     }
