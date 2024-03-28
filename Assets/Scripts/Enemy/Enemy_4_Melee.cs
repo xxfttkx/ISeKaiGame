@@ -42,10 +42,10 @@ public class Enemy_4_Melee : Enemy_Melee
         PlayerManager.Instance.EnemyHurtPlayer(this, player);
     }
 
-    public override int GetSpeed()
+    public override float GetSpeed()
     {
         float s = base.GetSpeed();
         s = Mathf.Lerp(1, s, existTime / 10.0f);
-        return Mathf.CeilToInt(s);
+        return s;
     }
 }

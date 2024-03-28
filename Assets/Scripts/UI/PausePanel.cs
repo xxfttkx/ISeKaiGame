@@ -23,9 +23,7 @@ public class PausePanel : MonoBehaviour
     public void Retry()
     {
         EventHandler.CallExitLevelEvent(-1);
-        EventHandler.CallExitDungeonEvent();
         LevelManager.Instance.Retry();
-
         UIManager.Instance.EscOnePanel();
     }
     public void BackToSelect()

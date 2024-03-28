@@ -50,17 +50,16 @@ public class Player_2_Priest : Priest
         if (extra == 2) return 0.05f;
         return 0f;
     }
-    private void OnPlayerKillEnemyEvent(int playerIndex)
+    private void OnPlayerKillEnemyEvent(int playerIndex,int _)
     {
         if(playerIndex==2)
         {
             int extra = extras[1];
             if (extra == 0) return;
             if (extra == 1)
-            {
-                addHp += 1;
-            }
-            if (extra == 2) PlayerManager.Instance.PlayerHealPlayer(2,2,1);
+                PlayerManager.Instance.PlayerHealPlayer(2, PlayerManager.Instance.GetMinHpValPlayer().GetPlayerIndex(), 1);
+            if (extra == 2) 
+                PlayerManager.Instance.PlayerHealPlayer(2, PlayerManager.Instance.GetMinHpPlayer().GetPlayerIndex(), 1);
         }
     }
     protected override void OnDesireChangeEvent(int playerIndex, int extraIndex, int selectedIndex)

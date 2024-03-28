@@ -37,7 +37,7 @@ public class ButtonPanel : Singleton<ButtonPanel>
 
     private void Update()
     {
-        
+
     }
     public void BuyButton()
     {
@@ -45,11 +45,20 @@ public class ButtonPanel : Singleton<ButtonPanel>
     }
     public void GoButton()
     {
-        PlayerManager.Instance.InitPlayer(SelectPanel.Instance.GetSelectedIndexes());
-        UIManager.Instance.InitPlayerPanel();
-        //todo 写别的地方
         int.TryParse(levelNum.text, out int result);
         if (result == 0) result = 1;
+        if (result < 0)
+        {
+            Debug.Log("Invalid level num");
+            return;
+        }
+        var l = SelectPanel.Instance.GetSelectedIndexes();
+        if(Utils.JudgeListValid(l))
+        {
+            Debug.Log("Invalid player indexes");
+            return;
+        }
+        EventHandler.CallEnterDungeonEvent(l);
         LevelManager.Instance.StartLevel(result);
         GameStateManager.Instance.SetGameState(GameState.GamePlay);
         SelectCanvas.Instance.gameObject.SetActive(false);
@@ -78,7 +87,7 @@ public class ButtonPanel : Singleton<ButtonPanel>
         levelNum.text = curr + "";
         JudgeButtonsInteractable();
     }
-    
+
     private void JudgeButtonsInteractable()
     {
         if (curr <= min) subButton.interactable = false;
@@ -93,12 +102,12 @@ public class ButtonPanel : Singleton<ButtonPanel>
         indexes.Clear();
         foreach (var i in playerIndexes)
         {
-            if(i!=-1)
+            if (i != -1)
             {
                 indexes.Add(i);
             }
         }
-        if(indexes.Count==0)
+        if (indexes.Count == 0)
         {
             levelNum.text = "";
             addButton.interactable = false;
@@ -109,9 +118,9 @@ public class ButtonPanel : Singleton<ButtonPanel>
         }
         else
         {
-            
-            int level = SaveLoadManager.Instance.GetLevelByPlayerIndexes(indexes); 
-            if (level==Settings.levelMaxNum)
+
+            int level = SaveLoadManager.Instance.GetLevelByPlayerIndexes(indexes);
+            if (level == Settings.levelMaxNum)
             {
                 max = level;
             }

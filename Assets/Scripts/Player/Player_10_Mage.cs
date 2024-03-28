@@ -32,7 +32,7 @@ public class Player_10_Mage : Player_Single
         AudioManager.Instance.PlaySoundEffect(SoundName.Atk);
         yield break;
     }
-    private void OnPlayerKillEnemyEvent(int playerIndex)
+    private void OnPlayerKillEnemyEvent(int playerIndex,int _)
     {
         if(playerIndex==GetPlayerIndex()&&extras[2]!=2)
         {

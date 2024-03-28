@@ -47,7 +47,7 @@ public class Player_3_Assassin : Player
         AttackByExtra(0);
         AttackByExtra(1);
     }
-    private void OnPlayerKillEnemyEvent(int playerIndex)
+    private void OnPlayerKillEnemyEvent(int playerIndex,int _)
     {
         if (3 == playerIndex)
         {

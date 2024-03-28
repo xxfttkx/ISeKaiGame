@@ -59,15 +59,9 @@ public class SelectPanel : Singleton<SelectPanel>
         }
         InitKeyboardRelation();
         selectedIndexes = SaveLoadManager.Instance.GetLastCharsIndexes();
-        if (selectedIndexes == null || selectedIndexes.Count == 0)
-        {
-            selectedIndexes = Enumerable.Repeat(-1, Settings.playerMaxNum).ToList();
-        }
-        else
-        {
-            InitSeletedChars();
-            ButtonPanel.Instance.ChangeLevelInputField(selectedIndexes);
-        }
+        Utils.TryFillList(ref selectedIndexes, -1, Settings.playerMaxNum);
+        InitSeletedChars();
+        ButtonPanel.Instance.ChangeLevelInputField(selectedIndexes);
     }
     private void InitSeletedChars()
     {

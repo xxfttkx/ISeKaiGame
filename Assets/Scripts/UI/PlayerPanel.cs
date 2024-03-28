@@ -4,15 +4,63 @@ using UnityEngine;
 
 public class PlayerPanel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject playerDataPrefab;
+    private List<PlayerData> playerDataList;
+    private Dictionary<int, PlayerData> indexToPlayerData;
+    private void Awake()
     {
-        
+        playerDataList = new List<PlayerData>();
+        indexToPlayerData = new Dictionary<int, PlayerData>();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        EventHandler.PlayerHpValChangeEvent += OnPlayerHpValChangeEvent;
+        EventHandler.BuffChangeEvent += OnBuffChangeEvent;
+        EventHandler.BuffRemoveEvent += OnBuffRemoveEvent;
+        EventHandler.FieldTimeChangeEvent += OnFieldTimeChangeEnent;
+        EventHandler.EnterDungeonEvent += OnEnterDungeonEvent;
+    }
+    private void OnDisable()
+    {
+        EventHandler.PlayerHpValChangeEvent -= OnPlayerHpValChangeEvent;
+        EventHandler.BuffChangeEvent -= OnBuffChangeEvent;
+        EventHandler.BuffRemoveEvent -= OnBuffRemoveEvent;
+        EventHandler.FieldTimeChangeEvent -= OnFieldTimeChangeEnent;
+        EventHandler.EnterDungeonEvent -= OnEnterDungeonEvent;
+    }
+    void OnEnterDungeonEvent(List<int> l)
+    {
+        var playerIndexes = Utils.GetValidList(l);
+        foreach (var d in playerDataList)
+        {
+            Destroy(d.gameObject);
+        }
+        indexToPlayerData.Clear();
+        playerDataList.Clear();
+        foreach (var i in playerIndexes)
+        {
+            PlayerData playerData;
+            var d = Instantiate(playerDataPrefab, transform);
+            playerData = d.GetComponent<PlayerData>();
+            playerDataList.Add(playerData);
+            indexToPlayerData.Add(i, playerData);
+            playerData.Init(i, SOManager.Instance.GetPlayerSpriteSquareByIndex(i));
+        }
+    }
+    void OnPlayerHpValChangeEvent(int index, float val)
+    {
+        indexToPlayerData[index].SetHP(val);
+    }
+    void OnBuffChangeEvent(int index, Buff buff)
+    {
+        indexToPlayerData[index].SetBuffList(buff);
+    }
+    void OnBuffRemoveEvent(int i, Buff b)
+    {
+        indexToPlayerData[i].RemoveBuff(b);
+    }
+    void OnFieldTimeChangeEnent(int index, float time)
+    {
+        indexToPlayerData[index].SetFieldTime(time);
     }
 }

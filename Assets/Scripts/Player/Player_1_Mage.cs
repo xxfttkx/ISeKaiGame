@@ -53,7 +53,7 @@ public class Player_1_Mage : Player_Single
         if (extras[2] == 2) return 0.1f;
         return 0f;
     }
-    void OnPlayerKillEnemyEvent(int playerIndex)
+    void OnPlayerKillEnemyEvent(int playerIndex,int _)
     {
         var p = PlayerManager.Instance.GetPlayerByPlayerIndex(playerIndex);
         if (extras[2] == 0) p.ChangeAttack(0.5f);
