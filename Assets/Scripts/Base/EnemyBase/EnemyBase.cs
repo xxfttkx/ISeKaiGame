@@ -88,7 +88,7 @@ public class EnemyBase : Creature
         IsMoving = false;
         EventHandler.ExitLevelEvent -= OnExitLevelEvent;
         EventHandler.ChangePlayerOnTheFieldEvent -= OnChangePlayerOnTheFieldEvent;
-        StopAllCoroutines();
+        // StopAllCoroutines();
     }
     internal void SetLevelBonus(float bonus)
     {
@@ -152,6 +152,7 @@ public class EnemyBase : Creature
         if (!beReleased)
         {
             hp = 0;
+            rb.velocity = Vector2.zero;
             beReleased = true;
             IsMoving = false;
             StartCoroutine(Dead());

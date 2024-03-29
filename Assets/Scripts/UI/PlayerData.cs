@@ -23,7 +23,16 @@ public class PlayerData : MonoBehaviour
         buffNameToBuffTip = new Dictionary<string, Bufftip>();
         SetFieldTime(0);
     }
-
+    private void OnEnable()
+    {
+        EventHandler.EnterLevelEvent += OnEnterLevelEvent;
+        
+    }
+    private void OnDisable()
+    {
+        EventHandler.EnterLevelEvent -= OnEnterLevelEvent;
+        
+    }
     public void SetImage(Sprite sp)
     {
         image.sprite = sp;
@@ -75,5 +84,13 @@ public class PlayerData : MonoBehaviour
         this.index = index;
         SetImage(sprite);
         SetHP(1);
+    }
+    void OnEnterLevelEvent(int _)
+    {
+        image.transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+    public void SetPlayerDead()
+    {
+        image.transform.rotation = Quaternion.Euler(0, 0, 90);
     }
 }

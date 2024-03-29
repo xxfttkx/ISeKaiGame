@@ -15,8 +15,6 @@ public class SelectCanvas : Singleton<SelectCanvas>
     {
         if (bInit) return;
         bInit = true;
-        SlotPanel.Instance.Init();
         selectPanel.Init();
-        
     }
 }

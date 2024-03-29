@@ -19,7 +19,7 @@ public class PlayerManager : Singleton<PlayerManager>
     protected override void Awake()
     {
         base.Awake();
-        trueIndexes = new List<int>(Settings.playerMaxNum);
+        trueIndexes = new List<int>();
     }
 
     private void Start()
@@ -51,7 +51,6 @@ public class PlayerManager : Singleton<PlayerManager>
         for (int i = 0; i < players.Count; ++i)
         {
             var p = players[i];
-            if (!p.IsAlive()) continue;
             if (i == currIndex) p.AddTimeBonus(Time.deltaTime);
             else p.SubTimeBonus(Time.deltaTime * 10);
         }
@@ -59,9 +58,9 @@ public class PlayerManager : Singleton<PlayerManager>
 
     private void ChangePlayerInput()
     {
-        for (int i = 0; i < Settings.playerMaxNum; ++i)
+        for (int i = 0; i < players.Count; ++i)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1 + i) && players.Count > i && players[i].IsAlive())
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i) && players[i].IsAlive())
             {
                 ChangePlayerOnTheField(i);
                 return;
@@ -196,6 +195,7 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void PlayerDead(int index)
     {
+        EventHandler.CallPlayerDeadEvent(index);
         if (players[currIndex].IsAlive())
         {
             return;
@@ -339,6 +339,7 @@ public class PlayerManager : Singleton<PlayerManager>
         bInit = false;
         if (curSorMove != null)
             StopCoroutine(curSorMove);
+        Movement(Vector2.zero);
     }
     public Player GetMinHpValPlayer()
     {

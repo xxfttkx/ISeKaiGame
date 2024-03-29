@@ -59,7 +59,7 @@ public class SelectPanel : Singleton<SelectPanel>
         }
         InitKeyboardRelation();
         selectedIndexes = SaveLoadManager.Instance.GetLastCharsIndexes();
-        Utils.TryFillList(ref selectedIndexes, -1, Settings.playerMaxNum);
+        SlotPanel.Instance.Init(selectedIndexes);
         InitSeletedChars();
         ButtonPanel.Instance.ChangeLevelInputField(selectedIndexes);
     }

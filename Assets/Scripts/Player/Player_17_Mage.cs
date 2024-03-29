@@ -25,7 +25,7 @@ public class Player_17_Mage : Player
     protected override void OnDisable()
     {
         base.OnDisable();
-        EventHandler.PlayerHurtPlayerEvent += OnPlayerHurtPlayerEvent;
+        EventHandler.PlayerHurtPlayerEvent -= OnPlayerHurtPlayerEvent;
     }
 
     public override void StartAttack()

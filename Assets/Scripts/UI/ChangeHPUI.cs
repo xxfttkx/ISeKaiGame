@@ -28,8 +28,8 @@ public class ChangeHPUI : MonoBehaviour
         {
             t.alpha = i * 0.1f;
             diff = c._pos - last;
-            this.transform.position = new Vector2(v3.x, v3.y + i*10)+ diff;
-            yield return new WaitForSeconds(0.02f);
+            this.transform.position = new Vector2(v3.x, v3.y + i*3)+ diff;
+            yield return new WaitForSeconds(0.01f);
         }
         yield return new WaitForSeconds(0.1f);
         releaseFun?.Invoke();

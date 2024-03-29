@@ -12,6 +12,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     private string resultPath;
     private GameSaveData gameSaveData = null;
     private List<int> currPlayerIndexes;
+    List<int> addSlotNeedMoneyList = new List<int> { 0, 0, 0, 10000, 30000, 100000, 200000, 300000, 400000, 1000000 };
 
     protected override void Awake()
     {
@@ -80,6 +81,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     }
     private void ReadSaveData()
     {
+        Debug.Log(Time.realtimeSinceStartup);
         if (Directory.Exists(jsonFolder) && File.Exists(resultPath))
         {
             var jsonData = File.ReadAllText(resultPath);
@@ -93,6 +95,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
             EventHandler.CallMoneyChangeEvent(0, 0);
         }
         EventHandler.CallLoadFinishEvent();
+        Debug.Log(Time.realtimeSinceStartup);
     }
     private void Save()
     {
@@ -110,9 +113,9 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         {
             Directory.CreateDirectory(jsonFolder);
         }
-        Debug.Log(Time.realtimeSinceStartup);
+        
         await File.WriteAllTextAsync(resultPath, jsonData);
-        Debug.Log(Time.realtimeSinceStartup);
+        
         EventHandler.CallSaveFinishEvent();
     }
     public void SaveLastCharsIndexes(List<int> l)
@@ -124,6 +127,10 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     {
         gameSaveData.playerMoney += m;
         EventHandler.CallMoneyChangeEvent(gameSaveData.playerMoney, m);
+    }
+    public int GetMoney()
+    {
+        return gameSaveData.playerMoney;
     }
     public void OnGameOver()
     {
@@ -146,7 +153,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
             string ans = "";
             for (int i = 0; i < n - 1; ++i)
             {
-                ans += i + ".";
+                ans += charIndexes[i] + ".";
             }
             ans += charIndexes[n - 1];
             return ans;
@@ -164,8 +171,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     }
     public List<int> GetLastCharsIndexes()
     {
-        if (gameSaveData.lastCharsIndexes == null)
-            Utils.TryFillList(ref gameSaveData.lastCharsIndexes, -1, GetMaxPlayerNum());
+        Utils.TryFillList(ref gameSaveData.lastCharsIndexes, -1, GetMaxPlayerNum());
         return gameSaveData.lastCharsIndexes;
     }
     public int GetLanguage()
@@ -376,5 +382,31 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         foreach (var t in indexAndLevel)
             l.Add(t.Item1);
         return l;
+    }
+    public bool TryAddCompanionSlot()
+    {
+        int n = GetMaxPlayerNum();
+        if (n >= Settings.maxCompanionNum) return false;
+        int need = GetAddCompanionSlotNeedMoney();
+        int curr = GetMoney();
+        if(curr>=need)
+        {
+            AddMoney(-need);
+            gameSaveData.maxCompanionNum++;
+            SaveAsync();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public int GetAddCompanionSlotNeedMoney()
+    {
+        int n = GetMaxPlayerNum();
+        if (n >= Settings.maxCompanionNum) return -1;
+        if (n < addSlotNeedMoneyList.Count)
+            return addSlotNeedMoneyList[n];
+        return int.MaxValue / 2;
     }
 }

@@ -19,6 +19,7 @@ public class PlayerPanel : MonoBehaviour
         EventHandler.BuffRemoveEvent += OnBuffRemoveEvent;
         EventHandler.FieldTimeChangeEvent += OnFieldTimeChangeEnent;
         EventHandler.EnterDungeonEvent += OnEnterDungeonEvent;
+        EventHandler.PlayerDeadEvent += OnPlayerDeadEvent;
     }
     private void OnDisable()
     {
@@ -27,6 +28,7 @@ public class PlayerPanel : MonoBehaviour
         EventHandler.BuffRemoveEvent -= OnBuffRemoveEvent;
         EventHandler.FieldTimeChangeEvent -= OnFieldTimeChangeEnent;
         EventHandler.EnterDungeonEvent -= OnEnterDungeonEvent;
+        EventHandler.PlayerDeadEvent -= OnPlayerDeadEvent;
     }
     void OnEnterDungeonEvent(List<int> l)
     {
@@ -62,5 +64,9 @@ public class PlayerPanel : MonoBehaviour
     void OnFieldTimeChangeEnent(int index, float time)
     {
         indexToPlayerData[index].SetFieldTime(time);
+    }
+    void OnPlayerDeadEvent(int index)
+    {
+        indexToPlayerData[index].SetPlayerDead();
     }
 }

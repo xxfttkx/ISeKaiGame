@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\UI\PlayerBtnInExtraPanel.cs" />
     <Compile Include="Assets\Scripts\UI\StartCanvas.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerSettingsPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Button\ImageBtnClick.cs" />
     <Compile Include="Assets\Scripts\UI\CharacterJump.cs" />
     <Compile Include="Assets\Scripts\UI\EndCanvas.cs" />
     <Compile Include="Assets\Scripts\UI\SelectPanel.cs" />

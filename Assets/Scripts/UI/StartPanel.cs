@@ -16,6 +16,7 @@ public class StartPanel : MonoBehaviour
     private void OnEnable()
     {
         EventHandler.LoadFinishEvent += OnLoadFinishEvent;
+        ShowCharacters();
     }
     private void OnDisable()
     {
@@ -25,6 +26,7 @@ public class StartPanel : MonoBehaviour
     {
         ShowCharacters();
     }
+    // UI懒得优化了。。。   TODO:  Dictionary -> List
     void ShowCharacters()
     {
         var list = SaveLoadManager.Instance.GetSomeCompanions();
@@ -32,14 +34,13 @@ public class StartPanel : MonoBehaviour
         {
             for(int i = 0;i<list.Count;++i)
             {
-                if (!indexToCharacterJump.ContainsKey(list[i]))
+                if (!indexToCharacterJump.TryGetValue(list[i],out CharacterJump chJump))
                 {
                     var go = Instantiate(characterJumpPrefab, imageParent.transform);
-                    var chJump = go.GetComponent<CharacterJump>();
-                    chJump.Init(SOManager.Instance.GetPlayerSpriteByIndex(list[i]));
+                    chJump = go.GetComponent<CharacterJump>();
                     indexToCharacterJump.Add(list[i], chJump);
                 }
-
+                
             }
             for(int i = 0;i< list.Count;++i)
             {
@@ -53,7 +54,8 @@ public class StartPanel : MonoBehaviour
                 {
                     j.transform.localScale = new Vector3(1, 1, 1);
                 }
-                j._pos = new Vector2(32 + sign * ((i + 1) / 2) * 64, j._pos.y);
+                j._pos = new Vector2(32 + sign * ((i + 1) / 2) * 64, -238.7f);
+                j.Init(SOManager.Instance.GetPlayerSpriteByIndex(list[i]));
             }
         }
     }

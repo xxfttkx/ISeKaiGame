@@ -147,7 +147,7 @@ public class Player : Creature
             material.SetFloat("_Fade", i);
             yield return new WaitForSeconds(0.1f);
         }
-        EventHandler.CallPlayerDeadEvent(GetPlayerIndex());
+        
         PlayerManager.Instance.PlayerDead(GetPlayerIndex());
 
     }
