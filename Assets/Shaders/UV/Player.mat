@@ -33,7 +33,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _EffectPercent: 0.324
+    - _EffectPercent: 0
     - _EffectScale: 1
     m_Colors: []
   m_BuildTextureStacks: []

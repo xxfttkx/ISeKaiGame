@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\UI\HPPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Button\BtnBaseCtl.cs" />
     <Compile Include="Assets\Scripts\UI\StartPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Button\ImageBtnSelect.cs" />
     <Compile Include="Assets\Scripts\UI\PausePanel.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerBtnInExtraPanel.cs" />
     <Compile Include="Assets\Scripts\UI\StartCanvas.cs" />
@@ -98,7 +99,6 @@
     <Compile Include="Assets\Scripts\UI\BuffTip.cs" />
     <Compile Include="Assets\Scripts\UI\ShadowImage.cs" />
     <Compile Include="Assets\Scripts\UI\ExtraSkill.cs" />
-    <Compile Include="Assets\Scripts\UI\Button\UIBtnScaleEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\UI\UIAssembly.asmdef" />

@@ -55,4 +55,41 @@ public class SOManager : Singleton<SOManager>
     {
         return enemyDataList_SO.enemies.Length;
     }
+    public int GetExpByEnemyIndex(int i)
+    {
+        return enemyDataList_SO.enemies[i].exp;
+    }
+    public ProfessionData GetProfessionDataByCharacterIndex(int index)
+    {
+        var ch = GetPlayerDataByIndex(index);
+        ProfessionData data = GetProfessionDataByProfession(ch.profession);
+        return data;
+    }
+    public int GetCharacteristicNumByCharacterIndex(int index,Characteristic ch)
+    {
+        var c = GetPlayerDataByIndex(index);
+        ProfessionData d = GetProfessionDataByProfession(c.profession);
+        var num = ch switch
+        {
+            Characteristic.Hp => d.hp,
+            Characteristic.Attack => d.attack,
+            Characteristic.Speed => d.speed,
+            Characteristic.AttackSpeed => d.attackSpeed,
+            Characteristic.AttackRange => d.attackRange,
+            _ => 0,
+        };
+        var extra0 = SaveLoadManager.Instance.GetPlayerExtra(index, 0);
+        if(extra0!=0)
+        {
+            int sign = extra0 == 1 ? 1 : -1; 
+            if (ch == c.extraCharacteristics[0])
+                num += sign*c.extraCharacteristicVals[0];
+            else if(ch==c.extraCharacteristics[1])
+                num -= sign*c.extraCharacteristicVals[1];
+        }
+        var expAddNum = SaveLoadManager.Instance.GetPlayerAddCharacteristic(index, ch);
+        if (ch == Characteristic.Hp) num += expAddNum * 5;
+        else num += expAddNum;
+        return num;
+    }
 }

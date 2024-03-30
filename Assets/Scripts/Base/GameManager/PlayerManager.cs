@@ -34,6 +34,7 @@ public class PlayerManager : Singleton<PlayerManager>
         EventHandler.ExitLevelEvent += OnExitLevelEvent;
         EventHandler.EnterDungeonEvent += OnEnterDungeonEvent;
         EventHandler.ExitDungeonEvent += OnExitDungeonEvent;
+        EventHandler.PlayerKillEnemyEvent += OnPlayerKillEnemyEvent;
     }
     private void OnDisable()
     {
@@ -41,6 +42,7 @@ public class PlayerManager : Singleton<PlayerManager>
         EventHandler.ExitLevelEvent -= OnExitLevelEvent;
         EventHandler.EnterDungeonEvent -= OnEnterDungeonEvent;
         EventHandler.ExitDungeonEvent -= OnExitDungeonEvent;
+        EventHandler.PlayerKillEnemyEvent -= OnPlayerKillEnemyEvent;
     }
     private void Update()
     {
@@ -102,7 +104,7 @@ public class PlayerManager : Singleton<PlayerManager>
         var pIndex = playerIndex;
         if (indexToPlayer.ContainsKey(2))
         {
-            int extra = SaveLoadManager.Instance.GetPlayerExtra(2, 2);
+            int extra = indexToPlayer[2].GetExtra(2);
             if (extra != 2)
                 pIndex = 2;
         }
@@ -462,5 +464,15 @@ public class PlayerManager : Singleton<PlayerManager>
         }
         Movement(Vector2.zero);
         curSorMove = null;
+    }
+    void OnPlayerKillEnemyEvent(int pI,int eI)
+    {
+        int exp = SOManager.Instance.GetExpByEnemyIndex(eI);
+        EventHandler.CallPlayerAddExpEvent(pI, exp);
+        foreach (var i in trueIndexes)
+        {
+            EventHandler.CallPlayerAddExpEvent(i,exp);
+        }
+        
     }
 }

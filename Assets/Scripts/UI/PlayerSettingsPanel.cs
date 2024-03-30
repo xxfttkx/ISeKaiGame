@@ -16,6 +16,11 @@ public class PlayerSettingsPanel : MonoBehaviour
     public bool bInit;
     public int currPlayerIndex;
     int extrasCount;
+    public TextMeshProUGUI hp;
+    public TextMeshProUGUI atk;
+    public TextMeshProUGUI speed;
+    public TextMeshProUGUI atkSpeed;
+    public TextMeshProUGUI atkRange;
     public int _currIndex
     {
         get => playerImages.FindIndex(i => i.index == currPlayerIndex);
@@ -124,5 +129,9 @@ public class PlayerSettingsPanel : MonoBehaviour
     void OnPlayerCharacteristicChangeEvent(Player p)
     {
         ChangeCh(p);
+    }
+    public void ShowPlayerData(int playerIndex)
+    {
+
     }
 }

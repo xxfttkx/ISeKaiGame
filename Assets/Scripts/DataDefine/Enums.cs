@@ -61,12 +61,15 @@ public enum Language
 
 public enum Characteristic
 {
-    None = 0,
     Hp,
     Attack,
     Speed,
     AttackSpeed,
     AttackRange,
+    Max,
+}
+public enum CharacteristicBonus
+{
     ProjectileSpeedBonus,
 }
 

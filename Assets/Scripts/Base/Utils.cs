@@ -204,8 +204,8 @@ public static class Utils
             ExtraType.Kill => $"总共击杀{threshold}敌人",
             ExtraType.EnterLevel => $"进入第{threshold}层",
             ExtraType.ExitLevel => $"通过第{threshold}层",
-            ExtraType.EnterNum => $"总共对敌人33333造成{threshold}伤害",
-            ExtraType.ExitNum => $"总共对敌人33333造成{threshold}伤害",
+            ExtraType.EnterNum => $"进入地牢{threshold}次",
+            ExtraType.ExitNum => $"离开地牢{threshold}次",
             _ => "Invalid day"
         };
     }

@@ -12,7 +12,7 @@ public class GameSaveData
     public List<List<int>> playerKillEnemy;
     //todo
     public List<List<int>> playerBeEnemyHurt;
-    //todo
+    //
     public List<int> playerExps;
     // 上次探索时indexes
     public List<int> lastCharsIndexes;
@@ -22,10 +22,13 @@ public class GameSaveData
     public List<List<int>> playerExtras;
     // 
     public List<List<int>> playerExtraData;
+    // 经验加点
+    public List<List<int>> playerAddCharacteristics;
     // Volume
     public List<float> volumes;
 
     public int maxCompanionNum = 3;
     public int targetFrameRate = -1;
     public bool runInBackground = false;
+    public bool windowed = true;
 }

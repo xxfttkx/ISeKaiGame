@@ -70,7 +70,7 @@ public class Player_13_Priest : Priest
             float b = extras[1] == 1 ? 1.0f : -0.8f;
             foreach (var p in PlayerManager.Instance.players)
             {
-                p.ApplyBuff("player13_extra1", -1, Characteristic.ProjectileSpeedBonus, b, ApplyBuffType.Override);
+                p.ApplyBuff("player13_extra1", -1, CharacteristicBonus.ProjectileSpeedBonus, b, ApplyBuffType.Override);
             }
         }
         else

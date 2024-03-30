@@ -92,9 +92,9 @@ public class Creature : MonoBehaviour
         }
         return b;
     }
-    public Buff AddBuff(string name, float duration, Characteristic ch, float val, ApplyBuffType type)
+    public Buff AddBuff(string name, float duration, CharacteristicBonus chB, float val, ApplyBuffType type)
     {
-        Buff b = new Buff(name, ch, val);
+        Buff b = new Buff(name, chB, val);
         buffs.Add(name, b);
         allBuff.AddBuff(b);
         int changeHp = Mathf.CeilToInt(maxHp * b.hpBonus);
@@ -158,14 +158,14 @@ public class Creature : MonoBehaviour
         };
         EventHandler.CallBuffChangeEvent(GetPlayerIndex(), b);
     }
-    public void ApplyBuff(string name, float duration, Characteristic ch, float bonus, ApplyBuffType type)
+    public void ApplyBuff(string name, float duration, CharacteristicBonus chB, float bonus, ApplyBuffType type)
     {
         Buff b = type switch
         {
-            ApplyBuffType.NoOverride => ApplyBuffNoOverride(name, duration, ch, bonus, type),
-            ApplyBuffType.Override => ApplyBuffOverride(name, duration, ch, bonus, type),
-            ApplyBuffType.Add => ApplyBuffAdd(name, duration, ch, bonus, type),
-            _ => ApplyBuffNoOverride(name, duration, ch, bonus, type),
+            ApplyBuffType.NoOverride => ApplyBuffNoOverride(name, duration, chB, bonus, type),
+            ApplyBuffType.Override => ApplyBuffOverride(name, duration, chB, bonus, type),
+            ApplyBuffType.Add => ApplyBuffAdd(name, duration, chB, bonus, type),
+            _ => ApplyBuffNoOverride(name, duration, chB, bonus, type),
         };
         EventHandler.CallBuffChangeEvent(GetPlayerIndex(), b);
     }
@@ -186,7 +186,7 @@ public class Creature : MonoBehaviour
         }
         return AddBuff(name, duration, ch, val, type);
     }
-    public Buff ApplyBuffNoOverride(string name, float duration, Characteristic ch, float val, ApplyBuffType type)
+    public Buff ApplyBuffNoOverride(string name, float duration, CharacteristicBonus ch, float val, ApplyBuffType type)
     {
         if (buffs.TryGetValue(name, out Buff b))
         {
@@ -210,7 +210,7 @@ public class Creature : MonoBehaviour
         }
         return AddBuff(name, duration, ch, val, type);
     }
-    public Buff ApplyBuffOverride(string name, float duration, Characteristic ch, float val, ApplyBuffType type)
+    public Buff ApplyBuffOverride(string name, float duration, CharacteristicBonus ch, float val, ApplyBuffType type)
     {
         if (buffs.ContainsKey(name))
         {
@@ -242,16 +242,16 @@ public class Creature : MonoBehaviour
             return AddBuff(name, duration, ch, val, type);
         }
     }
-    public Buff ApplyBuffAdd(string name, float duration, Characteristic ch, float val, ApplyBuffType type)
+    public Buff ApplyBuffAdd(string name, float duration, CharacteristicBonus chB, float val, ApplyBuffType type)
     {
         if (buffs.TryGetValue(name, out Buff b))
         {
-            b.AddBuff(ch, val);
+            b.AddBuff(chB, val);
             return b;
         }
         else
         {
-            return AddBuff(name, duration, ch, val, type);
+            return AddBuff(name, duration, chB, val, type);
         }
     }
     IEnumerator BuffTimeCountdown(float duration, Buff b)

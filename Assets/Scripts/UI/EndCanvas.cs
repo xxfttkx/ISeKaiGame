@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EndCanvas : Singleton<EndCanvas>
+public class EndCanvas : MonoBehaviour
 {
     public GameObject overPanel;
     public GameObject winPanel;
@@ -14,9 +14,8 @@ public class EndCanvas : Singleton<EndCanvas>
     public GameObject saveSucc;
     private Coroutine saveSuccCo;
 
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
         retryButton.btnClick.AddListener(Retry);
         backButton.btnClick.AddListener(BackToTitle);
         returnSelectButton.btnClick.AddListener(ReturnToCharacterSelection);

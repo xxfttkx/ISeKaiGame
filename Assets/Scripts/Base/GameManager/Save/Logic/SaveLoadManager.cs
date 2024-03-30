@@ -13,6 +13,11 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     private GameSaveData gameSaveData = null;
     private List<int> currPlayerIndexes;
     List<int> addSlotNeedMoneyList = new List<int> { 0, 0, 0, 10000, 30000, 100000, 200000, 300000, 400000, 1000000 };
+    private bool finishLoad = false;
+    public bool FinishLoad
+    {
+        get => finishLoad;
+    }
 
     protected override void Awake()
     {
@@ -34,6 +39,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         EventHandler.DesireChangeEvent += OnExtraChangeEvent;
         EventHandler.EnterDungeonEvent += OnEnterDungeonEvent;
         EventHandler.PlayerKillEnemyEvent += OnPlayerKillEnemyEvent;
+        EventHandler.PlayerAddExpEvent += OnPlayerAddExpEvent;
     }
     private void OnDisable()
     {
@@ -42,6 +48,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         EventHandler.DesireChangeEvent -= OnExtraChangeEvent;
         EventHandler.EnterDungeonEvent -= OnEnterDungeonEvent;
         EventHandler.PlayerKillEnemyEvent -= OnPlayerKillEnemyEvent;
+        EventHandler.PlayerAddExpEvent -= OnPlayerAddExpEvent;
     }
     private void OnEnterLevelEvent(int l)
     {
@@ -81,7 +88,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     }
     private void ReadSaveData()
     {
-        Debug.Log(Time.realtimeSinceStartup);
+        //Debug.Log(Time.realtimeSinceStartup);
         if (Directory.Exists(jsonFolder) && File.Exists(resultPath))
         {
             var jsonData = File.ReadAllText(resultPath);
@@ -94,8 +101,9 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
             gameSaveData.charsToLevel = new Dictionary<string, int>();
             EventHandler.CallMoneyChangeEvent(0, 0);
         }
+        finishLoad = true;
         EventHandler.CallLoadFinishEvent();
-        Debug.Log(Time.realtimeSinceStartup);
+        //Debug.Log(Time.realtimeSinceStartup);
     }
     private void Save()
     {
@@ -408,5 +416,56 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         if (n < addSlotNeedMoneyList.Count)
             return addSlotNeedMoneyList[n];
         return int.MaxValue / 2;
+    }
+    void OnPlayerAddExpEvent(int index, int exp)
+    {
+        var l = gameSaveData.playerExps;
+        int n = SOManager.Instance.GetPlayerCount();
+        if (l == null || l.Count < n)
+        {
+            Utils.TryFillList<int>(ref gameSaveData.playerExps, 0, n);
+        }
+        gameSaveData.playerExps[index] += exp;
+    }
+    public bool GetWindowed()
+    {
+        return gameSaveData.windowed;
+    }
+    public void ChangeWindowed()
+    {
+        gameSaveData.windowed = !gameSaveData.windowed;
+        Screen.SetResolution(1920, 1080, (FullScreenMode)(gameSaveData.windowed?3:1));
+        SaveAsync();
+    }
+    public bool GetRunInBackground()
+    {
+        return gameSaveData.runInBackground;
+    }
+    public void ChangeRunInBackground()
+    {
+        gameSaveData.runInBackground = !gameSaveData.runInBackground;
+        Application.runInBackground = gameSaveData.runInBackground;
+        SaveAsync();
+    }
+    public int GetPlayerAddCharacteristic(int playerIndex, Characteristic ch)
+    {
+        var l = gameSaveData.playerAddCharacteristics;
+        var n = SOManager.Instance.GetPlayerCount();
+        var m = (int)Characteristic.Max;
+        if (l == null || l.Count < n)
+        {
+            Utils.TryFillList<List<int>>(ref gameSaveData.playerAddCharacteristics, null, n);
+        }
+        if (gameSaveData.playerAddCharacteristics[playerIndex] == null || gameSaveData.playerAddCharacteristics[playerIndex].Count < m)
+        {
+            List<int> list = gameSaveData.playerAddCharacteristics[playerIndex];
+            Utils.TryFillList<int>(ref list, 0, m);
+            gameSaveData.playerAddCharacteristics[playerIndex] = list;
+        }
+        return gameSaveData.playerAddCharacteristics[playerIndex][(int)ch];
+    }
+    public void ChangePlayerAddCharacteristics()
+    {
+
     }
 }

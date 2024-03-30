@@ -58,7 +58,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a502ab303131142ae62821eca57713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tmp: {fileID: 0}
   index: 0
+  language: 0
+  textDataList_SO: {fileID: 11400000, guid: 03228e614af03d143b33ec681660c523, type: 2}
 --- !u!114 &6300974806288581998
 MonoBehaviour:
   m_ObjectHideFlags: 0

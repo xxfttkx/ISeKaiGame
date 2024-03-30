@@ -6,17 +6,37 @@ using UnityEngine;
 public class SettingsPanel : MonoBehaviour
 {
     public bool bInit;
-    public int curr = 0;
-    public int max = 3;
+    public SoundSettingsPanel soundSettingsPanel;
+    public ImageBtnSelect windowed;
+    public ImageBtnSelect runInBackground;
     public void Init()
     {
+        soundSettingsPanel.Init();
+        if (SaveLoadManager.Instance.GetWindowed())
+            windowed.Select();
+        else
+            windowed.CancelSelect();
+        if (SaveLoadManager.Instance.GetRunInBackground())
+            runInBackground.Select();
+        else
+            runInBackground.CancelSelect();
         if (bInit) return;
         bInit = true;
     }
-    public void ChangeResolution(int index)
+    public void TryClickWindowed()
     {
-        Screen.SetResolution(1920, 1080, (FullScreenMode)(curr));
-        curr++;
-        curr = curr > max ? 0 : curr;
+        SaveLoadManager.Instance.ChangeWindowed();
+        if (SaveLoadManager.Instance.GetWindowed())
+            windowed.Select();
+        else
+            windowed.CancelSelect();
+    }
+    public void TryClickRunInBackground()
+    {
+        SaveLoadManager.Instance.ChangeRunInBackground();
+        if (SaveLoadManager.Instance.GetRunInBackground())
+            runInBackground.Select();
+        else
+            runInBackground.CancelSelect();
     }
 }

@@ -44,12 +44,12 @@ public class Player_0_Warrior : Player_Area
             if (extra == 0) yield return new WaitForSeconds(1f);
             else if(extra == 1)
             {
-                shield = 15;
+                shield = 30;
                 yield return new WaitForSeconds(20);
             }
             else if(extra==2)
             {
-                shield = 10;
+                shield = 20;
                 yield return new WaitForSeconds(10);
             }
         }

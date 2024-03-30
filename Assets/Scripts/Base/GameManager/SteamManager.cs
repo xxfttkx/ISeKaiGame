@@ -12,7 +12,7 @@ public class SteamManager : MonoBehaviour
     {
         try
         {
-            SteamClient.Init(1036722, true);
+            SteamClient.Init(2909391, true);
         }
         catch (System.Exception e)
         {

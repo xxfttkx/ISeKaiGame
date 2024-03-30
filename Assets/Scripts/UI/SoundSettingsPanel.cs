@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SoundSettingsPanel : Singleton<SoundSettingsPanel>
+public class SoundSettingsPanel : MonoBehaviour
 {
     public Slider totalVolume;
     public Slider ambientVolume;
@@ -13,9 +13,8 @@ public class SoundSettingsPanel : Singleton<SoundSettingsPanel>
     public TextMeshProUGUI ambient;
     public TextMeshProUGUI effect;
 
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
         totalVolume.onValueChanged.AddListener(value => OnSliderValueChanged(value, 0));
         ambientVolume.onValueChanged.AddListener(value => OnSliderValueChanged(value, 1));
         effectVolume.onValueChanged.AddListener(value => OnSliderValueChanged(value, 2));

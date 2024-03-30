@@ -167,6 +167,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8393299398496625339, guid: dc7a44921047c4d4388bed8a7dd28a6c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393299398496625339, guid: dc7a44921047c4d4388bed8a7dd28a6c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393299398496625339, guid: dc7a44921047c4d4388bed8a7dd28a6c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393299398496625339, guid: dc7a44921047c4d4388bed8a7dd28a6c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393299398496625339, guid: dc7a44921047c4d4388bed8a7dd28a6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8393299398224871951, guid: dc7a44921047c4d4388bed8a7dd28a6c, type: 3}
     - {fileID: 8393299398224871944, guid: dc7a44921047c4d4388bed8a7dd28a6c, type: 3}
@@ -208,6 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a271f021d82f3d438313365397c88ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: 1
   btnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -217,6 +238,10 @@ MonoBehaviour:
   btnClick:
     m_PersistentCalls:
       m_Calls: []
+  leftBtn: {fileID: 0}
+  rightBtn: {fileID: 0}
+  upBtn: {fileID: 0}
+  downBtn: {fileID: 0}
   chara: {fileID: 5106699720118330773}
   slot: {fileID: 2004299132131271796}
   index: 0

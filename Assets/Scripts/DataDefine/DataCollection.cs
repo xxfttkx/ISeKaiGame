@@ -125,12 +125,12 @@ public class Buff
             _ => val,
         };
     }
-    public Buff(string name, Characteristic characteristic, float val)
+    public Buff(string name, CharacteristicBonus characteristic, float val)
     {
         this.buffName = name;
         _ = characteristic switch
         {
-            Characteristic.ProjectileSpeedBonus => ProjectileSpeedBonus = val,
+            CharacteristicBonus.ProjectileSpeedBonus => ProjectileSpeedBonus = val,
             _ => val,
         };
     }
@@ -208,15 +208,14 @@ public class Buff
             Characteristic.Speed => speedNum += val,
             Characteristic.AttackSpeed => atkSpeedNum += val,
             Characteristic.AttackRange => atkRangeNum += val,
-            Characteristic.ProjectileSpeedBonus => ProjectileSpeedBonus += val,
             _ => val,
         };
     }
-    public void AddBuff(Characteristic characteristic, float val)
+    public void AddBuff(CharacteristicBonus characteristic, float val)
     {
         _ = characteristic switch
         {
-            Characteristic.ProjectileSpeedBonus => ProjectileSpeedBonus += val,
+            CharacteristicBonus.ProjectileSpeedBonus => ProjectileSpeedBonus += val,
             _ => val,
         };
     }
@@ -225,6 +224,7 @@ public class Buff
 [System.Serializable]
 public class LanguageToText
 {
+    [TextArea(3, 10)]
     public List<string> texts;
 }
 

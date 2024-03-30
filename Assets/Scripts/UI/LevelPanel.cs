@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class LevelPanel : Singleton<LevelPanel>
 {
-    public Text timeText;
-    public Text enemyText;
+    public TextMeshProUGUI timeText;
+    public TextMeshProUGUI enemyText;
     public GameObject enemyTextGroup;
     public TextMeshProUGUI levelNum;
 

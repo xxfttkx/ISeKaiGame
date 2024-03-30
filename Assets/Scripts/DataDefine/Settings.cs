@@ -9,7 +9,7 @@ public class Settings
 
     public const float guangQiuExistTime = 7f;
     //最多关卡数
-    public const int levelMaxNum = 20;
+    public const int levelMaxNum = 10;
     //预留敌人数
     public const int reservedEnemyCount = 500;
     // 判断击中玩家距离

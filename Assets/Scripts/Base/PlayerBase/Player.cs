@@ -68,7 +68,7 @@ public class Player : Creature
     public override void Reset()
     {
         base.Reset();
-        material.SetFloat("_Fade", 1f);
+        material.SetFloat("_EffectPercent", 0f);
         buffs.Clear();
         allBuff = new Buff("all", 0, 0, 0, 0);
         timeOnTheField = 0;
@@ -142,12 +142,13 @@ public class Player : Creature
     }
     IEnumerator Dissolving()
     {
-        for (float i = 1.0f; i >= -0.1f; i -= 0.1f)
+        float duration = 1f;
+        for (float t = 0; t<duration;t+=Time.deltaTime)
         {
-            material.SetFloat("_Fade", i);
-            yield return new WaitForSeconds(0.1f);
+            float a = Mathf.Lerp(0f, 1f, t / duration);
+            material.SetFloat("_EffectPercent", a);
+            yield return null;
         }
-        
         PlayerManager.Instance.PlayerDead(GetPlayerIndex());
 
     }

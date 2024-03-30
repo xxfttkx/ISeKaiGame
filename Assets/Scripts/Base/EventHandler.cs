@@ -275,4 +275,9 @@ public static class EventHandler
     {
         EnemyNumChangeEvent?.Invoke(num);
     }
+    public static event Action<int,int> PlayerAddExpEvent;
+    public static void CallPlayerAddExpEvent(int index,int exp)
+    {
+        PlayerAddExpEvent?.Invoke(index, exp);
+    }
 }
