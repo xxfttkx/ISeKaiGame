@@ -19505,8 +19505,12 @@ MonoBehaviour:
   extraPrefab: {fileID: 4880772634821124072, guid: d0f11b91c246cf140b8afe5d52612072, type: 3}
   extraParent: {fileID: 961391381}
   desc: {fileID: 311877657}
-  bInit: 0
   currPlayerIndex: 0
+  hp: {fileID: 0}
+  atk: {fileID: 0}
+  speed: {fileID: 0}
+  atkSpeed: {fileID: 0}
+  atkRange: {fileID: 0}
 --- !u!114 &1859881545
 MonoBehaviour:
   m_ObjectHideFlags: 0

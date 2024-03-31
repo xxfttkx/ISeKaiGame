@@ -52,7 +52,6 @@ public class UIManager : Singleton<UIManager>
     }
     void OnEndLevelEvent(int type)
     {
-        playerSettingsPanel.bInit = false;
         EndGame(type);
     }
 

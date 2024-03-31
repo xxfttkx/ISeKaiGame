@@ -13,7 +13,6 @@ public class PlayerSettingsPanel : MonoBehaviour
     private List<PlayerBtn> playerImages;
     private List<ExtraSkill> extraSkills;
     public TextMeshProUGUI desc;
-    public bool bInit;
     public int currPlayerIndex;
     int extrasCount;
     public TextMeshProUGUI hp;
@@ -35,37 +34,38 @@ public class PlayerSettingsPanel : MonoBehaviour
     void OnEnable()
     {
         EventHandler.PlayerCharacteristicChangeEvent += OnPlayerCharacteristicChangeEvent;
+        EventHandler.EnterDungeonEvent += OnEnterDungeonEvent;
+        EventHandler.ExitDungeonEvent += OnExitDungeonEvent;
     }
     private void OnDisable()
     {
         EventHandler.PlayerCharacteristicChangeEvent -= OnPlayerCharacteristicChangeEvent;
+        EventHandler.EnterDungeonEvent -= OnEnterDungeonEvent;
+        EventHandler.ExitDungeonEvent -= OnExitDungeonEvent;
     }
 
-    public void Init(List<int> playerIndexes)
+    void OnEnterDungeonEvent(List<int> playerIndexes)
     {
-        if (bInit) return;
-        bInit = true;
-        foreach (var i in playerImages)
-        {
-            //todo not destory
-            Destroy(i.gameObject);
-        }
-        playerImages.Clear();
         foreach (var i in playerIndexes)
         {
             var go = Instantiate(imagePrefab, imageParent.transform);
             var b = go.GetComponent<PlayerBtn>();
             var sp = SOManager.Instance.GetPlayerSpriteByIndex(i);
-            b.InitButton(i, sp,()=> ShowPlayerExtra(i));
+            b.InitButton(i, sp, () => ShowPlayerExtra(i));
             playerImages.Add(b);
         }
-
-        ShowPlayerExtra(playerIndexes[0]);
+    }
+    void OnExitDungeonEvent()
+    {
+        foreach (var i in playerImages)
+        {
+            Destroy(i.gameObject);
+        }
+        playerImages.Clear();
     }
 
     public void ShowPlayerExtra(int playerIndex = -1)
     {
-        Init(PlayerManager.Instance.trueIndexes);
         if (playerIndex == -1) playerIndex = playerImages[0].index;
         var ch = SOManager.Instance.GetPlayerDataByIndex(playerIndex);
         var player = PlayerManager.Instance.GetPlayerByPlayerIndex(playerIndex);
@@ -132,6 +132,10 @@ public class PlayerSettingsPanel : MonoBehaviour
     }
     public void ShowPlayerData(int playerIndex)
     {
-
+        hp.text = ""+SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.Hp);
+        atk.text = ""+SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.Attack);
+        speed.text = ""+SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.Speed);
+        atkSpeed.text = ""+SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.AttackSpeed);
+        atkRange.text = ""+SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.AttackRange);
     }
 }
