@@ -19,14 +19,14 @@ public class PlayerBtn : BtnBase
 
     public override void BtnEnter()
     {
-        slot.enabled = true;
         slot.color = new Color(1f, 1f, 1f, 0.5f);
     }
     public override void BtnExit()
     {
         if(!selected)
-            slot.enabled = false;
-        slot.color = new Color(1f, 1f, 1f, 1f);
+            slot.color = new Color(1f, 1f, 1f, 0f);
+        else
+            slot.color = new Color(1f, 1f, 1f, 1f);
     }
     public override void BtnClick()
     {
@@ -36,7 +36,6 @@ public class PlayerBtn : BtnBase
         }
         else
         {
-            Select();
             selectCurr?.Invoke();
         }
         
@@ -51,13 +50,13 @@ public class PlayerBtn : BtnBase
 
     internal void Select()
     {
-        slot.enabled = true;
+        slot.color = new Color(1f, 1f, 1f, 1f);
         selected = true;
     }
 
     internal void CancelSelect()
     {
-        slot.enabled = false;
+        slot.color = new Color(1f, 1f, 1f, 0f);
         selected = false;
     }
 }

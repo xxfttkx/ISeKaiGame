@@ -7,7 +7,7 @@ public class CharacterJump : MonoBehaviour
 {
     Image image;
     private float jumpHeight = 60f;
-    private float jumpDuration = 0.3f;
+    private float jumpDuration = Settings.jumpDuration;
     public Vector2 _pos
     {
         get => this.transform.localPosition;

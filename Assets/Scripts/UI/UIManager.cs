@@ -7,19 +7,25 @@ using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
 {
-    public Text moneyText;
+    public TextMeshProUGUI moneyText;
 
     public PausePanel pausePanel;
     public PlayerPanel playPanel;
     public PlayerSettingsPanel playerSettingsPanel;
-    public SoundSettingsPanel soundSettingsPanel;
+    public SettingsPanel settingsPanel;
 
     private Stack<GameObject> openPanel;
     public SelectCanvas selectCanvas;
     public StartCanvas startCanvas;
     public EndCanvas endCanvas;
 
-
+    protected override void Awake()
+    {
+        base.Awake();
+        playerSettingsPanel.gameObject.SetActive(false);
+        pausePanel.gameObject.SetActive(false);
+        settingsPanel.gameObject.SetActive(false);
+    }
     private void Start()
     {
         openPanel = new Stack<GameObject>();
@@ -44,11 +50,23 @@ public class UIManager : Singleton<UIManager>
     {
         EventHandler.EndLevelEvent += OnEndLevelEvent;
         EventHandler.MoneyChangeEvent += OnMoneyChangeEvent;
+        EventHandler.EnterDungeonEvent += OnEnterDungeonEvent;
+        EventHandler.ExitDungeonEvent += OnExitDungeonEvent;
     }
     private void OnDisable()
     {
         EventHandler.EndLevelEvent -= OnEndLevelEvent;
         EventHandler.MoneyChangeEvent -= OnMoneyChangeEvent;
+        EventHandler.EnterDungeonEvent -= OnEnterDungeonEvent;
+        EventHandler.ExitDungeonEvent += OnExitDungeonEvent;
+    }
+    void OnEnterDungeonEvent(List<int> playerIndexes)
+    {
+        playerSettingsPanel.OnEnterDungeonEvent(playerIndexes);
+    }
+    void OnExitDungeonEvent()
+    {
+        playerSettingsPanel.OnExitDungeonEvent();
     }
     void OnEndLevelEvent(int type)
     {
@@ -59,10 +77,10 @@ public class UIManager : Singleton<UIManager>
     {
         if (pauseStatus)
         {
-            if (GameStateManager.Instance.InGamePlay())
+/*            if (GameStateManager.Instance.InGamePlay())
             {
                 ShowPausePanel();
-            }
+            }*/
         }
     }
     internal void ShowPausePanel()
@@ -82,11 +100,6 @@ public class UIManager : Singleton<UIManager>
         TryAddToOpenPanelStack(playerSettingsPanel.gameObject);
         GameStateManager.Instance.SetGameState(GameState.GamePause);
         playerSettingsPanel.ShowPlayerExtra(playerIndex);
-    }
-    public void ShowSoundSettingsPanel()
-    {
-        TryAddToOpenPanelStack(soundSettingsPanel.gameObject);
-        soundSettingsPanel.Init();
     }
     private void TryAddToOpenPanelStack(GameObject go)
     {

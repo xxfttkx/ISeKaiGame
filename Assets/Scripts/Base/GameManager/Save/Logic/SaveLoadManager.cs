@@ -464,8 +464,76 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         }
         return gameSaveData.playerAddCharacteristics[playerIndex][(int)ch];
     }
-    public void ChangePlayerAddCharacteristics()
+    public void AddPlayerAddCharacteristic(int playerIndex, Characteristic ch)
     {
+        var l = gameSaveData.playerAddCharacteristics;
+        var n = SOManager.Instance.GetPlayerCount();
+        var m = (int)Characteristic.Max;
+        if (l == null || l.Count < n)
+        {
+            Utils.TryFillList<List<int>>(ref gameSaveData.playerAddCharacteristics, null, n);
+        }
+        if (gameSaveData.playerAddCharacteristics[playerIndex] == null || gameSaveData.playerAddCharacteristics[playerIndex].Count < m)
+        {
+            List<int> list = gameSaveData.playerAddCharacteristics[playerIndex];
+            Utils.TryFillList<int>(ref list, 0, m);
+            gameSaveData.playerAddCharacteristics[playerIndex] = list;
+        }
+        ++gameSaveData.playerAddCharacteristics[playerIndex][(int)ch];
+    }
+    public void SubPlayerAddCharacteristic(int playerIndex, Characteristic ch)
+    {
+        --gameSaveData.playerAddCharacteristics[playerIndex][(int)ch];
+    }
 
+    public int GetPlayerExp(int playerIndex)
+    {
+        var l = gameSaveData.playerExps;
+        int n = SOManager.Instance.GetPlayerCount();
+        if (l == null || l.Count < n)
+        {
+            Utils.TryFillList<int>(ref gameSaveData.playerExps, 0, n);
+        }
+        return gameSaveData.playerExps[playerIndex];
+    }
+    public int GetPlayerLevel(int playerIndex)
+    {
+        int exp = GetPlayerExp(playerIndex);
+        return Mathf.FloorToInt(Mathf.Log(exp,2));
+    }
+    public int GetPlayerToNextLevelExp(int playerIndex)
+    {
+        int exp = GetPlayerExp(playerIndex);
+        int level = Mathf.FloorToInt(Mathf.Log(exp, 2));
+        return Mathf.FloorToInt(Mathf.Pow(2, level + 1) + 0.1f) - exp;
+    }
+    public int GetPlayerCurrAddCharacteristicNum(int playerIndex)
+    {
+        int sum = 0;
+        for(Characteristic c = 0; c< Characteristic.Max;c++)
+        {
+           sum += GetPlayerAddCharacteristic(playerIndex, c);
+        }
+        return sum;
+    }
+    public int GetCanAddPlayerCharacteristicNum(int playerIndex)
+    {
+        int max = GetPlayerLevel(playerIndex);
+        int curr = GetPlayerCurrAddCharacteristicNum(playerIndex);
+        return max - curr;
+    }
+    public bool TryAddPlayerCharacteristic(int playerIndex, Characteristic ch)
+    {
+        var num = GetCanAddPlayerCharacteristicNum(playerIndex);
+        if (num <= 0) return false;
+        AddPlayerAddCharacteristic(playerIndex, ch);
+        return true;
+    }
+    public bool TrySubPlayerCharacteristic(int playerIndex, Characteristic ch)
+    {
+        var num = GetPlayerAddCharacteristic(playerIndex, ch);
+        if (num <= 0) return false;
+        SubPlayerAddCharacteristic(playerIndex, ch);
+        return true;
     }
 }

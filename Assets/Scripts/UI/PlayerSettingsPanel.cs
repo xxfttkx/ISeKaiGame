@@ -28,26 +28,23 @@ public class PlayerSettingsPanel : MonoBehaviour
     protected void Awake()
     {
         btnCtl = GetComponent<BtnBaseCtl>();
-        playerImages = new List<PlayerBtn>();
         extraSkills = new List<ExtraSkill>();
     }
     void OnEnable()
     {
         EventHandler.PlayerCharacteristicChangeEvent += OnPlayerCharacteristicChangeEvent;
-        EventHandler.EnterDungeonEvent += OnEnterDungeonEvent;
-        EventHandler.ExitDungeonEvent += OnExitDungeonEvent;
     }
     private void OnDisable()
     {
         EventHandler.PlayerCharacteristicChangeEvent -= OnPlayerCharacteristicChangeEvent;
-        EventHandler.EnterDungeonEvent -= OnEnterDungeonEvent;
-        EventHandler.ExitDungeonEvent -= OnExitDungeonEvent;
     }
 
-    void OnEnterDungeonEvent(List<int> playerIndexes)
+    public void OnEnterDungeonEvent(List<int> playerIndexes)
     {
+        if(playerImages==null) playerImages = new List<PlayerBtn>();
         foreach (var i in playerIndexes)
         {
+            if (i == -1) continue;
             var go = Instantiate(imagePrefab, imageParent.transform);
             var b = go.GetComponent<PlayerBtn>();
             var sp = SOManager.Instance.GetPlayerSpriteByIndex(i);
@@ -55,7 +52,7 @@ public class PlayerSettingsPanel : MonoBehaviour
             playerImages.Add(b);
         }
     }
-    void OnExitDungeonEvent()
+    public void OnExitDungeonEvent()
     {
         foreach (var i in playerImages)
         {
@@ -138,4 +135,25 @@ public class PlayerSettingsPanel : MonoBehaviour
         atkSpeed.text = ""+SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.AttackSpeed);
         atkRange.text = ""+SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.AttackRange);
     }
+
+    // 用int为了在inspector界面传
+    public void TrySubPlayerCharacteristic(int i)
+    {
+        Characteristic ch = (Characteristic)i;
+        if (SaveLoadManager.Instance.TrySubPlayerCharacteristic(currPlayerIndex, ch))
+        {
+
+        }
+    }
+    public void TryAddPlayerCharacteristic(int i)
+    {
+        Characteristic ch = (Characteristic)i;
+        if (SaveLoadManager.Instance.TryAddPlayerCharacteristic(currPlayerIndex,ch))
+        {
+
+        }
+    }
+    public void TryAddPlayerCharacteristic(Characteristic i) { }
+
+
 }

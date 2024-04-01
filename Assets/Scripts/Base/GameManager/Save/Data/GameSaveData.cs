@@ -22,7 +22,7 @@ public class GameSaveData
     public List<List<int>> playerExtras;
     // 
     public List<List<int>> playerExtraData;
-    // 经验加点
+    // 经验加点 2 4 8 16 32    n log2(n) = a.b .. => level = a+(2^(a+1)-n)          a+((2^(a+1)-n)/2^a) ??
     public List<List<int>> playerAddCharacteristics;
     // Volume
     public List<float> volumes;
