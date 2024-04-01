@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ButtonPanel : Singleton<ButtonPanel>
 {
@@ -11,7 +12,7 @@ public class ButtonPanel : Singleton<ButtonPanel>
     public DefaultBtn maxButton;
     public DefaultBtn subButton;
     public DefaultBtn addButton;
-    public TMPro.TMP_InputField levelNum;
+    public TextMeshProUGUI levelNum;
     private List<int> indexes;
     private int min = 1;
     private int max;
@@ -21,8 +22,6 @@ public class ButtonPanel : Singleton<ButtonPanel>
     {
         base.Awake();
         indexes = new List<int>();
-        buyButton.gameObject.SetActive(false);
-        buyButton.btnClick.AddListener(BuyButton);
         goButton.btnClick.AddListener(GoButton);
         goButton.interactable = false;
         minButton.btnClick.AddListener(MinButton);

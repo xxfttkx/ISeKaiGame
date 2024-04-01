@@ -15,6 +15,7 @@ public class PlayerSettingsPanel : MonoBehaviour
     public TextMeshProUGUI desc;
     public int currPlayerIndex;
     int extrasCount;
+    public TextMeshProUGUI remainPoint;
     public TextMeshProUGUI hp;
     public TextMeshProUGUI atk;
     public TextMeshProUGUI speed;
@@ -48,7 +49,7 @@ public class PlayerSettingsPanel : MonoBehaviour
             var go = Instantiate(imagePrefab, imageParent.transform);
             var b = go.GetComponent<PlayerBtn>();
             var sp = SOManager.Instance.GetPlayerSpriteByIndex(i);
-            b.InitButton(i, sp, () => ShowPlayerExtra(i));
+            b.InitButton(i, sp, () => ShowPlayerData(i));
             playerImages.Add(b);
         }
     }
@@ -61,9 +62,14 @@ public class PlayerSettingsPanel : MonoBehaviour
         playerImages.Clear();
     }
 
-    public void ShowPlayerExtra(int playerIndex = -1)
+    public void ShowPlayerData(int playerIndex = -1)
     {
         if (playerIndex == -1) playerIndex = playerImages[0].index;
+        hp.text = $"{ SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.Hp)}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.Hp)})</color=green>";
+        atk.text = $"{ SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.Attack)}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.Attack)})</color=green>";
+        speed.text = $"{ SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.Speed)}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.Speed)})</color=green>";
+        atkSpeed.text = $"{ SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.AttackSpeed)}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.AttackSpeed)})</color=green>";
+        atkRange.text = $"{ SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.AttackRange)}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.AttackRange)})</color=green>";
         var ch = SOManager.Instance.GetPlayerDataByIndex(playerIndex);
         var player = PlayerManager.Instance.GetPlayerByPlayerIndex(playerIndex);
         ChangeCh(player);
@@ -116,24 +122,11 @@ public class PlayerSettingsPanel : MonoBehaviour
     {
         int playerIndex = p.GetPlayerIndex();
         currPlayerIndex = playerIndex;
-        desc.text = $"Desc:\n{p.character.desc}\nHp:{p.GetHp()}/{p.GetMaxHP()}\nAtk:{p.GetRawAtk()}\nSpeed:{p.GetRawSpeed()}\nAtkSpeed:{p.GetRawAtkSpeed()}\nAtkRange:{p.GetRawAtkRange()}";
-    }
-    public void ChangeCh()
-    {
-        var p = PlayerManager.Instance.GetPlayerByPlayerIndex(currPlayerIndex);
-        desc.text = $"Desc:\n{p.character.desc}\nHp:{p.GetHp()}/{p.GetMaxHP()}\nAtk:{p.GetRawAtk()}\nSpeed:{p.GetRawSpeed()}\nAtkSpeed:{p.GetRawAtkSpeed()}\nAtkRange:{p.GetRawAtkRange()}";
+        desc.text = $"Desc:\n{p.character.desc}\nHp:{p.GetHp()}/{p.GetMaxHP()}";
     }
     void OnPlayerCharacteristicChangeEvent(Player p)
     {
         ChangeCh(p);
-    }
-    public void ShowPlayerData(int playerIndex)
-    {
-        hp.text = ""+SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.Hp);
-        atk.text = ""+SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.Attack);
-        speed.text = ""+SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.Speed);
-        atkSpeed.text = ""+SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.AttackSpeed);
-        atkRange.text = ""+SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.AttackRange);
     }
 
     // 用int为了在inspector界面传

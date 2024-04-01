@@ -99,7 +99,7 @@ public class UIManager : Singleton<UIManager>
     {
         TryAddToOpenPanelStack(playerSettingsPanel.gameObject);
         GameStateManager.Instance.SetGameState(GameState.GamePause);
-        playerSettingsPanel.ShowPlayerExtra(playerIndex);
+        playerSettingsPanel.ShowPlayerData(playerIndex);
     }
     private void TryAddToOpenPanelStack(GameObject go)
     {

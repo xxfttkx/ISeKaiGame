@@ -507,7 +507,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         int level = Mathf.FloorToInt(Mathf.Log(exp, 2));
         return Mathf.FloorToInt(Mathf.Pow(2, level + 1) + 0.1f) - exp;
     }
-    public int GetPlayerCurrAddCharacteristicNum(int playerIndex)
+    public int GetPlayerCurrAddCharacteristicsNum(int playerIndex)
     {
         int sum = 0;
         for(Characteristic c = 0; c< Characteristic.Max;c++)
@@ -519,7 +519,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     public int GetCanAddPlayerCharacteristicNum(int playerIndex)
     {
         int max = GetPlayerLevel(playerIndex);
-        int curr = GetPlayerCurrAddCharacteristicNum(playerIndex);
+        int curr = GetPlayerCurrAddCharacteristicsNum(playerIndex);
         return max - curr;
     }
     public bool TryAddPlayerCharacteristic(int playerIndex, Characteristic ch)
