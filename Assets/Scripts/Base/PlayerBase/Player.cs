@@ -12,6 +12,7 @@ public class Player : Creature
     [SerializeField]
     private float timeOnTheField;
     public List<int> extras;
+    private List<int> expAddCharacteristics; //readonly
 
     public int _atk
     {// ”Œœ∑÷–
@@ -52,6 +53,7 @@ public class Player : Creature
         sp.sprite = character.creature.sprite;
         material = sp.material;
         extras = new List<int>(SaveLoadManager.Instance.GetPlayerExtras(GetPlayerIndex()));
+        expAddCharacteristics = SaveLoadManager.Instance.GetPlayerAddCharacteristics(GetPlayerIndex());
     }
     protected virtual void OnEnable()
     {
@@ -320,7 +322,7 @@ public class Player : Creature
     }
     public virtual int GetRawAtk()
     {
-        return character.creature.attack + allBuff.atkNum;
+        return character.creature.attack + allBuff.atkNum + expAddCharacteristics[(int)Characteristic.Attack];
     }
     public virtual int GetRawSpeed()
     {
@@ -363,5 +365,28 @@ public class Player : Creature
     {
         int num = SaveLoadManager.Instance.GetPlayerKillEnemyNum(GetPlayerIndex(), e);
         return Mathf.Clamp01(num*1f/100f) + 1f;
+    }
+    public void OnSubPlayerCharacteristic(Characteristic ch)
+    {
+        if (ch == Characteristic.Hp)
+        {
+            if (IsAlive())
+            {
+                hp = Mathf.Max(1, hp - 5);
+                EventHandler.CallPlayerHpValChangeEvent(GetPlayerIndex(), GetHpVal());
+            }
+        }
+    }
+    public void OnAddPlayerCharacteristic(Characteristic ch)
+    {
+        if (ch == Characteristic.Hp)
+        {
+            if (IsAlive())
+            {
+                hp += 5;
+                //todo maxHP???
+                EventHandler.CallPlayerHpValChangeEvent(GetPlayerIndex(), GetHpVal());
+            }
+        }
     }
 }

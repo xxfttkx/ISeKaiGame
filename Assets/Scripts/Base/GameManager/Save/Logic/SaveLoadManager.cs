@@ -448,6 +448,23 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         Application.runInBackground = gameSaveData.runInBackground;
         SaveAsync();
     }
+    public List<int> GetPlayerAddCharacteristics(int playerIndex)
+    {
+        var l = gameSaveData.playerAddCharacteristics;
+        var n = SOManager.Instance.GetPlayerCount();
+        var m = (int)Characteristic.Max;
+        if (l == null || l.Count < n)
+        {
+            Utils.TryFillList<List<int>>(ref gameSaveData.playerAddCharacteristics, null, n);
+        }
+        if (gameSaveData.playerAddCharacteristics[playerIndex] == null || gameSaveData.playerAddCharacteristics[playerIndex].Count < m)
+        {
+            List<int> list = gameSaveData.playerAddCharacteristics[playerIndex];
+            Utils.TryFillList<int>(ref list, 0, m);
+            gameSaveData.playerAddCharacteristics[playerIndex] = list;
+        }
+        return gameSaveData.playerAddCharacteristics[playerIndex];
+    }
     public int GetPlayerAddCharacteristic(int playerIndex, Characteristic ch)
     {
         var l = gameSaveData.playerAddCharacteristics;

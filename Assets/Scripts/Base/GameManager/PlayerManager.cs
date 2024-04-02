@@ -35,6 +35,8 @@ public class PlayerManager : Singleton<PlayerManager>
         EventHandler.EnterDungeonEvent += OnEnterDungeonEvent;
         EventHandler.ExitDungeonEvent += OnExitDungeonEvent;
         EventHandler.PlayerKillEnemyEvent += OnPlayerKillEnemyEvent;
+        EventHandler.SubPlayerCharacteristic += OnSubPlayerCharacteristic;
+        EventHandler.AddPlayerCharacteristic += OnAddPlayerCharacteristic;
     }
     private void OnDisable()
     {
@@ -43,6 +45,8 @@ public class PlayerManager : Singleton<PlayerManager>
         EventHandler.EnterDungeonEvent -= OnEnterDungeonEvent;
         EventHandler.ExitDungeonEvent -= OnExitDungeonEvent;
         EventHandler.PlayerKillEnemyEvent -= OnPlayerKillEnemyEvent;
+        EventHandler.SubPlayerCharacteristic -= OnSubPlayerCharacteristic;
+        EventHandler.AddPlayerCharacteristic -= OnAddPlayerCharacteristic;
     }
     private void Update()
     {
@@ -474,5 +478,29 @@ public class PlayerManager : Singleton<PlayerManager>
             EventHandler.CallPlayerAddExpEvent(i,exp);
         }
         
+    }
+    void OnSubPlayerCharacteristic(int playerIndex, Characteristic ch)
+    {
+        if (indexToPlayer.TryGetValue(playerIndex,out Player p))
+        {
+            p.OnSubPlayerCharacteristic(ch);
+        }
+        else
+        {
+            Debug.Log("indexToPlayer.TryGetValue(playerIndex,out Player p)==false");
+            return;
+        }
+    }
+    void OnAddPlayerCharacteristic(int playerIndex, Characteristic ch)
+    {
+        if (indexToPlayer.TryGetValue(playerIndex, out Player p))
+        {
+            p.OnAddPlayerCharacteristic(ch);
+        }
+        else
+        {
+            Debug.Log("indexToPlayer.TryGetValue(playerIndex,out Player p)==false");
+            return;
+        }
     }
 }

@@ -84,8 +84,8 @@ public class PlayerSettingsPanel : MonoBehaviour
         exp.text = $"{SaveLoadManager.Instance.GetPlayerLevel(playerIndex)}:({SaveLoadManager.Instance.GetPlayerCurrLevelExp(playerIndex)}/{SaveLoadManager.Instance.GetPlayerCueeLevelToNextLevelExp(playerIndex)})";//1:(1/2)
         remainPoint.text = $"{SaveLoadManager.Instance.GetCanAddPlayerCharacteristicNum(playerIndex)}";
         var ch = SOManager.Instance.GetPlayerDataByIndex(playerIndex);
-        var player = PlayerManager.Instance.GetPlayerByPlayerIndex(playerIndex);
-        ChangeCh(player);
+        var p = PlayerManager.Instance.GetPlayerByPlayerIndex(playerIndex);
+        desc.text = $"Desc:\n{p.character.desc}\nHp:{p.GetHp()}/{p.GetMaxHP()}";
         foreach (var btn in playerImages)
         {
             if (btn.index == playerIndex) btn.Select();
@@ -132,15 +132,14 @@ public class PlayerSettingsPanel : MonoBehaviour
             extraSkills[i].btns[1].SetKeyboardRelation(i==0? playerImages[_currIndex]: extraSkills[i-1].btns[1], i < n - 1 ? extraSkills[i + 1].btns[1] : null, extraSkills[i].btns[0], null);
         }
     }
-    public void ChangeCh(Player p)
-    {
-        int playerIndex = p.GetPlayerIndex();
-        currPlayerIndex = playerIndex;
-        desc.text = $"Desc:\n{p.character.desc}\nHp:{p.GetHp()}/{p.GetMaxHP()}";
-    }
     void OnPlayerCharacteristicChangeEvent(Player p)
     {
-        ChangeCh(p);
+        if(p.GetPlayerIndex()!= currPlayerIndex)
+        {
+            Debug.Log("p.GetPlayerIndex()!= currPlayerIndex");
+            return;
+        }
+        ShowPlayerData(currPlayerIndex);
     }
 
     // 用int为了在inspector界面传
@@ -160,7 +159,6 @@ public class PlayerSettingsPanel : MonoBehaviour
 
         }
     }
-    public void TryAddPlayerCharacteristic(Characteristic i) { }
     void OnSubPlayerCharacteristic(int playerIndex, Characteristic ch)
     {
         if (playerIndex!=currPlayerIndex)

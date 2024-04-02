@@ -144,11 +144,12 @@ public class PoolManager : Singleton<PoolManager>
         yield return new WaitForSeconds(1.5f);
         pool.Release(obj);
     }
-    internal void PlaySoundEffect(SoundDetails soundDetails)
+    public void PlaySoundEffect(SoundDetails soundDetails)
     {
         var obj = GetSoundPoolObject();
-        obj.GetComponent<Sound>().SetSound(soundDetails);
         obj.SetActive(true);
+        obj.GetComponent<Sound>().SetSound(soundDetails);
+        
         StartCoroutine(DisableSound(obj, soundDetails.soundClip.length));
     }
     private GameObject GetSoundPoolObject()

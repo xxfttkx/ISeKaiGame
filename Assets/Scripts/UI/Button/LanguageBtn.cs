@@ -17,14 +17,4 @@ public class LanguageBtn : ImageBtn
     {
         tmp.text = s;
     }
-    public void Select()
-    {
-        selected = true;
-        BtnExit();
-    }
-    public void CancelSelect()
-    {
-        selected = false;
-        BtnExit();
-    }
 }
