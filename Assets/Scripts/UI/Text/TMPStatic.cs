@@ -13,11 +13,14 @@ public class TMPStatic : MonoBehaviour
 
     private void Awake()
     {
+        if (tmp == null)
+            tmp = GetComponentInChildren<TextMeshProUGUI>();
     }
     private void OnEnable()
     {
-        EventHandler.LanguageChange+= OnLanguageChange;
-        EventHandler.LoadFinishEvent+= OnLoadFinishEvent;
+        EventHandler.LanguageChange += OnLanguageChange;
+        EventHandler.LoadFinishEvent += OnLoadFinishEvent;
+        Init();
     }
     private void OnDisable()
     {

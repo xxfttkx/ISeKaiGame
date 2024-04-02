@@ -112,7 +112,7 @@ MonoBehaviour:
     profession: 3
     desc: "\u6740\u654C\u8840\u91CF\u53D850% \u653B\u901F\u53D7\u4E0E\u654C\u4EBA\u8DDD\u79BB\u5F71\u54CD
       \u81EA\u8EABspeed+50%"
-    extraTypes: 010000000400000008000000
+    extraTypes: 010000000500000006000000
     extraThresholds: 000000000000000014000000
     extraDesire1:
     - atk+=1 atkrange-=1

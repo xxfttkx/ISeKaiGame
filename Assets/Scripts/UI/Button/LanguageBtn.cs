@@ -4,29 +4,27 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LanguageBtn : BtnBase
+public class LanguageBtn : ImageBtn
 {
-    private Image image;
     private TextMeshProUGUI tmp;
-    private int index;
 
     public override void Awake()
     {
         base.Awake();
-        image = GetComponent<Image>();
         tmp = GetComponentInChildren<TextMeshProUGUI>();
     }
-    public void Init(string s,int i)
+    public void Init(string s)
     {
-        index = i;
         tmp.text = s;
     }
     public void Select()
     {
-        image.color = Color.red;
+        selected = true;
+        BtnExit();
     }
     public void CancelSelect()
     {
-        image.color = Color.blue;
+        selected = false;
+        BtnExit();
     }
 }

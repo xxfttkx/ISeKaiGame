@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerBtn : BtnBase
+public class PlayerBtn : ImageBtnSelect
 {
     public Image chara;
     public Image slot;

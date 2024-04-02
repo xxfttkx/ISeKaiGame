@@ -192,6 +192,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         if (l != la)
         {
             gameSaveData.language = l;
+            EventHandler.CallLanguageChange(l);
             SaveAsync();
         }
     }
@@ -501,6 +502,18 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         int exp = GetPlayerExp(playerIndex);
         return Mathf.FloorToInt(Mathf.Log(exp,2));
     }
+    public int GetPlayerCurrLevelExp(int playerIndex)
+    {
+        int exp = GetPlayerExp(playerIndex);
+        int level = Mathf.FloorToInt(Mathf.Log(exp, 2));
+        return exp - Mathf.FloorToInt(Mathf.Pow(2, level) + 0.1f);
+    }
+    public int GetPlayerCueeLevelToNextLevelExp(int playerIndex)
+    {
+        int exp = GetPlayerExp(playerIndex);
+        int level = Mathf.FloorToInt(Mathf.Log(exp, 2));
+        return Mathf.FloorToInt(Mathf.Pow(2, level + 1) + 0.1f) - Mathf.FloorToInt(Mathf.Pow(2, level) + 0.1f);//todo level==0....
+    }
     public int GetPlayerToNextLevelExp(int playerIndex)
     {
         int exp = GetPlayerExp(playerIndex);
@@ -527,6 +540,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         var num = GetCanAddPlayerCharacteristicNum(playerIndex);
         if (num <= 0) return false;
         AddPlayerAddCharacteristic(playerIndex, ch);
+        EventHandler.CallAddPlayerCharacteristicEvent(playerIndex, ch);
         return true;
     }
     public bool TrySubPlayerCharacteristic(int playerIndex, Characteristic ch)
@@ -534,6 +548,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         var num = GetPlayerAddCharacteristic(playerIndex, ch);
         if (num <= 0) return false;
         SubPlayerAddCharacteristic(playerIndex, ch);
+        EventHandler.CallSubPlayerCharacteristicEvent(playerIndex,ch);
         return true;
     }
 }

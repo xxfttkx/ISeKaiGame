@@ -15,11 +15,15 @@ public class AudioManager : Singleton<AudioManager>
     private void OnEnable()
     {
         EventHandler.LoadFinishEvent += OnLoadFinishEvent;
+        EventHandler.EnterDungeonEvent += OnEnterDungeonEvent;
+        EventHandler.ExitDungeonEvent += OnExitDungeonEvent;
     }
 
     private void OnDisable()
     {
         EventHandler.LoadFinishEvent -= OnLoadFinishEvent;
+        EventHandler.EnterDungeonEvent -= OnEnterDungeonEvent;
+        EventHandler.ExitDungeonEvent -= OnExitDungeonEvent;
     }
 
     public SoundDetails GetSoundDetailsBySoundName(SoundName soundName)
@@ -31,6 +35,16 @@ public class AudioManager : Singleton<AudioManager>
         var soundDetails = GetSoundDetailsBySoundName(soundName);
         if (soundDetails != null)
             PoolManager.Instance.PlaySoundEffect(soundDetails);
+    }
+    public void PlaySoundAmbient(BGMName bgmName)
+    {
+        var d = soundDetailsList_SO.GetBGMDetails(bgmName);
+        if (d != null)
+        {
+            ambientSource.clip = d.soundClip;
+            if (ambientSource.isActiveAndEnabled)
+                ambientSource.Play();
+        }
     }
 
     public void SetVolume(float value,int index)
@@ -83,5 +97,14 @@ public class AudioManager : Singleton<AudioManager>
         SetVolume(SaveLoadManager.Instance.GetVolume(0), 0);
         SetVolume(SaveLoadManager.Instance.GetVolume(1), 1);
         SetVolume(SaveLoadManager.Instance.GetVolume(2), 2);
+        PlaySoundAmbient(BGMName.Fantasy);
+    }
+    void OnEnterDungeonEvent(List<int> _)
+    {
+        PlaySoundAmbient(BGMName.Battle);
+    }
+    void OnExitDungeonEvent()
+    {
+        PlaySoundAmbient(BGMName.Fantasy);
     }
 }

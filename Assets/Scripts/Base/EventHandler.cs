@@ -280,4 +280,14 @@ public static class EventHandler
     {
         PlayerAddExpEvent?.Invoke(index, exp);
     }
+    public static event Action<int, Characteristic> SubPlayerCharacteristic;
+    public static void CallSubPlayerCharacteristicEvent(int playerIndex, Characteristic ch)
+    {
+        SubPlayerCharacteristic?.Invoke(playerIndex, ch);
+    }
+    public static event Action<int, Characteristic> AddPlayerCharacteristic;
+    public static void CallAddPlayerCharacteristicEvent(int playerIndex, Characteristic ch)
+    {
+        AddPlayerCharacteristic?.Invoke(playerIndex, ch);
+    }
 }

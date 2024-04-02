@@ -198,7 +198,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8393299398224871949, guid: dc7a44921047c4d4388bed8a7dd28a6c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4740090981214924982}
+      addedObject: {fileID: 408266254962213362}
   m_SourcePrefab: {fileID: 100100000, guid: dc7a44921047c4d4388bed8a7dd28a6c, type: 3}
 --- !u!114 &5106699720118330773 stripped
 MonoBehaviour:
@@ -216,7 +216,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8393299398224871949, guid: dc7a44921047c4d4388bed8a7dd28a6c, type: 3}
   m_PrefabInstance: {fileID: 3649139470128203552}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4740090981214924982
+--- !u!114 &408266254962213362
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5106699720389608749}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a271f021d82f3d438313365397c88ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 86df31c5250a82f428d29bb0f359bb72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactable: 1
@@ -242,10 +242,13 @@ MonoBehaviour:
   rightBtn: {fileID: 0}
   upBtn: {fileID: 0}
   downBtn: {fileID: 0}
-  chara: {fileID: 5106699720118330773}
   slot: {fileID: 2004299132131271796}
-  index: 0
+  image: {fileID: 5106699720118330773}
+  enterColor: {r: 0.4641509, g: 0.46152365, b: 0.46152365, a: 1}
+  seletedColor: {r: 0.20754719, g: 0.204806, b: 0.204806, a: 1}
+  unSeletedColor: {r: 0.8415094, g: 0.8415094, b: 0.8415094, a: 1}
   selected: 0
+  index: 0
 --- !u!224 &5106699720389608750 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8393299398224871950, guid: dc7a44921047c4d4388bed8a7dd28a6c, type: 3}

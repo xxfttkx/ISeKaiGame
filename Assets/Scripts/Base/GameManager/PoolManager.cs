@@ -98,7 +98,8 @@ public class PoolManager : Singleton<PoolManager>
         GameObject obj = objPool.Get();
         obj.transform.position = attacker.transform.position;
         GuangQiu b = obj.GetComponent<GuangQiu>();
-        b.AttackEnemy(dir, attacker, size, speed);
+        AudioManager.Instance.PlaySoundEffect(SoundName.EnemyProjectile);
+        b.AttackPlayer(dir, attacker, size, speed);
     }
     public void CreateFeather(EnemyBase e, Vector3 pos)
     {

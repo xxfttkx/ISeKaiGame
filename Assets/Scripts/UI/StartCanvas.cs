@@ -49,7 +49,7 @@ public class StartCanvas : Singleton<StartCanvas>
     public void ShowLanguagePanel()
     {
         languagePanel.gameObject.SetActive(true);
-        languagePanel.Init();
+        languagePanel.TryInit();
     }
     public void HideLanguagePanel()
     {

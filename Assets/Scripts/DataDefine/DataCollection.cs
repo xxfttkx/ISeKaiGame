@@ -86,6 +86,16 @@ public class SoundDetails
     [Range(0.1f, 1f)]
     public float soundVolume;
 }
+
+[System.Serializable]
+public class BGMDetails
+{
+    public BGMName bgmName;
+    public AudioClip soundClip;
+    [Range(0.1f, 1f)]
+    public float soundVolume;
+}
+
 [System.Serializable]
 public class GenerateEnemyPointData
 {

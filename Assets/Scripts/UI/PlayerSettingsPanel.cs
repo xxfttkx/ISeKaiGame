@@ -10,20 +10,26 @@ public class PlayerSettingsPanel : MonoBehaviour
     public GameObject imageParent;
     public GameObject extraPrefab;
     public GameObject extraParent;
-    private List<PlayerBtn> playerImages;
+    private List<ImageBtn> playerImages;
     private List<ExtraSkill> extraSkills;
     public TextMeshProUGUI desc;
-    public int currPlayerIndex;
-    int extrasCount;
+
+    public TextMeshProUGUI exp;
     public TextMeshProUGUI remainPoint;
     public TextMeshProUGUI hp;
     public TextMeshProUGUI atk;
     public TextMeshProUGUI speed;
     public TextMeshProUGUI atkSpeed;
     public TextMeshProUGUI atkRange;
+    public int currPlayerIndex;
+    int extrasCount;
     public int _currIndex
     {
         get => playerImages.FindIndex(i => i.index == currPlayerIndex);
+    }
+    ImageBtn _currPlayerImage
+    {
+        get => playerImages[_currIndex];
     }
     BtnBaseCtl btnCtl;
     protected void Awake()
@@ -34,22 +40,26 @@ public class PlayerSettingsPanel : MonoBehaviour
     void OnEnable()
     {
         EventHandler.PlayerCharacteristicChangeEvent += OnPlayerCharacteristicChangeEvent;
+        EventHandler.SubPlayerCharacteristic += OnSubPlayerCharacteristic;
+        EventHandler.AddPlayerCharacteristic += OnAddPlayerCharacteristic;
     }
     private void OnDisable()
     {
         EventHandler.PlayerCharacteristicChangeEvent -= OnPlayerCharacteristicChangeEvent;
+        EventHandler.SubPlayerCharacteristic -= OnSubPlayerCharacteristic;
+        EventHandler.AddPlayerCharacteristic -= OnAddPlayerCharacteristic;
     }
 
     public void OnEnterDungeonEvent(List<int> playerIndexes)
     {
-        if(playerImages==null) playerImages = new List<PlayerBtn>();
+        if(playerImages==null) playerImages = new List<ImageBtn>();
         foreach (var i in playerIndexes)
         {
             if (i == -1) continue;
             var go = Instantiate(imagePrefab, imageParent.transform);
-            var b = go.GetComponent<PlayerBtn>();
+            var b = go.GetComponent<ImageBtn>();
             var sp = SOManager.Instance.GetPlayerSpriteByIndex(i);
-            b.InitButton(i, sp, () => ShowPlayerData(i));
+            b.Init(i,sp, () => ShowPlayerData(i));
             playerImages.Add(b);
         }
     }
@@ -70,6 +80,9 @@ public class PlayerSettingsPanel : MonoBehaviour
         speed.text = $"{ SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.Speed)}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.Speed)})</color=green>";
         atkSpeed.text = $"{ SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.AttackSpeed)}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.AttackSpeed)})</color=green>";
         atkRange.text = $"{ SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.AttackRange)}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.AttackRange)})</color=green>";
+
+        exp.text = $"{SaveLoadManager.Instance.GetPlayerLevel(playerIndex)}:({SaveLoadManager.Instance.GetPlayerCurrLevelExp(playerIndex)}/{SaveLoadManager.Instance.GetPlayerCueeLevelToNextLevelExp(playerIndex)})";//1:(1/2)
+        remainPoint.text = $"{SaveLoadManager.Instance.GetCanAddPlayerCharacteristicNum(playerIndex)}";
         var ch = SOManager.Instance.GetPlayerDataByIndex(playerIndex);
         var player = PlayerManager.Instance.GetPlayerByPlayerIndex(playerIndex);
         ChangeCh(player);
@@ -78,6 +91,7 @@ public class PlayerSettingsPanel : MonoBehaviour
             if (btn.index == playerIndex) btn.Select();
             else btn.CancelSelect();
         }
+        currPlayerIndex = playerIndex;
         extrasCount = ch.extraTypes.Count;
         for (int i = 0; i < extrasCount; ++i)
         {
@@ -147,6 +161,25 @@ public class PlayerSettingsPanel : MonoBehaviour
         }
     }
     public void TryAddPlayerCharacteristic(Characteristic i) { }
-
+    void OnSubPlayerCharacteristic(int playerIndex, Characteristic ch)
+    {
+        if (playerIndex!=currPlayerIndex)
+        {
+            Debug.Log("playerIndex!=currPlayerIndex");
+            return;
+        }
+        //todo
+        ShowPlayerData(playerIndex);
+    }
+    void OnAddPlayerCharacteristic(int playerIndex, Characteristic ch)
+    {
+        if (playerIndex != currPlayerIndex)
+        {
+            Debug.Log("playerIndex!=currPlayerIndex");
+            return;
+        }
+        //todo
+        ShowPlayerData(playerIndex);
+    }
 
 }

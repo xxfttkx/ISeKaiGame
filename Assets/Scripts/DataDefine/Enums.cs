@@ -14,11 +14,20 @@ public enum FireType
 
 public enum SoundName
 {
-    Atk = 1,
+    MeeleAtk,
+    Projectile,
+    EnemyProjectile,
+    HurtEnemy,
+    BeHurt,
+    Atk,
+}
+public enum BGMName
+{
+    Fantasy,
+    Battle
 }
 
 
-//TODO:武器类型定义
 public enum ExtraType
 {
     Hurt,

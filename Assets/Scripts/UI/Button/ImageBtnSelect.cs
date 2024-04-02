@@ -15,11 +15,11 @@ public class ImageBtnSelect : BtnBase
     public void Select()
     {
         seleted = true;
-        selecteImage.enabled = true;
+        BtnExit();
     }
     public void CancelSelect()
     {
         seleted = false;
-        selecteImage.enabled = false;
+        BtnExit();
     }
 }

@@ -9,7 +9,15 @@ public class LanguagePanel : MonoBehaviour
     public GameObject btnPrefab;
     List<LanguageBtn> btns;
     public bool bInit;
-    public void Init()
+    private void OnEnable()
+    {
+        TryInit();
+    }
+    private void OnDisable()
+    {
+        
+    }
+    public void TryInit()
     {
         if (bInit) return;
         bInit = true;
@@ -20,7 +28,7 @@ public class LanguagePanel : MonoBehaviour
             string s = Utils.GetLanguageString(i);
             var go = Instantiate(btnPrefab, parent.transform);
             var b = go.GetComponent<LanguageBtn>();
-            b.Init(s, i);
+            b.Init(s);
             var index = i;
             b.btnClick.AddListener(()=>ChangeLanguage(index));
             btns.Add(b);
@@ -36,25 +44,6 @@ public class LanguagePanel : MonoBehaviour
             else btns[i].CancelSelect();
         }
         SaveLoadManager.Instance.SetLanguage(index);
-        EventHandler.CallLanguageChange(index);
+       
     }
 }
-/*
-[CustomEditor(typeof(LanguagePanel))]
-public class YourScriptEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-
-        LanguagePanel script = (LanguagePanel)target;
-
-        EditorGUILayout.Space();
-
-        if (GUILayout.Button("Init"))
-        {
-            // 在这里执行你想要的代码
-            script.Init(); // 例如调用脚本中的方法
-        }
-    }
-}*/

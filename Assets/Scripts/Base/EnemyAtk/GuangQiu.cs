@@ -39,7 +39,7 @@ public class GuangQiu : MonoBehaviour
         beReleased = false;
         rb.velocity = Vector2.zero;
     }
-    public void AttackEnemy(Vector2 dir, EnemyBase attacker, float size = -1, float speed = -1)
+    public void AttackPlayer(Vector2 dir, EnemyBase attacker, float size = -1, float speed = -1)
     {
         Reset(size, speed);
         dir = dir.normalized;
