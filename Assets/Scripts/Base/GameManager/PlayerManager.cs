@@ -135,6 +135,7 @@ public class PlayerManager : Singleton<PlayerManager>
             if (extra == 1)
                 playerIndex = 2;
         }
+        e.BeHurt(atk, playerIndex);
         AudioManager.Instance.PlaySoundEffect(SoundName.HurtEnemy);
         RecordManager.Instance.AddDamage(atk);
     }

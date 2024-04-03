@@ -34,12 +34,11 @@ public struct Character
     public int speed;
     public int attackSpeed; // 10sÄÚ¹¥»÷´ÎÊı
     public int attackRange; // ¹¥»÷¾àÀë*/
-    [TextArea(3, 10)]
-    public string desc;
+    public int desc;
     public List<ExtraType> extraTypes;
     public List<int> extraThresholds;
-    public List<string> extraDesire1;
-    public List<string> extraDesire2;
+    public List<int> extraDesire1;
+    public List<int> extraDesire2;
     public Characteristic[] extraCharacteristics;
     public int[] extraCharacteristicVals;
     public int[] extraData;
@@ -249,3 +248,34 @@ public struct ProfessionData
     public int attackRange;
 }
 
+
+[System.Serializable]
+public class CharsPassLevel : IComparable<CharsPassLevel>
+{
+    private List<int> indexes;
+    private int level;
+    public int Level
+    {
+        get => level;
+    }
+    public int CompareTo(CharsPassLevel other)
+    {
+        if (level==other.level)
+        {
+            if(indexes.Count==other.indexes.Count)
+            {
+                for(int i = 0;i<indexes.Count;++i)
+                {
+                    if (indexes[i] != other.indexes[i]) return indexes[i] - other.indexes[i];
+                }
+            }
+            return indexes.Count - other.indexes.Count;
+        }
+        return other.level - level;
+    }
+    public CharsPassLevel(List<int> l,int i)
+    {
+        indexes = l;
+        level = i;
+    }
+}

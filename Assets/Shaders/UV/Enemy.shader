@@ -52,7 +52,7 @@ Shader "Custom/Enemy" {
                 fixed4 col = tex2D(_MainTex, i.uv);//采样
                 fixed4 noise = tex2D(_Noise, i.uv/_NoiseCount);//采样
                 clip(noise.r-_Reslove);
-                col = mix(col,fixed4(1,0,0,1),_Red);
+                col = mix(col,fixed4(1,0,0,1),_Red); 
 
                 return col;
             }

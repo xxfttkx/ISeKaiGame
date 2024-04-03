@@ -18,6 +18,10 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     {
         get => finishLoad;
     }
+    public Dictionary<string, int> CharsToLevel
+    {
+        get => gameSaveData?.charsToLevel;
+    }
 
     protected override void Awake()
     {

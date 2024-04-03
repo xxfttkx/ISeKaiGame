@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\UI\SoundSettingsPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Text\TMPStatic.cs" />
     <Compile Include="Assets\Scripts\UI\Button\LanguageBtn.cs" />
+    <Compile Include="Assets\Scripts\UI\RankPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Button\DefaultBtn.cs" />
     <Compile Include="Assets\Scripts\UI\SelectPlayerButton.cs" />
     <Compile Include="Assets\Scripts\UI\SelectSlot.cs" />

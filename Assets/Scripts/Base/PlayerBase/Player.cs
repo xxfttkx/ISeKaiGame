@@ -165,15 +165,8 @@ public class Player : Creature
         EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
     }
 
-    public virtual int GetAttack()
-    {
-        if (!IsAlive()) return 1;
-        return Mathf.CeilToInt(atk * (1 + allBuff.attackBonus) * GetTimeBonus());
-    }
-    public virtual int GetAttackSpeed()
-    {
-        return Mathf.CeilToInt(atkSpeed * (1 + allBuff.attackSpeedBonus));
-    }
+    
+   
 
     public virtual float GetMoneyEfficiency()
     {
@@ -186,16 +179,23 @@ public class Player : Creature
         return 10.0f / attackSpeed;
     }
 
+    public virtual int GetAttack()
+    {
+        if (!IsAlive()) return 1;
+        return Mathf.CeilToInt(atk * (1 + allBuff.attackBonus) * GetTimeBonus());
+    }
     public virtual int GetSpeed()
     {
         return Mathf.CeilToInt(speed * (1 + allBuff.speedBonus));
     }
-
-
+    public virtual int GetAttackSpeed()
+    {
+        return Mathf.CeilToInt(atkSpeed * (1 + allBuff.attackSpeedBonus));
+    }
 
     public virtual int GetAttackRange()
     {
-        return Mathf.CeilToInt(atkRange * GetTimeBonus() * (1 + allBuff.attackRangeBonus));
+        return Mathf.CeilToInt(atkRange * (1 + allBuff.attackRangeBonus));
     }
 
     public override int GetPlayerIndex()
@@ -224,18 +224,9 @@ public class Player : Creature
         if (timeOnTheField < 0) timeOnTheField = 0;
         EventHandler.CallFieldTimeChangeEvent(GetPlayerIndex(), timeOnTheField);
     }
-
-    public virtual float GetAttackBonus()
-    {
-        return 0;
-    }
     public virtual void AddBuffBeforeStart()
     {
 
-    }
-    public virtual bool CanSelectExtra(int index)
-    {
-        return false;
     }
     public bool CanAcceptHurt(int atk)
     {
@@ -323,15 +314,15 @@ public class Player : Creature
     }
     public virtual int GetRawSpeed()
     {
-        return character.creature.speed + allBuff.speedNum;
+        return character.creature.speed + allBuff.speedNum + expAddCharacteristics[(int)Characteristic.Speed];
     }
     public virtual int GetRawAtkSpeed()
     {
-        return character.creature.attackSpeed + allBuff.atkSpeedNum;
+        return character.creature.attackSpeed + allBuff.atkSpeedNum + expAddCharacteristics[(int)Characteristic.AttackSpeed];
     }
     public virtual int GetRawAtkRange()
     {
-        return character.creature.attackRange + allBuff.atkRangeNum;
+        return character.creature.attackRange + allBuff.atkRangeNum + expAddCharacteristics[(int)Characteristic.AttackRange];
     }
     public int GetProfessionData(Characteristic ch)
     {
@@ -387,10 +378,5 @@ public class Player : Creature
             EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
         }
     }
-    public void AddHpLimit(int num)
-    {
-        hp += num;
-        maxHp += num;
-        EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
-    }
+    
 }

@@ -9,6 +9,11 @@ public class SettingsPanel : MonoBehaviour
     public SoundSettingsPanel soundSettingsPanel;
     public ImageBtnSelect windowed;
     public ImageBtnSelect runInBackground;
+
+    private void OnEnable()
+    {
+        Init();
+    }
     public void Init()
     {
         soundSettingsPanel.Init();

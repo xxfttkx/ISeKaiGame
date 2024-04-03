@@ -35,6 +35,7 @@ public class Enemy_5_Melee : Enemy_Melee
         bool bAttackSuccess = false;
         for (float t = 0; t < 0.5; t += Time.deltaTime)
         {
+            if (player == null) yield break;
             IsMoving = true;
             rb.velocity = dir * GetSpeed() * 5;
             if (!bAttackSuccess)

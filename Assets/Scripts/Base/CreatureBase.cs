@@ -64,10 +64,9 @@ public class Creature : MonoBehaviour
         buffs.Add(name, b);
         allBuff.AddBuff(b);
         int changeHp = Mathf.CeilToInt(maxHp * hpB);
-        if(IsAlive())
+        if (changeHp > 0)
         {
-            this.hp += changeHp;
-            EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
+            AddHpLimit(changeHp);
         }
         if (duration > 0)
         {
@@ -81,11 +80,9 @@ public class Creature : MonoBehaviour
         buffs.Add(name, b);
         allBuff.AddBuff(b);
         int changeHp = b.hpNum;
-        if (IsAlive() && changeHp > 0)
+        if (changeHp > 0)
         {
-            this.hp += changeHp;
-            maxHp += changeHp;
-            EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
+            AddHpLimit(changeHp);
         }
         if (duration > 0)
         {
@@ -99,11 +96,9 @@ public class Creature : MonoBehaviour
         buffs.Add(name, b);
         allBuff.AddBuff(b);
         int changeHp = Mathf.CeilToInt(maxHp * b.hpBonus);
-        if (IsAlive() && changeHp > 0)
+        if (changeHp > 0)
         {
-            this.hp += changeHp;
-            maxHp += changeHp;
-            EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
+            AddHpLimit(changeHp);
         }
         if (duration > 0)
         {
@@ -274,5 +269,16 @@ public class Creature : MonoBehaviour
         buffs.Clear();
         allBuff.Clear();
         //todo show ui
+    }
+    /// <summary>
+    /// hpиооч
+    /// </summary>
+    /// <param name="num"></param>
+    public void AddHpLimit(int num)
+    {
+        if(IsAlive())
+            hp += num;
+        maxHp += num;
+        EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
     }
 }

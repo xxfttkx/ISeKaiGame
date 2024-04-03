@@ -49,8 +49,8 @@ public class ExtraSkill : MonoBehaviour
         }
         else
         {
-            extraDesire1.text = ch.extraDesire1[extraIndex];
-            extraDesire2.text = ch.extraDesire2[extraIndex];
+            extraDesire1.text = SOManager.Instance.GetStringByIndex(ch.extraDesire1[extraIndex]);
+            extraDesire2.text = SOManager.Instance.GetStringByIndex(ch.extraDesire2[extraIndex]);
         }
         
         if(!canSelect)

@@ -243,14 +243,14 @@ public static class Utils
     }
     public static string GetStringByCharacteristicAndVal(Characteristic c, int v, bool sign)
     {
-        string t = sign ? "+=" : "-=";
+        string t = sign ? "+" : "-";
         return c switch
         {
             Characteristic.Hp => $"hp{t}{v}",
             Characteristic.Attack => $"atk{t}{v}",
             Characteristic.Speed => $"speed{t}{v}",
-            Characteristic.AttackRange => $"atkRange{t}{v}",
             Characteristic.AttackSpeed => $"atkSpeed{t}{v}",
+            Characteristic.AttackRange => $"atkRange{t}{v}",
             _ => "null"
         };
     }
@@ -279,5 +279,13 @@ public static class Utils
             if (i != -1)
                 res.Add(i);
         return res;
+    }
+    public static List<int> GetListByString(string numbersString)
+    {
+        // 将字符串拆分为数字字符串数组
+        string[] numberStrings = numbersString.Split('.');
+        // 将数字字符串数组转换为整数列表
+        List<int> numbersList = numberStrings.Select(int.Parse).ToList();
+        return numbersList;
     }
 }
