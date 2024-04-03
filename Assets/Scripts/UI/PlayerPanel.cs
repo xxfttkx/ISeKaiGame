@@ -14,7 +14,7 @@ public class PlayerPanel : MonoBehaviour
     }
     private void OnEnable()
     {
-        EventHandler.PlayerHpValChangeEvent += OnPlayerHpValChangeEvent;
+        EventHandler.PlayerHpChangeEvent += OnPlayerHpChangeEvent;
         EventHandler.BuffChangeEvent += OnBuffChangeEvent;
         EventHandler.BuffRemoveEvent += OnBuffRemoveEvent;
         EventHandler.FieldTimeChangeEvent += OnFieldTimeChangeEnent;
@@ -23,7 +23,7 @@ public class PlayerPanel : MonoBehaviour
     }
     private void OnDisable()
     {
-        EventHandler.PlayerHpValChangeEvent -= OnPlayerHpValChangeEvent;
+        EventHandler.PlayerHpChangeEvent -= OnPlayerHpChangeEvent;
         EventHandler.BuffChangeEvent -= OnBuffChangeEvent;
         EventHandler.BuffRemoveEvent -= OnBuffRemoveEvent;
         EventHandler.FieldTimeChangeEvent -= OnFieldTimeChangeEnent;
@@ -49,9 +49,9 @@ public class PlayerPanel : MonoBehaviour
             playerData.Init(i, SOManager.Instance.GetPlayerSpriteSquareByIndex(i));
         }
     }
-    void OnPlayerHpValChangeEvent(int index, float val)
+    void OnPlayerHpChangeEvent(int index, int hp, int maxHp)
     {
-        indexToPlayerData[index].SetHP(val);
+        indexToPlayerData[index].SetHP(hp, maxHp);
     }
     void OnBuffChangeEvent(int index, Buff buff)
     {

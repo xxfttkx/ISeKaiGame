@@ -78,6 +78,7 @@ public class Player : Creature
         GetPlayerDataByPrefession(character.profession);
         hp = character.creature.hp;
         maxHp = hp;
+        AddHpLimit(5 * expAddCharacteristics[(int)Characteristic.Hp]);
         ChangeCharValByExtra(0);
     }
 
@@ -103,7 +104,6 @@ public class Player : Creature
 
         // AIControl();
     }
-
     public virtual void BeHurt(int attack, EnemyBase e)
     {
         if (!IsAlive()) return;
@@ -112,17 +112,14 @@ public class Player : Creature
         EventHandler.CallEnemyHurtPlayerEvent(e, GetPlayerIndex(), attack);
         SaveLoadManager.Instance.SetPlayerExtraData(GetPlayerIndex(), ExtraType.BeHurt, attack);
         hp -= attack;
-        EventHandler.CallPlayerHpValChangeEvent(GetPlayerIndex(), GetHpVal());
+        EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
         if (hp <= 0)
         {
             Dead();
         }
     }
 
-    public int GetHp()
-    {
-        return hp;
-    }
+
     public void BeHealed(int heal, int restorer)
     {
         if (!IsAlive()) return;
@@ -132,7 +129,7 @@ public class Player : Creature
         if (heal <= 0) return;
         SaveLoadManager.Instance.SetPlayerExtraData(restorer, ExtraType.Heal, heal);
         hp += heal;
-        EventHandler.CallPlayerHpValChangeEvent(GetPlayerIndex(), GetHpVal());
+        EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
     }
     private void Stop()
     {
@@ -145,7 +142,7 @@ public class Player : Creature
     IEnumerator Dissolving()
     {
         float duration = 1f;
-        for (float t = 0; t<duration;t+=Time.deltaTime)
+        for (float t = 0; t < duration; t += Time.deltaTime)
         {
             float a = Mathf.Lerp(0f, 1f, t / duration);
             material.SetFloat("_EffectPercent", a);
@@ -155,7 +152,7 @@ public class Player : Creature
 
     }
 
-    public virtual void BeCompanionHurt(int atk,int atkIndex)
+    public virtual void BeCompanionHurt(int atk, int atkIndex)
     {
         if (!IsAlive())
         {
@@ -164,8 +161,8 @@ public class Player : Creature
         atk = Mathf.Min(hp - 1, atk);
         SaveLoadManager.Instance.SetPlayerExtraData(GetPlayerIndex(), ExtraType.BeHurt, atk);
         hp -= atk;
-        EventHandler.CallPlayerHurtPlayerEvent(atkIndex, GetPlayerIndex(),atk);
-        EventHandler.CallPlayerHpValChangeEvent(GetPlayerIndex(), GetHpVal());
+        EventHandler.CallPlayerHurtPlayerEvent(atkIndex, GetPlayerIndex(), atk);
+        EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
     }
 
     public virtual int GetAttack()
@@ -351,7 +348,7 @@ public class Player : Creature
     }
     public float GetProjectileSpeedBonus()
     {
-        return 1.0f+allBuff.ProjectileSpeedBonus;
+        return 1.0f + allBuff.ProjectileSpeedBonus;
     }
     public void EnterField()
     {
@@ -364,7 +361,7 @@ public class Player : Creature
     public float KillNumBonus(int e)
     {
         int num = SaveLoadManager.Instance.GetPlayerKillEnemyNum(GetPlayerIndex(), e);
-        return Mathf.Clamp01(num*1f/100f) + 1f;
+        return Mathf.Clamp01(num * 1f / 100f) + 1f;
     }
     public void OnSubPlayerCharacteristic(Characteristic ch)
     {
@@ -373,8 +370,9 @@ public class Player : Creature
             if (IsAlive())
             {
                 hp = Mathf.Max(1, hp - 5);
-                EventHandler.CallPlayerHpValChangeEvent(GetPlayerIndex(), GetHpVal());
             }
+            maxHp -= 5;
+            EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
         }
     }
     public void OnAddPlayerCharacteristic(Characteristic ch)
@@ -384,9 +382,15 @@ public class Player : Creature
             if (IsAlive())
             {
                 hp += 5;
-                //todo maxHP???
-                EventHandler.CallPlayerHpValChangeEvent(GetPlayerIndex(), GetHpVal());
             }
+            maxHp += 5;
+            EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
         }
+    }
+    public void AddHpLimit(int num)
+    {
+        hp += num;
+        maxHp += num;
+        EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
     }
 }

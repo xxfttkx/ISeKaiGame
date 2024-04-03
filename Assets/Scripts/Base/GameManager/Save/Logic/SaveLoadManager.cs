@@ -558,6 +558,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         if (num <= 0) return false;
         AddPlayerAddCharacteristic(playerIndex, ch);
         EventHandler.CallAddPlayerCharacteristicEvent(playerIndex, ch);
+        SaveAsync();
         return true;
     }
     public bool TrySubPlayerCharacteristic(int playerIndex, Characteristic ch)
@@ -566,6 +567,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         if (num <= 0) return false;
         SubPlayerAddCharacteristic(playerIndex, ch);
         EventHandler.CallSubPlayerCharacteristicEvent(playerIndex,ch);
+        SaveAsync();
         return true;
     }
 }

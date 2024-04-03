@@ -6,7 +6,6 @@ public class Creature : MonoBehaviour
 {
     public int hp;
     public int maxHp;
-    public int addHp;
 
 
     protected Dictionary<string, Buff> buffs;
@@ -29,8 +28,6 @@ public class Creature : MonoBehaviour
         buffToRel.Clear();
         buffs.Clear();
         allBuff.Clear();
-        addHp = 0;
-        // hp在子类中。。
     }
     public virtual bool IsAlive()
     {
@@ -47,9 +44,13 @@ public class Creature : MonoBehaviour
             }
         }
     }
+    public int GetHp()
+    {
+        return hp;
+    }
     public int GetMaxHP()
     {
-        return Mathf.CeilToInt((maxHp) * (1 + allBuff.hpBonus) + addHp);
+        return Mathf.CeilToInt((maxHp) * (1 + allBuff.hpBonus));
     }
     public float GetHpVal()
     {
@@ -66,7 +67,7 @@ public class Creature : MonoBehaviour
         if(IsAlive())
         {
             this.hp += changeHp;
-            EventHandler.CallPlayerHpValChangeEvent(GetPlayerIndex(), GetHpVal());
+            EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
         }
         if (duration > 0)
         {
@@ -83,8 +84,8 @@ public class Creature : MonoBehaviour
         if (IsAlive() && changeHp > 0)
         {
             this.hp += changeHp;
-            addHp += changeHp;
-            EventHandler.CallPlayerHpValChangeEvent(GetPlayerIndex(), GetHpVal());
+            maxHp += changeHp;
+            EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
         }
         if (duration > 0)
         {
@@ -101,8 +102,8 @@ public class Creature : MonoBehaviour
         if (IsAlive() && changeHp > 0)
         {
             this.hp += changeHp;
-            addHp += changeHp;
-            EventHandler.CallPlayerHpValChangeEvent(GetPlayerIndex(), GetHpVal());
+            maxHp += changeHp;
+            EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
         }
         if (duration > 0)
         {
@@ -130,7 +131,7 @@ public class Creature : MonoBehaviour
                 if(IsAlive())
                 {
                     hp = Mathf.Min(hp - changeHp, 1);
-                    EventHandler.CallPlayerHpValChangeEvent(GetPlayerIndex(), GetHpVal());
+                    EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
                 }
             }
             EventHandler.CallBuffRemoveEvent(GetPlayerIndex(), b);

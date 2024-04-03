@@ -1,4 +1,4 @@
-using System;
+using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +13,7 @@ public class PlayerData : MonoBehaviour
     public GameObject buffParent;
     public GameObject buffPrefab;
     public Dictionary<string, Bufftip> buffNameToBuffTip;
+    public TextMeshProUGUI hpAndMaxHp;
     private int index;
     private void Awake()
     {
@@ -39,8 +40,10 @@ public class PlayerData : MonoBehaviour
         image.SetNativeSize();
 
     }
-    public void SetHP(float val)
+    public void SetHP(int hp, int maxHp)
     {
+        hpAndMaxHp.text = $"{hp}/{maxHp}";
+        float val = Mathf.Clamp01(hp * 1f / maxHp);
         // 16-190
         float width = Mathf.Lerp(16, 190, val);
         hpRect.sizeDelta = new Vector2(width, hpRect.sizeDelta.y);
@@ -83,7 +86,6 @@ public class PlayerData : MonoBehaviour
     {
         this.index = index;
         SetImage(sprite);
-        SetHP(1);
     }
     void OnEnterLevelEvent(int _)
     {

@@ -213,11 +213,11 @@ public static class EventHandler
         LanguageChange?.Invoke(l);
     }
 
-    public static event Action<int, float> PlayerHpValChangeEvent;
-    public static void CallPlayerHpValChangeEvent(int index, float val)
+    public static event Action<int, int, int> PlayerHpChangeEvent;
+    public static void CallPlayerHpChangeEvent(int index, int hp, int maxHp)
     {
         if (index < 0) return;
-        PlayerHpValChangeEvent?.Invoke(index, val);
+        PlayerHpChangeEvent?.Invoke(index, hp, maxHp);
     }
     public static event Action<int, Buff> BuffChangeEvent;
     public static void CallBuffChangeEvent(int index, Buff b)

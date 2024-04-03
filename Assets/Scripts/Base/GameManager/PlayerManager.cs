@@ -326,7 +326,6 @@ public class PlayerManager : Singleton<PlayerManager>
         foreach (var p in players)
         {
             p.Reset();
-            EventHandler.CallPlayerHpValChangeEvent(p.GetPlayerIndex(), 1f);
             EventHandler.CallFieldTimeChangeEvent(p.GetPlayerIndex(), 0f);
         }
         foreach (var p in players)

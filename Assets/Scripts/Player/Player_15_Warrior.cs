@@ -87,8 +87,8 @@ public class Player_15_Warrior : Player_Area
             if(maxAddHpCount>0)
             {
                 --maxAddHpCount;
-                addHp++;
-                EventHandler.CallPlayerHpValChangeEvent(GetPlayerIndex(), GetHpVal());
+                maxHp++;
+                EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
             }
         }
         if (count >= _needHitNum)
