@@ -12,7 +12,6 @@ public class PoolManager : Singleton<PoolManager>
 
     // index to prefab
     public List<ObjectPool<GameObject>> enemyPoolList;
-    private Queue<GameObject> soundQueue = new Queue<GameObject>();
     protected override void Awake()
     {
         base.Awake();
@@ -98,7 +97,7 @@ public class PoolManager : Singleton<PoolManager>
         GameObject obj = objPool.Get();
         obj.transform.position = attacker.transform.position;
         GuangQiu b = obj.GetComponent<GuangQiu>();
-        AudioManager.Instance.PlaySoundEffect(SoundName.EnemyProjectile);
+        // AudioManager.Instance.PlaySoundEffect(SoundName.EnemyProjectile);
         b.AttackPlayer(dir, attacker, size, speed);
     }
     public void CreateFeather(EnemyBase e, Vector3 pos)
@@ -112,14 +111,14 @@ public class PoolManager : Singleton<PoolManager>
     public void ClearPools()
     {
         // todo 写个回调？？ backToTitle的时候pool里的release？？？
-        /*foreach(var pool in poolList)
+        foreach(var pool in poolList)
         {
             pool.Clear();
         }
         foreach(var pool in enemyPoolList)
         {
             pool.Clear();
-        }*/
+        }
 
     }
 
@@ -146,36 +145,11 @@ public class PoolManager : Singleton<PoolManager>
     }
     public void PlaySoundEffect(SoundDetails soundDetails)
     {
-        var obj = GetSoundPoolObject();
-        obj.SetActive(true);
+        ObjectPool<GameObject> objPool = poolList[6];
+        GameObject obj = objPool.Get();
         obj.GetComponent<Sound>().SetSound(soundDetails);
         
-        StartCoroutine(DisableSound(obj, soundDetails.soundClip.length));
-    }
-    private GameObject GetSoundPoolObject()
-    {
-        if (soundQueue.Count < 2)
-            CreateSoundPool();
-        return soundQueue.Dequeue();
-    }
-    private void CreateSoundPool()
-    {
-        var parent = new GameObject("Sound").transform;
-        parent.SetParent(transform);
-
-        for (int i = 0; i < 20; i++)
-        {
-            GameObject newObj = Instantiate(poolPrefabs[6], parent);
-            newObj.SetActive(false);
-            soundQueue.Enqueue(newObj);
-        }
-    }
-
-    private IEnumerator DisableSound(GameObject obj, float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        obj.SetActive(false);
-        soundQueue.Enqueue(obj);
+        StartCoroutine(DelayRelease(obj, 6, soundDetails.soundClip.length));
     }
 
 
