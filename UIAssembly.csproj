@@ -89,6 +89,7 @@
     <Compile Include="Assets\Scripts\UI\SettingsPanel.cs" />
     <Compile Include="Assets\Scripts\UI\ChangeHPUI.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\RankData.cs" />
     <Compile Include="Assets\Scripts\UI\DataRaw.cs" />
     <Compile Include="Assets\Scripts\UI\SlotPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Button\ImageBtn.cs" />

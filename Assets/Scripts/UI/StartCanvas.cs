@@ -13,6 +13,7 @@ public class StartCanvas : Singleton<StartCanvas>
     public BtnBase btnQuit;
     public ExtraPanel extraPanel;
     public DataPanel dataPanel;
+    public RankPanel rankPanel;
     protected override void Awake()
     {
         base.Awake();
@@ -72,6 +73,14 @@ public class StartCanvas : Singleton<StartCanvas>
     public void HideDataPanel()
     {
         dataPanel.gameObject.SetActive(false);
+    }
+    public void ShowRankPanel()
+    {
+        rankPanel.gameObject.SetActive(true);
+    }
+    public void HideRankPanel()
+    {
+        rankPanel.gameObject.SetActive(false);
     }
 
 }

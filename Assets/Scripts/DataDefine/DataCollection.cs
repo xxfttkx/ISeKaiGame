@@ -254,6 +254,10 @@ public class CharsPassLevel : IComparable<CharsPassLevel>
 {
     private List<int> indexes;
     private int level;
+    public List<int> Indexes
+    {
+        get => indexes;
+    }
     public int Level
     {
         get => level;

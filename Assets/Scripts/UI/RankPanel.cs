@@ -8,6 +8,7 @@ public class RankPanel : MonoBehaviour
     public bool bInit;
     public GameObject rankParent;
     public GameObject rankPrefab;
+    List<RankData> rankDataList = new List<RankData>();
 
     private void OnEnable()
     {
@@ -26,11 +27,24 @@ public class RankPanel : MonoBehaviour
                 l.Add(c);
             }
             l.Sort();
-            foreach (var c in l)
+            for (int i = 0; i < l.Count; ++i)
             {
-
+                RankData data;
+                if (i < rankDataList.Count)
+                    data = rankDataList[i];
+                else
+                {
+                    var go = Instantiate(rankPrefab, rankParent.transform);
+                    data = go.GetComponent<RankData>();
+                }
+                data.Init(l[i].Indexes, i + 1, l[i].Level);
+                data.gameObject.SetActive(true);
+            }
+            for(int i = l.Count;i< rankDataList.Count;i++)
+            {
+                rankDataList[i].gameObject.SetActive(false);
             }
         }
-        
+
     }
 }
