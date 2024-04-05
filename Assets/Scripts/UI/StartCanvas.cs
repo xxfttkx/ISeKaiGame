@@ -49,12 +49,11 @@ public class StartCanvas : Singleton<StartCanvas>
     }
     public void ShowLanguagePanel()
     {
-        languagePanel.gameObject.SetActive(true);
-        languagePanel.TryInit();
+        languagePanel.Show();
     }
     public void HideLanguagePanel()
     {
-        languagePanel.gameObject.SetActive(false);
+        languagePanel.Hide();
     }
     public void ShowSettingsPanel()
     {
@@ -76,11 +75,11 @@ public class StartCanvas : Singleton<StartCanvas>
     }
     public void ShowRankPanel()
     {
-        rankPanel.gameObject.SetActive(true);
+        rankPanel.Show();
     }
     public void HideRankPanel()
     {
-        rankPanel.gameObject.SetActive(false);
+        rankPanel.Hide();
     }
 
 }

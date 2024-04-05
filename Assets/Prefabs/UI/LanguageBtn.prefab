@@ -153,7 +153,9 @@ MonoBehaviour:
   upBtn: {fileID: 0}
   downBtn: {fileID: 0}
   slot: {fileID: 3061300715366460430}
+  image: {fileID: 0}
   enterColor: {r: 0.7283019, g: 0.7283019, b: 0.7283019, a: 1}
   seletedColor: {r: 0.3660378, g: 0.3660378, b: 0.3660378, a: 1}
   unSeletedColor: {r: 1, g: 1, b: 1, a: 1}
-  seleted: 0
+  selected: 0
+  index: 0

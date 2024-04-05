@@ -9,6 +9,11 @@ public class BtnBaseCtl : MonoBehaviour
     public BtnBase firstBtn;
     public BtnBase currBtn;
     public bool useKeyboard;
+    public bool IsShow
+    {
+        set => isShow = value;
+        get=>isShow;
+    }
 
     private void Awake()
     {

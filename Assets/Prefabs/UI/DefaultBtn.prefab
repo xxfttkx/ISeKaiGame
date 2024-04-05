@@ -99,10 +99,10 @@ MonoBehaviour:
   btnClick:
     m_PersistentCalls:
       m_Calls: []
-  left: {fileID: 0}
-  right: {fileID: 0}
-  up: {fileID: 0}
-  down: {fileID: 0}
+  leftBtn: {fileID: 0}
+  rightBtn: {fileID: 0}
+  upBtn: {fileID: 0}
+  downBtn: {fileID: 0}
   slot: {fileID: 0}
 --- !u!1 &9125641877497988352
 GameObject:

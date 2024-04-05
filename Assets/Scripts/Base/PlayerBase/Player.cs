@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 public class Player : Creature
 {
     public CharacterDataList_SO characterData;
@@ -137,6 +138,7 @@ public class Player : Creature
     }
     public void Dead()
     {
+        transform.DOScale(0f, .5f);
         StartCoroutine(Dissolving());
     }
     IEnumerator Dissolving()

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -22,6 +23,7 @@ public class UIManager : Singleton<UIManager>
     protected override void Awake()
     {
         base.Awake();
+        DOTween.Init();
         playerSettingsPanel.gameObject.SetActive(false);
         pausePanel.gameObject.SetActive(false);
         settingsPanel.gameObject.SetActive(false);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DG.Tweening;
 public class CharacterJump : MonoBehaviour
 {
     Image image;
@@ -30,6 +30,7 @@ public class CharacterJump : MonoBehaviour
         float t;
         float curveT;
         float duration;
+
         while (true)
         {
             max = min + jumpHeight + Random.Range(-10, 10f);

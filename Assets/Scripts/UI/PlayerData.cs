@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class PlayerData : MonoBehaviour
 {
@@ -27,12 +28,12 @@ public class PlayerData : MonoBehaviour
     private void OnEnable()
     {
         EventHandler.EnterLevelEvent += OnEnterLevelEvent;
-        
+
     }
     private void OnDisable()
     {
         EventHandler.EnterLevelEvent -= OnEnterLevelEvent;
-        
+
     }
     public void SetImage(Sprite sp)
     {
@@ -93,6 +94,6 @@ public class PlayerData : MonoBehaviour
     }
     public void SetPlayerDead()
     {
-        image.transform.rotation = Quaternion.Euler(0, 0, 90);
+        image.transform.DORotate(new Vector3(0, 0, 90), .5f);
     }
 }

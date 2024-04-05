@@ -26,13 +26,13 @@ MonoBehaviour:
       desc: "\u4F24\u5BB3*1.5 money\u83B7\u5F97\u6548\u73870.2"
     name: cache coeur
     profession: 0
-    desc: 0
+    desc: 31
     extraTypes: 010000000000000005000000
     extraThresholds: 102700001027000005000000
-    extraDesire1: 000000000000000000000000
-    extraDesire2: 000000000000000000000000
-    extraCharacteristics: 0200000003000000
-    extraCharacteristicVals: 0300000001000000
+    extraDesire1: ffffffff2000000022000000
+    extraDesire2: ffffffff2100000023000000
+    extraCharacteristics: 0200000000000000
+    extraCharacteristicVals: 030000000f000000
     extraData: 
     finished: 1
   - index: 1
@@ -48,12 +48,12 @@ MonoBehaviour:
       desc: "\u7FBD\u6BDB\u653B\u51FB \u961F\u4F0DBuff atk*=1.2  \u961F\u4F0D\u4E2D\u51FB\u6740\u8005attack/=2"
     name: nirvana
     profession: 2
-    desc: 0
-    extraTypes: 010000000400000006000000
-    extraThresholds: 010000000100000001000000
-    extraDesire1: 000000000000000000000000
-    extraDesire2: 000000000000000000000000
-    extraCharacteristics: 0200000005000000
+    desc: 36
+    extraTypes: 000000000300000005000000
+    extraThresholds: 10270000e803000005000000
+    extraDesire1: 000000002500000027000000
+    extraDesire2: 000000002600000028000000
+    extraCharacteristics: 0100000003000000
     extraCharacteristicVals: 0300000003000000
     extraData: 
     finished: 1
@@ -70,13 +70,13 @@ MonoBehaviour:
       desc: "\u7ED9\u961F\u53CB\u4E0A\u6240\u6709\u5C6C\u6027\u52A010% \u961F\u4F0D\u4E2D\u51FB\u6740\u4EBA\u7B97\u6211"
     name: 2
     profession: 1
-    desc: 0
-    extraTypes: 030000000400000006000000
-    extraThresholds: bc0100001700000002000000
-    extraDesire1: 000000000000000000000000
-    extraDesire2: 000000000000000000000000
+    desc: 41
+    extraTypes: 020000000100000005000000
+    extraThresholds: 102700008813000005000000
+    extraDesire1: 000000002a0000002c000000
+    extraDesire2: 000000002b0000002d000000
     extraCharacteristics: 0200000003000000
-    extraCharacteristicVals: 0100000001000000
+    extraCharacteristicVals: 0300000003000000
     extraData: 
     finished: 1
   - index: 3
@@ -92,12 +92,12 @@ MonoBehaviour:
       desc: 
     name: acacia
     profession: 3
-    desc: 0
-    extraTypes: 010000000500000006000000
-    extraThresholds: 000000000000000014000000
-    extraDesire1: 000000000000000000000000
-    extraDesire2: 000000000000000000000000
-    extraCharacteristics: 0200000005000000
+    desc: 46
+    extraTypes: 000000000300000005000000
+    extraThresholds: 10270000e803000005000000
+    extraDesire1: 000000002f00000031000000
+    extraDesire2: 000000003000000032000000
+    extraCharacteristics: 0200000001000000
     extraCharacteristicVals: 0300000003000000
     extraData: 
     finished: 1

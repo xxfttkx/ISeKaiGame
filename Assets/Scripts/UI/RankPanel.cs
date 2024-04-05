@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 
-public class RankPanel : MonoBehaviour
+public class RankPanel : BasePanel
 {
     public bool bInit;
     public GameObject rankParent;

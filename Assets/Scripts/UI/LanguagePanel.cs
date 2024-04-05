@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class LanguagePanel : MonoBehaviour
+public class LanguagePanel : BasePanel
 {
     public GameObject parent;
     public GameObject btnPrefab;

@@ -12,7 +12,7 @@ public class EscEvent : UnityEvent
 
 public class ShadowImage : MonoBehaviour, IPointerClickHandler
 {
-    private Image shadow;
+    public Image shadow;
     public EscEvent escEvent;
     private void Awake()
     {

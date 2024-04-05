@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa99cf046071c8345a3a4243191b797e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: 1
   btnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -138,6 +139,10 @@ MonoBehaviour:
   btnClick:
     m_PersistentCalls:
       m_Calls: []
+  leftBtn: {fileID: 0}
+  rightBtn: {fileID: 0}
+  upBtn: {fileID: 0}
+  downBtn: {fileID: 0}
   chara: {fileID: 9036950894218655179}
   slot: {fileID: 2335017255676326954}
   index: 0

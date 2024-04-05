@@ -233,7 +233,7 @@ public class Buff
 [System.Serializable]
 public class LanguageToText
 {
-    [TextArea(3, 10)]
+    [TextArea(1, 10)]
     public List<string> texts;
 }
 
