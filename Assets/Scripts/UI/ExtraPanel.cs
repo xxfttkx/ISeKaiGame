@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ExtraPanel : Singleton<ExtraPanel>
+public class ExtraPanel : BasePanel
 {
     public GameObject playerBtnPrefab;
     public GameObject playerBtnParent;

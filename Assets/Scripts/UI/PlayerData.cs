@@ -94,6 +94,6 @@ public class PlayerData : MonoBehaviour
     }
     public void SetPlayerDead()
     {
-        image.transform.DORotate(new Vector3(0, 0, 90), .5f);
+        image.transform.DORotate(new Vector3(0, 0, 90), .5f).SetUpdate(true);
     }
 }

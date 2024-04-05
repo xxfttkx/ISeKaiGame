@@ -81,6 +81,7 @@ public class Player : Creature
         maxHp = hp;
         AddHpLimit(5 * expAddCharacteristics[(int)Characteristic.Hp]);
         ChangeCharValByExtra(0);
+        transform.localScale = Vector3.one;
     }
 
     protected virtual void OnEnterLevelEvent(int _)
@@ -138,8 +139,9 @@ public class Player : Creature
     }
     public void Dead()
     {
-        transform.DOScale(0f, .5f);
-        StartCoroutine(Dissolving());
+        transform.DORotate(new Vector3(0, 0, 360), .5f, RotateMode.FastBeyond360);
+        transform.DOScale(0f, .5f). OnComplete(() => PlayerManager.Instance.PlayerDead(GetPlayerIndex()));
+        
     }
     IEnumerator Dissolving()
     {

@@ -18,5 +18,6 @@ public class Settings
     /*    public Dictionary<int, KeyCode> changePlayerKey = new Dictionary<int, KeyCode>() {1=KeyCode.Alpha1 };*/
     public const float circleAnimTime = 0.3f;
     public const float jumpDuration = 0.3f;
+    public const float basePanelShowTime = 0.3f;
     public const int maxCompanionNum = 10;
 }

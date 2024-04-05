@@ -35,6 +35,7 @@ public class RankPanel : BasePanel
                 {
                     var go = Instantiate(rankPrefab, rankParent.transform);
                     data = go.GetComponent<RankData>();
+                    rankDataList.Add(data);
                 }
                 data.Init(l[i].Indexes, i + 1, l[i].Level);
                 data.gameObject.SetActive(true);

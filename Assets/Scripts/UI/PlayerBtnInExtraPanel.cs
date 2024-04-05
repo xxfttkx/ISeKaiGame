@@ -29,13 +29,7 @@ public class PlayerBtnInExtraPanel : BtnBase
     }
     public override void BtnClick()
     {
-        if(selected)
-        {
-        }
-        else
-        {
-            ExtraPanel.Instance.Select(index);
-        }
+        // todo action
         
         
     }

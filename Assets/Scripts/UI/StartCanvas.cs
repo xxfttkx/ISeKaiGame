@@ -57,12 +57,11 @@ public class StartCanvas : Singleton<StartCanvas>
     }
     public void ShowSettingsPanel()
     {
-        settingsPanel.gameObject.SetActive(true);
-        settingsPanel.Init();
+        settingsPanel.Show();
     }
     public void HideSettingsPanel()
     {
-        settingsPanel.gameObject.SetActive(false);
+        settingsPanel.Hide();
     }
     public void ShowDataPanel()
     {

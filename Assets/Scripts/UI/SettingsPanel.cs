@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class SettingsPanel : MonoBehaviour
+public class SettingsPanel : BasePanel
 {
     public bool bInit;
     public SoundSettingsPanel soundSettingsPanel;

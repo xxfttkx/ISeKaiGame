@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class DataPanel : MonoBehaviour
+public class DataPanel : BasePanel
 {
     public bool bInit;
     public GameObject dataRawParent;
