@@ -284,7 +284,7 @@ public class PlayerManager : Singleton<PlayerManager>
         int r = indexToPlayer[playerIndex].GetAttackRange();
         float bonus = 1;
         if (currPlayerIndex != playerIndex)
-            bonus += 0.5f;
+            bonus += 0.2f;
         r = Mathf.CeilToInt(r * bonus);
         return r;
     }

@@ -4,6 +4,8 @@ Shader "Custom/Player" {
         _Effect ("Effect", 2D) = "white" {}
         _EffectScale("EffectScale", Range(1, 100)) = 0
         _EffectPercent("EffectPercent",Range(0,1))=0
+        _Index("Index",Range(0,20)) = 0
+        _Max("Max",Range(0,30)) = 30
     }
     SubShader {
         Tags { "Queue" = "Transparent" }

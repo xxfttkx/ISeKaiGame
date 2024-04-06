@@ -114,13 +114,13 @@ MonoBehaviour:
       desc: 
     name: coq au vin
     profession: 2
-    desc: 0
-    extraTypes: 010000000400000006000000
-    extraThresholds: 000000000000000000000000
-    extraDesire1: 000000000000000000000000
-    extraDesire2: 000000000000000000000000
-    extraCharacteristics: 0200000005000000
-    extraCharacteristicVals: 0200000002000000
+    desc: 51
+    extraTypes: 000000000300000005000000
+    extraThresholds: 10270000e803000005000000
+    extraDesire1: 000000003400000036000000
+    extraDesire2: 000000003500000037000000
+    extraCharacteristics: 0100000004000000
+    extraCharacteristicVals: 0300000003000000
     extraData: 
     finished: 1
   - index: 5
