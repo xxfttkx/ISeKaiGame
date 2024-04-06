@@ -88,7 +88,7 @@ public class Player_17_Mage : Player
             else if(extras[1]==2)
             {
                 foreach (var p in PlayerManager.Instance.players)
-                    PlayerManager.Instance.PlayerHurtPlayer(GetPlayerIndex(), p.GetPlayerIndex(), num);
+                    PlayerManager.Instance.PlayerHealPlayer(GetPlayerIndex(), p.GetPlayerIndex(), num);
             }
         }
     }

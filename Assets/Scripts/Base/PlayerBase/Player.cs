@@ -163,6 +163,7 @@ public class Player : Creature
             return;
         }
         atk = Mathf.Min(hp - 1, atk);
+        if (atk <= 0) return;
         SaveLoadManager.Instance.SetPlayerExtraData(GetPlayerIndex(), ExtraType.BeHurt, atk);
         hp -= atk;
         EventHandler.CallPlayerHurtPlayerEvent(atkIndex, GetPlayerIndex(), atk);

@@ -200,10 +200,10 @@ public class PoolManager : Singleton<PoolManager>
     }
     public void CreatePlayer17AtkEffect(Vector2 pos)
     {
-        ObjectPool<GameObject> objPool = poolList[11];
+        ObjectPool<GameObject> objPool = poolList[14];
         GameObject obj = objPool.Get();
         obj.transform.position = pos;
-        StartCoroutine(DelayRelease(obj,11,0.1f));
+        StartCoroutine(DelayRelease(obj,14,0.5f));
     }
     IEnumerator DelayRelease(GameObject go, int poolIndex,float time)
     {
