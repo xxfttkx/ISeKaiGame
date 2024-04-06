@@ -10,7 +10,7 @@ public class TextDataList_SO : ScriptableObject
     public string GetTextString(int key,int languageIndex)
     {
         string ans = "";
-        if (key > textDataList.Count) return ans;
+        if (key >= textDataList.Count) return ans;
         if (languageIndex >= textDataList[key].texts.Count)
         {
             languageIndex = 1;

@@ -46,8 +46,8 @@ public class Player_6_Mage : Player
         else if (extras[3] == 1)cost = 20;
         else if (extras[3] == 2)cost = 0;
         Player p;
-        if (extras[2] == 1) p = PlayerManager.Instance.GetMinHpValPlayer();
-        else p = PlayerManager.Instance.GetMaxHpValPlayer();
+        if (extras[2] == 1) cost /= 2;
+        p = PlayerManager.Instance.GetMaxHpPlayer();
         PlayerManager.Instance.PlayerHurtPlayer(7, p.GetPlayerIndex(), cost);
         PoolManager.Instance.CreateChicken(pos);
     }

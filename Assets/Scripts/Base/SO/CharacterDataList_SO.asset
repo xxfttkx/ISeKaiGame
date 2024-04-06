@@ -136,13 +136,13 @@ MonoBehaviour:
       desc: 
     name: white lady
     profession: 2
-    desc: 0
-    extraTypes: 010000000400000006000000
-    extraThresholds: 000000000000000000000000
-    extraDesire1: 000000000000000000000000
-    extraDesire2: 000000000000000000000000
-    extraCharacteristics: 0200000005000000
-    extraCharacteristicVals: 0500000002000000
+    desc: 56
+    extraTypes: 000000000300000005000000
+    extraThresholds: 050d00004d01000005000000
+    extraDesire1: 00000000390000003b000000
+    extraDesire2: 000000003a0000003c000000
+    extraCharacteristics: 0100000004000000
+    extraCharacteristicVals: 0300000003000000
     extraData: 
     finished: 1
   - index: 6
@@ -158,12 +158,12 @@ MonoBehaviour:
       desc: 
     name: yellow fly
     profession: 2
-    desc: 0
-    extraTypes: 01000000040000000600000003000000
-    extraThresholds: 00000000000000000000000000000000
-    extraDesire1: 00000000000000000000000000000000
-    extraDesire2: 00000000000000000000000000000000
-    extraCharacteristics: 0200000005000000
+    desc: 61
+    extraTypes: 00000000030000000500000002000000
+    extraThresholds: 050d00004d01000005000000050d0000
+    extraDesire1: 000000003e0000004000000042000000
+    extraDesire2: 000000003f0000004100000043000000
+    extraCharacteristics: 0100000004000000
     extraCharacteristicVals: 0300000003000000
     extraData: 
     finished: 1

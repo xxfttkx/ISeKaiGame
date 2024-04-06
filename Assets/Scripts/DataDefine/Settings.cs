@@ -19,5 +19,6 @@ public class Settings
     public const float circleAnimTime = 0.3f;
     public const float jumpDuration = 0.3f;
     public const float basePanelShowTime = 0.3f;
+    public const float hurtEnemyShowHpTime = 0.3f;
     public const int maxCompanionNum = 10;
 }

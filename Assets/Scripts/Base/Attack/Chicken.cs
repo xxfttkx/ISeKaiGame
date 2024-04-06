@@ -13,11 +13,16 @@ public class Chicken : MonoBehaviour
     int speed;
     float cd;
     bool bReleased;
+    Material material;
     Vector2 _pos
     {
         get => this.transform.position;
     }
 
+    private void Awake()
+    {
+        material = GetComponent<SpriteRenderer>().material;
+    }
     /// <summary>
     /// Init
     /// </summary>
@@ -43,6 +48,7 @@ public class Chicken : MonoBehaviour
         {
             StartCoroutine(RangedAttack());
         }
+        material.SetInteger("_Type", extras[1] + 1);
 
         StartCoroutine(AutoRelease());
     }

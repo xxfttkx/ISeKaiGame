@@ -12814,6 +12814,10 @@ PrefabInstance:
       propertyPath: index
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 2963835385546287236, guid: a12831bbd2bfe0b4da7512371337716b, type: 3}
+      propertyPath: interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6544972491541758038, guid: a12831bbd2bfe0b4da7512371337716b, type: 3}
       propertyPath: m_text
       value: "\u4FDD\u5B58\u6210\u529F"
@@ -12846,6 +12850,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8798988141976517158, guid: a12831bbd2bfe0b4da7512371337716b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 48d795caac59ecd4b92eeecc4410fd31, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 public class ChangeHPUI : MonoBehaviour
 {
@@ -17,7 +18,8 @@ public class ChangeHPUI : MonoBehaviour
         this.transform.position = Camera.main.WorldToScreenPoint(c._pos);
         t.text = $"{num}";
         releaseFun = fun;
-        StartCoroutine(DelayRelease(c));
+        // StartCoroutine(DelayRelease(c));
+        transform.DOLocalMoveY(transform.localPosition.y + 20,Settings.hurtEnemyShowHpTime).OnComplete(()=> releaseFun?.Invoke());
     }
     IEnumerator DelayRelease(Creature c)
     {

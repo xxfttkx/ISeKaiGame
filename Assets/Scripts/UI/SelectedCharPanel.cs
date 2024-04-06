@@ -19,7 +19,7 @@ public class SelectedCharPanel : Singleton<SelectedCharPanel>
     {
         var ch = SOManager.Instance.characterDataList_SO.characters[playerIndex];
         selectedChar.sprite = ch.creature.sprite;
-        desc.text = ch.index+": "+ch.desc;
+        desc.text = $"{ch.index}:\n{SOManager.Instance.GetStringByIndex(ch.desc)}";
     }
     public void CancelSelectChar()
     {

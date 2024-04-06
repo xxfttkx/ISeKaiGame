@@ -13,6 +13,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     private GameSaveData gameSaveData = null;
     private List<int> currPlayerIndexes;
     List<int> addSlotNeedMoneyList = new List<int> { 0, 0, 0, 10000, 30000, 100000, 200000, 300000, 400000, 1000000 };
+    List<int> expToLevelList = new List<int> { 10, 30, 100, 1000, 3000, 10000, 30000, 100000, 200000, 300000 };
     private bool finishLoad = false;
     public bool FinishLoad
     {
