@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -132336119
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b5e6cdd306865cd4290644856a957887, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4ba4c2cbb7973c541ad6b5b18fc2ef40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -258,7 +258,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   maxHp: 0
-  addHp: 0
   allBuff:
     buffName: 
     duration: 0
@@ -288,11 +287,11 @@ MonoBehaviour:
       desc: 
     name: 
     profession: 0
-    desc: 
+    desc: 0
     extraTypes: 
     extraThresholds: 
-    extraDesire1: []
-    extraDesire2: []
+    extraDesire1: 
+    extraDesire2: 
     extraCharacteristics: 
     extraCharacteristicVals: 
     extraData: 

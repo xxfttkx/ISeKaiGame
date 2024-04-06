@@ -35,6 +35,7 @@ public class ExtraSkill : MonoBehaviour
         int curr = SaveLoadManager.Instance.GetPlayerExtraData(playerIndex, ch.extraTypes[extraIndex]);
         int threshold = ch.extraThresholds[extraIndex];
         bool canSelect = curr >= threshold;
+        canSelect = true;
         string color = canSelect ? "green" : "red";
         string currState = $"(<color={color}>{curr}</color>/{threshold})";
         extraCost.text = Utils.GetExtraString(ch.extraTypes[extraIndex], ch.extraThresholds[extraIndex])+"\n"+currState;

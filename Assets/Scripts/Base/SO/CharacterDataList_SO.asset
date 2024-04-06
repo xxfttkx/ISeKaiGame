@@ -180,13 +180,13 @@ MonoBehaviour:
       desc: 
     name: platinum
     profession: 0
-    desc: 0
-    extraTypes: 010000000200000006000000
-    extraThresholds: 000000000000000000000000
-    extraDesire1: 000000000000000000000000
-    extraDesire2: 000000000000000000000000
-    extraCharacteristics: 0200000005000000
-    extraCharacteristicVals: 0200000001000000
+    desc: 68
+    extraTypes: 000000000100000005000000
+    extraThresholds: 050d0000050d000005000000
+    extraDesire1: 000000004500000047000000
+    extraDesire2: 000000004600000048000000
+    extraCharacteristics: 0100000000000000
+    extraCharacteristicVals: 020000000a000000
     extraData: 
     finished: 1
   - index: 8
@@ -202,13 +202,13 @@ MonoBehaviour:
       desc: 
     name: virtuo
     profession: 0
-    desc: 0
-    extraTypes: 020000000100000006000000
-    extraThresholds: 000000000000000000000000
-    extraDesire1: 000000000000000000000000
-    extraDesire2: 000000000000000000000000
-    extraCharacteristics: 0200000004000000
-    extraCharacteristicVals: 0200000002000000
+    desc: 73
+    extraTypes: 000000000100000007000000
+    extraThresholds: 050d0000050d000005000000
+    extraDesire1: 000000004a0000004c000000
+    extraDesire2: 000000004b0000004d000000
+    extraCharacteristics: 0100000000000000
+    extraCharacteristicVals: 020000000a000000
     extraData: 
     finished: 1
   - index: 9
@@ -224,12 +224,12 @@ MonoBehaviour:
       desc: 
     name: 99
     profession: 1
-    desc: 0
-    extraTypes: 03000000020000000600000007000000
-    extraThresholds: 00000000000000000000000000000000
-    extraDesire1: 00000000000000000000000000000000
-    extraDesire2: 00000000000000000000000000000000
-    extraCharacteristics: 0200000004000000
+    desc: 78
+    extraTypes: 01000000020000000500000006000000
+    extraThresholds: 050d0000050d00000500000064000000
+    extraDesire1: 000000004f0000005100000053000000
+    extraDesire2: 00000000500000005200000054000000
+    extraCharacteristics: 0100000003000000
     extraCharacteristicVals: 0300000003000000
     extraData: 
     finished: 1

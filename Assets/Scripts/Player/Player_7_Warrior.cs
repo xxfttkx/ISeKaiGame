@@ -24,7 +24,6 @@ public class Player_7_Warrior : Player
     {
         stand.SetActive(false);
         base.Reset();
-        StartCoroutine(Attack());
     }
     public override void StartAttack()
     {
@@ -35,7 +34,7 @@ public class Player_7_Warrior : Player
     {
         while (true)
         {
-            var e = Utils.GetNearestEnemy(stand.transform.position, this.GetAttackRange());
+            var e = Utils.GetNearestEnemy(stand.transform.position, _range);
             if (e != null)
             {
                 StartCoroutine(AttackAnim(e));
@@ -81,6 +80,7 @@ public class Player_7_Warrior : Player
                     count++;
                 }
             }
+            if (count == 0) return;
             int atk = Mathf.FloorToInt(attack / count);
             int remain = attack % count;
             foreach (var p in PlayerManager.Instance.players)
@@ -123,7 +123,7 @@ public class Player_7_Warrior : Player
                 {
                     var a = p.GetHp() - 1;
                     PlayerManager.Instance.EnemyHurtPlayer(null, p, a);
-                    base.BeHurt(atk - a,e);
+                    base.BeHurt(attack - a,e);
                 }
             }
         }
@@ -134,7 +134,7 @@ public class Player_7_Warrior : Player
         return extras[1] switch
         {
             0 => 3,
-            1 => 4,
+            1 => 6,
             2 => 2,
             _ => 3,
         };
