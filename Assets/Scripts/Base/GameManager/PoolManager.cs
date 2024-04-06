@@ -130,17 +130,18 @@ public class PoolManager : Singleton<PoolManager>
         BianPao b = obj.GetComponent<BianPao>();
         b.AttackEnemy(e,p);
     }
-    public void BianPaoExplosion(Vector2 pos)
+    public void BianPaoExplosion(Vector2 pos,float range)
     {
-        ObjectPool<GameObject> objPool = poolList[5];
+        ObjectPool<GameObject> objPool = poolList[12];
         GameObject obj = objPool.Get();
         obj.transform.position = pos;
-        StartCoroutine(ReleaseRoutine(objPool, obj));
+        obj.transform.localScale = new Vector2(range, range);
+        StartCoroutine(ReleaseRoutine(objPool, obj, .5f));
     }
 
-    private IEnumerator ReleaseRoutine(ObjectPool<GameObject> pool, GameObject obj)
+    private IEnumerator ReleaseRoutine(ObjectPool<GameObject> pool, GameObject obj, float duration)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(duration);
         pool.Release(obj);
     }
     public void PlaySoundEffect(SoundDetails soundDetails)
@@ -186,7 +187,7 @@ public class PoolManager : Singleton<PoolManager>
         ObjectPool<GameObject> objPool = poolList[10];
         GameObject obj = objPool.Get();
         obj.transform.position = pos;
-        PlayerAtk f = obj.GetComponent<PlayerAtk>();
+        Letter f = obj.GetComponent<Letter>();
         f.AttackEnemy(e, p);
     }
     public void CreateLetterFollowEnemy(EnemyBase e, int atk, Vector2 pos,List<int>extras)

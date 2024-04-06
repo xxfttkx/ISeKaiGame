@@ -186,11 +186,11 @@ public class Player : Creature
     public virtual int GetAttack()
     {
         if (!IsAlive()) return 1;
-        return Mathf.CeilToInt(atk * (1 + allBuff.attackBonus) * GetTimeBonus());
+        return Mathf.CeilToInt(GetRawAtk() * GetTimeBonus());
     }
     public virtual int GetSpeed()
     {
-        return Mathf.CeilToInt(speed * (1 + allBuff.speedBonus));
+        return Mathf.CeilToInt(GetRawSpeed() * (1 + allBuff.speedBonus));
     }
     public virtual int GetAttackSpeed()
     {

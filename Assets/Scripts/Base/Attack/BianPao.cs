@@ -44,7 +44,7 @@ public class BianPao : PlayerAtk
     IEnumerator StartExplosion()
     {
         yield return new WaitForSeconds(GetExplosionTime());
-        PoolManager.Instance.BianPaoExplosion(_pos);
+        PoolManager.Instance.BianPaoExplosion(_pos, _explosionRange);
         var enemies = Utils.GetNearEnemies(_pos, _explosionRange);
         if(enemies!=null)
         {
@@ -53,11 +53,9 @@ public class BianPao : PlayerAtk
                 PlayerManager.Instance.PlayerHurtEnemy(12, e, GetAtk());
             }
         }
-        
         var p = PlayerManager.Instance.GetPlayerInControl();
         if(Utils.CanAttackPlayer(this.gameObject, p, _explosionRange))
             PlayerManager.Instance.PlayerHurtPlayer(12, p.character.index, GetAtkPlayerVal());
-
         Release();
     }
     float GetExplosionTime()

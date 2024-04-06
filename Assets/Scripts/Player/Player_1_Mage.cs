@@ -44,6 +44,7 @@ public class Player_1_Mage : Player_Single
         if (playerIndex == GetPlayerIndex() && extraIndex == 2)
         {
             AddBuffBeforeStart();
+            EventHandler.CallPlayerCharacteristicChangeEvent(this);
         }
     }
     private float GetBuffBonus()
