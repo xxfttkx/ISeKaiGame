@@ -312,13 +312,13 @@ MonoBehaviour:
       desc: 
     name: template
     profession: 1
-    desc: 0
-    extraTypes: 030000000200000006000000
-    extraThresholds: 000000000000000000000000
-    extraDesire1: 000000000000000000000000
-    extraDesire2: 000000000000000000000000
-    extraCharacteristics: 0400000001000000
-    extraCharacteristicVals: 030000000a000000
+    desc: 99
+    extraTypes: 010000000200000005000000
+    extraThresholds: 050d0000050d000005000000
+    extraDesire1: 000000006400000066000000
+    extraDesire2: 000000006500000067000000
+    extraCharacteristics: 0300000000000000
+    extraCharacteristicVals: 030000000f000000
     extraData: 
     finished: 1
   - index: 14
@@ -334,11 +334,11 @@ MonoBehaviour:
       desc: 
     name: gray joker
     profession: 0
-    desc: 0
-    extraTypes: 010000000200000007000000
-    extraThresholds: 000000000000000000000000
-    extraDesire1: 000000000000000000000000
-    extraDesire2: 000000000000000000000000
+    desc: 104
+    extraTypes: 010000000500000005000000
+    extraThresholds: 102700001400000005000000
+    extraDesire1: 00000000690000006b000000
+    extraDesire2: 000000006a0000006c000000
     extraCharacteristics: 0300000001000000
     extraCharacteristicVals: 020000000a000000
     extraData: 
@@ -356,12 +356,12 @@ MonoBehaviour:
       desc: 
     name: camellia
     profession: 0
-    desc: 0
+    desc: 109
     extraTypes: 000000000100000005000000
-    extraThresholds: 000000000000000000000000
-    extraDesire1: 000000000000000000000000
-    extraDesire2: 000000000000000000000000
-    extraCharacteristics: 0200000001000000
+    extraThresholds: e8030000050d000005000000
+    extraDesire1: 000000006e00000070000000
+    extraDesire2: 000000006f00000071000000
+    extraCharacteristics: 0100000000000000
     extraCharacteristicVals: 020000000a000000
     extraData: 
     finished: 1
@@ -378,12 +378,12 @@ MonoBehaviour:
       desc: 
     name: copy
     profession: 3
-    desc: 0
-    extraTypes: 000000000000000000000000
-    extraThresholds: 000000000000000000000000
-    extraDesire1: 000000000000000000000000
-    extraDesire2: 000000000000000000000000
-    extraCharacteristics: 0200000004000000
+    desc: 114
+    extraTypes: 000000000300000005000000
+    extraThresholds: 10270000e803000005000000
+    extraDesire1: 000000007300000075000000
+    extraDesire2: 000000007400000076000000
+    extraCharacteristics: 0100000003000000
     extraCharacteristicVals: 0300000003000000
     extraData: 
     finished: 1
@@ -400,10 +400,10 @@ MonoBehaviour:
       desc: 
     name: gnosis
     profession: 2
-    desc: 0
+    desc: 119
     extraTypes: 000000000300000005000000
-    extraThresholds: 000000000000000000000000
-    extraDesire1: 000000000000000000000000
+    extraThresholds: 00000000780000007a000000
+    extraDesire1: 00000000790000007b000000
     extraDesire2: 000000000000000000000000
     extraCharacteristics: 0200000005000000
     extraCharacteristicVals: 0300000003000000
