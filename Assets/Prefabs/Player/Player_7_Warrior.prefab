@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 946828664450863040}
   - component: {fileID: 6337454923496497396}
   - component: {fileID: 6000439276691171584}
+  - component: {fileID: -419752812239985374}
   m_Layer: 8
   m_Name: Player_7_Warrior
   m_TagString: Player
@@ -284,7 +285,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: 0}
       prefab: {fileID: 0}
-      desc: 
     name: 
     profession: 0
     desc: 0
@@ -299,3 +299,24 @@ MonoBehaviour:
   timeOnTheField: 0
   extras: 
   stand: {fileID: 1018466229840944626}
+--- !u!95 &-419752812239985374
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4708548768610898139}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: d03e1ea3241c6e1488d28b786a4eee98, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

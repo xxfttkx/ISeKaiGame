@@ -14,6 +14,7 @@ public class Player : Creature
     private float timeOnTheField;
     public List<int> extras;
     private List<int> expAddCharacteristics; //readonly
+    private Animator animator;
 
 
     public int _atk
@@ -51,6 +52,7 @@ public class Player : Creature
         characterData = SOManager.Instance.characterDataList_SO;
         rb = GetComponent<Rigidbody2D>();
         sp = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         character = characterData.GetCharByIndex(character.index);
         sp.sprite = character.creature.sprite;
         material = sp.material;
@@ -72,6 +74,8 @@ public class Player : Creature
     public override void Reset()
     {
         base.Reset();
+        animator.SetBool("Dead", false);
+        animator.SetBool("Move", false);
         material.SetFloat("_EffectPercent", 0f);
         buffs.Clear();
         allBuff = new Buff("all", 0, 0, 0, 0);
@@ -100,6 +104,8 @@ public class Player : Creature
         if (movementInput.x < 0) sp.flipX = false;
         else if (movementInput.x > 0) sp.flipX = true;
         rb.velocity = movementInput;
+        if (movementInput.sqrMagnitude > 0) animator.SetBool("Move", true);
+        else animator.SetBool("Move", false);
     }
     private void FixedUpdate()
     {
@@ -140,9 +146,10 @@ public class Player : Creature
     }
     public void Dead()
     {
+        animator.SetBool("Dead", true);
         transform.DORotate(new Vector3(0, 0, 360), .5f, RotateMode.FastBeyond360);
         transform.DOScale(0f, .5f).OnComplete(() => PlayerManager.Instance.PlayerDead(GetPlayerIndex()));
-
+        
     }
     IEnumerator Dissolving()
     {

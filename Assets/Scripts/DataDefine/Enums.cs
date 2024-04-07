@@ -20,6 +20,7 @@ public enum SoundName
     HurtEnemy,
     BeHurt,
     Atk,
+    Button,
 }
 public enum BGMName
 {

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 946828664450863040}
   - component: {fileID: 6337454923496497396}
   - component: {fileID: 4105888877832572545}
+  - component: {fileID: 4594140439874966023}
   m_Layer: 8
   m_Name: Player_4_Mage
   m_TagString: Player
@@ -173,7 +174,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   maxHp: 0
-  addHp: 0
   allBuff:
     buffName: 
     duration: 0
@@ -200,17 +200,37 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: 0}
       prefab: {fileID: 0}
-      desc: 
     name: 
     profession: 0
-    desc: 
+    desc: 0
     extraTypes: 
     extraThresholds: 
-    extraDesire1: []
-    extraDesire2: []
+    extraDesire1: 
+    extraDesire2: 
     extraCharacteristics: 
     extraCharacteristicVals: 
     extraData: 
     finished: 0
   timeOnTheField: 0
   extras: 
+--- !u!95 &4594140439874966023
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4708548768610898139}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 934ba8dd8a6b0eb44a393b486b938286, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -38,7 +38,7 @@ public class BtnBase : MonoBehaviour, IPointerClickHandler,IPointerEnterHandler,
     }
     public virtual void BtnEnter() 
     {
-
+        AudioManager.Instance.PlaySoundEffect(SoundName.Button);
     }
     public virtual void BtnExit() 
     {
@@ -46,7 +46,7 @@ public class BtnBase : MonoBehaviour, IPointerClickHandler,IPointerEnterHandler,
     }
     public virtual void BtnClick() 
     {
-
+        AudioManager.Instance.PlaySoundEffect(SoundName.Button);
     }
     public void OnPointerClick(PointerEventData eventData)
     {

@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 946828664450863040}
   - component: {fileID: 6337454923496497396}
   - component: {fileID: 3520433946413812479}
+  - component: {fileID: -2768245656328817556}
   m_Layer: 8
   m_Name: Player_17_Mage
   m_TagString: Player
@@ -284,7 +285,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: 0}
       prefab: {fileID: 0}
-      desc: 
     name: 
     profession: 0
     desc: 0
@@ -298,6 +298,27 @@ MonoBehaviour:
     finished: 0
   timeOnTheField: 0
   extras: 
+--- !u!95 &-2768245656328817556
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4708548768610898139}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 5617bf713569c024ab3e094a475f6c1f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4710199845230097993
 GameObject:
   m_ObjectHideFlags: 0
