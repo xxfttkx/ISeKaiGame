@@ -2,6 +2,7 @@ Shader "Custom/Player" {
     Properties {
         _MainTex ("Texture", 2D) = "white" {}
         _Effect ("Effect", 2D) = "white" {}
+        _Color("Color",Color) = (0,0,0,1)
         _EffectScale("EffectScale", Range(1, 100)) = 0
         _EffectPercent("EffectPercent",Range(0,1))=0
         _Index("Index",Range(0,20)) = 0
@@ -39,6 +40,7 @@ Shader "Custom/Player" {
             sampler2D _Effect;
             half _EffectScale;
             half _EffectPercent;
+            fixed4 _Color;
 
             fixed4 mix(fixed4 c1,fixed4 c2,fixed t)
             {
@@ -48,9 +50,9 @@ Shader "Custom/Player" {
             }
             fixed4 frag(v2f i) : SV_Target {
                 fixed4 col = tex2D(_MainTex, i.uv);//采样
-                fixed4 effect = tex2D(_Effect, i.uv/ _EffectScale);//采样
-                col = mix(col, effect, _EffectPercent);
-
+                // fixed4 effect = tex2D(_Effect, i.uv/ _EffectScale);//采样
+                // col = mix(col, effect, _EffectPercent);
+                col = fixed4(_Color.rgb, col.a);
                 return col;
             }
             ENDCG

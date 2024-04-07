@@ -35,5 +35,8 @@ Material:
     m_Floats:
     - _EffectPercent: 0
     - _EffectScale: 1
-    m_Colors: []
+    - _Index: 0
+    - _Max: 30
+    m_Colors:
+    - _Color: {r: 1, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

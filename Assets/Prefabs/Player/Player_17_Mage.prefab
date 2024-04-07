@@ -258,7 +258,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   maxHp: 0
-  addHp: 0
   allBuff:
     buffName: 
     duration: 0
@@ -288,11 +287,11 @@ MonoBehaviour:
       desc: 
     name: 
     profession: 0
-    desc: 
+    desc: 0
     extraTypes: 
     extraThresholds: 
-    extraDesire1: []
-    extraDesire2: []
+    extraDesire1: 
+    extraDesire2: 
     extraCharacteristics: 
     extraCharacteristicVals: 
     extraData: 
