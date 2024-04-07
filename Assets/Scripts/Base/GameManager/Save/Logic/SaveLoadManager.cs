@@ -575,4 +575,8 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         SaveAsync();
         return true;
     }
+    public void AddMoney(float money)
+    {
+        AddMoney(Mathf.CeilToInt(money));
+    }
 }

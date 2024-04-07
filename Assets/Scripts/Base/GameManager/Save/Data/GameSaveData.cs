@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class GameSaveData
 {
-    public int playerMoney;
+    public int playerMoney = 0;
     // 对应indexes最高记录 
     public Dictionary<string, int> charsToLevel;
     //

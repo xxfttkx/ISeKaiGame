@@ -205,7 +205,7 @@ public class EnemyBase : Creature
         isBegingRepelled = false;
         enemy = SOManager.Instance.enemyDataList_SO.GetEnemyByIndex(enemy.index);
         sp.sprite = enemy.creature.sprite;
-        hp = enemy.creature.hp;
+        hp = Mathf.CeilToInt(enemy.creature.hp*levelBonus);
         maxHp = hp;
         material.SetFloat("_Red", 0f);
         material.SetFloat("_Reslove", 0f);
@@ -275,5 +275,9 @@ public class EnemyBase : Creature
     void OnChangePlayerOnTheFieldEvent(Player p)
     {
         player = p;
+    }
+    public float Money
+    {
+        get => levelBonus * enemy.money;
     }
 }

@@ -9,7 +9,7 @@ public class PlayerManager : Singleton<PlayerManager>
     private float inputY;
     private Vector2 movementInput;
     public int currPlayerIndex;//indexToPlayer÷–index
-    public int currIndex;//players÷–index
+    public int currIndex = -1;//players÷–index
     public List<Player> players;
     public Dictionary<Profession, List<Player>> playerTypeToPlayer;
     public Dictionary<int, Player> indexToPlayer;
@@ -119,6 +119,7 @@ public class PlayerManager : Singleton<PlayerManager>
         }
         SaveLoadManager.Instance.SetPlayerExtraData(playerIndex, ExtraType.Kill, 1);
         EventHandler.CallPlayerKillEnemyEvent(pIndex,enemy.GetEnemyIndex());
+        SaveLoadManager.Instance.AddMoney(indexToPlayer[pIndex].GetMoneyEfficiency() * enemy.Money);
     }
 
     public void PlayerKnockbackEnemy(int playerIndex, EnemyBase e, int power)
@@ -222,6 +223,7 @@ public class PlayerManager : Singleton<PlayerManager>
 
     void OnEnterDungeonEvent(List<int> playerIndexes)
     {
+        currIndex = -1;
         foreach (var i in playerIndexes)
         {
             if (i == -1) continue;
@@ -241,7 +243,8 @@ public class PlayerManager : Singleton<PlayerManager>
     }
     void OnExitDungeonEvent()
     {
-        currIndex = 0;
+        currIndex = -1;
+        bInit = false;
         if (players != null)
         {
             foreach (var p in players)
@@ -295,6 +298,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public void ChangePlayerOnTheField(int i)
     {
         if(!players[i].IsAlive())return;
+        if (currIndex == i) return;
         currIndex = i;
         currPlayerIndex = players[i].character.index;
         foreach (var p in players)
