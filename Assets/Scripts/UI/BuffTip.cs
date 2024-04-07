@@ -13,9 +13,6 @@ public class Bufftip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         tips.SetActive(false);
     }
-    void Start()
-    {
-    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -31,6 +28,6 @@ public class Bufftip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void SetBuff(Buff b)
     {
         buff = b;
-        tooltipUI.text = $"{b.buffName}: atk:{b.attackBonus} atkrange:{b.attackRangeBonus} atkspeed:{b.attackSpeedBonus} speed:{b.speedBonus}";
+        tooltipUI.text = $"{b.buffName}:\n atk:{b.attackBonus}  speed:{b.speedBonus}\natkspeed:{b.attackSpeedBonus} atkrange:{b.attackRangeBonus}";
     }
 }

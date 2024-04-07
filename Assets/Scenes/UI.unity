@@ -1684,7 +1684,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: -17}
+  m_SizeDelta: {x: 0, y: -17}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &163176135
 MonoBehaviour:
@@ -10910,7 +10910,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 1
   m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 0, y: 0}
+  m_Spacing: {x: 0, y: 50}
   m_Constraint: 1
   m_ConstraintCount: 1
 --- !u!114 &1065307229
@@ -16787,7 +16787,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 830, y: 291.01}
-  m_SizeDelta: {x: 160.66667, y: 213.38867}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1540537614
 MonoBehaviour:
@@ -16864,7 +16864,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: 20}
+  m_SizeDelta: {x: -17, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1542057120
 MonoBehaviour:
@@ -17578,18 +17578,18 @@ PrefabInstance:
     - target: {fileID: 6552788696624700019, guid: dd1b5831344896b4db197cc878ae5f9e, type: 3}
       propertyPath: escEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1975058415}
+      objectReference: {fileID: 78033162}
     - target: {fileID: 6552788696624700019, guid: dd1b5831344896b4db197cc878ae5f9e, type: 3}
       propertyPath: escEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6552788696624700019, guid: dd1b5831344896b4db197cc878ae5f9e, type: 3}
       propertyPath: escEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowDataPanel
+      value: Hide
       objectReference: {fileID: 0}
     - target: {fileID: 6552788696624700019, guid: dd1b5831344896b4db197cc878ae5f9e, type: 3}
       propertyPath: escEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: StartCanvas, Assembly-CSharp
+      value: BasePanel, UIAssembly
       objectReference: {fileID: 0}
     - target: {fileID: 6552788696624700019, guid: dd1b5831344896b4db197cc878ae5f9e, type: 3}
       propertyPath: escEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -24308,6 +24308,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1065307227}
     m_Modifications:
+    - target: {fileID: 56628306555198736, guid: cd9046d1372cb5747b9e952e989947fb, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 232895291492116810, guid: cd9046d1372cb5747b9e952e989947fb, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 476889316877956523, guid: cd9046d1372cb5747b9e952e989947fb, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1796236141115815422, guid: cd9046d1372cb5747b9e952e989947fb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -248710575, guid: 5347df79cbc986a4985de6c5863d3049, type: 3}
+    - target: {fileID: 3662554661006214640, guid: cd9046d1372cb5747b9e952e989947fb, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899652085505242627, guid: cd9046d1372cb5747b9e952e989947fb, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834084200162055927, guid: cd9046d1372cb5747b9e952e989947fb, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351495793064127486, guid: cd9046d1372cb5747b9e952e989947fb, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7685603945951799021, guid: cd9046d1372cb5747b9e952e989947fb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -24386,6 +24418,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7685603945951799021, guid: cd9046d1372cb5747b9e952e989947fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100201241582559679, guid: cd9046d1372cb5747b9e952e989947fb, type: 3}
+      propertyPath: m_enableWordWrapping
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8280341595960439053, guid: cd9046d1372cb5747b9e952e989947fb, type: 3}
@@ -24756,6 +24792,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 1625977604023069048, guid: 663bbafd2a681e6478d665bbbf5cec93, type: 3}
+      propertyPath: m_text
+      value: Level
+      objectReference: {fileID: 0}
     - target: {fileID: 1994549942264456750, guid: 663bbafd2a681e6478d665bbbf5cec93, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -24876,6 +24916,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 2899712458028931648, guid: 663bbafd2a681e6478d665bbbf5cec93, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4921510507205991439, guid: 663bbafd2a681e6478d665bbbf5cec93, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -24899,6 +24943,10 @@ PrefabInstance:
     - target: {fileID: 4921510507205991439, guid: 663bbafd2a681e6478d665bbbf5cec93, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5293550304881468025, guid: 663bbafd2a681e6478d665bbbf5cec93, type: 3}
+      propertyPath: m_text
+      value: Rank
       objectReference: {fileID: 0}
     - target: {fileID: 6695833925303139223, guid: 663bbafd2a681e6478d665bbbf5cec93, type: 3}
       propertyPath: m_AnchorMax.y

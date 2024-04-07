@@ -17,7 +17,11 @@ public class DataRaw : MonoBehaviour
     {
         playerIndex = i;
         image.sprite = SOManager.Instance.GetPlayerSpriteSquareByIndex(i);
-        var list = SaveLoadManager.Instance.GetPlayerExtraDataList(i);
+        ReInit();
+    }
+    public void ReInit()
+    {
+        var list = SaveLoadManager.Instance.GetPlayerExtraDataList(playerIndex);
         for (int j = 0; j < list.Count; ++j)
         {
             tmpList[j].text = list[j] + "";

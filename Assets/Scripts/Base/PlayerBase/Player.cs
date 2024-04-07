@@ -15,6 +15,7 @@ public class Player : Creature
     public List<int> extras;
     private List<int> expAddCharacteristics; //readonly
 
+
     public int _atk
     {// ÓÎÏ·ÖÐ
         get => PlayerManager.Instance.GetPlayerAttack(character.index);
@@ -96,8 +97,8 @@ public class Player : Creature
 
     public void Move(Vector2 movementInput)
     {
-        if (movementInput.x < 0) sp.flipX = !character.creature.faceToLeft;
-        else if (movementInput.x > 0) sp.flipX = character.creature.faceToLeft;
+        if (movementInput.x < 0) sp.flipX = false;
+        else if (movementInput.x > 0) sp.flipX = true;
         rb.velocity = movementInput;
     }
     private void FixedUpdate()
@@ -169,10 +170,6 @@ public class Player : Creature
         EventHandler.CallPlayerHurtPlayerEvent(atkIndex, GetPlayerIndex(), atk);
         EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
     }
-
-
-
-
     public virtual float GetMoneyEfficiency()
     {
         return 1.0f;
@@ -187,20 +184,20 @@ public class Player : Creature
     public virtual int GetAttack()
     {
         if (!IsAlive()) return 1;
-        return Mathf.CeilToInt(GetRawAtk() * GetTimeBonus());
+        return Mathf.CeilToInt(GetRawAtk() * (1 + allBuff.attackBonus) * GetTimeBonus());
     }
     public virtual int GetSpeed()
     {
-        return Mathf.CeilToInt(GetRawSpeed() * (1 + allBuff.speedBonus));
+        return Mathf.CeilToInt(GetRawSpeed() * (1 + allBuff.speedBonus) * GetTimeBonus());
     }
     public virtual int GetAttackSpeed()
     {
-        return Mathf.CeilToInt(atkSpeed * (1 + allBuff.attackSpeedBonus));
+        return Mathf.CeilToInt(atkSpeed * (1 + allBuff.attackSpeedBonus) * GetTimeBonus());
     }
 
     public virtual int GetAttackRange()
     {
-        return Mathf.CeilToInt(atkRange * (1 + allBuff.attackRangeBonus));
+        return Mathf.CeilToInt(atkRange * (1 + allBuff.attackRangeBonus) * GetTimeBonus());
     }
 
     public override int GetPlayerIndex()

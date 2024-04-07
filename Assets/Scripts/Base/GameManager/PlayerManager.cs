@@ -273,37 +273,28 @@ public class PlayerManager : Singleton<PlayerManager>
     public int GetPlayerAttack(int playerIndex)
     {
         int atk = indexToPlayer[playerIndex].GetAttack();
-        float bonus = 1;
-        if (currPlayerIndex != playerIndex)
-            bonus += 0.5f;
-        atk = Mathf.CeilToInt(atk * bonus);
-        return atk;
+        return Mathf.CeilToInt(atk * GetFieldBonus(playerIndex));
     }
     public int GetPlayerAttackRange(int playerIndex)
     {
         int r = indexToPlayer[playerIndex].GetAttackRange();
-        float bonus = 1;
-        if (currPlayerIndex != playerIndex)
-            bonus += 0.2f;
-        r = Mathf.CeilToInt(r * bonus);
-        return r;
+        return Mathf.CeilToInt(r * GetFieldBonus(playerIndex));
     }
     public int GetPlayerAttackSpeed(int playerIndex)
     {
         int r = indexToPlayer[playerIndex].GetAttackSpeed();
-        float bonus = GetFieldBonus(playerIndex);
-        r = Mathf.CeilToInt(r * bonus);
-        return r;
+        return Mathf.CeilToInt(r * GetFieldBonus(playerIndex));
     }
     public int GetPlayerSpeed(int playerIndex)
     {
         int speed = indexToPlayer[playerIndex].GetSpeed();
-        return speed;
+        return Mathf.CeilToInt(speed * GetFieldBonus(playerIndex));
     }
 
 
-    private void ChangePlayerOnTheField(int i)
+    public void ChangePlayerOnTheField(int i)
     {
+        if(!players[i].IsAlive())return;
         currIndex = i;
         currPlayerIndex = players[i].character.index;
         foreach (var p in players)
@@ -440,7 +431,7 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         float bonus = 1f;
         if (currPlayerIndex != playerIndex)
-            bonus += 0.5f;
+            bonus += 0.2f;
         return bonus;
     }
     public Player GetPlayerByPlayerIndex(int i)

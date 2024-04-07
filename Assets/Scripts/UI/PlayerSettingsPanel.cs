@@ -85,7 +85,7 @@ public class PlayerSettingsPanel : MonoBehaviour
         remainPoint.text = $"{SaveLoadManager.Instance.GetCanAddPlayerCharacteristicNum(playerIndex)}";
         var ch = SOManager.Instance.GetPlayerDataByIndex(playerIndex);
         var p = PlayerManager.Instance.GetPlayerByPlayerIndex(playerIndex);
-        desc.text = $"Desc:  {p.GetPlayerIndex()}\n{p.character.desc}\nHp:{p.GetHp()}/{p.GetMaxHP()}";
+        desc.text = $"Desc:  {p.GetPlayerIndex()}\n{SOManager.Instance.GetStringByIndex(p.character.desc)}\nHP:{p.GetHp()}/{p.GetMaxHP()}";
         foreach (var btn in playerImages)
         {
             if (btn.index == playerIndex) btn.Select();
@@ -180,4 +180,8 @@ public class PlayerSettingsPanel : MonoBehaviour
         ShowPlayerData(playerIndex);
     }
 
+    public void CurrToFront()
+    {
+        PlayerManager.Instance.ChangePlayerOnTheField(currPlayerIndex);
+    }
 }

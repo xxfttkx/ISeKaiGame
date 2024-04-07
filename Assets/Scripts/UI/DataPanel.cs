@@ -5,27 +5,44 @@ using UnityEngine;
 
 public class DataPanel : BasePanel
 {
-    public bool bInit;
+    public bool bInit = false;
     public GameObject dataRawParent;
     public GameObject dataRawPrefab;
-    
+    List<DataRaw> dataRawList = new List<DataRaw>();
+
+    private void OnEnable()
+    {
+        TryInit();
+    }
     public void TryInit()
     {
-        if (bInit) return;
-        bInit = true;
         InitPlayerData();
     }
     public void InitPlayerData()
     {
-        var characters = SOManager.Instance.characterDataList_SO.characters;
-        for(int i = 0;i< characters.Length;++i)
+         
+        if(!bInit)
         {
-            if (!characters[i].finished) continue;
-            var go = Instantiate(dataRawPrefab, dataRawParent.transform);
-            var dataRow = go.GetComponent<DataRaw>();
-            dataRow.Init(i);
-            
+            bInit = true;
+            var characters = SOManager.Instance.characterDataList_SO.characters;
+            for (int i = 0; i < characters.Length; ++i)
+            {
+                if (!characters[i].finished) continue;
+                var go = Instantiate(dataRawPrefab, dataRawParent.transform);
+                var dataRow = go.GetComponent<DataRaw>();
+                dataRow.Init(i);
+                dataRawList.Add(dataRow);
+            }
         }
+        else
+        {
+            for (int i = 0; i < dataRawList.Count; ++i)
+            {
+                var dataRow = dataRawList[i];
+                dataRow.ReInit();
+            }
+        }
+        
         
     }
 }

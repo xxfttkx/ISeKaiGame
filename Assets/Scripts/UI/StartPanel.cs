@@ -55,7 +55,7 @@ public class StartPanel : MonoBehaviour
                 {
                     j.transform.localScale = new Vector3(1, 1, 1);
                 }
-                j._pos = new Vector2(32 + sign * ((i + 1) / 2) * 64, -238.7f);
+                j._pos = new Vector2(32 + sign * ((i + 1) / 2) * 64, -242.39f);
                 j.Init(SOManager.Instance.GetPlayerSpriteByIndex(list[i]));
             }
         }

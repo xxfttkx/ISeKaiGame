@@ -65,12 +65,11 @@ public class StartCanvas : Singleton<StartCanvas>
     }
     public void ShowDataPanel()
     {
-        dataPanel.gameObject.SetActive(true);
-        dataPanel.TryInit();
+        dataPanel.Show();
     }
     public void HideDataPanel()
     {
-        dataPanel.gameObject.SetActive(false);
+        dataPanel.Hide();
     }
     public void ShowRankPanel()
     {
