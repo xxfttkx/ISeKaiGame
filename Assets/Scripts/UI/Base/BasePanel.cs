@@ -10,7 +10,6 @@ public class BasePanel : MonoBehaviour
     private BtnBaseCtl btnCtl;
     private void Awake()
     {
-        all.transform.localScale = Vector3.zero;
         shadow = GetComponentInChildren<ShadowImage>();
         btnCtl = GetComponent<BtnBaseCtl>();
         shadow.gameObject.SetActive(false);
@@ -26,6 +25,7 @@ public class BasePanel : MonoBehaviour
     {
         this.gameObject.SetActive(true);
         shadow?.gameObject.SetActive(true);
+        all.transform.localScale = Vector3.zero;
         all.DOScale(1f, Settings.basePanelShowTime).SetUpdate(true);
         if (btnCtl) btnCtl.isShow = true;
     }

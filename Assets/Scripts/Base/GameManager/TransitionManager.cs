@@ -12,7 +12,7 @@ public class TransitionManager : Singleton<TransitionManager>
     public int num;
     private void Update()
     {
-        Application.targetFrameRate = num;
+        // Application.targetFrameRate = num;
     }
     protected override void Awake()
     {

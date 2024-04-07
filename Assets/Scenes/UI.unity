@@ -15343,7 +15343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848bf9416d93f6445929539b2acebe96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  all: {fileID: 0}
+  all: {fileID: 1345068453}
   bInit: 0
   soundSettingsPanel: {fileID: 441338660}
   windowed: {fileID: 1890559280}
@@ -22555,7 +22555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1975058411
 MonoBehaviour:
   m_ObjectHideFlags: 0

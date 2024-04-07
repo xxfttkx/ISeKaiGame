@@ -182,6 +182,6 @@ public class PlayerSettingsPanel : MonoBehaviour
 
     public void CurrToFront()
     {
-        PlayerManager.Instance.ChangePlayerOnTheField(currPlayerIndex);
+        PlayerManager.Instance.ChangePlayerOnTheField(_currIndex);
     }
 }
