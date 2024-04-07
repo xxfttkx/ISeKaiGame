@@ -52,7 +52,7 @@ Shader "Custom/Player" {
                 fixed4 col = tex2D(_MainTex, i.uv);//采样
                 // fixed4 effect = tex2D(_Effect, i.uv/ _EffectScale);//采样
                 // col = mix(col, effect, _EffectPercent);
-                col = fixed4(_Color.rgb, col.a);
+                // col = fixed4(_Color.rgb, col.a);
                 return col;
             }
             ENDCG

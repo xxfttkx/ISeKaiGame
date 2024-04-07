@@ -522,8 +522,13 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     public int GetPlayerLevel(int playerIndex)
     {
         int exp = GetPlayerExp(playerIndex);
-        return Mathf.FloorToInt(Mathf.Log(exp,2));
+        for(int i = 0;i< expToLevelList.Count;++i)
+        {
+            if (exp < expToLevelList[i]) return i;
+        }
+        return expToLevelList.Count;
     }
+    //todo ÖØÐ´¾­ÑéÂß¼­
     public int GetPlayerCurrLevelExp(int playerIndex)
     {
         int exp = GetPlayerExp(playerIndex);
