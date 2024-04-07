@@ -21,14 +21,13 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 21300000, guid: 844981228ae50f5459d5d8ed8fb81506, type: 3}
+      sprite: {fileID: -1177185971, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 22f9785782a07cb488c018cc31e0c759, type: 3}
-      desc: "\u4F24\u5BB3*1.5 money\u83B7\u5F97\u6548\u73870.2"
     name: cache coeur
     profession: 0
     desc: 31
     extraTypes: 010000000000000005000000
-    extraThresholds: 102700001027000005000000
+    extraThresholds: 050d0000050d000005000000
     extraDesire1: ffffffff2000000022000000
     extraDesire2: ffffffff2100000023000000
     extraCharacteristics: 0200000000000000
@@ -43,9 +42,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 21300000, guid: 844981228ae50f5459d5d8ed8fb81506, type: 3}
+      sprite: {fileID: 784740694, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: f7f869939984ab645a279417b160dede, type: 3}
-      desc: "\u7FBD\u6BDB\u653B\u51FB \u961F\u4F0DBuff atk*=1.2  \u961F\u4F0D\u4E2D\u51FB\u6740\u8005attack/=2"
     name: nirvana
     profession: 2
     desc: 36
@@ -65,9 +63,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 21300000, guid: 844981228ae50f5459d5d8ed8fb81506, type: 3}
+      sprite: {fileID: -1814445362, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 1e69deade4accd14e8bf03d630b1096f, type: 3}
-      desc: "\u7ED9\u961F\u53CB\u4E0A\u6240\u6709\u5C6C\u6027\u52A010% \u961F\u4F0D\u4E2D\u51FB\u6740\u4EBA\u7B97\u6211"
     name: 2
     profession: 1
     desc: 41
@@ -87,9 +84,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 21300000, guid: aa9207ae36d26d849978a368771f4663, type: 3}
+      sprite: {fileID: -796445314, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 1871cdc2ec10017419210b044a2b37bb, type: 3}
-      desc: 
     name: acacia
     profession: 3
     desc: 46
@@ -109,9 +105,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 21300000, guid: c8f8d1075cf1b454cb4862429fa94bfc, type: 3}
+      sprite: {fileID: -1594383145, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 2943f504bf029d24384a8e6bb267d775, type: 3}
-      desc: 
     name: coq au vin
     profession: 2
     desc: 51
@@ -131,9 +126,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 1
-      sprite: {fileID: 21300000, guid: 6f847332087b514459911504f41b46a2, type: 3}
+      sprite: {fileID: -285941310, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: cfcc04c9e6af6754c9bda5900c682f18, type: 3}
-      desc: 
     name: white lady
     profession: 2
     desc: 56
@@ -153,9 +147,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 1
-      sprite: {fileID: 21300000, guid: 82c6f5d2e6bedd84b9967ad23002e017, type: 3}
+      sprite: {fileID: 1292109325, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 89f5e3ceebe75534da250b20d6648177, type: 3}
-      desc: 
     name: yellow fly
     profession: 2
     desc: 61
@@ -175,9 +168,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 1
-      sprite: {fileID: 21300000, guid: ef16a113f0df5ef48b94a3da9c153bd1, type: 3}
+      sprite: {fileID: 1229506980, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 8af2a66e3d9cb864b80d108a29ef5431, type: 3}
-      desc: 
     name: platinum
     profession: 0
     desc: 68
@@ -197,9 +189,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 1
-      sprite: {fileID: 21300000, guid: 82c6f5d2e6bedd84b9967ad23002e017, type: 3}
+      sprite: {fileID: 1954892693, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 8fd657a6a87a18043af884fa4ea275ca, type: 3}
-      desc: 
     name: virtuo
     profession: 0
     desc: 73
@@ -219,9 +210,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 21300000, guid: 844981228ae50f5459d5d8ed8fb81506, type: 3}
+      sprite: {fileID: 1045190016, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: d52dad1265318ec4db87c74e96b61853, type: 3}
-      desc: 
     name: 99
     profession: 1
     desc: 78
@@ -241,9 +231,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 21300000, guid: 82c6f5d2e6bedd84b9967ad23002e017, type: 3}
+      sprite: {fileID: 1022858092, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 7a7afb93ed3395e4d80ec0d4301bbe06, type: 3}
-      desc: 
     name: 
     profession: 2
     desc: 85
@@ -263,9 +252,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 0}
+      sprite: {fileID: -1898791945, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 0}
-      desc: 
     name: jealous
     profession: 2
     desc: 0
@@ -285,9 +273,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 1
-      sprite: {fileID: 21300000, guid: 05675ee200279684a96c287bc3ff9464, type: 3}
+      sprite: {fileID: -36270715, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 21bbcd2a19edc03418530dec33b3922a, type: 3}
-      desc: 
     name: template
     profession: 2
     desc: 92
@@ -307,9 +294,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 21300000, guid: 05675ee200279684a96c287bc3ff9464, type: 3}
+      sprite: {fileID: 2028291646, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 2c258f43380f5aa478e52487594aed2a, type: 3}
-      desc: 
     name: template
     profession: 1
     desc: 99
@@ -329,9 +315,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 21300000, guid: 844981228ae50f5459d5d8ed8fb81506, type: 3}
+      sprite: {fileID: -1632010448, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 175a98e6060c764469f22476f6576754, type: 3}
-      desc: 
     name: gray joker
     profession: 0
     desc: 104
@@ -351,9 +336,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 21300000, guid: 82c6f5d2e6bedd84b9967ad23002e017, type: 3}
+      sprite: {fileID: 1416748777, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 7a5890ab96b7f24428ce3caa5a87019f, type: 3}
-      desc: 
     name: camellia
     profession: 0
     desc: 109
@@ -373,9 +357,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 21300000, guid: 82c6f5d2e6bedd84b9967ad23002e017, type: 3}
+      sprite: {fileID: 1754393461, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: e55b2ba84e4b1dd45afaeab01676d6e8, type: 3}
-      desc: 
     name: copy
     profession: 3
     desc: 114
@@ -395,9 +378,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 21300000, guid: 82c6f5d2e6bedd84b9967ad23002e017, type: 3}
+      sprite: {fileID: 659372342, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: f258263b759abe34e8232c283f8b56b0, type: 3}
-      desc: 
     name: gnosis
     profession: 2
     desc: 119
@@ -417,9 +399,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 0}
+      sprite: {fileID: 32792908, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 0}
-      desc: 
     name: emerald
     profession: 2
     desc: 0
@@ -439,9 +420,8 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 0}
+      sprite: {fileID: 2027102922, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 0}
-      desc: 
     name: blend fruit
     profession: 2
     desc: 0
@@ -463,7 +443,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: 0}
       prefab: {fileID: 0}
-      desc: 
     name: 20
     profession: 2
     desc: 0
@@ -485,7 +464,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: 0}
       prefab: {fileID: 0}
-      desc: 
     name: executor
     profession: 2
     desc: 0
@@ -507,7 +485,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: 0}
       prefab: {fileID: 0}
-      desc: 
     name: mimosa
     profession: 2
     desc: 0
@@ -529,7 +506,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: 0}
       prefab: {fileID: 0}
-      desc: 
     name: hideout
     profession: 0
     desc: 0
@@ -551,7 +527,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: 0}
       prefab: {fileID: 0}
-      desc: 
     name: "\u52C7\u8005/\u9B54\u738B"
     profession: 0
     desc: 0
@@ -573,7 +548,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: 0}
       prefab: {fileID: 0}
-      desc: 
     name: "\u7DD1\u9B54\u9053\u58EB"
     profession: 0
     desc: 0
@@ -595,7 +569,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: 0}
       prefab: {fileID: 0}
-      desc: 
     name: dark elf
     profession: 0
     desc: 0

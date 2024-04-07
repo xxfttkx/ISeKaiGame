@@ -79,7 +79,7 @@ public class Player : Creature
         GetPlayerDataByPrefession(character.profession);
         hp = character.creature.hp;
         maxHp = hp;
-        AddHpLimit(5 * expAddCharacteristics[(int)Characteristic.Hp]);
+        AddHpAndLimit(5 * expAddCharacteristics[(int)Characteristic.Hp]);
         ChangeCharValByExtra(0);
         transform.localScale = Vector3.one;
     }
@@ -140,8 +140,8 @@ public class Player : Creature
     public void Dead()
     {
         transform.DORotate(new Vector3(0, 0, 360), .5f, RotateMode.FastBeyond360);
-        transform.DOScale(0f, .5f). OnComplete(() => PlayerManager.Instance.PlayerDead(GetPlayerIndex()));
-        
+        transform.DOScale(0f, .5f).OnComplete(() => PlayerManager.Instance.PlayerDead(GetPlayerIndex()));
+
     }
     IEnumerator Dissolving()
     {
@@ -170,8 +170,8 @@ public class Player : Creature
         EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
     }
 
-    
-   
+
+
 
     public virtual float GetMoneyEfficiency()
     {
@@ -277,16 +277,22 @@ public class Player : Creature
     }
     void ChangeCharVal(Characteristic type, int val)
     {
-        //todo...
-        _ = type switch
+        if (type == Characteristic.Hp)
         {
-            Characteristic.Hp => hp += val,//todo jjj
-            Characteristic.Attack => atk += val,
-            Characteristic.Speed => speed += val,
-            Characteristic.AttackSpeed => atkSpeed += val,
-            Characteristic.AttackRange => atkRange += val,
-            _ => val,
-        };
+            AddHpLimit(val);
+        }
+        else
+        {
+            _ = type switch
+            {
+                Characteristic.Attack => atk += val,
+                Characteristic.Speed => speed += val,
+                Characteristic.AttackSpeed => atkSpeed += val,
+                Characteristic.AttackRange => atkRange += val,
+                _ => val,
+            };
+        }
+
     }
     void GetPlayerDataByPrefession(Profession p)
     {
@@ -383,5 +389,5 @@ public class Player : Creature
             EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
         }
     }
-    
+
 }

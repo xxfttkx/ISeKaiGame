@@ -17,8 +17,6 @@ public struct CreatureBase
     public bool faceToLeft;
     public Sprite sprite;
     public GameObject prefab;
-    [TextArea(3, 10)]
-    public string desc;
 }
 
 [System.Serializable]
@@ -56,7 +54,7 @@ public struct Enemy
     public float getPlayerPosTimeDelta;
     public int exp;
     public int money;
-    [TextArea(3, 10)]
+    [TextArea(1, 10)]
     public string desc;
     // 我心里有数。。。。public bool finished;
 }

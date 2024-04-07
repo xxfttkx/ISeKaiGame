@@ -20,9 +20,8 @@ MonoBehaviour:
       attackSpeed: 5
       attackRange: 1
       faceToLeft: 0
-      sprite: {fileID: 1571574046, guid: 8cc5cb484953ca94fae100c5c9b6f354, type: 3}
+      sprite: {fileID: -1177185971, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: d3470c4045ebf444b82348e1abed035c, type: 3}
-      desc: 
     index: 0
     name: 77ko
     enemyType: 1
@@ -37,9 +36,8 @@ MonoBehaviour:
       attackSpeed: 5
       attackRange: 6
       faceToLeft: 0
-      sprite: {fileID: 21300000, guid: 7ecf2779827a3eb4b90c5fad2eb62d90, type: 3}
+      sprite: {fileID: 784740694, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 8e01a792c675b0242b13b04c952bf1c1, type: 3}
-      desc: 
     index: 1
     name: scarlet rain
     enemyType: 2
@@ -56,7 +54,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: 21300000, guid: 7ecf2779827a3eb4b90c5fad2eb62d90, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 8966b92e5303bff4bae67499f71fa73b, type: 3}
-      desc: "\u666E\u901A\u8FDC \u4E00\u6B21\u4E24\u53D1"
     index: 2
     name: purple hairpin
     enemyType: 2
@@ -73,7 +70,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: 185015456, guid: cf02c0a9f1491e64c8d15535002ba275, type: 3}
       prefab: {fileID: 4708548768610898139, guid: fe2ab76247283a345b7569a04b8e8c79, type: 3}
-      desc: 
     index: 3
     name: gateau
     enemyType: 2
@@ -90,7 +86,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: -255441356, guid: a0266521ea847534286bef3bbacbcc95, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 94179feecd9f36f48bc042a1d8bc2bab, type: 3}
-      desc: "\u5B58\u6D3B\u65F6\u95F4\u8D8A\u957F\u901F\u5EA6\u8D8A\u5FEB"
     index: 4
     name: nijika
     enemyType: 1
@@ -107,7 +102,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: -559471264, guid: 0feeece6ba8a71d42b3e18f14e92896e, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 95aa2ee42593c784dbc543523da4a01c, type: 3}
-      desc: 
     index: 5
     name: kita
     enemyType: 1
@@ -124,7 +118,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: -13341008, guid: afae735b16d356342aa40983f2b8d9e0, type: 3}
       prefab: {fileID: 4708548768610898139, guid: a853ea4871a1c8d48b621041d4cec8f7, type: 3}
-      desc: 
     index: 6
     name: ryou
     enemyType: 2
@@ -141,7 +134,6 @@ MonoBehaviour:
       faceToLeft: 1
       sprite: {fileID: 21300000, guid: 6d2196183c1801e479f78254bbc800c0, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 2b29b3a257f9717409212f7b15b70054, type: 3}
-      desc: 
     index: 7
     name: chaser
     enemyType: 1
@@ -158,7 +150,6 @@ MonoBehaviour:
       faceToLeft: 1
       sprite: {fileID: 21300000, guid: 6d2196183c1801e479f78254bbc800c0, type: 3}
       prefab: {fileID: 4708548768610898139, guid: ac0e0e3782f6685469c137ff458a3467, type: 3}
-      desc: "\u6728\u6869"
     index: 8
     name: chaser
     enemyType: 1
@@ -175,7 +166,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: 0}
       prefab: {fileID: 0}
-      desc: 
     index: 9
     name: 9
     enemyType: 1
@@ -192,7 +182,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: 0}
       prefab: {fileID: 0}
-      desc: 
     index: 10
     name: 10
     enemyType: 1
@@ -209,7 +198,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: 0}
       prefab: {fileID: 0}
-      desc: 
     index: 11
     name: 11
     enemyType: 1
@@ -226,7 +214,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: 0}
       prefab: {fileID: 0}
-      desc: 
     index: 12
     name: 11
     enemyType: 1

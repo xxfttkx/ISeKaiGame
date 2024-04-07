@@ -128,7 +128,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: 0}
       prefab: {fileID: 0}
-      desc: 
     name: 0
     profession: 0
     desc: 0
