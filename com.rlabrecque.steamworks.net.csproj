@@ -10,10 +10,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{16D371B0-AAC9-5DA8-A1C2-85C65D8F716C}</ProjectGuid>
+    <ProjectGuid>{D1A6B49B-FB05-23CE-B7DB-C39D6E37366E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>PlayerAssembly</AssemblyName>
+    <AssemblyName>com.rlabrecque.steamworks.net</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -60,31 +60,114 @@
     <Analyzer Include="E:\UnityHub\Install Location\2022.3.17f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Player\Player_8_Warrior.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_23_Warrior.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_2_Priest.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_17_Mage.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_5_Mage.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_18_Mage.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_11_Mage.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_16_Assassin.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_1_Mage.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_13_Priest.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_12_Mage.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_6_Mage.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_3\Player3_Knife.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_3\State_0.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_7_Warrior.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_10_Mage.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_4_Mage.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_3_Assassin.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_15_Warrior.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_9_Priest.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_0_Warrior.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_14_Warrior.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamnetworkingsockets.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamhtmlsurface.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\CallbackDispatcher.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworkingSockets\ISteamNetworkingConnectionSignaling.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamUserStats\SteamLeaderboardEntries_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\NativeMethods.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamugc.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamHTTP\HTTPCookieContainerHandle.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamClientPublic\CSteamID.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworkingSockets\ISteamNetworkingSignalingRecvContext.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworkingTypes\FSteamNetworkingSocketsDebugOutput.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamapplist.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamHTTP\HTTPRequestHandle.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamInput\InputHandle_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\SteamEnums.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\Steam_api_common\HSteamUser.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamMatchmaking\HServerQuery.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamapps.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamClient\SteamAPI_CheckCallbackRegistered_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamgameserverutils.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworkingTypes\SteamNetworkingErrMsg.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\Packsize.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteaminventory.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamTypes\DepotId_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamScreenshots\ScreenshotHandle.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamclient.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamInventory\SteamItemInstanceID_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamvideo.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamgameserverinventory.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworkingTypes\HSteamNetPollGroup.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\CallbackIdentity.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamnetworkingmessages.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamuserstats.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamInventory\SteamInventoryUpdateHandle_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamClient\SteamAPIWarningMessageHook_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamDatagramTickets\SteamDatagramHostedAddress.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamgameserverclient.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamClientPublic\HAuthTicket.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamInput\InputAnalogActionHandle_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamTypes\SteamIPAddress_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworkingTypes\SteamNetworkingConfigValue_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamRemotePlay\RemotePlaySessionID_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworkingTypes\HSteamListenSocket.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamInput\InputDigitalActionHandle_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\Steam_api_common\HSteamPipe.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteammusicremote.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamTypes\SteamAPICall_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\InteropHelp.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamutils.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamDatagramTickets\SteamDatagramRelayAuthTicket.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamClientPublic\CGameID.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamMatchmaking\HServerListRequest.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamRemoteStorage\PublishedFileId_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamgameserverhttp.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamHTMLSurface\HHTMLBrowser.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteammatchmaking.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamgameserverugc.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\MatchmakingTypes\gameserveritem_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamuser.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamscreenshots.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamgameserver.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworkingTypes\SteamNetworkingIdentity.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamnetworkingutils.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamTypes\RTime32.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamInput\SteamInputActionEventCallbackPointer.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworkingTypes\HSteamNetConnection.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamgameservernetworking.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamRemoteStorage\UGCHandle_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamUGC\UGCUpdateHandle_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamnetworking.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamparentalsettings.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamInventory\SteamInventoryResult_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamgameservernetworkingutils.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamRemoteStorage\PublishedFileUpdateHandle_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamInput\SteamInputActionEvent_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamRemoteStorage\UGCFileWriteStreamHandle_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\SteamCallbacks.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamgameserverstats.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamTypes\AppId_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamTypes\PartyBeaconID_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamInventory\SteamItemDef_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworkingTypes\SteamNetworkingPOPID.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworkingTypes\SteamNetworkingIPAddr.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\Steam.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamFriends\FriendsGroupID_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamUGC\UGCQueryHandle_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteammusic.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworkingTypes\SteamNetworkingMicroseconds.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\ISteamMatchmakingResponses.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamhttp.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\SteamStructs.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamfriends.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworking\SNetSocket_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\Version.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamremoteplay.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteaminput.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\MatchmakingTypes\servernetadr_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamremotestorage.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\SteamConstants.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworkingTypes\SteamNetworkingMessage_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworking\SNetListenSocket_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamUserStats\SteamLeaderboard_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamgameservernetworkingsockets.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamTypes\AccountID_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamInput\InputActionSetHandle_t.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Scripts\Player\PlayerAssembly.asmdef" />
+    <None Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\com.rlabrecque.steamworks.net.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -425,46 +508,6 @@
     </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>E:\UnityHub\Install Location\2022.3.17f1c1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Collections.LowLevel.ILSupport">
-      <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.2.0\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="unityplastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.2.0\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DOTweenEditor">
-      <HintPath>Assets\Plugins\Demigiant\DOTween\Editor\DOTweenEditor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Plastic.Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.2.0\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="log4netPlastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.2.0\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="dnlib">
-      <HintPath>Library\PackageCache\com.code-philosophy.hybridclr@6ffb977ef3\Plugins\dnlib.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="LZ4">
-      <HintPath>Library\PackageCache\com.code-philosophy.hybridclr@6ffb977ef3\Plugins\LZ4.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="mscorlib">
@@ -969,14 +1012,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="BaseAssembly.csproj">
-      <Project>{3318CFEE-DF29-9093-7861-9875A3ACF74A}</Project>
-      <Name>BaseAssembly</Name>
-    </ProjectReference>
-    <ProjectReference Include="DataDefineAssembly.csproj">
-      <Project>{D906EF94-4C65-AC3A-31EC-F34681BA9794}</Project>
-      <Name>DataDefineAssembly</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{0C107075-C8D1-AC74-F9B0-9D811EA0C081}</Project>
       <Name>UnityEditor.UI</Name>

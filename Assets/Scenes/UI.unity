@@ -5952,7 +5952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tmp: {fileID: 0}
-  index: 20
+  index: 19
   textDataList_SO: {fileID: 11400000, guid: 03228e614af03d143b33ec681660c523, type: 2}
 --- !u!114 &584841769
 MonoBehaviour:
@@ -15571,7 +15571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tmp: {fileID: 1382771628}
-  index: 19
+  index: 20
   textDataList_SO: {fileID: 11400000, guid: 03228e614af03d143b33ec681660c523, type: 2}
 --- !u!1 &1398131727
 GameObject:
@@ -16700,7 +16700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tmp: {fileID: 1483713546}
-  index: 20
+  index: 19
   textDataList_SO: {fileID: 11400000, guid: 03228e614af03d143b33ec681660c523, type: 2}
 --- !u!224 &1491298707 stripped
 RectTransform:
@@ -20665,7 +20665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tmp: {fileID: 0}
-  index: 19
+  index: 20
   textDataList_SO: {fileID: 11400000, guid: 03228e614af03d143b33ec681660c523, type: 2}
 --- !u!114 &1820272665
 MonoBehaviour:
