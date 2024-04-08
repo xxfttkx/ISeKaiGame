@@ -32,11 +32,11 @@ public class Player_10_Mage : Player_Single
         AudioManager.Instance.PlaySoundEffect(SoundName.Atk);
         yield break;
     }
-    private void OnPlayerKillEnemyEvent(int playerIndex,int _)
+    private void OnPlayerKillEnemyEvent(int playerIndex, int _)
     {
-        if(playerIndex==GetPlayerIndex()&&extras[2]!=2)
+        if (playerIndex == GetPlayerIndex() && extras[2] != 2)
         {
-            if(count<_maxCount)
+            if (count < _maxCount)
             {
                 ++count;
                 float b = _bonus;
@@ -46,22 +46,37 @@ public class Player_10_Mage : Player_Single
     }
     float _bonus
     {
-        get=> extras[2] == 1 ? 0.04f : 0.05f;
+        get => extras[2] == 1 ? 0.04f : 0.05f;
     }
     int _maxCount
     {
         get => extras[2] == 1 ? 50 : 20;
     }
-    public override int GetRawAtk()
-    {
-        return base.GetRawAtk() + (extras[2] == 2 ? 0 : -5);
-    }
+
     protected override void OnDesireChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
     {
         base.OnDesireChangeEvent(playerIndex, extraIndex, selectedIndex);
         if (playerIndex == GetPlayerIndex() && extraIndex == 2)
         {
             EventHandler.CallPlayerCharacteristicChangeEvent(this);
+            AddBuffBeforeStart();
         }
+    }
+    public override void AddBuffBeforeStart()
+    {
+        if (_bonusNum == 0)
+            this.RemoveBuff("10");
+        else
+            this.ApplyBuff("10", -1, Characteristic.Attack, _bonusNum, ApplyBuffType.Override);
+    }
+    int _bonusNum
+    {
+        get => extras[2] switch
+        {
+            0 => -5,
+            1 => -5,
+            2 => 0,
+            _ => 0,
+        };
     }
 }

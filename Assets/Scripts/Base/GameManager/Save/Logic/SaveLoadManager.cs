@@ -126,9 +126,9 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         {
             Directory.CreateDirectory(jsonFolder);
         }
-        
+
         await File.WriteAllTextAsync(resultPath, jsonData);
-        
+
         EventHandler.CallSaveFinishEvent();
     }
     public void SaveLastCharsIndexes(List<int> l)
@@ -209,7 +209,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         {
             Utils.TryFillList<List<int>>(ref gameSaveData.playerExtras, null, n);
         }
-        var extraCount = SOManager.Instance.GetPlayerExtraNum(playerIndex); 
+        var extraCount = SOManager.Instance.GetPlayerExtraNum(playerIndex);
         if (gameSaveData.playerExtras[playerIndex] == null)
         {
             List<int> list = gameSaveData.playerExtras[playerIndex];
@@ -345,7 +345,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         currPlayerIndexes = Utils.GetValidList(playerIndexes);
         currPlayerIndexes.Sort();
     }
-    void OnPlayerKillEnemyEvent(int playerIndex,int enemyIndex)
+    void OnPlayerKillEnemyEvent(int playerIndex, int enemyIndex)
     {
         var l = gameSaveData.playerKillEnemy;
         var playerCount = SOManager.Instance.GetPlayerCount();
@@ -384,15 +384,15 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         List<int> l = new List<int>();
         List<Tuple<int, int>> indexAndLevel = new List<Tuple<int, int>>();
         int n = SOManager.Instance.GetPlayerCount();
-        for(int i = 0;i<n;++i)
+        for (int i = 0; i < n; ++i)
         {
-            var level = GetPlayerExtraData(i,ExtraType.ExitLevel);
+            var level = GetPlayerExtraData(i, ExtraType.ExitLevel);
             if (level > 0)
             {
                 indexAndLevel.Add(new Tuple<int, int>(i, level));
             }
         }
-        indexAndLevel.Sort((a,b)=> b.Item2.CompareTo(a.Item2));
+        indexAndLevel.Sort((a, b) => b.Item2.CompareTo(a.Item2));
         foreach (var t in indexAndLevel)
             l.Add(t.Item1);
         return l;
@@ -403,7 +403,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         if (n >= Settings.maxCompanionNum) return false;
         int need = GetAddCompanionSlotNeedMoney();
         int curr = GetMoney();
-        if(curr>=need)
+        if (curr >= need)
         {
             AddMoney(-need);
             gameSaveData.maxCompanionNum++;
@@ -440,7 +440,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     public void ChangeWindowed()
     {
         gameSaveData.windowed = !gameSaveData.windowed;
-        Screen.SetResolution(1920, 1080, (FullScreenMode)(gameSaveData.windowed?3:1));
+        Screen.SetResolution(1920, 1080, (FullScreenMode)(gameSaveData.windowed ? 3 : 1));
         SaveAsync();
     }
     public bool GetRunInBackground()
@@ -522,37 +522,24 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     public int GetPlayerLevel(int playerIndex)
     {
         int exp = GetPlayerExp(playerIndex);
-        for(int i = 0;i< expToLevelList.Count;++i)
+        for (int i = 0; i < expToLevelList.Count; ++i)
         {
             if (exp < expToLevelList[i]) return i;
         }
         return expToLevelList.Count;
     }
-    //todo ÖØÐ´¾­ÑéÂß¼­
-    public int GetPlayerCurrLevelExp(int playerIndex)
+    public int GetPlayerNextLevelExp(int playerIndex)
     {
-        int exp = GetPlayerExp(playerIndex);
-        int level = Mathf.FloorToInt(Mathf.Log(exp, 2));
-        return exp - Mathf.FloorToInt(Mathf.Pow(2, level) + 0.1f);
-    }
-    public int GetPlayerCueeLevelToNextLevelExp(int playerIndex)
-    {
-        int exp = GetPlayerExp(playerIndex);
-        int level = Mathf.FloorToInt(Mathf.Log(exp, 2));
-        return Mathf.FloorToInt(Mathf.Pow(2, level + 1) + 0.1f) - Mathf.FloorToInt(Mathf.Pow(2, level) + 0.1f);//todo level==0....
-    }
-    public int GetPlayerToNextLevelExp(int playerIndex)
-    {
-        int exp = GetPlayerExp(playerIndex);
-        int level = Mathf.FloorToInt(Mathf.Log(exp, 2));
-        return Mathf.FloorToInt(Mathf.Pow(2, level + 1) + 0.1f) - exp;
+        int l = GetPlayerLevel(playerIndex);
+        if (expToLevelList.Count > l) return expToLevelList[l];
+        return int.MaxValue;
     }
     public int GetPlayerCurrAddCharacteristicsNum(int playerIndex)
     {
         int sum = 0;
-        for(Characteristic c = 0; c< Characteristic.Max;c++)
+        for (Characteristic c = 0; c < Characteristic.Max; c++)
         {
-           sum += GetPlayerAddCharacteristic(playerIndex, c);
+            sum += GetPlayerAddCharacteristic(playerIndex, c);
         }
         return sum;
     }
@@ -576,7 +563,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         var num = GetPlayerAddCharacteristic(playerIndex, ch);
         if (num <= 0) return false;
         SubPlayerAddCharacteristic(playerIndex, ch);
-        EventHandler.CallSubPlayerCharacteristicEvent(playerIndex,ch);
+        EventHandler.CallSubPlayerCharacteristicEvent(playerIndex, ch);
         SaveAsync();
         return true;
     }

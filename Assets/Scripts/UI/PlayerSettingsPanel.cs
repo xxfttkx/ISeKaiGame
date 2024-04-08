@@ -52,14 +52,14 @@ public class PlayerSettingsPanel : MonoBehaviour
 
     public void OnEnterDungeonEvent(List<int> playerIndexes)
     {
-        if(playerImages==null) playerImages = new List<ImageBtn>();
+        if (playerImages == null) playerImages = new List<ImageBtn>();
         foreach (var i in playerIndexes)
         {
             if (i == -1) continue;
             var go = Instantiate(imagePrefab, imageParent.transform);
             var b = go.GetComponent<ImageBtn>();
             var sp = SOManager.Instance.GetPlayerSpriteByIndex(i);
-            b.Init(i,sp, () => ShowPlayerData(i));
+            b.Init(i, sp, () => ShowPlayerData(i));
             playerImages.Add(b);
         }
     }
@@ -75,17 +75,32 @@ public class PlayerSettingsPanel : MonoBehaviour
     public void ShowPlayerData(int playerIndex = -1)
     {
         if (playerIndex == -1) playerIndex = playerImages[0].index;
-        hp.text = $"{ SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.Hp)}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.Hp)})</color=green>";
-        atk.text = $"{ SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.Attack)}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.Attack)})</color=green>";
-        speed.text = $"{ SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.Speed)}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.Speed)})</color=green>";
-        atkSpeed.text = $"{ SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.AttackSpeed)}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.AttackSpeed)})</color=green>";
-        atkRange.text = $"{ SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.AttackRange)}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.AttackRange)})</color=green>";
+        var p = PlayerManager.Instance.GetPlayerByPlayerIndex(playerIndex);
+        if (p == null)
+        {
+            desc.text = $"Desc:  {playerIndex}\n{SOManager.Instance.GetStringByIndex(SOManager.Instance.GetPlayerDataByIndex(playerIndex).desc)}";
+            hp.text = $"{ SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.Hp)}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.Hp)})</color=green>";
+            atk.text = $"{ SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.Attack)}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.Attack)})</color=green>";
+            speed.text = $"{ SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.Speed)}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.Speed)})</color=green>";
+            atkSpeed.text = $"{ SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.AttackSpeed)}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.AttackSpeed)})</color=green>";
+            atkRange.text = $"{ SOManager.Instance.GetCharacteristicNumByCharacterIndex(playerIndex, Characteristic.AttackRange)}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.AttackRange)})</color=green>";
+        }
+        else
+        {
+            desc.text = $"Desc:  {p.GetPlayerIndex()}\n{SOManager.Instance.GetStringByIndex(p.character.desc)}\nHP:{p.GetHp()}/{p.GetMaxHP()}";
+            hp.text = $"{ p.GetMaxHP()}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.Hp)})</color=green>";
+            atk.text = $"{ p.GetRawAtk()}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.Attack)})</color=green>";
+            speed.text = $"{ p.GetRawSpeed()}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.Speed)})</color=green>";
+            atkSpeed.text = $"{ p.GetRawAtkSpeed()}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.AttackSpeed)})</color=green>";
+            atkRange.text = $"{ p.GetRawAtkRange()}<color=green>(+{SaveLoadManager.Instance.GetPlayerAddCharacteristic(playerIndex, Characteristic.AttackRange)})</color=green>";
+        }
 
-        exp.text = $"{SaveLoadManager.Instance.GetPlayerLevel(playerIndex)}:({SaveLoadManager.Instance.GetPlayerCurrLevelExp(playerIndex)}/{SaveLoadManager.Instance.GetPlayerCueeLevelToNextLevelExp(playerIndex)})";//1:(1/2)
+
+        exp.text = $"{SaveLoadManager.Instance.GetPlayerLevel(playerIndex)}:({SaveLoadManager.Instance.GetPlayerExp(playerIndex)}/{SaveLoadManager.Instance.GetPlayerNextLevelExp(playerIndex)})";//1:(1/2)
         remainPoint.text = $"{SaveLoadManager.Instance.GetCanAddPlayerCharacteristicNum(playerIndex)}";
         var ch = SOManager.Instance.GetPlayerDataByIndex(playerIndex);
-        var p = PlayerManager.Instance.GetPlayerByPlayerIndex(playerIndex);
-        desc.text = $"Desc:  {p.GetPlayerIndex()}\n{SOManager.Instance.GetStringByIndex(p.character.desc)}\nHP:{p.GetHp()}/{p.GetMaxHP()}";
+
+
         foreach (var btn in playerImages)
         {
             if (btn.index == playerIndex) btn.Select();
@@ -128,13 +143,13 @@ public class PlayerSettingsPanel : MonoBehaviour
         n = extrasCount;
         for (int i = 0; i < n; ++i)
         {
-            extraSkills[i].btns[0].SetKeyboardRelation(i==0? playerImages[_currIndex]: extraSkills[i-1].btns[0], i < n - 1 ? extraSkills[i + 1].btns[0] : null, null, extraSkills[i].btns[1]);
-            extraSkills[i].btns[1].SetKeyboardRelation(i==0? playerImages[_currIndex]: extraSkills[i-1].btns[1], i < n - 1 ? extraSkills[i + 1].btns[1] : null, extraSkills[i].btns[0], null);
+            extraSkills[i].btns[0].SetKeyboardRelation(i == 0 ? playerImages[_currIndex] : extraSkills[i - 1].btns[0], i < n - 1 ? extraSkills[i + 1].btns[0] : null, null, extraSkills[i].btns[1]);
+            extraSkills[i].btns[1].SetKeyboardRelation(i == 0 ? playerImages[_currIndex] : extraSkills[i - 1].btns[1], i < n - 1 ? extraSkills[i + 1].btns[1] : null, extraSkills[i].btns[0], null);
         }
     }
     void OnPlayerCharacteristicChangeEvent(Player p)
     {
-        if(p.GetPlayerIndex()!= currPlayerIndex)
+        if (p.GetPlayerIndex() != currPlayerIndex)
         {
             Debug.Log("p.GetPlayerIndex()!= currPlayerIndex");
             return;
@@ -154,14 +169,14 @@ public class PlayerSettingsPanel : MonoBehaviour
     public void TryAddPlayerCharacteristic(int i)
     {
         Characteristic ch = (Characteristic)i;
-        if (SaveLoadManager.Instance.TryAddPlayerCharacteristic(currPlayerIndex,ch))
+        if (SaveLoadManager.Instance.TryAddPlayerCharacteristic(currPlayerIndex, ch))
         {
 
         }
     }
     void OnSubPlayerCharacteristic(int playerIndex, Characteristic ch)
     {
-        if (playerIndex!=currPlayerIndex)
+        if (playerIndex != currPlayerIndex)
         {
             Debug.Log("playerIndex!=currPlayerIndex");
             return;

@@ -8,7 +8,7 @@ public class TMPStatic : MonoBehaviour
 {
     public TextMeshProUGUI tmp;
     public int index;
-    public int language;
+    private int language;
     public TextDataList_SO textDataList_SO;
 
     private void Awake()
