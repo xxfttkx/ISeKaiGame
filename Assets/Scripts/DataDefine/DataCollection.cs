@@ -26,12 +26,6 @@ public struct Character
     public CreatureBase creature;
     public string name;
     public Profession profession;
-    [Header("Attributes")]
-/*    public int attack;
-    public int hp;
-    public int speed;
-    public int attackSpeed; // 10sÄÚ¹¥»÷´ÎÊı
-    public int attackRange; // ¹¥»÷¾àÀë*/
     public int desc;
     public List<ExtraType> extraTypes;
     public List<int> extraThresholds;
@@ -279,5 +273,10 @@ public class CharsPassLevel : IComparable<CharsPassLevel>
     {
         indexes = l;
         level = i;
+    }
+    public int GetScore()
+    {
+        int score = level * 10000 + indexes[0];
+        return score;
     }
 }

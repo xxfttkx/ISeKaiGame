@@ -14,6 +14,10 @@ public class PlayerManager : Singleton<PlayerManager>
     public Dictionary<Profession, List<Player>> playerTypeToPlayer;
     public Dictionary<int, Player> indexToPlayer;
     public List<int> trueIndexes;
+    public List<int> TrueIndexes
+    {
+        get => trueIndexes;
+    }
     Coroutine curSorMove;
     bool bInit;
     protected override void Awake()

@@ -73,8 +73,8 @@
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworkingTypes\FSteamNetworkingSocketsDebugOutput.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamapplist.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamHTTP\HTTPRequestHandle.cs" />
-    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamInput\InputHandle_t.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\SteamEnums.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamInput\InputHandle_t.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\Steam_api_common\HSteamUser.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamMatchmaking\HServerQuery.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamapps.cs" />
@@ -85,8 +85,8 @@
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteaminventory.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamTypes\DepotId_t.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamScreenshots\ScreenshotHandle.cs" />
-    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamclient.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamInventory\SteamItemInstanceID_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamclient.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamvideo.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamgameserverinventory.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworkingTypes\HSteamNetPollGroup.cs" />
@@ -132,8 +132,8 @@
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamnetworking.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamparentalsettings.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamInventory\SteamInventoryResult_t.cs" />
-    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamgameservernetworkingutils.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamRemoteStorage\PublishedFileUpdateHandle_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamgameservernetworkingutils.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamInput\SteamInputActionEvent_t.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamRemoteStorage\UGCFileWriteStreamHandle_t.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\SteamCallbacks.cs" />
@@ -160,8 +160,8 @@
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamremotestorage.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\SteamConstants.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworkingTypes\SteamNetworkingMessage_t.cs" />
-    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworking\SNetListenSocket_t.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamUserStats\SteamLeaderboard_t.cs" />
+    <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamNetworking\SNetListenSocket_t.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\autogen\isteamgameservernetworkingsockets.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamTypes\AccountID_t.cs" />
     <Compile Include="Library\PackageCache\com.rlabrecque.steamworks.net@37df82ec44\Runtime\types\SteamInput\InputActionSetHandle_t.cs" />
