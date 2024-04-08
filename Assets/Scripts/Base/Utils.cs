@@ -196,18 +196,22 @@ public static class Utils
     }
     public static string GetExtraString(ExtraType extraType, int threshold)
     {
-        return extraType switch
+        // 124~131
+        int index = extraType switch
         {
-            ExtraType.Hurt => $"总共对敌人造成{threshold}伤害",
-            ExtraType.BeHurt => $"总共被敌人造成{threshold}伤害",
-            ExtraType.Heal => $"总共对队友治疗{threshold}血量",
-            ExtraType.Kill => $"总共击杀{threshold}敌人",
-            ExtraType.EnterLevel => $"进入第{threshold}层",
-            ExtraType.ExitLevel => $"通过第{threshold}层",
-            ExtraType.EnterNum => $"进入地牢{threshold}次",
-            ExtraType.ExitNum => $"离开地牢{threshold}次",
-            _ => "Invalid day"
+            ExtraType.Hurt => 124,
+            ExtraType.BeHurt => 125,
+            ExtraType.Heal => 126,
+            ExtraType.Kill => 127,
+            ExtraType.EnterLevel => 128,
+            ExtraType.ExitLevel => 129,
+            ExtraType.EnterNum => 130,
+            ExtraType.ExitNum => 131,
+            _ => 0,
         };
+        string s = SOManager.Instance.GetStringByIndex(index);
+        string result = string.Format(s, threshold);
+        return result;
     }
     public static List<EnemyBase> GetEnemiesByDirAndRange(Vector2 curr, Vector2 dir, float range)
     {

@@ -71,8 +71,8 @@ MonoBehaviour:
     - 
   - texts:
     - "\u5B58\u6863\u6210\u529F"
-    - "\u5B58\u6863\u6210\u529F"
-    - 
+    - Save successful
+    - "\u4FDD\u5B58\u306B\u6210\u529F\u3057\u307E\u3057\u305F"
   - texts:
     - Language
     - Language
@@ -135,9 +135,9 @@ MonoBehaviour:
     - "\u653B\u6483\u8DDD\u96E2"
     - atkRange
   - texts:
-    - todo
-    - todo
-    - 
+    - Ch Set
+    - Ch Set
+    - Ch Set
   - texts:
     - todo
     - todo
@@ -574,3 +574,35 @@ MonoBehaviour:
     - "\u4E0D\u5BF9\u961F\u53CB\u9020\u6210\u4F24\u5BB3\u800C\u662F\u76F4\u63A5\u653B\u51FB\u6700\u8FD1\u654C\u4EBA"
     - The attack does not harm teammates but directly targets the nearest enemy
     - "\u653B\u6483\u306F\u5473\u65B9\u306B\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u305A\u3001\u6700\u3082\u8FD1\u3044\u6575\u3092\u76F4\u63A5\u653B\u6483\u3057\u307E\u3059"
+  - texts:
+    - "\u603B\u5171\u5BF9\u654C\u4EBA\u9020\u6210{0}\u4F24\u5BB3"
+    - 'Total {0} damage dealt to enemies '
+    - "\u6575\u306B\u7DCF\u8A08{0}\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u307E\u3057\u305F"
+  - texts:
+    - "\u603B\u5171\u53D7\u5230{0}\u4F24\u5BB3"
+    - 'Total {0} damage received '
+    - "\u5408\u8A08{0}\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u307E\u3057\u305F"
+  - texts:
+    - "\u603B\u5171\u6CBB\u7597\u961F\u53CB{0}HP"
+    - Total {0} HP healing to teammates
+    - "\u4EF2\u9593\u306B\u5BFE\u3059\u308B\u7DCF\u56DE\u5FA9\u91CF{0}HP"
+  - texts:
+    - "\u603B\u5171\u51FB\u6740{0}\u654C\u4EBA"
+    - 'Total kill {0} enemies '
+    - "\u5408\u8A08{0}\u4F53\u306E\u6575\u3092\u5012\u3057\u307E\u3057\u305F"
+  - texts:
+    - "\u8FDB\u5165\u8FC7\u7B2C{0}\u5C42"
+    - Entered level {0}
+    - "\u7B2C{0}\u5C64\u306B\u5165\u308A\u307E\u3057\u305F"
+  - texts:
+    - "\u901A\u8FC7\u7B2C{0}\u5C42"
+    - Passed level {0}
+    - "\u7B2C{0}\u5C64\u3092\u901A\u904E\u3057\u307E\u3057\u305F"
+  - texts:
+    - "\u8FDB\u5165\u67D0\u5C42{0}\u6B21"
+    - Entered level {0} times
+    - "\u67D0\u5C64\u306B{0}\u56DE\u5165\u308A\u307E\u3057\u305F"
+  - texts:
+    - "\u901A\u8FC7\u67D0\u5C42{0}\u6B21"
+    - Passed level {0} times
+    - "\u67D0\u5C64\u3092{0}\u56DE\u901A\u904E\u3057\u307E\u3057\u305F"

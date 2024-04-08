@@ -20,6 +20,7 @@ public class TMPStatic : MonoBehaviour
     {
         EventHandler.LanguageChange += OnLanguageChange;
         EventHandler.LoadFinishEvent += OnLoadFinishEvent;
+        TryUpdateLanguage();
         Init();
     }
     private void OnDisable()
@@ -27,6 +28,11 @@ public class TMPStatic : MonoBehaviour
         EventHandler.LanguageChange -= OnLanguageChange;
         EventHandler.LoadFinishEvent -= OnLoadFinishEvent;
     }
+    void TryUpdateLanguage()
+    {
+        language = SaveLoadManager.Instance.GetLanguage();
+    }
+
 
     [ContextMenu("Init")]
     void Init()
@@ -39,9 +45,10 @@ public class TMPStatic : MonoBehaviour
         language = l;
         Init();
     }
+
     void OnLoadFinishEvent()
     {
-        language = SaveLoadManager.Instance.GetLanguage();
+        TryUpdateLanguage();
         Init();
     }
 }
