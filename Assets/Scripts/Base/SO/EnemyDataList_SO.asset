@@ -16,7 +16,7 @@ MonoBehaviour:
   - creature:
       attack: 3
       hp: 10
-      speed: 5
+      speed: 4
       attackSpeed: 5
       attackRange: 1
       faceToLeft: 0
@@ -32,7 +32,7 @@ MonoBehaviour:
   - creature:
       attack: 2
       hp: 10
-      speed: 5
+      speed: 4
       attackSpeed: 5
       attackRange: 6
       faceToLeft: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   - creature:
       attack: 5
       hp: 15
-      speed: 6
+      speed: 5
       attackSpeed: 6
       attackRange: 6
       faceToLeft: 0
@@ -80,7 +80,7 @@ MonoBehaviour:
   - creature:
       attack: 7
       hp: 20
-      speed: 7
+      speed: 10
       attackSpeed: 7
       attackRange: 1
       faceToLeft: 0
@@ -253,3 +253,35 @@ MonoBehaviour:
     exp: 5
     money: 5
     desc: Idle_4
+  - creature:
+      attack: 7
+      hp: 20
+      speed: 7
+      attackSpeed: 7
+      attackRange: 1
+      faceToLeft: 0
+      sprite: {fileID: -559471264, guid: 0feeece6ba8a71d42b3e18f14e92896e, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: ee0e3d253487112458c84425c6509e04, type: 3}
+    index: 15
+    name: 5
+    enemyType: 2
+    getPlayerPosTimeDelta: 2
+    exp: 5
+    money: 5
+    desc: Idle_5
+  - creature:
+      attack: 7
+      hp: 20
+      speed: 7
+      attackSpeed: 7
+      attackRange: 7
+      faceToLeft: 0
+      sprite: {fileID: -13341008, guid: afae735b16d356342aa40983f2b8d9e0, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: 0c71556e971e7bb4d8fa40fc4951198c, type: 3}
+    index: 16
+    name: 6
+    enemyType: 2
+    getPlayerPosTimeDelta: 2
+    exp: 5
+    money: 5
+    desc: Idle_6

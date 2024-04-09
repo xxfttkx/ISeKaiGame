@@ -35,6 +35,7 @@ public class SteamScript : MonoBehaviour
     protected Callback<UserStatsReceived_t> m_UserStatsReceived;
     protected Callback<UserStatsStored_t> m_UserStatsStored;
     protected Callback<UserAchievementStored_t> m_UserAchievementStored;
+    protected CallResult<LeaderboardFindResult_t> m_LeaderboardFindResult;
     private CGameID m_GameID;
     // Should we store stats this frame?
     private bool m_bStoreStats;
@@ -53,21 +54,14 @@ public class SteamScript : MonoBehaviour
     {
         if (!SteamManager.Initialized)
             return;
-
         if (!m_bRequestedStats)
         {
-            // Is Steam Loaded? if no, can't get stats, done
             if (!SteamManager.Initialized)
             {
                 m_bRequestedStats = true;
                 return;
             }
-
-            // If yes, request our stats
             bool bSuccess = SteamUserStats.RequestCurrentStats();
-
-            // This function should only return false if we weren't logged in, and we already checked that.
-            // But handle it being false again anyway, just ask again later.
             m_bRequestedStats = bSuccess;
         }
 
@@ -77,19 +71,10 @@ public class SteamScript : MonoBehaviour
         {
             UnlockAchievement(Achievement.ACH_Pass10_0);
         }
-        // Get info from sources
 
-        // Evaluate achievements
-        // TODO Callback To Unlock Achievements
-
-        //Store stats in the Steam database if necessary
         if (m_bStoreStats)
         {
-            // already set any achievements in UnlockAchievement
-
             bool bSuccess = SteamUserStats.StoreStats();
-            // If this failed, we never sent anything to the server, try
-            // again later.
             m_bStoreStats = !bSuccess;
         }
     }
@@ -103,6 +88,9 @@ public class SteamScript : MonoBehaviour
             m_UserStatsReceived = Callback<UserStatsReceived_t>.Create(OnUserStatsReceived);
             m_UserStatsStored = Callback<UserStatsStored_t>.Create(OnUserStatsStored);
             m_UserAchievementStored = Callback<UserAchievementStored_t>.Create(OnAchievementStored);
+            m_LeaderboardFindResult = CallResult<LeaderboardFindResult_t>.Create(OnLeaderboardFindResult);
+            var p = SteamUserStats.FindOrCreateLeaderboard("Total", ELeaderboardSortMethod.k_ELeaderboardSortMethodDescending, ELeaderboardDisplayType.k_ELeaderboardDisplayTypeNumeric);
+            m_LeaderboardFindResult.Set(p);
         }
         EventHandler.ExitLevelEvent += OnExitLevelEvent;
     }
@@ -137,18 +125,36 @@ public class SteamScript : MonoBehaviour
         if (SteamManager.Initialized)
         {
             var list = PlayerManager.Instance.TrueIndexes;
-            var leaderboard = SteamUserStats.FindOrCreateLeaderboard("Total", ELeaderboardSortMethod.k_ELeaderboardSortMethodDescending, ELeaderboardDisplayType.k_ELeaderboardDisplayTypeNumeric);
-            if (!(l == Settings.levelMaxNum))
+            var p = SteamUserStats.FindOrCreateLeaderboard("Total", ELeaderboardSortMethod.k_ELeaderboardSortMethodDescending, ELeaderboardDisplayType.k_ELeaderboardDisplayTypeNumeric);
+            if (l!=-1)
             {
-                foreach (var i in list)
+                if (l == Settings.levelMaxNum)
                 {
-                    UnlockAchievement(Achievement.ACH_Pass10_0 + i);
+                    foreach (var i in list)
+                    {
+                        UnlockAchievement(Achievement.ACH_Pass10_0 + i);
+                    }
                 }
-
             }
+            
         }
     }
-
+    SteamLeaderboard_t m_leaderboard;
+    void OnLeaderboardFindResult(LeaderboardFindResult_t pCallback, bool bIOFailure)
+    {
+        // we may get callbacks for other games' stats arriving, ignore them
+        if (!SteamManager.Initialized)
+            return;
+        if (pCallback.m_bLeaderboardFound==1)
+        {
+            Debug.Log("m_bLeaderboardFound TRUE");
+            m_leaderboard = pCallback.m_hSteamLeaderboard;
+        }
+        else
+        {
+            Debug.Log("m_bLeaderboardFound FALSE");
+        }
+    }
     private void OnUserStatsReceived(UserStatsReceived_t pCallback)
     {
         // we may get callbacks for other games' stats arriving, ignore them

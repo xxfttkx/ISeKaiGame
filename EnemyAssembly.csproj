@@ -64,12 +64,14 @@
     <Compile Include="Assets\Scripts\Enemy\Enemy_2_Ranged.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_14_Melee.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_13_Ranged.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemy_15_Melee.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_0_Melee.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_4_Melee.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_8_Wood.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_5_Melee.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_3_Ranged.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_6_Ranged.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemy_16_Ranged.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_7_Melee.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -384,10 +384,10 @@ MonoBehaviour:
     profession: 2
     desc: 119
     extraTypes: 000000000300000005000000
-    extraThresholds: 00000000780000007a000000
-    extraDesire1: 00000000790000007b000000
-    extraDesire2: 000000000000000000000000
-    extraCharacteristics: 0200000005000000
+    extraThresholds: 050d00006400000005000000
+    extraDesire1: 00000000780000007a000000
+    extraDesire2: 00000000790000007b000000
+    extraCharacteristics: 0200000003000000
     extraCharacteristicVals: 0300000003000000
     extraData: 
     finished: 1

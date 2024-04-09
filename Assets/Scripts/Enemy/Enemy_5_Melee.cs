@@ -33,9 +33,13 @@ public class Enemy_5_Melee : Enemy_Melee
         yield return new WaitForSeconds(WaitChongCiTime());
         if (!IsAlive()) yield break;
         bool bAttackSuccess = false;
-        for (float t = 0; t < 0.5; t += Time.deltaTime)
+        for (float t = 0; t < 0.5f; t += Time.deltaTime)
         {
-            if (player == null) yield break;
+            if (player == null)
+            {
+                rb.velocity = Vector2.zero;
+                break;
+            }
             IsMoving = true;
             rb.velocity = dir * GetSpeed() * 5;
             if (!bAttackSuccess)
