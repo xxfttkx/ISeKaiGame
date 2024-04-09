@@ -290,4 +290,14 @@ public static class EventHandler
     {
         AddPlayerCharacteristic?.Invoke(playerIndex, ch);
     }
+    public static event Action EnterSelectCanvasEvent;
+    public static void CallEnterSelectCanvasEvent()
+    {
+        EnterSelectCanvasEvent?.Invoke();
+    }
+    public static event Action<List<int>> SelectIndexesEvent;
+    public static void CallSelectIndexesEvent(List<int> playerIndexes)
+    {
+        SelectIndexesEvent?.Invoke(playerIndexes);
+    }
 }

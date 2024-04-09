@@ -3,44 +3,60 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class SlotPanel : Singleton<SlotPanel>
+public class SlotPanel : MonoBehaviour
+
 {
     public GameObject slotPrefab;
     public GameObject addSlotGO;
     public GameObject moneyGO;
     public TextMeshProUGUI moneyData;
-    private List<SelectSlot> selectSlots;
+    private List<SelectSlot> selectSlots = new List<SelectSlot>();
     private Coroutine moneyShake;
     void Start()
     {
 
     }
-    public void Init(List<int> playerIndex)
+    private void OnEnable()
     {
-        int n = playerIndex.Count;
-        selectSlots = new List<SelectSlot>(n);
-        for (int i = 0; i < n; ++i)
-        {
-            var go = Instantiate(slotPrefab, this.transform);
-            selectSlots.Add(go.GetComponent<SelectSlot>());
-        }
-        
+        EventHandler.EnterSelectCanvasEvent += OnEnterSelectCanvasEvent;
+        EventHandler.SelectIndexesEvent += OnSelectIndexesEvent;
+    }
+    private void OnDisable()
+    {
+        EventHandler.EnterSelectCanvasEvent -= OnEnterSelectCanvasEvent;
+        EventHandler.SelectIndexesEvent -= OnSelectIndexesEvent;
+    }
+    void OnEnterSelectCanvasEvent()
+    {
         ShowMoney();
     }
-
-    public void Select(int slotIndex, int charIndex)
+    void OnSelectIndexesEvent(List<int> playerIndexes)
     {
-        selectSlots[slotIndex].SetImage(charIndex);
-    }
-    public void CancelSelect(int slotIndex)
-    {
-        selectSlots[slotIndex].SetImage(-1);
+        int last = selectSlots.Count;
+        int curr = playerIndexes.Count;
+        if(last>curr)
+        {
+            Debug.Log("last>curr error");
+            return;
+        }
+        else if(last<curr)
+        {
+            for (int i = last; i < curr; ++i)
+            {
+                var go = Instantiate(slotPrefab, this.transform);
+                selectSlots.Add(go.GetComponent<SelectSlot>());
+            }
+        }
+        for(int i = 0;i<curr;++i)
+        {
+            selectSlots[i].SetImage(playerIndexes[i]);
+        }
     }
     public void TryAddSlot()
     {
         if (SaveLoadManager.Instance.TryAddCompanionSlot())
         {
-
+            //TODO 
         }
         else
         {

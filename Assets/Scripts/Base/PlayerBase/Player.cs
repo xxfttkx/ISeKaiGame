@@ -77,6 +77,7 @@ public class Player : Creature
         animator.SetBool("Dead", false);
         animator.SetBool("Move", false);
         material.SetFloat("_EffectPercent", 0f);
+        material.DOFade(1f, 0f);
         buffs.Clear();
         allBuff = new Buff("all", 0, 0, 0, 0);
         timeOnTheField = 0;
@@ -147,9 +148,8 @@ public class Player : Creature
     public void Dead()
     {
         animator.SetBool("Dead", true);
-        transform.DORotate(new Vector3(0, 0, 360), .5f, RotateMode.FastBeyond360);
-        transform.DOScale(0f, .5f).OnComplete(() => PlayerManager.Instance.PlayerDead(GetPlayerIndex()));
-        
+        transform.DORotate(new Vector3(0, 0, 360), .5f, RotateMode.FastBeyond360).OnComplete(() => PlayerManager.Instance.PlayerDead(GetPlayerIndex()));
+        material.DOFade(0,.5f);
     }
     IEnumerator Dissolving()
     {

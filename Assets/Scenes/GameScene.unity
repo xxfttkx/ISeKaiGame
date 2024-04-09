@@ -1128,7 +1128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 945650032}
-  - component: {fileID: 945650034}
+  - component: {fileID: 945650035}
   m_Layer: 0
   m_Name: Bound
   m_TagString: Untagged
@@ -1145,13 +1145,13 @@ Transform:
   m_GameObject: {fileID: 945650031}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18667275, y: 1.0661259, z: 0.014302565}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &945650034
+--- !u!60 &945650035
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1195,10 +1195,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 20, y: 19}
-      - {x: -20, y: 19}
-      - {x: -20, y: -21}
-      - {x: 20, y: -21}
+    - - {x: 21, y: 21}
+      - {x: -21, y: 21}
+      - {x: -21, y: -21}
+      - {x: 21, y: -21}
   m_UseDelaunayMesh: 0
 --- !u!1 &961119823
 GameObject:
@@ -1522,7 +1522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ConfineMode: 0
   m_BoundingVolume: {fileID: 0}
-  m_BoundingShape2D: {fileID: 945650034}
+  m_BoundingShape2D: {fileID: 945650035}
   m_ConfineScreenEdges: 1
   m_Damping: 0
 --- !u!1 &1538371087

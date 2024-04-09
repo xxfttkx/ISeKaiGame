@@ -6,7 +6,8 @@ Shader "Custom/Player" {
         _EffectScale("EffectScale", Range(1, 100)) = 0
         _EffectPercent("EffectPercent",Range(0,1))=0
         _Index("Index",Range(0,20)) = 0
-        _Max("Max",Range(0,30)) = 30  
+        _Max("Max",Range(0,30)) = 30
+        _Scale("Scale",Range(0,1)) = 1
     }
     SubShader {
         Tags { "Queue" = "Transparent" }
@@ -40,6 +41,7 @@ Shader "Custom/Player" {
             sampler2D _Effect;
             half _EffectScale;
             half _EffectPercent;
+            half _Scale;
             fixed4 _Color;
 
             fixed4 mix(fixed4 c1,fixed4 c2,fixed t)

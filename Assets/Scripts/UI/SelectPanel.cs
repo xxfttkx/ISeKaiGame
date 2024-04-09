@@ -59,7 +59,7 @@ public class SelectPanel : Singleton<SelectPanel>
         }
         InitKeyboardRelation();
         selectedIndexes = SaveLoadManager.Instance.GetLastCharsIndexes();
-        SlotPanel.Instance.Init(selectedIndexes);
+        EventHandler.CallSelectIndexesEvent(selectedIndexes);
         InitSeletedChars();
         ButtonPanel.Instance.ChangeLevelInputField(selectedIndexes);
     }
