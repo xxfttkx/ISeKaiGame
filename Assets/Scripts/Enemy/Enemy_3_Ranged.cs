@@ -26,6 +26,6 @@ public class Enemy_Ranged_3 : Enemy_Ranged
     }
     private float GetGuangQiuSpeed()
     {
-        return 10f;
+        return 7f * levelBonus;
     }
 }

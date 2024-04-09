@@ -73,7 +73,7 @@ public class SteamScript : MonoBehaviour
 
         if (!m_bStatsValid)
             return;
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             UnlockAchievement(Achievement.ACH_Pass10_0);
         }
@@ -136,11 +136,15 @@ public class SteamScript : MonoBehaviour
     {
         if (SteamManager.Initialized)
         {
-            var lists = PlayerManager.Instance.TrueIndexes;
+            var list = PlayerManager.Instance.TrueIndexes;
             var leaderboard = SteamUserStats.FindOrCreateLeaderboard("Total", ELeaderboardSortMethod.k_ELeaderboardSortMethodDescending, ELeaderboardDisplayType.k_ELeaderboardDisplayTypeNumeric);
-            if(l==Settings.levelMaxNum)
+            if (!(l == Settings.levelMaxNum))
             {
-                UnlockAchievement(Achievement.ACH_Pass10_0);
+                foreach (var i in list)
+                {
+                    UnlockAchievement(Achievement.ACH_Pass10_0 + i);
+                }
+
             }
         }
     }
@@ -153,7 +157,7 @@ public class SteamScript : MonoBehaviour
         if (EResult.k_EResultOK == pCallback.m_eResult)
         {
             Debug.Log("Received stats and achievements from Steam\n");
-            
+
         }
         else
         {
@@ -215,18 +219,18 @@ public class SteamScript : MonoBehaviour
             return;
         /*SteamUserStats.SetAchievement(achievement.ToString());
         m_bStoreStats = true;*/
-        StartCoroutine(TryDoUntilTrue(()=> SteamUserStats.SetAchievement(achievement.ToString())));
+        StartCoroutine(TryDoUntilTrue(() => SteamUserStats.SetAchievement(achievement.ToString())));
     }
     IEnumerator TryDoUntilTrue(Func<bool> a)
     {
         if (a == null) yield break;
-        while(true)
+        while (true)
         {
             if (a.Invoke())
             {
                 m_bStoreStats = true;
                 break;
-            } 
+            }
             else
             {
                 Debug.Log("Func return false");

@@ -283,7 +283,7 @@ public class Player : Creature
     {
         if (type == Characteristic.Hp)
         {
-            AddHpLimit(val);
+            AddHpAndLimit(val);
         }
         else
         {

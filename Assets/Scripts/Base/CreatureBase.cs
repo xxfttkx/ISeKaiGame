@@ -284,7 +284,9 @@ public class Creature : MonoBehaviour
     public void AddHpAndLimit(int num)
     {
         if (IsAlive())
-            hp += num;
+        {
+            hp = Mathf.Max(1, hp + num);
+        }
         maxHp += num;
         EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
     }
