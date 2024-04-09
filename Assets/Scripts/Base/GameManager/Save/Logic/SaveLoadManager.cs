@@ -185,7 +185,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     public List<int> GetLastCharsIndexes()
     {
         Utils.TryFillList(ref gameSaveData.lastCharsIndexes, -1, GetMaxPlayerNum());
-        return gameSaveData.lastCharsIndexes;
+        return new List<int>(gameSaveData.lastCharsIndexes);
     }
     public int GetLanguage()
     {

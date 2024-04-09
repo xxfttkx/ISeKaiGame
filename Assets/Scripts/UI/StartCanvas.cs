@@ -23,7 +23,7 @@ public class StartCanvas : Singleton<StartCanvas>
     }
     public void EnterSelect()
     {
-        UIManager.Instance.EnterSelect();
+        EventHandler.CallEnterSelectCanvasEvent();
     }
 
     public void EnterTitle()

@@ -8,16 +8,18 @@ public class PoolManager : Singleton<PoolManager>
 
     public List<GameObject> poolPrefabs;
     public List<GameObject> enemyPrefabs;
-    public List<ObjectPool<GameObject>> poolList;
+    public List<ObjectPool<GameObject>> poolList = new List<ObjectPool<GameObject>>();
 
     // index to prefab
-    public List<ObjectPool<GameObject>> enemyPoolList;
+    public List<ObjectPool<GameObject>> enemyPoolList = new List<ObjectPool<GameObject>>();
     protected override void Awake()
     {
         base.Awake();
-        poolList = new List<ObjectPool<GameObject>>();
-        enemyPoolList = new List<ObjectPool<GameObject>>();
         CreatePool();
+    }
+    private void Start()
+    {
+        
     }
     private void OnEnable()
     {

@@ -13,7 +13,6 @@ public class ButtonPanel : Singleton<ButtonPanel>
     public DefaultBtn subButton;
     public DefaultBtn addButton;
     public TextMeshProUGUI levelNum;
-    private List<int> indexes;
     private int min = 1;
     private int max;
     private int curr;
@@ -21,7 +20,6 @@ public class ButtonPanel : Singleton<ButtonPanel>
     protected override void Awake()
     {
         base.Awake();
-        indexes = new List<int>();
         goButton.btnClick.AddListener(GoButton);
         goButton.interactable = false;
         minButton.btnClick.AddListener(MinButton);
@@ -34,6 +32,14 @@ public class ButtonPanel : Singleton<ButtonPanel>
         addButton.interactable = false;
     }
 
+    private void OnEnable()
+    {
+        EventHandler.SelectIndexesEvent += OnSelectIndexesEvent;
+    }
+    private void OnDisable()
+    {
+        EventHandler.SelectIndexesEvent -= OnSelectIndexesEvent;
+    }
     private void Update()
     {
 
@@ -96,16 +102,9 @@ public class ButtonPanel : Singleton<ButtonPanel>
         else addButton.interactable = true;
     }
 
-    public void ChangeLevelInputField(List<int> playerIndexes)
+    void OnSelectIndexesEvent(List<int> playerIndexes)
     {
-        indexes.Clear();
-        foreach (var i in playerIndexes)
-        {
-            if (i != -1)
-            {
-                indexes.Add(i);
-            }
-        }
+        var indexes = Utils.GetValidList(playerIndexes);
         if (indexes.Count == 0)
         {
             levelNum.text = "";
@@ -117,7 +116,6 @@ public class ButtonPanel : Singleton<ButtonPanel>
         }
         else
         {
-
             int level = SaveLoadManager.Instance.GetLevelByPlayerIndexes(indexes);
             if (level == Settings.levelMaxNum)
             {

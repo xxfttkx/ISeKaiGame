@@ -54,6 +54,7 @@ public class UIManager : Singleton<UIManager>
         EventHandler.MoneyChangeEvent += OnMoneyChangeEvent;
         EventHandler.EnterDungeonEvent += OnEnterDungeonEvent;
         EventHandler.ExitDungeonEvent += OnExitDungeonEvent;
+        EventHandler.EnterSelectCanvasEvent += OnEnterSelectCanvasEvent;
     }
     private void OnDisable()
     {
@@ -61,6 +62,7 @@ public class UIManager : Singleton<UIManager>
         EventHandler.MoneyChangeEvent -= OnMoneyChangeEvent;
         EventHandler.EnterDungeonEvent -= OnEnterDungeonEvent;
         EventHandler.ExitDungeonEvent += OnExitDungeonEvent;
+        EventHandler.EnterSelectCanvasEvent += OnEnterSelectCanvasEvent;
     }
     void OnEnterDungeonEvent(List<int> playerIndexes)
     {
@@ -136,12 +138,6 @@ public class UIManager : Singleton<UIManager>
     {
 
     }
-    public void EnterSelect()
-    {
-        selectCanvas.gameObject.SetActive(true);
-        selectCanvas.TryInitSelectPanel();
-        startCanvas.gameObject.SetActive(false);
-    }
     public void EnterTitle()
     {
         startCanvas.gameObject.SetActive(true);
@@ -151,5 +147,11 @@ public class UIManager : Singleton<UIManager>
     {
         endCanvas.gameObject.SetActive(true);
         endCanvas.EndGame(t);
+    }
+    void OnEnterSelectCanvasEvent()
+    {
+        selectCanvas.gameObject.SetActive(true);
+        selectCanvas.TryInitSelectPanel();
+        startCanvas.gameObject.SetActive(false);
     }
 }

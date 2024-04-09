@@ -82,7 +82,7 @@ MonoBehaviour:
       hp: 20
       speed: 7
       attackSpeed: 7
-      attackRange: 7
+      attackRange: 1
       faceToLeft: 0
       sprite: {fileID: -255441356, guid: a0266521ea847534286bef3bbacbcc95, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 94179feecd9f36f48bc042a1d8bc2bab, type: 3}
@@ -98,7 +98,7 @@ MonoBehaviour:
       hp: 20
       speed: 7
       attackSpeed: 7
-      attackRange: 7
+      attackRange: 1
       faceToLeft: 0
       sprite: {fileID: -559471264, guid: 0feeece6ba8a71d42b3e18f14e92896e, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 95aa2ee42593c784dbc543523da4a01c, type: 3}
@@ -221,3 +221,35 @@ MonoBehaviour:
     exp: 0
     money: 0
     desc: "\u5438\u73A9\u5BB6"
+  - creature:
+      attack: 7
+      hp: 20
+      speed: 7
+      attackSpeed: 7
+      attackRange: 7
+      faceToLeft: 0
+      sprite: {fileID: 185015456, guid: cf02c0a9f1491e64c8d15535002ba275, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: e54f22d1ad347a146822667d2b6b24b1, type: 3}
+    index: 13
+    name: 3
+    enemyType: 2
+    getPlayerPosTimeDelta: 2
+    exp: 5
+    money: 5
+    desc: Idle_3
+  - creature:
+      attack: 7
+      hp: 20
+      speed: 10
+      attackSpeed: 7
+      attackRange: 1
+      faceToLeft: 0
+      sprite: {fileID: -255441356, guid: a0266521ea847534286bef3bbacbcc95, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: bff63a9aa52f26d428bdcc5494805ea4, type: 3}
+    index: 14
+    name: 4
+    enemyType: 2
+    getPlayerPosTimeDelta: 2
+    exp: 5
+    money: 5
+    desc: Idle_4

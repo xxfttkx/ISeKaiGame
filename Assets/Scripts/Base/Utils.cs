@@ -292,4 +292,9 @@ public static class Utils
         List<int> numbersList = numberStrings.Select(int.Parse).ToList();
         return numbersList;
     }
+    public static Vector2 GetVec2RotateAngle(Vector2 vec2,float angle)
+    {
+        Quaternion rotation = Quaternion.Euler(0, 0, angle);
+        return rotation * vec2;
+    }
 }

@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Base\SO\TextDataList_SO.cs" />
     <Compile Include="Assets\Scripts\Base\GameManager\TransitionManager.cs" />
     <Compile Include="Assets\Scripts\Base\GameManager\Sound.cs" />
+    <Compile Include="Assets\Scripts\Base\EnemyBase\Enemy_Melee_Idle.cs" />
     <Compile Include="Assets\Scripts\Base\GameManager\BGManager.cs" />
     <Compile Include="Assets\Scripts\Base\GameManager\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\Base\SO\LevelCreatEnemyDataList_SO.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Assets\Scripts\Base\EnemyAtk\GuangQiu.cs" />
     <Compile Include="Assets\Scripts\Base\PlayerBase\Priest.cs" />
     <Compile Include="Assets\Scripts\Base\EnemyBase\Enemy_Ranged.cs" />
+    <Compile Include="Assets\Scripts\Base\EnemyBase\Enemy_Ranged_Idle.cs" />
     <Compile Include="Assets\Scripts\Base\GameManager\CursorManager.cs" />
     <Compile Include="Assets\Scripts\Base\Attack\Egg.cs" />
     <Compile Include="Assets\Scripts\Base\PlayerBase\Player.cs" />

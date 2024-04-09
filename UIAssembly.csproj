@@ -73,7 +73,6 @@
     <Compile Include="Assets\Scripts\UI\SelectSlot.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerData.cs" />
     <Compile Include="Assets\Scripts\UI\DataPanel.cs" />
-    <Compile Include="Assets\Scripts\UI\PlayerBtn.cs" />
     <Compile Include="Assets\Scripts\UI\HPPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Button\BtnBaseCtl.cs" />
     <Compile Include="Assets\Scripts\UI\StartPanel.cs" />

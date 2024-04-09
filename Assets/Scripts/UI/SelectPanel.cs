@@ -13,26 +13,24 @@ public class SelectPanel : Singleton<SelectPanel>
     public List<List<BtnBase>> allPlayerButtons;
     public List<int> selectedIndexes;
     private Dictionary<Profession, GameObject> professionToPlayers;
+    private bool bInit = false;
 
     protected override void Awake()
     {
         base.Awake();
         buttons = new Dictionary<int, SelectPlayerButton>();
     }
-    public bool TrySelectPlayer(int index)
+    public void OnEnter()
     {
-        if (CanSelectChar())
+        if(!bInit)
         {
-            SelectPlayer(index);
-            buttons[index].Select();
-            return true;
+            Init();
+            bInit = true;
         }
-        else
-        {
-            return false;
-        }
+        selectedIndexes = SaveLoadManager.Instance.GetLastCharsIndexes();
+        EventHandler.CallSelectIndexesEvent(selectedIndexes);
+        InitSeletedChars();
     }
-
     public void Init()
     {
         // ¿Õ¸ñÑ¡½ÇÉ«
@@ -55,38 +53,48 @@ public class SelectPanel : Singleton<SelectPanel>
             var b = go.GetComponent<SelectPlayerButton>();
             buttons.Add(c.index, b);
             b.InitButton(c.index, c.creature.sprite);
+            b.btnClick.AddListener(() => TryClickPlayer(c.index));
             allPlayerButtons[(int)c.profession].Add(b);
         }
         InitKeyboardRelation();
-        selectedIndexes = SaveLoadManager.Instance.GetLastCharsIndexes();
-        EventHandler.CallSelectIndexesEvent(selectedIndexes);
-        InitSeletedChars();
-        ButtonPanel.Instance.ChangeLevelInputField(selectedIndexes);
     }
+    private void TryClickPlayer(int playerIndex)
+    {
+        int index = selectedIndexes.IndexOf(playerIndex);
+        bool bChanged = false;
+        if (index != -1)
+        {
+            selectedIndexes[index] = -1;
+            buttons[playerIndex].CancelSelect();
+            bChanged = true;
+        }
+        else
+        {
+            for (int i = 0; i < selectedIndexes.Count; ++i)
+            {
+                if (selectedIndexes[i] == -1)
+                {
+                    selectedIndexes[i] = playerIndex;
+                    buttons[playerIndex].Select();
+                    bChanged = true;
+                    break;
+                }
+            }
+        }
+        if(bChanged)
+            EventHandler.CallSelectIndexesEvent(selectedIndexes);
+    }
+
     private void InitSeletedChars()
     {
         for (int i = 0; i < selectedIndexes.Count; ++i)
         {
             var charIndex = selectedIndexes[i];
-
-            SlotPanel.Instance.Select(i, charIndex);
             if (charIndex == -1) continue;
             buttons[charIndex].Select();
         }
     }
-    public void SelectPlayer(int playerIndex)
-    {
-        for (int i = 0; i < selectedIndexes.Count; ++i)
-        {
-            if (selectedIndexes[i] == -1)
-            {
-                selectedIndexes[i] = playerIndex;
-                SlotPanel.Instance.Select(i, playerIndex);
-                break;
-            }
-        }
-        ButtonPanel.Instance.ChangeLevelInputField(selectedIndexes);
-    }
+
     public void CancelSelectPlayer(int playerIndex)
     {
         for (int i = 0; i < selectedIndexes.Count; ++i)
@@ -95,11 +103,10 @@ public class SelectPanel : Singleton<SelectPanel>
             {
                 selectedIndexes[i] = -1;
                 buttons[playerIndex].CancelSelect();
-                SlotPanel.Instance.CancelSelect(i);
                 break;
             }
         }
-        ButtonPanel.Instance.ChangeLevelInputField(selectedIndexes);
+        EventHandler.CallSelectIndexesEvent(selectedIndexes);
     }
     public bool CanSelectChar()
     {

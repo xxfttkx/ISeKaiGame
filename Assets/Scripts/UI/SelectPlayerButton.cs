@@ -28,20 +28,6 @@ public class SelectPlayerButton : BtnBase
             slot.enabled = false;
         slot.color = new Color(1f, 1f, 1f, 1f);
     }
-    public override void BtnClick()
-    {
-        
-        if(selected)
-        {
-            SelectPanel.Instance.CancelSelectPlayer(index);
-        }
-        else
-        {
-            SelectPanel.Instance.TrySelectPlayer(index);
-        }
-        
-        
-    }
     public void InitButton(int index, Sprite sp)
     {
         chara.sprite = sp;

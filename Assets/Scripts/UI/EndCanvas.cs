@@ -79,6 +79,6 @@ public class EndCanvas : MonoBehaviour
         btnPanel.SetActive(false);
         EventHandler.CallExitLevelEvent(-1);
         EventHandler.CallExitDungeonEvent();
-        UIManager.Instance.EnterSelect();
+        EventHandler.CallEnterSelectCanvasEvent();
     }
 }

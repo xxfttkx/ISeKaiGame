@@ -12,6 +12,7 @@ public class SlotPanel : MonoBehaviour
     public TextMeshProUGUI moneyData;
     private List<SelectSlot> selectSlots = new List<SelectSlot>();
     private Coroutine moneyShake;
+    private List<int> playerIndexes;
     void Start()
     {
 
@@ -28,7 +29,7 @@ public class SlotPanel : MonoBehaviour
     }
     void OnEnterSelectCanvasEvent()
     {
-        ShowMoney();
+        
     }
     void OnSelectIndexesEvent(List<int> playerIndexes)
     {
@@ -46,6 +47,7 @@ public class SlotPanel : MonoBehaviour
                 var go = Instantiate(slotPrefab, this.transform);
                 selectSlots.Add(go.GetComponent<SelectSlot>());
             }
+            ShowMoney();
         }
         for(int i = 0;i<curr;++i)
         {
@@ -56,7 +58,7 @@ public class SlotPanel : MonoBehaviour
     {
         if (SaveLoadManager.Instance.TryAddCompanionSlot())
         {
-            //TODO 
+            EventHandler.CallEnterSelectCanvasEvent();
         }
         else
         {
@@ -91,7 +93,7 @@ public class SlotPanel : MonoBehaviour
     {
         int n = selectSlots.Count;
         n = n > 14 ? 14  : n;
-        addSlotGO.transform.localPosition = new Vector2(addSlotGO.transform.localPosition.x+100 * n + 50, addSlotGO.transform.localPosition.y);
+        addSlotGO.transform.position = new Vector2(100 * n + 75, addSlotGO.transform.position.y);
         int need = SaveLoadManager.Instance.GetAddCompanionSlotNeedMoney();
         if(need<0)
         {
