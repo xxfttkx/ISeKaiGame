@@ -24,7 +24,7 @@ public class Player_9_Priest : Priest
     public override void HealSkill()
     {
         var p = GetHealTarget();
-        if(p!=null)
+        if (p != null)
             PlayerManager.Instance.PlayerHealPlayer(GetPlayerIndex(), p.GetPlayerIndex());
     }
 
@@ -32,8 +32,8 @@ public class Player_9_Priest : Priest
     {
         return extras[2] switch
         {
-            0=> PlayerManager.Instance.GetPlayerInControl(),
-            1=> PlayerManager.Instance.GetMinHpValPlayerUnder(),
+            0 => PlayerManager.Instance.GetPlayerInControl(),
+            1 => PlayerManager.Instance.GetMinHpValPlayerUnder(),
             2 => PlayerManager.Instance.GetMinHpValPlayer(),
             _ => null,
         };
@@ -45,7 +45,7 @@ public class Player_9_Priest : Priest
             p.RemoveBuff("player9_extra1");
             p.RemoveBuff("player9_extra3");
         }
-        if (extras[1]==1)
+        if (extras[1] == 1)
         {
             var p = PlayerManager.Instance.GetPlayerInControl();
             p.ApplyBuff("player9_extra1", -1, 0f, 0f, 0f, GetBuffBonus(), 0f, ApplyBuffType.Override);
@@ -61,13 +61,13 @@ public class Player_9_Priest : Priest
         if (extras[3] == 1)
         {
             var p = PlayerManager.Instance.GetPlayerInControl();
-            p.ApplyBuff("player9_extra3",-1, Characteristic.Attack, 3, ApplyBuffType.Override);
+            p.ApplyBuff("player9_extra3", -1, Characteristic.Attack, 3, ApplyBuffType.Override);
         }
         else if (extras[3] == 2)
         {
             foreach (var p in PlayerManager.Instance.players)
             {
-                p.ApplyBuff("player9_extra3",-1, Characteristic.Attack, 1, ApplyBuffType.Override);
+                p.ApplyBuff("player9_extra3", -1, Characteristic.Attack, 1, ApplyBuffType.Override);
             }
         }
     }
@@ -84,7 +84,7 @@ public class Player_9_Priest : Priest
     protected override void OnDesireChangeEvent(int playerIndex, int extraIndex, int selectedIndex)
     {
         base.OnDesireChangeEvent(playerIndex, extraIndex, selectedIndex);
-        if (playerIndex == GetPlayerIndex() && (extraIndex == 1|| extraIndex == 3))
+        if (playerIndex == GetPlayerIndex() && (extraIndex == 1 || extraIndex == 3))
         {
             AddBuffBeforeStart();
         }

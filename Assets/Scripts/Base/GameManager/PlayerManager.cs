@@ -122,7 +122,7 @@ public class PlayerManager : Singleton<PlayerManager>
             indexToPlayer[pIndex].ChangeAttack(0.5f);
         }
         SaveLoadManager.Instance.SetPlayerExtraData(playerIndex, ExtraType.Kill, 1);
-        EventHandler.CallPlayerKillEnemyEvent(pIndex,enemy.GetEnemyIndex());
+        EventHandler.CallPlayerKillEnemyEvent(pIndex, enemy.GetEnemyIndex());
         SaveLoadManager.Instance.AddMoney(indexToPlayer[pIndex].GetMoneyEfficiency() * enemy.Money);
     }
 
@@ -151,7 +151,7 @@ public class PlayerManager : Singleton<PlayerManager>
         if (indexToPlayer.ContainsKey(14))
         {
             var player = indexToPlayer[14];
-            if (player.GetExtra(2)==1&&player.CanAcceptHurt(atk))
+            if (player.GetExtra(2) == 1 && player.CanAcceptHurt(atk))
             {
                 player.BeCompanionHurt(atk, atkIndex);
                 return;
@@ -176,11 +176,11 @@ public class PlayerManager : Singleton<PlayerManager>
             var player = indexToPlayer[14];
             if (player.GetExtra(2) != 2 && player.CanAcceptHurt(attack))
             {
-                player.BeHurt(attack,e);
+                player.BeHurt(attack, e);
                 return;
             }
         }
-        p.BeHurt(attack,e);
+        p.BeHurt(attack, e);
     }
 
     Vector2 moveVec2;
@@ -301,7 +301,7 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void ChangePlayerOnTheField(int i)
     {
-        if(!players[i].IsAlive())return;
+        if (!players[i].IsAlive()) return;
         if (currIndex == i) return;
         currIndex = i;
         currPlayerIndex = players[i].character.index;
@@ -328,6 +328,7 @@ public class PlayerManager : Singleton<PlayerManager>
             p.Reset();
             EventHandler.CallFieldTimeChangeEvent(p.GetPlayerIndex(), 0f);
         }
+        ChangePlayerOnTheField(0);
         foreach (var p in players)
         {
             p.AddBuffBeforeStart();
@@ -336,7 +337,7 @@ public class PlayerManager : Singleton<PlayerManager>
         {
             p.StartAttack();
         }
-        ChangePlayerOnTheField(0);
+        
         bInit = true;
     }
     protected void OnExitLevelEvent(int _)
@@ -468,19 +469,19 @@ public class PlayerManager : Singleton<PlayerManager>
         Movement(Vector2.zero);
         curSorMove = null;
     }
-    void OnPlayerKillEnemyEvent(int pI,int eI)
+    void OnPlayerKillEnemyEvent(int pI, int eI)
     {
         int exp = SOManager.Instance.GetExpByEnemyIndex(eI);
         EventHandler.CallPlayerAddExpEvent(pI, exp);
         foreach (var i in trueIndexes)
         {
-            EventHandler.CallPlayerAddExpEvent(i,exp);
+            EventHandler.CallPlayerAddExpEvent(i, exp);
         }
-        
+
     }
     void OnSubPlayerCharacteristic(int playerIndex, Characteristic ch)
     {
-        if (indexToPlayer.TryGetValue(playerIndex,out Player p))
+        if (indexToPlayer.TryGetValue(playerIndex, out Player p))
         {
             p.OnSubPlayerCharacteristic(ch);
         }

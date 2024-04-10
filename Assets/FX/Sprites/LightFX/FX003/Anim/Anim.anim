@@ -23,7 +23,7 @@ AnimationClip:
     - time: 0
       value: {fileID: 21300000, guid: e33ca340074932249ab5f50b163cfb97, type: 3}
     - time: 0.083333336
-      value: {fileID: 21300000, guid: a833965a434629340aa604a13f0cc72a, type: 3}
+      value: {fileID: 21300000, guid: e33ca340074932249ab5f50b163cfb97, type: 3}
     - time: 0.16666667
       value: {fileID: 21300000, guid: 064f5e333cea07d42aa6b4044b7b6930, type: 3}
     - time: 0.25
@@ -53,7 +53,7 @@ AnimationClip:
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
     - {fileID: 21300000, guid: e33ca340074932249ab5f50b163cfb97, type: 3}
-    - {fileID: 21300000, guid: a833965a434629340aa604a13f0cc72a, type: 3}
+    - {fileID: 21300000, guid: e33ca340074932249ab5f50b163cfb97, type: 3}
     - {fileID: 21300000, guid: 064f5e333cea07d42aa6b4044b7b6930, type: 3}
     - {fileID: 21300000, guid: 8c0dee308a1a391448b92281f0c46510, type: 3}
     - {fileID: 21300000, guid: b9ccf9af9efd83046920040b0951e596, type: 3}
@@ -62,7 +62,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.41666666
+    m_StopTime: 0.4166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

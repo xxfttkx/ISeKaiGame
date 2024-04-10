@@ -93,6 +93,7 @@ public class Player_15_Warrior : Player_Area
         }
         if (count >= _needHitNum)
         {
+            count = 0;
             if (showOutline != null) StopCoroutine(showOutline);
             StartCoroutine(HideOutline());
             return;

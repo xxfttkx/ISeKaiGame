@@ -205,7 +205,7 @@ public class PoolManager : Singleton<PoolManager>
         ObjectPool<GameObject> objPool = poolList[14];
         GameObject obj = objPool.Get();
         obj.transform.position = pos;
-        StartCoroutine(DelayRelease(obj,14,0.5f));
+        StartCoroutine(DelayRelease(obj,14,0.3f));
     }
     IEnumerator DelayRelease(GameObject go, int poolIndex,float time)
     {

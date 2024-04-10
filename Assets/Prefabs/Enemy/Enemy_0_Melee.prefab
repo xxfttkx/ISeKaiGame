@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: -987052999
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7ecf2779827a3eb4b90c5fad2eb62d90, type: 3}
+  m_Sprite: {fileID: 1571574046, guid: 8cc5cb484953ca94fae100c5c9b6f354, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -174,7 +174,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   maxHp: 0
-  addHp: 0
   allBuff:
     buffName: 
     duration: 0
@@ -199,7 +198,6 @@ MonoBehaviour:
       faceToLeft: 0
       sprite: {fileID: 0}
       prefab: {fileID: 0}
-      desc: 
     index: 0
     name: 0
     enemyType: 0

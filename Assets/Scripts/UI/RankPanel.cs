@@ -99,7 +99,7 @@ public class RankPanel : BasePanel
                 data = go.GetComponent<RankData>();
                 rankDataList.Add(data);
             }
-            data.Init(list[i].Indexes, list[i].Rank, charsPassLevelList[i].Level, list[i].Name);
+            data.Init(list[i].Indexes, list[i].Rank, list[i].Level, list[i].Name);
             data.gameObject.SetActive(true);
         }
         for (int i = list.Count; i < rankDataList.Count; i++)

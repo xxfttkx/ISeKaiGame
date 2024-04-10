@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Player\Player_16_Assassin.cs" />
     <Compile Include="Assets\Scripts\Player\Player_1_Mage.cs" />
     <Compile Include="Assets\Scripts\Player\Player_13_Priest.cs" />
+    <Compile Include="Assets\Scripts\Player\Player17\Player_17_Queue.cs" />
     <Compile Include="Assets\Scripts\Player\Player_12_Mage.cs" />
     <Compile Include="Assets\Scripts\Player\Player_6_Mage.cs" />
     <Compile Include="Assets\Scripts\Player\Player_3\Player3_Knife.cs" />

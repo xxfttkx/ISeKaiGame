@@ -70,7 +70,6 @@ public class SteamLeaderboard : MonoBehaviour
                     int[] details = new int[maxDetailsCount];
                     SteamUserStats.GetDownloadedLeaderboardEntry(pCallback.m_hSteamLeaderboardEntries, i, out leaderboardEntry, details, maxDetailsCount);
                     var name = SteamFriends.GetFriendPersonaName(leaderboardEntry.m_steamIDUser);
-                    Debug.LogError("用戶name：" + name + "用戶分數" + leaderboardEntry.m_nScore + "用戶排名" + leaderboardEntry.m_nGlobalRank + "Details" + leaderboardEntry.m_cDetails + "  " + SteamFriends.GetFriendPersonaName(leaderboardEntry.m_steamIDUser));
                     List<int> playerIndexes = GetValidPlayreIndexes(details, leaderboardEntry.m_cDetails);
                     var ld = new LeaderboardData(playerIndexes, leaderboardEntry.m_nScore, name, leaderboardEntry.m_nGlobalRank);
                     leaderboardDataList.Add(ld);

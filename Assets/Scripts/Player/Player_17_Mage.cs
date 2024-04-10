@@ -5,17 +5,20 @@ using UnityEngine;
 
 public class Player_17_Mage : Player
 {
-    private Queue<int> ToAtkQueue;
+    private Queue<int> toAtkQueue;
+    private Player_17_Queue que;
     protected override void Awake()
     {
         character.index = 17;
-        ToAtkQueue = new Queue<int>();
+        toAtkQueue = new Queue<int>();
         base.Awake();
+        que = GetComponentInChildren<Player_17_Queue>();
     }
     public override void Reset()
     {
         base.Reset();
-        ToAtkQueue.Clear();
+        toAtkQueue.Clear();
+        que.UpdateAtkList(0);
     }
     protected override void OnEnable()
     {
@@ -80,9 +83,10 @@ public class Player_17_Mage : Player
         {
             if(extras[1]==1)
             {
-                if(ToAtkQueue.Count<100)
+                if(toAtkQueue.Count<100)
                 {
-                    ToAtkQueue.Enqueue(num);
+                    toAtkQueue.Enqueue(num);
+                    que.UpdateAtkList(toAtkQueue.Count);
                 }
             }
             else if(extras[1]==2)
@@ -96,13 +100,14 @@ public class Player_17_Mage : Player
     {
         while(true)
         {
-            if(ToAtkQueue.Count>0)
+            if(toAtkQueue.Count>0)
             {
                 var e = Utils.GetNearestEnemy(_pos, _range);
                 if(e!=null)
                 {
-                    var atk = ToAtkQueue.Dequeue();
+                    var atk = toAtkQueue.Dequeue();
                     TryAtkEnemy(e, atk);
+                    que.UpdateAtkList(toAtkQueue.Count);
                     yield return new WaitForSeconds(1f);
                 }
             }

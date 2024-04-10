@@ -148,8 +148,8 @@ public class Player : Creature
     public void Dead()
     {
         animator.SetBool("Dead", true);
-        transform.DORotate(new Vector3(0, 0, 360), .5f, RotateMode.FastBeyond360).OnComplete(() => PlayerManager.Instance.PlayerDead(GetPlayerIndex()));
-        material.DOFade(0,.5f);
+        //transform.DORotate(new Vector3(0, 0, 360), .5f, RotateMode.FastBeyond360));
+        material.DOFade(0,.5f).OnComplete(() => PlayerManager.Instance.PlayerDead(GetPlayerIndex()));
     }
     IEnumerator Dissolving()
     {
