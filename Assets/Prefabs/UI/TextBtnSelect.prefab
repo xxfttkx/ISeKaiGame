@@ -104,10 +104,12 @@ MonoBehaviour:
   upBtn: {fileID: 0}
   downBtn: {fileID: 0}
   slot: {fileID: 7570242951528571477}
+  image: {fileID: 0}
   enterColor: {r: 0.6679245, g: 0.64398, b: 0.64398, a: 1}
-  seletedColor: {r: 0.3433962, g: 0.3433962, b: 0.3433962, a: 0}
-  unSeletedColor: {r: 1, g: 1, b: 1, a: 0}
-  seleted: 0
+  seletedColor: {r: 0.3433962, g: 0.3433962, b: 0.3433962, a: 1}
+  unSeletedColor: {r: 1, g: 1, b: 1, a: 1}
+  selected: 0
+  index: 0
 --- !u!1001 &4921117099836561774
 PrefabInstance:
   m_ObjectHideFlags: 0

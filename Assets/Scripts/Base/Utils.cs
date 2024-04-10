@@ -292,9 +292,22 @@ public static class Utils
         List<int> numbersList = numberStrings.Select(int.Parse).ToList();
         return numbersList;
     }
+    public static int[] GetArrayByList(List<int> list)
+    {
+        if (list == null)
+        {
+            return new int[0];
+        }
+        return list.ToArray();
+    }
     public static Vector2 GetVec2RotateAngle(Vector2 vec2,float angle)
     {
         Quaternion rotation = Quaternion.Euler(0, 0, angle);
         return rotation * vec2;
+    }
+    public static int GetScoreByPlyaerIndexesAndLevel(List<int> playerIndexes, int level)
+    {
+        if (playerIndexes == null) return 0;
+        return level * 100 + playerIndexes.Count;
     }
 }

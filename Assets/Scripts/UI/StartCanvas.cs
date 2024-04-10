@@ -18,6 +18,7 @@ public class StartCanvas : Singleton<StartCanvas>
     {
         base.Awake();
         startPanel.SetActive(true);
+        rankPanel.Hide();
         btnStart.btnClick.AddListener(EnterSelect);
         btnQuit.btnClick.AddListener(QuitGame);
     }

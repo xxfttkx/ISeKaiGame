@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Base\Attack\Letter.cs" />
     <Compile Include="Assets\Scripts\Base\SO\EnemyDataList_SO.cs" />
     <Compile Include="Assets\Scripts\Base\EventHandler.cs" />
+    <Compile Include="Assets\Scripts\Base\Steam\SteamLeaderboard.cs" />
     <Compile Include="Assets\Scripts\Base\GameManager\EnemyManager.cs" />
     <Compile Include="Assets\Scripts\Base\GameManager\Level\CreateEnemyPoint.cs" />
     <Compile Include="Assets\Scripts\Base\GameManager\RecordManager.cs" />

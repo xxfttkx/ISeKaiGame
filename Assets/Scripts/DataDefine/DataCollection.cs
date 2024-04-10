@@ -122,7 +122,7 @@ public class Buff
             Characteristic.Speed => speedNum = val,
             Characteristic.AttackSpeed => atkSpeedNum = val,
             Characteristic.AttackRange => atkRangeNum = val,
-            
+
             _ => val,
         };
     }
@@ -256,11 +256,11 @@ public class CharsPassLevel : IComparable<CharsPassLevel>
     }
     public int CompareTo(CharsPassLevel other)
     {
-        if (level==other.level)
+        if (level == other.level)
         {
-            if(indexes.Count==other.indexes.Count)
+            if (indexes.Count == other.indexes.Count)
             {
-                for(int i = 0;i<indexes.Count;++i)
+                for (int i = 0; i < indexes.Count; ++i)
                 {
                     if (indexes[i] != other.indexes[i]) return indexes[i] - other.indexes[i];
                 }
@@ -269,14 +269,32 @@ public class CharsPassLevel : IComparable<CharsPassLevel>
         }
         return other.level - level;
     }
-    public CharsPassLevel(List<int> l,int i)
+    public CharsPassLevel(List<int> l, int i)
     {
         indexes = l;
         level = i;
     }
-    public int GetScore()
+
+}
+
+public class LeaderboardData
+{
+    private List<int> indexes;
+    private int level;
+    private string name;
+    private int rank;
+    public List<int> Indexes
     {
-        int score = level * 10000 + indexes[0];
-        return score;
+        get => indexes;
+    }
+    public int Level { get => level; }
+    public int Rank { get => rank; }
+    public string Name { get => name; }
+    public LeaderboardData(List<int> list, int score, string s, int r)
+    {
+        indexes = list;
+        level = score / 100;
+        name = s;
+        rank = r;
     }
 }

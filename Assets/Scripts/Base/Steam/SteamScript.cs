@@ -35,7 +35,7 @@ public class SteamScript : MonoBehaviour
     protected Callback<UserStatsReceived_t> m_UserStatsReceived;
     protected Callback<UserStatsStored_t> m_UserStatsStored;
     protected Callback<UserAchievementStored_t> m_UserAchievementStored;
-    protected CallResult<LeaderboardFindResult_t> m_LeaderboardFindResult;
+
     private CGameID m_GameID;
     // Should we store stats this frame?
     private bool m_bStoreStats;
@@ -88,9 +88,6 @@ public class SteamScript : MonoBehaviour
             m_UserStatsReceived = Callback<UserStatsReceived_t>.Create(OnUserStatsReceived);
             m_UserStatsStored = Callback<UserStatsStored_t>.Create(OnUserStatsStored);
             m_UserAchievementStored = Callback<UserAchievementStored_t>.Create(OnAchievementStored);
-            m_LeaderboardFindResult = CallResult<LeaderboardFindResult_t>.Create(OnLeaderboardFindResult);
-            var p = SteamUserStats.FindOrCreateLeaderboard("Total", ELeaderboardSortMethod.k_ELeaderboardSortMethodDescending, ELeaderboardDisplayType.k_ELeaderboardDisplayTypeNumeric);
-            m_LeaderboardFindResult.Set(p);
         }
         EventHandler.ExitLevelEvent += OnExitLevelEvent;
     }
@@ -120,13 +117,13 @@ public class SteamScript : MonoBehaviour
             Debug.Log("The number of players playing your game: " + pCallback.m_cPlayers);
         }
     }
+
     public void OnExitLevelEvent(int l)
     {
         if (SteamManager.Initialized)
         {
             var list = PlayerManager.Instance.TrueIndexes;
-            var p = SteamUserStats.FindOrCreateLeaderboard("Total", ELeaderboardSortMethod.k_ELeaderboardSortMethodDescending, ELeaderboardDisplayType.k_ELeaderboardDisplayTypeNumeric);
-            if (l!=-1)
+            if (l != -1)
             {
                 if (l == Settings.levelMaxNum)
                 {
@@ -136,25 +133,12 @@ public class SteamScript : MonoBehaviour
                     }
                 }
             }
-            
+
         }
     }
-    SteamLeaderboard_t m_leaderboard;
-    void OnLeaderboardFindResult(LeaderboardFindResult_t pCallback, bool bIOFailure)
-    {
-        // we may get callbacks for other games' stats arriving, ignore them
-        if (!SteamManager.Initialized)
-            return;
-        if (pCallback.m_bLeaderboardFound==1)
-        {
-            Debug.Log("m_bLeaderboardFound TRUE");
-            m_leaderboard = pCallback.m_hSteamLeaderboard;
-        }
-        else
-        {
-            Debug.Log("m_bLeaderboardFound FALSE");
-        }
-    }
+
+
+
     private void OnUserStatsReceived(UserStatsReceived_t pCallback)
     {
         // we may get callbacks for other games' stats arriving, ignore them

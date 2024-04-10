@@ -104,8 +104,8 @@ MonoBehaviour:
   upBtn: {fileID: 0}
   downBtn: {fileID: 0}
   slot: {fileID: 8614200636484575339}
-  enterColor: {r: 1, g: 1, b: 1, a: 1}
-  exitColor: {r: 0.2981131, g: 0.2981131, b: 0.2981131, a: 1}
+  enterColor: {r: 0.65, g: 0.65, b: 0.65, a: 1}
+  exitColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &6177388704825979013
 GameObject:
   m_ObjectHideFlags: 0

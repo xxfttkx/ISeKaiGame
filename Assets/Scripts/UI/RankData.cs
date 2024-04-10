@@ -9,9 +9,11 @@ public class RankData : MonoBehaviour
     public List<Image> images;
     public TextMeshProUGUI rankNum;
     public TextMeshProUGUI levelNum;
-    
-    public void Init(List<int> indexes,int r,int l)
+    public TextMeshProUGUI userName;
+
+    public void Init(List<int> indexes,int r,int l,string s = null)
     {
+        userName.text = s == null ? "" : s;
         rankNum.text = $"{r}";
         levelNum.text = $"{l}";
         for(int i=0;i<images.Count;++i)

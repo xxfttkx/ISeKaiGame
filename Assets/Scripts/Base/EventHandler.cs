@@ -299,5 +299,30 @@ public static class EventHandler
     public static void CallSelectIndexesEvent(List<int> playerIndexes)
     {
         SelectIndexesEvent?.Invoke(playerIndexes);
+    } 
+    public static event Action<int,List<int>> TryUploadLocalScoreEvent;
+    public static void CallTryUploadLocalScoreEvent(int score, List<int> playerIndexes)
+    {
+        TryUploadLocalScoreEvent?.Invoke(score,playerIndexes);
+    }
+    public static event Action UploadLocalScoreSuccEvent;
+    public static void CallUploadLocalScoreSuccEvent()
+    {
+        UploadLocalScoreSuccEvent?.Invoke();
+    }
+    public static event Action TryGetFriendLeaderboardEvent;
+    public static void CallTryGetFriendLeaderboardEvent()
+    {
+        TryGetFriendLeaderboardEvent?.Invoke();
+    }
+    public static event Action TryGetWorldLeaderboardEvent;
+    public static void CallTryGetWorldLeaderboardEvent()
+    {
+        TryGetWorldLeaderboardEvent?.Invoke();
+    }
+    public static event Action<List<LeaderboardData>> GetLeaderboardSuccEvent;
+    public static void CallGetLeaderboardSuccEvent(List<LeaderboardData> l)
+    {
+        GetLeaderboardSuccEvent?.Invoke(l);
     }
 }
