@@ -308,6 +308,6 @@ public static class Utils
     public static int GetScoreByPlyaerIndexesAndLevel(List<int> playerIndexes, int level)
     {
         if (playerIndexes == null) return 0;
-        return level * 100 + playerIndexes.Count;
+        return level * 100 - playerIndexes.Count;
     }
 }

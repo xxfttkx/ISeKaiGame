@@ -53,14 +53,15 @@ public class Player_14_Warrior : Player_Area
             if(extras[1]==1)
             {
                 PlayerManager.Instance.PlayerHealPlayer(GetPlayerIndex(), GetPlayerIndex(), 1);
+                yield return new WaitForSeconds(1f);
             }
-            else if (extras[1] == 2 )
+            else if (extras[1] == 2)
             {
                 if(addHpLimit>0)
                 {
                     --addHpLimit;
-                    maxHp++;
-                    EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
+                    AddHpLimit(1);
+                    yield return new WaitForSeconds(2f);
                 }
             }
             yield return null;

@@ -293,7 +293,7 @@ public class LeaderboardData
     public LeaderboardData(List<int> list, int score, string s, int r)
     {
         indexes = list;
-        level = score / 100;
+        level = Mathf.CeilToInt(score / 100f);
         name = s;
         rank = r;
     }
