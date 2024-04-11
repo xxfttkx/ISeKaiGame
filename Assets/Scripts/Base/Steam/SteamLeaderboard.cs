@@ -29,12 +29,14 @@ public class SteamLeaderboard : MonoBehaviour
         EventHandler.TryUploadLocalScoreEvent += OnTryUploadLocalScoreEvent;
         EventHandler.TryGetFriendLeaderboardEvent += OnTryGetFriendLeaderboardEvent;
         EventHandler.TryGetWorldLeaderboardEvent += OnTryGetWorldLeaderboardEvent;
+        EventHandler.ExitLevelEvent += OnExitLevelEvent;
     }
     private void OnDisable()
     {
         EventHandler.TryUploadLocalScoreEvent -= OnTryUploadLocalScoreEvent;
         EventHandler.TryGetFriendLeaderboardEvent -= OnTryGetFriendLeaderboardEvent;
         EventHandler.TryGetWorldLeaderboardEvent -= OnTryGetWorldLeaderboardEvent;
+        EventHandler.ExitLevelEvent += OnExitLevelEvent;
     }
     void OnLeaderboardFindResult(LeaderboardFindResult_t pCallback, bool bIOFailure)
     {
@@ -146,5 +148,19 @@ public class SteamLeaderboard : MonoBehaviour
             }
         }
         return res;
+    }
+    void OnExitLevelEvent(int level)
+    {
+        if (SteamManager.Initialized && m_steamLeaderboard.m_SteamLeaderboard != 0)
+        {
+            if (level > 0)
+            {
+                var list = PlayerManager.Instance.TrueIndexes;
+                maxScoreIndexes = Utils.GetArrayByList(list);
+                maxScore = Utils.GetScoreByPlyaerIndexesAndLevel(list, level);
+                UploadScore();
+            }
+        }
+        
     }
 }

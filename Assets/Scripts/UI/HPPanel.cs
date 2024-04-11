@@ -5,7 +5,9 @@ using UnityEngine;
 public class HPPanel : MonoBehaviour
 {
     public GameObject prefab;
+    public GameObject continueHPPrefab;
     public Queue<ChangeHPUI> changeHPUIs;
+    public Dictionary<Creature, HPShow> enemyToHPShow = new Dictionary<Creature, HPShow>();
 
     private void Start()
     {
@@ -14,10 +16,12 @@ public class HPPanel : MonoBehaviour
     private void OnEnable()
     {
         EventHandler.PlayerHurtEnemyEvent += OnPlayerHurtEnemyEvent;
+        EventHandler.CreateContinueHPShowEvent += OnCreateContinueHPShowEvent;
     }
     private void OnDisable()
     {
         EventHandler.PlayerHurtEnemyEvent -= OnPlayerHurtEnemyEvent;
+        EventHandler.CreateContinueHPShowEvent -= OnCreateContinueHPShowEvent;
     }
     void OnPlayerHurtEnemyEvent(int atkIndex, EnemyBase e, int atk)
     {
@@ -33,10 +37,39 @@ public class HPPanel : MonoBehaviour
         }
         ui.gameObject.SetActive(true);
         ui.Init(e, atk, ()=>Release(ui));
+        if (enemyToHPShow.TryGetValue(e, out HPShow hpShow))
+        {
+            hpShow.SetHpVal(e.GetHpVal());
+        }
     }
     public void Release(ChangeHPUI ui)
     {
         changeHPUIs.Enqueue(ui);
         ui.gameObject.SetActive(false);
+    }
+    void OnCreateContinueHPShowEvent(Creature c, float yOffset)
+    {
+        var go = Instantiate(continueHPPrefab, this.transform);
+        var hpShow = go.GetComponent<HPShow>();
+        enemyToHPShow.Add(c, hpShow);
+        StartCoroutine(HPShowFollowCreature(hpShow, c, yOffset));
+    }
+    IEnumerator HPShowFollowCreature(HPShow hpshow,Creature c, float yOffset)
+    {
+        var t = hpshow.transform;
+        var offset = new Vector3(0, yOffset, 0);
+        while (true)
+        {
+            if(c.IsAlive())
+            {
+                t.position = Camera.main.WorldToScreenPoint(c._pos)+ offset;
+                yield return null;
+            }
+            else
+            {
+                enemyToHPShow.Remove(c);
+                Destroy(hpshow);
+            }
+        }
     }
 }

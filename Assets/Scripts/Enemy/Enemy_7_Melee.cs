@@ -39,6 +39,7 @@ public class Enemy_7_Melee : Enemy_Melee
         {
             StartCoroutine(Attack(tentacles[i],i));
         }
+        EventHandler.CallCreateContinueHPShowEvent(this,60);
     }
     protected override IEnumerator Attack()
     {

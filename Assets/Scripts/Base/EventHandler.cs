@@ -325,4 +325,9 @@ public static class EventHandler
     {
         GetLeaderboardSuccEvent?.Invoke(l);
     }
+    public static event Action<Creature,float> CreateContinueHPShowEvent;
+    public static void CallCreateContinueHPShowEvent(Creature c,float yOffset)
+    {
+        CreateContinueHPShowEvent?.Invoke(c, yOffset);
+    }
 }
