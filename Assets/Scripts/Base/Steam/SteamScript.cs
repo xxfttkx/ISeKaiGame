@@ -67,11 +67,6 @@ public class SteamScript : MonoBehaviour
 
         if (!m_bStatsValid)
             return;
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            UnlockAchievement(Achievement.ACH_Pass10_0);
-        }
-
         if (m_bStoreStats)
         {
             bool bSuccess = SteamUserStats.StoreStats();

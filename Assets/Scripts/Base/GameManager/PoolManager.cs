@@ -58,12 +58,12 @@ public class PoolManager : Singleton<PoolManager>
         
     }
 
-    public void ReleaseEnemy(GameObject obj, int index)
+    public void ReleaseEnemy(GameObject obj, int index, bool changeUI = true)
     {
         ObjectPool<GameObject> objPool = enemyPoolList[index];
         objPool.Release(obj);
         var e = obj.GetComponent<EnemyBase>();
-        LevelManager.Instance.SubEnemyNum(e.GetGlobalIndex());
+        LevelManager.Instance.SubEnemyNum(e.GetGlobalIndex(), changeUI);
     }
     public void ReleaseObj(GameObject obj, int index)
     {

@@ -14,6 +14,7 @@ public class Settings
     public const int reservedEnemyCount = 500;
     // ÅÐ¶Ï»÷ÖÐÍæ¼Ò¾àÀë
     public const float hitPlayerDis = 0.7f;
+    public const float hitPlayerDisSqr = 0.49f;
     public const float hitEnemyDis = 0.7f;
     /*    public Dictionary<int, KeyCode> changePlayerKey = new Dictionary<int, KeyCode>() {1=KeyCode.Alpha1 };*/
     public const float circleAnimTime = 0.3f;

@@ -126,20 +126,20 @@ MonoBehaviour:
     money: 4
     desc: "\u4E00\u6B215\u53D1"
   - creature:
-      attack: 8
-      hp: 50
-      speed: 6
-      attackSpeed: 6
-      attackRange: 6
+      attack: 20
+      hp: 2000
+      speed: 20
+      attackSpeed: 20
+      attackRange: 20
       faceToLeft: 1
       sprite: {fileID: 21300000, guid: 6d2196183c1801e479f78254bbc800c0, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 2b29b3a257f9717409212f7b15b70054, type: 3}
     index: 7
     name: chaser
     enemyType: 1
-    getPlayerPosTimeDelta: 0.1
-    exp: 10
-    money: 10
+    getPlayerPosTimeDelta: 1
+    exp: 400
+    money: 400
     desc: "\u89E6\u624B\u653B\u51FB"
   - creature:
       attack: 0

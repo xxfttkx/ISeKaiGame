@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class EnemyBase : Creature
 {
@@ -37,7 +38,7 @@ public class EnemyBase : Creature
         get => enemy.creature.attackRange;
     }
 
-    protected bool CanMove
+    protected virtual bool CanMove
     {
         get => IsAlive() && !isBegingRepelled && !inAtkAnim;
     }
@@ -53,6 +54,7 @@ public class EnemyBase : Creature
             if (isMoving != value)
             {
                 isMoving = value;
+                if (!isMoving) rb.velocity = Vector2.zero;
                 animator?.SetBool("Move", isMoving);
             }
         }
@@ -72,12 +74,14 @@ public class EnemyBase : Creature
     }
     protected virtual void OnEnable()
     {
-        Reset();
-        StartCoroutine(GetPlayerPosition());
-        StartCoroutine(MoveToPlayer());
-        StartCoroutine(Attack());
         EventHandler.ExitLevelEvent += OnExitLevelEvent;
         EventHandler.ChangePlayerOnTheFieldEvent += OnChangePlayerOnTheFieldEvent;
+        LevelManager.Instance.AddEnemyNum(this);
+        material.SetFloat("_Red", 0f);
+        material.SetFloat("_Reslove", 1f);
+        beReleased = false;
+        isMoving = false;
+        material.DOFloat(0f, "_Reslove", 1f).OnComplete(() => Reset());
     }
 
 
@@ -106,8 +110,8 @@ public class EnemyBase : Creature
             }
             Vector2 deltaPos = player.transform.position - this.transform.position;
             movementVec2 = deltaPos.normalized;
-/*            Quaternion rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-20, 20));
-            movementVec2 = rotation * movementVec2;*/
+            /*            Quaternion rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-20, 20));
+                        movementVec2 = rotation * movementVec2;*/
             yield return new WaitForSeconds(enemy.getPlayerPosTimeDelta);
         }
 
@@ -147,7 +151,7 @@ public class EnemyBase : Creature
         }
         material.SetFloat("_Red", 0f);
     }
-    public void Release()
+    public void Release(bool levelExit = false)
     {
         if (!beReleased)
         {
@@ -155,7 +159,10 @@ public class EnemyBase : Creature
             rb.velocity = Vector2.zero;
             beReleased = true;
             IsMoving = false;
-            StartCoroutine(Dead());
+            if (levelExit)
+                PoolManager.Instance.ReleaseEnemy(this.gameObject, enemy.index, false);
+            else
+                StartCoroutine(Dead());
         }
 
     }
@@ -201,23 +208,22 @@ public class EnemyBase : Creature
     public override void Reset()
     {
         base.Reset();
-        LevelManager.Instance.AddEnemyNum(this);
-        isBegingRepelled = false;
         enemy = SOManager.Instance.enemyDataList_SO.GetEnemyByIndex(enemy.index);
         sp.sprite = enemy.creature.sprite;
-        hp = Mathf.CeilToInt(enemy.creature.hp*levelBonus);
+        hp = Mathf.CeilToInt(enemy.creature.hp * levelBonus);
         maxHp = hp;
-        material.SetFloat("_Red", 0f);
-        material.SetFloat("_Reslove", 0f);
-        beReleased = false;
-        player = PlayerManager.Instance.GetPlayerInControl();
-        isMoving = false;
+        isBegingRepelled = false;
         inAtkAnim = false;
+        player = PlayerManager.Instance.GetPlayerInControl();
         rb.velocity = Vector2.zero;
+        StartCoroutine(GetPlayerPosition());
+        StartCoroutine(MoveToPlayer());
+        StartCoroutine(Attack());
     }
     private void OnExitLevelEvent(int level)
     {
-        Release();
+        material.DOKill();
+        Release(true);
     }
 
     public void SetGlobalIndex(int index)

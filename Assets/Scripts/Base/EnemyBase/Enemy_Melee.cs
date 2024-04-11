@@ -35,7 +35,6 @@ public class Enemy_Melee : EnemyBase
                 else if (movementVec2.x > 0) sp.flipX = enemy.creature.faceToLeft;
                 if (distance < 0.1f)
                 {
-                    rb.velocity = Vector2.zero;
                     IsMoving = false;
                 }
                 else

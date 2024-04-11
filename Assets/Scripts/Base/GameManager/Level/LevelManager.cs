@@ -61,13 +61,13 @@ public class LevelManager : Singleton<LevelManager>
         currEnemyNum += 1;
         EventHandler.CallEnemyNumChangeEvent(currEnemyNum);
     }
-    public void SubEnemyNum(int enemyGlobalIndex)
+    public void SubEnemyNum(int enemyGlobalIndex,bool changeUI)
     {
         if (enemyGlobalIndex != -1)
         {
             enemyHash.Remove(enemyGlobalIndex);
         }
-        if (enemyGlobalIndex >= currLevelGlobal)
+        if (changeUI)
         {
             currEnemyNum -= 1;
             EventHandler.CallEnemyNumChangeEvent(currEnemyNum);
@@ -101,7 +101,7 @@ public class LevelManager : Singleton<LevelManager>
         }
         else if (creatEnemyPointList.Count > n)
         {
-            for (int i = creatEnemyPointList.Count; i < n; ++i)
+            for (int i = n; i < creatEnemyPointList.Count; ++i)
             {
                 creatEnemyPointList[i].gameObject.SetActive(false);
             }
@@ -137,7 +137,7 @@ public class LevelManager : Singleton<LevelManager>
             EventHandler.CallCreateEnemyTimeChangeEvent(endTime);
         }
         timeEnd = true;
-        SubEnemyNum(-1);
+        SubEnemyNum(-1,false);
     }
     IEnumerator CountLevelTime()
     {
