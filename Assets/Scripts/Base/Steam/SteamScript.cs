@@ -29,6 +29,7 @@ public class SteamScript : MonoBehaviour
         ACH_Pass10_18,
         ACH_Pass10_19,
         ACH_Pass10_20,
+        ACH_3_Pass10,
     };
     //TODO achievement¶à´Î´¥·¢
 
@@ -122,6 +123,8 @@ public class SteamScript : MonoBehaviour
             {
                 if (l == Settings.levelMaxNum)
                 {
+                    if (list.Count == 3)
+                        UnlockAchievement(Achievement.ACH_3_Pass10);
                     foreach (var i in list)
                     {
                         UnlockAchievement(Achievement.ACH_Pass10_0 + i);

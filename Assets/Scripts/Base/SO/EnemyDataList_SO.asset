@@ -138,8 +138,8 @@ MonoBehaviour:
     name: chaser
     enemyType: 1
     getPlayerPosTimeDelta: 1
-    exp: 400
-    money: 400
+    exp: 600
+    money: 600
     desc: "\u89E6\u624B\u653B\u51FB"
   - creature:
       attack: 0

@@ -25,9 +25,9 @@ public class Enemy_7_Melee : Enemy_Melee
         base.Awake();
     }
 
-    public override void Reset()
+    public override void BeforeReset()
     {
-        base.Reset();
+        base.BeforeReset();
         inAtkAnims.Clear();
         foreach (var t in tentacles)
         {
@@ -35,6 +35,10 @@ public class Enemy_7_Melee : Enemy_Melee
             sp.size = new Vector2(base.sp.size.x, 0);
             inAtkAnims.Add(false);
         }
+    }
+    public override void Reset()
+    {
+        base.Reset();
         for (int i = 0; i < tentacles.Count; ++i)
         {
             StartCoroutine(Attack(tentacles[i],i));

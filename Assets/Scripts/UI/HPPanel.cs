@@ -17,11 +17,13 @@ public class HPPanel : MonoBehaviour
     {
         EventHandler.PlayerHurtEnemyEvent += OnPlayerHurtEnemyEvent;
         EventHandler.CreateContinueHPShowEvent += OnCreateContinueHPShowEvent;
+        EventHandler.ExitLevelEvent += OnExitLevelEvent;
     }
     private void OnDisable()
     {
         EventHandler.PlayerHurtEnemyEvent -= OnPlayerHurtEnemyEvent;
         EventHandler.CreateContinueHPShowEvent -= OnCreateContinueHPShowEvent;
+        EventHandler.ExitLevelEvent -= OnExitLevelEvent;
     }
     void OnPlayerHurtEnemyEvent(int atkIndex, EnemyBase e, int atk)
     {
@@ -52,24 +54,10 @@ public class HPPanel : MonoBehaviour
         var go = Instantiate(continueHPPrefab, this.transform);
         var hpShow = go.GetComponent<HPShow>();
         enemyToHPShow.Add(c, hpShow);
-        StartCoroutine(HPShowFollowCreature(hpShow, c, yOffset));
+        hpShow.Init(c, yOffset);
     }
-    IEnumerator HPShowFollowCreature(HPShow hpshow,Creature c, float yOffset)
+    void OnExitLevelEvent(int _)
     {
-        var t = hpshow.transform;
-        var offset = new Vector3(0, yOffset, 0);
-        while (true)
-        {
-            if(c.IsAlive())
-            {
-                t.position = Camera.main.WorldToScreenPoint(c._pos)+ offset;
-                yield return null;
-            }
-            else
-            {
-                enemyToHPShow.Remove(c);
-                Destroy(hpshow);
-            }
-        }
+        enemyToHPShow.Clear();
     }
 }

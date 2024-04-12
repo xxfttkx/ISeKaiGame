@@ -75,12 +75,8 @@ public class EnemyBase : Creature
     protected virtual void OnEnable()
     {
         EventHandler.ExitLevelEvent += OnExitLevelEvent;
-        EventHandler.ChangePlayerOnTheFieldEvent += OnChangePlayerOnTheFieldEvent;
-        LevelManager.Instance.AddEnemyNum(this);
-        material.SetFloat("_Red", 0f);
-        material.SetFloat("_Reslove", 1f);
-        beReleased = false;
-        isMoving = false;
+        EventHandler.ChangePlayerOnTheFieldEvent += OnChangePlayerOnTheFieldEvent; 
+        BeforeReset();
         material.DOFloat(0f, "_Reslove", 1f).OnComplete(() => Reset());
     }
 
@@ -93,6 +89,14 @@ public class EnemyBase : Creature
         EventHandler.ExitLevelEvent -= OnExitLevelEvent;
         EventHandler.ChangePlayerOnTheFieldEvent -= OnChangePlayerOnTheFieldEvent;
         // StopAllCoroutines();
+    }
+    public virtual void BeforeReset()
+    {
+        LevelManager.Instance.AddEnemyNum(this);
+        material.SetFloat("_Red", 0f);
+        material.SetFloat("_Reslove", 1f);
+        beReleased = false;
+        isMoving = false;
     }
     internal void SetLevelBonus(float bonus)
     {
