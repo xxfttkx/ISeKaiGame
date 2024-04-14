@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\UI\Button\ImageBtnClick.cs" />
     <Compile Include="Assets\Scripts\UI\CharacterJump.cs" />
     <Compile Include="Assets\Scripts\UI\EndCanvas.cs" />
+    <Compile Include="Assets\Scripts\UI\OverPanel.cs" />
     <Compile Include="Assets\Scripts\UI\SelectPanel.cs" />
     <Compile Include="Assets\Scripts\UI\SettingsPanel.cs" />
     <Compile Include="Assets\Scripts\UI\ChangeHPUI.cs" />
