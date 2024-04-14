@@ -59,7 +59,7 @@ MonoBehaviour:
     - 
   - texts:
     - "\u56DE\u5230\u6E38\u620F"
-    - Back
+    - Back To Game
     - 
   - texts:
     - "\u58F0\u97F3\u8BBE\u7F6E"
@@ -135,9 +135,9 @@ MonoBehaviour:
     - "\u653B\u6483\u8DDD\u96E2"
     - atkRange
   - texts:
-    - Ch Set
-    - Ch Set
-    - Ch Set
+    - "\u89D2\u8272\u9762\u677F"
+    - Character Panel
+    - "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC\u30D1\u30CD\u30EB"
   - texts:
     - todo
     - todo
