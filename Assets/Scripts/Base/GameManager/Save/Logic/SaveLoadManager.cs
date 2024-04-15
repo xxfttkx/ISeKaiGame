@@ -592,12 +592,13 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     {
         if(saveLoadIndex==0)
         {
-
+            SetLanguage(selectIndex);
             return;
         }
         else if (saveLoadIndex == 1)
         {
-
+            var frameRate = Utils.GetFrameRateBySelectIndex(selectIndex);
+            SetFrameRate(frameRate);
             return;
         }
     }

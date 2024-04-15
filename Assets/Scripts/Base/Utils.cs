@@ -256,8 +256,14 @@ public static class Utils
     }
     public static List<string> GetFrameRateList()
     {
-        return new List<string> {"-1","30","60","120","240" };
+        return new List<string> {"-1","30","60", "90", "120", "150", "180", "210", "240" };
     }
+    public static int GetFrameRateBySelectIndex(int index)
+    {
+        if (index <= 0) return -1;
+        else return index * 30;
+    }
+
     public static string GetStringByCharacteristicAndVal(Characteristic c, int v, bool sign)
     {
         string t = sign ? "+" : "-";
