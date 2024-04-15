@@ -45,6 +45,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         EventHandler.EnterDungeonEvent += OnEnterDungeonEvent;
         EventHandler.PlayerKillEnemyEvent += OnPlayerKillEnemyEvent;
         EventHandler.PlayerAddExpEvent += OnPlayerAddExpEvent;
+        EventHandler.TextBtnExpandSelectEvent += OnTextBtnExpandSelectEvent;
     }
     private void OnDisable()
     {
@@ -54,6 +55,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         EventHandler.EnterDungeonEvent -= OnEnterDungeonEvent;
         EventHandler.PlayerKillEnemyEvent -= OnPlayerKillEnemyEvent;
         EventHandler.PlayerAddExpEvent -= OnPlayerAddExpEvent;
+        EventHandler.TextBtnExpandSelectEvent -= OnTextBtnExpandSelectEvent;
     }
     private void OnEnterLevelEvent(int l)
     {
@@ -108,6 +110,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         }
         finishLoad = true;
         EventHandler.CallLoadFinishEvent();
+        Application.targetFrameRate = gameSaveData.targetFrameRate;
         //Debug.Log(Time.realtimeSinceStartup);
     }
     private void Save()
@@ -190,6 +193,20 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     public int GetLanguage()
     {
         return gameSaveData?.language ?? 1;
+    }
+    public int GetFrameRate()
+    {
+        return gameSaveData?.targetFrameRate ?? -1;
+    }
+    public void SetFrameRate(int num)
+    {
+        var frame = gameSaveData.targetFrameRate;
+        if (frame != num)
+        {
+            gameSaveData.targetFrameRate = num;
+            Application.targetFrameRate = num;
+            SaveAsync();
+        }
     }
     public void SetLanguage(int l)
     {
@@ -570,5 +587,18 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     public void AddMoney(float money)
     {
         AddMoney(Mathf.CeilToInt(money));
+    }
+    void OnTextBtnExpandSelectEvent(int saveLoadIndex, int selectIndex)
+    {
+        if(saveLoadIndex==0)
+        {
+
+            return;
+        }
+        else if (saveLoadIndex == 1)
+        {
+
+            return;
+        }
     }
 }

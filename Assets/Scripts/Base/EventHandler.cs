@@ -330,4 +330,9 @@ public static class EventHandler
     {
         CreateContinueHPShowEvent?.Invoke(c, yOffset);
     }
+    public static event Action<int,int> TextBtnExpandSelectEvent;
+    public static void CallTextBtnExpandSelectEvent(int saveLoadIndex, int selectIndex)
+    {
+        TextBtnExpandSelectEvent?.Invoke(saveLoadIndex, selectIndex);
+    }
 }

@@ -1,0 +1,63 @@
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class TextBtnExpand : ImageBtnClick
+{
+    public TextMeshProUGUI content;
+    public GameObject expandParent;
+    public GameObject expandPrefab;
+    public bool bInit = false;
+    public List<TextBtnSelect> textBtnSelectList = new List<TextBtnSelect>();
+    public List<string> stringList;
+    public int saveLoadIndex;
+    public int currSelectIndex = -1;
+    public override void Awake()
+    {
+        base.Awake();
+    }
+    public override void BtnEnter() { slot.color = enterColor; }
+    public override void BtnExit() { slot.color = exitColor; }
+    public override void BtnClick()
+    {
+        base.BtnClick();
+        expandParent.SetActive(!expandParent.activeSelf);
+    }
+    public void Init(List<string> stringList, int currIndex)
+    {
+        if(stringList==null|| stringList.Count==0)
+        {
+            Debug.Log("");
+            return;
+        }
+        if (bInit) return;
+        bInit = true;
+        this.stringList = stringList;
+        for (int i = 0; i < stringList.Count; ++i)
+        {
+            var go = Instantiate(expandPrefab, expandParent.transform);
+            go.SetActive(true);
+            var tbs = go.GetComponent<TextBtnSelect>();
+            var index = i;
+            tbs.Init(stringList[i], ()=>TryClickText(index));
+            textBtnSelectList.Add(tbs);
+        }
+        currSelectIndex = currIndex;
+        textBtnSelectList[currSelectIndex].Select();
+        content.text = stringList[currSelectIndex];
+        expandParent.SetActive(false);
+    }
+    public void TryClickText(int index)
+    {
+        if(currSelectIndex!=index)
+        {
+            if(currSelectIndex!=-1)
+                textBtnSelectList[currSelectIndex].CancelSelect();
+            currSelectIndex = index;
+            textBtnSelectList[index].Select();
+            content.text = stringList[index];
+        }
+        EventHandler.CallTextBtnExpandSelectEvent(saveLoadIndex, currSelectIndex);
+    }
+}

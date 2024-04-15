@@ -245,6 +245,19 @@ public static class Utils
             _ => "English"
         };
     }
+    public static List<string> GetLanguageList()
+    {
+        var list = new List<string>();
+        for(int i = 0;i<(int)Language.Max;++i)
+        {
+            list.Add(GetLanguageString(i));
+        }
+        return list;
+    }
+    public static List<string> GetFrameRateList()
+    {
+        return new List<string> {"-1","30","60","120","240" };
+    }
     public static string GetStringByCharacteristicAndVal(Characteristic c, int v, bool sign)
     {
         string t = sign ? "+" : "-";

@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI\LevelPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Button\TextBtnExpand.cs" />
     <Compile Include="Assets\Scripts\UI\ExtraPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Button\BtnBase.cs" />
     <Compile Include="Assets\Scripts\UI\SelectDesireButton.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\Scripts\UI\PausePanel.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerBtnInExtraPanel.cs" />
     <Compile Include="Assets\Scripts\UI\StartCanvas.cs" />
+    <Compile Include="Assets\Scripts\UI\Button\TextBtnSelect.cs" />
     <Compile Include="Assets\Scripts\UI\HPShow.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerSettingsPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Button\ImageBtnClick.cs" />

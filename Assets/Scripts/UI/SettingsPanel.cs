@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class SettingsPanel : BasePanel
 {
-    public bool bInit;
+    public bool bInit = false;
     public SoundSettingsPanel soundSettingsPanel;
     public ImageBtnSelect windowed;
     public ImageBtnSelect runInBackground;
+    public TextBtnExpand languageTextBtnExpand;
+    public TextBtnExpand frameTextBtnExpand;
 
     private void OnEnable()
     {
@@ -27,6 +29,8 @@ public class SettingsPanel : BasePanel
             runInBackground.CancelSelect();
         if (bInit) return;
         bInit = true;
+        languageTextBtnExpand.Init(Utils.GetLanguageList(), SaveLoadManager.Instance.GetLanguage());
+        frameTextBtnExpand.Init(Utils.GetFrameRateList(), SaveLoadManager.Instance.GetFrameRate());
     }
     public void TryClickWindowed()
     {

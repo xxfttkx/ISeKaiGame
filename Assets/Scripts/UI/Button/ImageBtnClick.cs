@@ -9,8 +9,9 @@ public class ImageBtnClick : BtnBase
     public override void Awake()
     {
         base.Awake();
-        slot = GetComponent<Image>();
+        if (slot == null)
+            slot = GetComponent<Image>();
     }
-    public override void BtnEnter() { slot.color = enterColor; }
-    public override void BtnExit() { slot.color = exitColor; }
+    public override void BtnEnter() { base.BtnEnter(); slot.color = enterColor; }
+    public override void BtnExit() { base.BtnExit(); slot.color = exitColor; }
 }
