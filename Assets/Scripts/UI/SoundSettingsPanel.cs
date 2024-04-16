@@ -12,12 +12,11 @@ public class SoundSettingsPanel : MonoBehaviour
     public TextMeshProUGUI total;
     public TextMeshProUGUI ambient;
     public TextMeshProUGUI effect;
+    private bool bInit = false;
 
     protected void Awake()
     {
-        totalVolume.onValueChanged.AddListener(value => OnSliderValueChanged(value, 0));
-        ambientVolume.onValueChanged.AddListener(value => OnSliderValueChanged(value, 1));
-        effectVolume.onValueChanged.AddListener(value => OnSliderValueChanged(value, 2));
+        
     }
 
     private void OnEnable()
@@ -28,6 +27,13 @@ public class SoundSettingsPanel : MonoBehaviour
     }
     public void Init()
     {
+        if(!bInit)
+        {
+            bInit = true;
+            totalVolume.onValueChanged.AddListener(value => OnSliderValueChanged(value, 0));
+            ambientVolume.onValueChanged.AddListener(value => OnSliderValueChanged(value, 1));
+            effectVolume.onValueChanged.AddListener(value => OnSliderValueChanged(value, 2));
+        }
         totalVolume.value = SaveLoadManager.Instance.GetVolume(0);
         ambientVolume.value = SaveLoadManager.Instance.GetVolume(1);
         effectVolume.value = SaveLoadManager.Instance.GetVolume(2);

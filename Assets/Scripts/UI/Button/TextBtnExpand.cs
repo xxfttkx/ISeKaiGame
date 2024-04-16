@@ -8,11 +8,11 @@ public class TextBtnExpand : ImageBtnClick
     public TextMeshProUGUI content;
     public GameObject expandParent;
     public GameObject expandPrefab;
-    public bool bInit = false;
-    public List<TextBtnSelect> textBtnSelectList = new List<TextBtnSelect>();
-    public List<string> stringList;
+    private bool bInit = false;
+    private List<TextBtnSelect> textBtnSelectList = new List<TextBtnSelect>();
+    private List<string> stringList;
     public int saveLoadIndex;
-    public int currSelectIndex = -1;
+    private int currSelectIndex = -1;
     public override void Awake()
     {
         base.Awake();

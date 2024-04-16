@@ -50,17 +50,17 @@ MonoBehaviour:
     - Retry
     - "\u30EA\u30C8\u30E9\u30A4"
   - texts:
-    - "\u56DE\u5230\u5927\u5385"
-    - Back to title
-    - 
+    - "\u56DE\u5230\u6807\u9898"
+    - Return to title
+    - "\u30BF\u30A4\u30C8\u30EB\u306B\u623B\u308B"
   - texts:
     - "\u56DE\u5230\u9009\u4EBA\u754C\u9762"
-    - Return  Select
-    - 
+    - Return to character selection screen
+    - "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC\u9078\u629E\u753B\u9762\u306B\u623B\u308B"
   - texts:
     - "\u56DE\u5230\u6E38\u620F"
-    - Back To Game
-    - 
+    - Return to game
+    - "\u30B2\u30FC\u30E0\u306B\u623B\u308B"
   - texts:
     - "\u58F0\u97F3\u8BBE\u7F6E"
     - Sound
@@ -86,11 +86,11 @@ MonoBehaviour:
     - Rank
     - 
   - texts:
-    - "\u4E3B\u97F3\u6548"
+    - "\u603B\u97F3\u91CF"
     - Master
     - "\u30DE\u30B9\u30BF\u30FC"
   - texts:
-    - "\u58F0\u97F3"
+    - "\u97F3\u6548"
     - Sound
     - "\u52B9\u679C\u97F3"
   - texts:
@@ -139,9 +139,9 @@ MonoBehaviour:
     - Character Panel
     - "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC\u30D1\u30CD\u30EB"
   - texts:
-    - todo
-    - todo
-    - 
+    - "\u5E27\u7387\u9650\u5236"
+    - Limit FPS
+    - Limit FPS
   - texts:
     - "\u7FA4\u4F53\u653B\u51FB\uFF0C\u9020\u6210\u4F24\u5BB3\u53D8\u4E3A1.5\u500D\uFF0C\u51FB\u6740\u654C\u4EBA\u6750\u6599\u83B7\u5F97\u6548\u7387\u53D8\u4E3A0.2"
     - AoE Attack, Damage dealt is multiplied by 1.5, and the efficiency of obtaining
@@ -606,3 +606,28 @@ MonoBehaviour:
     - "\u901A\u8FC7\u67D0\u5C42{0}\u6B21"
     - Passed level {0} times
     - "\u67D0\u5C64\u3092{0}\u56DE\u901A\u904E\u3057\u307E\u3057\u305F"
+  - texts:
+    - "\u4F7F\u7528 \u201Cwasd\u201D\u8FDB\u884C\u79FB\u52A8"
+    - Move with 'WASD'
+    - "\u79FB\u52D5\u306F ''WASD' \u3092\u4F7F\u7528\u3057\u3066\u304F\u3060\u3055\u3044"
+  - texts:
+    - "\u4F7F\u7528\"\u2191\u2193\u2190\u2192\"\u8FDB\u884C\u79FB\u52A8"
+    - "Move with '\u2191\u2193\u2190\u2192'"
+    - "\u79FB\u52D5\u306F '\u2191\u2193\u2190\u2192' \u3092\u4F7F\u7528\u3057\u3066\u304F\u3060\u3055\u3044"
+  - texts:
+    - "\u6570\u5B57\u952E\u5207\u6362\u4EBA\u7269"
+    - switch characters with the number keys
+    - "\u6570\u5B57\u30AD\u30FC\u3067\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC\u3092\u5207\u308A\u66FF\u3048\u307E\u3059"
+  - texts:
+    - "\u540C\u4E00\u540D\u89D2\u8272\u5728\u573A\u4E0A\u592A\u4E45\uFF0C\u90E8\u5206\u5C5E\u6027\u4F1A\u4E0B\u964D"
+    - If the same character stays on the field for too long, some attributes will
+      decrease
+    - "\u540C\u3058\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC\u304C\u30D5\u30A3\u30FC\u30EB\u30C9\u306B\u9577\u6642\u9593\u7559\u307E\u308B\u3068\u3001\u4E00\u90E8\u306E\u5C5E\u6027\u304C\u4F4E\u4E0B\u3057\u307E\u3059"
+  - texts:
+    - "\u573A\u4E0B\u7684\u89D2\u8272\u6709\u5C11\u91CF\u5C5E\u6027\u52A0\u6210"
+    - Characters off the field have minor attribute bonuses
+    - "\u30D5\u30A3\u30FC\u30EB\u30C9\u5916\u306E\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC\u306B\u306F\u308F\u305A\u304B\u306A\u5C5E\u6027\u30DC\u30FC\u30CA\u30B9\u304C\u3042\u308A\u307E\u3059"
+  - texts:
+    - "\u89D2\u8272Hp\u4E3A0\u540E\uFF0C\u653B\u51FB\u529B=1"
+    - After the character's HP reaches 0, their attack power becomes 1
+    - "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC\u306EHP\u304C0\u306B\u306A\u3063\u305F\u5F8C\u3001\u653B\u6483\u529B\u306F1\u306B\u306A\u308A\u307E\u3059"

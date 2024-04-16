@@ -108,8 +108,8 @@ public class LevelManager : Singleton<LevelManager>
         }
         for (int i = 0; i < n; ++i)
         {
-            creatEnemyPointList[i].Reset(l.enemyIndex[i], l.enemyCreateFirstTime[i], l.enemyCreateDeltaTime[i], l.endCreatEnemyTime);
             creatEnemyPointList[i].gameObject.SetActive(true);
+            creatEnemyPointList[i].Reset(l.enemyIndex[i], l.enemyCreateFirstTime[i], l.enemyCreateDeltaTime[i], l.endCreatEnemyTime);
         }
     }
 

@@ -107,8 +107,7 @@ public class UIManager : Singleton<UIManager>
     }
     public void ShowSettingsPanel()
     {
-        TryAddToOpenPanelStack(settingsPanel.gameObject);
-        GameStateManager.Instance.SetGameState(GameState.GamePause);
+        settingsPanel.Show();
     }
     private void TryAddToOpenPanelStack(GameObject go)
     {

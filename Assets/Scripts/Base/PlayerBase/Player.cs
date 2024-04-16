@@ -27,22 +27,22 @@ public class Player : Creature
     }
     protected int atk
     {// Ãæ°å
-        get => GetRawAtk();
+        get => character.creature.attack;
         set => character.creature.attack = value;
     }
     protected int speed
     {// nama
-        get => GetRawSpeed();
+        get => character.creature.speed;
         set => character.creature.speed = value;
     }
     protected int atkSpeed
     {// nama
-        get => GetRawAtkSpeed();
+        get => character.creature.attackSpeed;
         set => character.creature.attackSpeed = value;
     }
     protected int atkRange
     {// nama
-        get => GetRawAtkRange();
+        get => character.creature.attackRange;
         set => character.creature.attackRange = value;
     }
 
@@ -199,12 +199,12 @@ public class Player : Creature
     }
     public virtual int GetAttackSpeed()
     {
-        return Mathf.CeilToInt(atkSpeed * (1 + allBuff.attackSpeedBonus) * GetTimeBonus());
+        return Mathf.CeilToInt(GetRawAtkSpeed() * (1 + allBuff.attackSpeedBonus) * GetTimeBonus());
     }
 
     public virtual int GetAttackRange()
     {
-        return Mathf.CeilToInt(atkRange * (1 + allBuff.attackRangeBonus) * GetTimeBonus());
+        return Mathf.CeilToInt(GetRawAtkRange() * (1 + allBuff.attackRangeBonus) * GetTimeBonus());
     }
 
     public override int GetPlayerIndex()

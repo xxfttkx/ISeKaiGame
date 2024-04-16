@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\UI\RankPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Button\DefaultBtn.cs" />
     <Compile Include="Assets\Scripts\UI\SelectPlayerButton.cs" />
+    <Compile Include="Assets\Scripts\UI\TipsUI.cs" />
     <Compile Include="Assets\Scripts\UI\SelectSlot.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerData.cs" />
     <Compile Include="Assets\Scripts\UI\DataPanel.cs" />
@@ -80,8 +81,8 @@
     <Compile Include="Assets\Scripts\UI\Button\ImageBtnSelect.cs" />
     <Compile Include="Assets\Scripts\UI\PausePanel.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerBtnInExtraPanel.cs" />
-    <Compile Include="Assets\Scripts\UI\StartCanvas.cs" />
     <Compile Include="Assets\Scripts\UI\Button\TextBtnSelect.cs" />
+    <Compile Include="Assets\Scripts\UI\StartCanvas.cs" />
     <Compile Include="Assets\Scripts\UI\HPShow.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerSettingsPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Button\ImageBtnClick.cs" />

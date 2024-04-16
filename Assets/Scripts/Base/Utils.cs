@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using UnityEngine;
 public static class Utils
 {
@@ -190,7 +193,7 @@ public static class Utils
         int n = list.Count;
         for (int i = n - 1; i > 0; i--)
         {
-            int j = Random.Range(0, i + 1);
+            int j = UnityEngine.Random.Range(0, i + 1);
             (list[i], list[j]) = (list[j], list[i]);
         }
     }
@@ -328,5 +331,55 @@ public static class Utils
     {
         if (playerIndexes == null) return 0;
         return level * 100 - playerIndexes.Count;
+    }
+    private static readonly string key = "your_secret_key"; // 密钥，用于加密和解密
+    private static readonly string iv = "your_initialization_vector"; // 初始化向量
+
+    // 加密JSON数据
+    public static void EncryptJsonData(string json, string filePath)
+    {
+        using (Aes aesAlg = Aes.Create())
+        {
+            aesAlg.Key = Convert.FromBase64String(key);
+            aesAlg.IV = Convert.FromBase64String(iv);
+
+            ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+
+            using (MemoryStream msEncrypt = new MemoryStream())
+            {
+                using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                {
+                    using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                    {
+                        swEncrypt.Write(json);
+                    }
+                }
+
+                File.WriteAllBytes(filePath, msEncrypt.ToArray());
+            }
+        }
+    }
+
+    // 解密JSON数据
+    public static string DecryptJsonData(string filePath)
+    {
+        using (Aes aesAlg = Aes.Create())
+        {
+            aesAlg.Key = Convert.FromBase64String(key);
+            aesAlg.IV = Convert.FromBase64String(iv);
+
+            ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+
+            using (MemoryStream msDecrypt = new MemoryStream(File.ReadAllBytes(filePath)))
+            {
+                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                {
+                    using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                    {
+                        return srDecrypt.ReadToEnd();
+                    }
+                }
+            }
+        }
     }
 }

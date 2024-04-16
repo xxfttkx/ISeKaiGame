@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OverPanel : MonoBehaviour
 {
-    List<int> tipsTextIndexes = new List<int>() { };
+    
     void Start()
     {
         

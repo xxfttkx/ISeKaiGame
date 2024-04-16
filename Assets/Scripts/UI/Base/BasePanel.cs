@@ -5,12 +5,13 @@ using DG.Tweening;
 
 public class BasePanel : MonoBehaviour
 {
-    private ShadowImage shadow;
+    public ShadowImage shadow;
     public Transform all;
     private BtnBaseCtl btnCtl;
     private void Awake()
     {
-        shadow = GetComponentInChildren<ShadowImage>();
+        if(shadow==null)
+            shadow = GetComponentInChildren<ShadowImage>();
         btnCtl = GetComponent<BtnBaseCtl>();
         shadow.gameObject.SetActive(false);
     }

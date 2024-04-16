@@ -28,7 +28,8 @@ public class GameSaveData
     public List<float> volumes;
 
     public int maxCompanionNum = 3;
-    public int targetFrameRate = -1;
+    // 0(-1)    n(30*n)
+    public int targetFrameRate = 0;
     public bool runInBackground = false;
     public bool windowed = true;
 }

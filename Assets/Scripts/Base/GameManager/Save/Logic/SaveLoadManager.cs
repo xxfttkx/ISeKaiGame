@@ -110,17 +110,8 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         }
         finishLoad = true;
         EventHandler.CallLoadFinishEvent();
-        Application.targetFrameRate = gameSaveData.targetFrameRate;
+        Application.targetFrameRate = Utils.GetFrameRateBySelectIndex(gameSaveData.targetFrameRate);
         //Debug.Log(Time.realtimeSinceStartup);
-    }
-    private void Save()
-    {
-        var jsonData = JsonConvert.SerializeObject(gameSaveData, Formatting.None);
-        if (!File.Exists(resultPath))
-        {
-            Directory.CreateDirectory(jsonFolder);
-        }
-        File.WriteAllText(resultPath, jsonData);
     }
     private async void SaveAsync()
     {
@@ -196,15 +187,16 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     }
     public int GetFrameRate()
     {
-        return gameSaveData?.targetFrameRate ?? -1;
+        if (gameSaveData.targetFrameRate <= 0) return 0;
+        return gameSaveData.targetFrameRate;
     }
-    public void SetFrameRate(int num)
+    public void SetFrameRate(int selectIndex)
     {
         var frame = gameSaveData.targetFrameRate;
-        if (frame != num)
+        if (frame != selectIndex)
         {
-            gameSaveData.targetFrameRate = num;
-            Application.targetFrameRate = num;
+            gameSaveData.targetFrameRate = selectIndex;
+            Application.targetFrameRate = Utils.GetFrameRateBySelectIndex(selectIndex);
             SaveAsync();
         }
     }
@@ -597,8 +589,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         }
         else if (saveLoadIndex == 1)
         {
-            var frameRate = Utils.GetFrameRateBySelectIndex(selectIndex);
-            SetFrameRate(frameRate);
+            SetFrameRate(selectIndex);
             return;
         }
     }

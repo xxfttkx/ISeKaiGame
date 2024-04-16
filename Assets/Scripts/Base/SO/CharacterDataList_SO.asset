@@ -324,7 +324,7 @@ MonoBehaviour:
     extraThresholds: 102700001400000005000000
     extraDesire1: 00000000690000006b000000
     extraDesire2: 000000006a0000006c000000
-    extraCharacteristics: 0300000001000000
+    extraCharacteristics: 0200000000000000
     extraCharacteristicVals: 020000000a000000
     extraData: 
     finished: 1
