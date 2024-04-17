@@ -8,7 +8,6 @@ public class BtnBaseCtl : MonoBehaviour
     public bool isShow;
     public BtnBase firstBtn;
     public BtnBase currBtn;
-    public bool useKeyboard;
     public bool IsShow
     {
         set => isShow = value;
@@ -31,7 +30,6 @@ public class BtnBaseCtl : MonoBehaviour
     public void Reset()
     {
         currBtn = null;
-        useKeyboard = false;
     }
     void Update()
     {

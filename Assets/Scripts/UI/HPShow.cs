@@ -47,5 +47,7 @@ public class HPShow : MonoBehaviour
                 break;
             }
         }
+        Destroy(this.gameObject);
     }
+    
 }

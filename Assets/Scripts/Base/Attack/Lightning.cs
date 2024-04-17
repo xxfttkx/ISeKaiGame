@@ -66,7 +66,7 @@ public class Lightning : PlayerAtk
         Vector2 dir;
         while (true)
         {
-            if (!p.IsAlive())
+            if (p == null || !p.IsAlive())
             {
                 Release();
                 yield break;

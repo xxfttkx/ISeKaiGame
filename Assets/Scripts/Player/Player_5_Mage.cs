@@ -125,11 +125,15 @@ public class Player_5_Mage : Player
             if (i % time == 0)
             {
                 var enimies = Utils.GetEnemiesByDirAndRange(this.transform.position, dir, range);
-                foreach(var enemy in enimies)
+                if (enimies != null && enimies.Count > 0)
                 {
-                    PlayerManager.Instance.PlayerHurtEnemy(GetPlayerIndex(), enemy, 1);
+                    foreach (var enemy in enimies)
+                    {
+                        PlayerManager.Instance.PlayerHurtEnemy(GetPlayerIndex(), enemy, 1);
+                    }
                 }
-                
+
+
                 if (!e.IsAlive())
                 {
                     break;

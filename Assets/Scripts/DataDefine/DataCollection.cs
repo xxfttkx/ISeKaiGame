@@ -56,7 +56,6 @@ public struct Enemy
 [System.Serializable]
 public struct LevelCreatEnemy
 {
-    public int levelIndex;
     public float bonus;
     public int[] enemyIndex;
     public int[] enemyCreateFirstTime;
