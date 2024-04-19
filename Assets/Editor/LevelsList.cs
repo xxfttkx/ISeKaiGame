@@ -2,6 +2,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+
 public class LevelsList : EditorWindow
 {
     public LevelCreatEnemyDataList_SO levelCreatEnemyDataList_SO;
@@ -59,5 +62,39 @@ public class LevelsList : EditorWindow
         leftListView.itemsSource = levels;
         leftListView.makeItem = makeItem;
         leftListView.bindItem = bindItem;
+        leftListView.selectionChanged += OnSelectionChanged;
+    }
+    List<Label> codeAddLabels = new List<Label>();
+    private void OnSelectionChanged(IEnumerable<object> obj)
+    {
+        LevelCreatEnemy level = (LevelCreatEnemy)obj.First();
+        // right.MarkDirtyRepaint();
+        var label = right.Q<Label>("Desc");
+        label.text = $"bonus:{level.bonus}  endTime:{level.endCreatEnemyTime}";
+        int index = 0;
+        for (int i = 0; i < level.enemyIndex.Length; ++i)
+        {
+            Label currLabel;
+            if (index < codeAddLabels.Count)
+            {
+                currLabel = codeAddLabels[index];
+                currLabel.visible = true;
+                ++index;
+            }
+            else
+            {
+                // Create a new label and give it a style class.
+                currLabel = new Label();
+                currLabel.AddToClassList("some-styled-label");
+                codeAddLabels.Add(currLabel);
+                right.Add(currLabel);
+            }
+            currLabel.text = $"index:{level.enemyIndex[i]}  firstTime:{level.enemyCreateFirstTime[i]}   deltaTime:{level.enemyCreateDeltaTime[i]}";
+        }
+        for (int i = index; i < codeAddLabels.Count; ++i)
+        {
+            codeAddLabels[i].visible = false;
+        }
+        // label.RegisterValueChangedCallback(evt => { });
     }
 }

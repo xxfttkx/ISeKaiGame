@@ -158,7 +158,7 @@ MonoBehaviour:
     money: 0
     desc: 
   - creature:
-      hp: 0
+      hp: 100
       attack: 0
       speed: 0
       attackSpeed: 0
@@ -169,9 +169,9 @@ MonoBehaviour:
     index: 9
     name: 9
     enemyType: 1
-    getPlayerPosTimeDelta: 0
-    exp: 0
-    money: 0
+    getPlayerPosTimeDelta: 1
+    exp: 30
+    money: 30
     desc: "\u6BCF\u53D7\u5230\u4F24\u5BB3 \u5C31\u4F1A\u5F80\u4F24\u5BB3\u6765\u6E90\u53D1\u51FA\u67AA"
   - creature:
       hp: 10
@@ -296,7 +296,7 @@ MonoBehaviour:
       prefab: {fileID: 4708548768610898139, guid: 0c71556e971e7bb4d8fa40fc4951198c, type: 3}
     index: 17
     name: 6
-    enemyType: 2
+    enemyType: 1
     getPlayerPosTimeDelta: 2
     exp: 5
     money: 5
