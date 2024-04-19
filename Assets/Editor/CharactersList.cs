@@ -73,12 +73,57 @@ public class CharactersList : EditorWindow
         leftListView.selectionChanged += OnSelectionChanged;
     }
 
+    List<Label> codeAddLabels = new List<Label>();
     private void OnSelectionChanged(IEnumerable<object> obj)
     {
         Character c = (Character)obj.First();
         right.MarkDirtyRepaint();
         var label = right.Q<Label>("Desc");
-        label.text = textDataList_SO.GetTextString(c.desc, 0);
-        label.RegisterValueChangedCallback(evt => { });
+        label.text = $"{GetS(c.desc)}";
+        int index = 0;
+        for (int i = 1; i < c.extraTypes.Count; ++i)
+        {
+            Label currLabel;
+            if (index < codeAddLabels.Count)
+            {
+                currLabel = codeAddLabels[index];
+                currLabel.visible = true;
+                ++index;
+            }
+            else
+            {
+                // Create a new label and give it a style class.
+                currLabel = new Label();
+                currLabel.AddToClassList("some-styled-label");
+                codeAddLabels.Add(currLabel);
+                right.Add(currLabel);
+            }
+            currLabel.text = GetS(c.extraDesire1[i]);
+
+            if (index < codeAddLabels.Count)
+            {
+                currLabel = codeAddLabels[index];
+                currLabel.visible = true;
+                ++index;
+            }
+            else
+            {
+                // Create a new label and give it a style class.
+                currLabel = new Label();
+                currLabel.AddToClassList("some-styled-label");
+                codeAddLabels.Add(currLabel);
+                right.Add(currLabel);
+            }
+            currLabel.text = GetS(c.extraDesire2[i]);
+        }
+        for(int i = index;i<codeAddLabels.Count;++i)
+        {
+            codeAddLabels[i].visible = false;
+        }
+        // label.RegisterValueChangedCallback(evt => { });
+    }
+    string GetS(int i)
+    {
+        return i+textDataList_SO.GetTextString(i, 0);
     }
 }

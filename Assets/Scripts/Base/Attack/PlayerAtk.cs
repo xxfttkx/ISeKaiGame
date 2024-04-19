@@ -13,6 +13,7 @@ public class PlayerAtk : MonoBehaviour
     protected float autoReleaseTime = 10f;
     int enemyLayerIndex;
     protected float velocity = 10;
+    protected bool useRB = true;
     protected float _velocity
     {
         get => GetProjectileSpeedBonus() * velocity;
@@ -105,6 +106,7 @@ public class PlayerAtk : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!useRB) return;
         if (collision.gameObject.layer == enemyLayerIndex)
         {
             var e = collision.gameObject.GetComponent<EnemyBase>();

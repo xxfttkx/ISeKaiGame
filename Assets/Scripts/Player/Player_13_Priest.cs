@@ -42,7 +42,7 @@ public class Player_13_Priest : Priest
 
     int GetHealNum(Player p)
     {
-        return Mathf.CeilToInt(p.GetHp() * GetHealVal());
+        return Mathf.CeilToInt(p.GetMaxHP() * GetHealVal());
     }
     float GetHealVal()
     {

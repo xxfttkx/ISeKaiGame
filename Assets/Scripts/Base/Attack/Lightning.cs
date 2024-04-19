@@ -13,6 +13,7 @@ public class Lightning : PlayerAtk
     protected override void Awake()
     {
         base.Awake();
+        useRB = false;
         velocity = 20;
         autoReleaseTime = -1;
         poolIndex = 8;
@@ -43,21 +44,32 @@ public class Lightning : PlayerAtk
         Vector2 dir;
         while (true)
         {
-            if(!enemy.IsAlive())
+            if (!enemy.IsAlive())
             {
                 Release();
                 yield break;
             }
             dir = enemy.transform.position - this.transform.position;
-            dir = dir.normalized;
-            float angle = Vector2.Angle(Vector2.up, dir);
-            if (dir.x > 0)
+            var distance = dir.magnitude;
+            if (distance <= Settings.hitPlayerDis)
             {
-                angle = -angle;
+                rb.velocity = Vector2.zero;
+                StartCoroutine(HitEnemy(enemy));
+                break;
             }
-            this.transform.rotation = Quaternion.Euler(0, 0, angle);
-            rb.velocity = dir * _velocity;
-            yield return null;
+            else
+            {
+                dir = dir.normalized;
+                float angle = Vector2.Angle(Vector2.up, dir);
+                if (dir.x > 0)
+                {
+                    angle = -angle;
+                }
+                this.transform.rotation = Quaternion.Euler(0, 0, angle);
+                rb.velocity = dir * _velocity;
+                yield return null;
+            }
+
         }
     }
     IEnumerator Attack(Player p)
@@ -75,6 +87,7 @@ public class Lightning : PlayerAtk
             var distance = dir.magnitude;
             if (distance <= Settings.hitPlayerDis)
             {
+                rb.velocity = Vector2.zero;
                 HitPlayer(p);
                 break;
             }
@@ -99,7 +112,7 @@ public class Lightning : PlayerAtk
         float sqrP = Vector2.SqrMagnitude(p.transform.position - this.transform.position);
         if (e == null || extra2 == 2)
         {
-            if(sqrP<=GetSqrRange())
+            if (sqrP <= GetSqrRange())
             {
                 atkSomeone = StartCoroutine(Attack(p));
                 return;
@@ -111,7 +124,7 @@ public class Lightning : PlayerAtk
         }
         else
         {
-            if(extra2==1)
+            if (extra2 == 1)
             {
                 atkSomeone = StartCoroutine(AttackEnemy(e));
             }
@@ -148,16 +161,20 @@ public class Lightning : PlayerAtk
         if (atkSomeone != null) StopCoroutine(atkSomeone);
         PlayerManager.Instance.PlayerHurtPlayer(player.GetPlayerIndex(), p.GetPlayerIndex(), atk);
         if (extra1 == 1) p.ApplyBuff("player16_extra1", 10, 0, -.5f, 0, 0, 0, ApplyBuffType.NoOverride);
-        else if(extra1==2) p.ApplyBuff("player16_extra1", 10, 0, .5f, 0, 0, 0, ApplyBuffType.NoOverride);
+        else if (extra1 == 2) p.ApplyBuff("player16_extra1", 10, 0, .5f, 0, 0, 0, ApplyBuffType.NoOverride);
         maxCount--;
-        if(maxCount==0) Release();
+        if (maxCount == 0) Release();
         else TryAttackNextEnemy();
 
     }
     protected override IEnumerator HitEnemy(EnemyBase e)
     {
-        if (e == null) yield break;
         if (atkSomeone != null) StopCoroutine(atkSomeone);
+        if (e == null)
+        {
+            Release();
+            yield break;
+        }
         if (extra1 == 1) e.ApplyBuff("player16_extra1", 10, 0, -.5f, 0, 0, 0, ApplyBuffType.NoOverride);
         else if (extra1 == 2) e.ApplyBuff("player16_extra1", 10, 0, .5f, 0, 0, 0, ApplyBuffType.NoOverride);
         PlayerManager.Instance.PlayerHurtEnemy(player.GetPlayerIndex(), e, atk);
