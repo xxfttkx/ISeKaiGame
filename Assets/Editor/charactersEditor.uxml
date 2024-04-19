@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="All" style="flex-grow: 1; flex-direction: row;">
+        <ui:ListView focusable="true" name="Left" fixed-item-height="60" style="width: 200px;" />
+        <ui:ScrollView name="Right" style="width: 50%; height: 100%;">
+            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Desc" />
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>

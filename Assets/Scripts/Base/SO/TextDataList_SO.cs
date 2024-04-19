@@ -16,7 +16,7 @@ public class TextDataList_SO : ScriptableObject
             languageIndex = 1;
         }
         ans = textDataList[key].texts[languageIndex];
-        if(ans=="")ans= textDataList[key].texts[1];//default english
+        if (string.IsNullOrEmpty(ans) && languageIndex != 1) ans = textDataList[key].texts[1];//default english
         return ans;
     }
 }

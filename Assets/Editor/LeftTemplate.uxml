@@ -1,3 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="VisualElement" style="height: 60px;" />
+    <ui:VisualElement name="VisualElement" style="height: 60px; flex-direction: row; align-items: center; justify-content: space-around;">
+        <ui:VisualElement name="Sprite" style="background-image: url(&apos;project://database/Assets/Arts/Icon/Sprite-Icon.png?fileID=2800000&amp;guid=c5625e07d06dec24994db7f1ab21a680&amp;type=3#Sprite-Icon&apos;); width: 48px; height: 48px; justify-content: flex-start; flex-direction: row; align-items: center;" />
+        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Index" style="font-size: 24px; -unity-font: initial;" />
+    </ui:VisualElement>
 </ui:UXML>
