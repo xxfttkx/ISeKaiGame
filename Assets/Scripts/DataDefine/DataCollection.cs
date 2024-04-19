@@ -8,9 +8,8 @@ using UnityEngine;
 [System.Serializable]
 public struct CreatureBase
 {
-    [Header("Attributes")]
-    public int attack;
     public int hp;
+    public int attack;
     public int speed;
     public int attackSpeed; // 10sÄÚ¹¥»÷´ÎÊı
     public int attackRange; // ¹¥»÷¾àÀë
