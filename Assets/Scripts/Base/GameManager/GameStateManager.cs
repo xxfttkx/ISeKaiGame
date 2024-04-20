@@ -8,6 +8,7 @@ public class GameStateManager : Singleton<GameStateManager>
 
     private void Start()
     {
+        Debug.unityLogger.logEnabled = false;
         SetGameState(GameState.GameEnd);
         //Application.targetFrameRate = 60;
     }

@@ -1081,6 +1081,10 @@
       <Project>{B1E7BCD9-C994-AA98-34DD-060D9FB25771}</Project>
       <Name>Unity.Timeline.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Test.csproj">
+      <Project>{49CCDBDE-1643-2002-104D-7E3E2F306883}</Project>
+      <Name>Test</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.ShaderGraph.Editor.csproj">
       <Project>{D66BDEFB-A2D6-46F0-22F9-A236726194A1}</Project>
       <Name>Unity.ShaderGraph.Editor</Name>

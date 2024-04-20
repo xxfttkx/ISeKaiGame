@@ -65,6 +65,7 @@ public class LevelsList : EditorWindow
         leftListView.selectionChanged += OnSelectionChanged;
     }
     List<Label> codeAddLabels = new List<Label>();
+    Dictionary<int, int> enemyIndexTimes = new Dictionary<int, int>();
     private void OnSelectionChanged(IEnumerable<object> obj)
     {
         LevelCreatEnemy level = (LevelCreatEnemy)obj.First();
@@ -72,6 +73,7 @@ public class LevelsList : EditorWindow
         var label = right.Q<Label>("Desc");
         label.text = $"bonus:{level.bonus}  endTime:{level.endCreatEnemyTime}";
         int index = 0;
+        enemyIndexTimes.Clear(); 
         for (int i = 0; i < level.enemyIndex.Length; ++i)
         {
             Label currLabel;
@@ -89,7 +91,16 @@ public class LevelsList : EditorWindow
                 codeAddLabels.Add(currLabel);
                 right.Add(currLabel);
             }
-            currLabel.text = $"index:{level.enemyIndex[i]}  firstTime:{level.enemyCreateFirstTime[i]}   deltaTime:{level.enemyCreateDeltaTime[i]}";
+            
+            int val = level.enemyCreateFirstTime[i] <= level.endCreatEnemyTime ? 1+ (level.endCreatEnemyTime- level.enemyCreateFirstTime[i])/ level.enemyCreateDeltaTime[i] : 0;
+/*            if (enemyIndexTimes.TryGetValue(level.enemyIndex[i], out int times))
+            {
+                times += val;
+                enemyIndexTimes[level.enemyIndex[i]] = times;
+            }
+            else
+                enemyIndexTimes.Add(level.enemyIndex[i], val);*/
+            currLabel.text = $"index:{level.enemyIndex[i]}  firstTime:{level.enemyCreateFirstTime[i]}   deltaTime:{level.enemyCreateDeltaTime[i]}   times:{val}";
         }
         for (int i = index; i < codeAddLabels.Count; ++i)
         {
