@@ -13,6 +13,7 @@ public class ButtonPanel : Singleton<ButtonPanel>
     public DefaultBtn subButton;
     public DefaultBtn addButton;
     public TextMeshProUGUI levelNum;
+    public TextMeshProUGUI goText;
     private int min = 1;
     private int max;
     private int curr;
@@ -30,6 +31,7 @@ public class ButtonPanel : Singleton<ButtonPanel>
         maxButton.interactable = false;
         subButton.interactable = false;
         addButton.interactable = false;
+        goText = goButton.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void OnEnable()
@@ -113,6 +115,7 @@ public class ButtonPanel : Singleton<ButtonPanel>
             goButton.interactable = false;
             minButton.interactable = false;
             maxButton.interactable = false;
+            goText.text = "Go";
         }
         else
         {
@@ -129,6 +132,8 @@ public class ButtonPanel : Singleton<ButtonPanel>
             minButton.interactable = true;
             maxButton.interactable = true;
             goButton.interactable = true;
+            string exclamationMarks = new string('!', indexes.Count);
+            goText.text = "Go" + exclamationMarks;
         }
     }
 }

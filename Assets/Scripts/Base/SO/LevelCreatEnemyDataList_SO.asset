@@ -19,20 +19,25 @@ MonoBehaviour:
     enemyCreateDeltaTime: 0a000000
     endCreatEnemyTime: 1
   - bonus: 1
-    enemyIndex: 00000000000000000100000001000000
-    enemyCreateFirstTime: 00000000000000000000000000000000
-    enemyCreateDeltaTime: 02000000030000000200000003000000
-    endCreatEnemyTime: 10
-  - bonus: 1
-    enemyIndex: 0000000002000000020000000100000000000000
-    enemyCreateFirstTime: 0000000000000000000000000000000000000000
-    enemyCreateDeltaTime: 0200000003000000020000000300000002000000
+    enemyIndex: 000000000a000000
+    enemyCreateFirstTime: 0000000001000000
+    enemyCreateDeltaTime: 0200000002000000
     endCreatEnemyTime: 20
   - bonus: 1
-    enemyIndex: 000000000100000002000000030000000d000000
-    enemyCreateFirstTime: 0000000000000000000000000000000000000000
-    enemyCreateDeltaTime: 0200000002000000020000000200000002000000
-    endCreatEnemyTime: 30
+    enemyIndex: 010000000b000000
+    enemyCreateFirstTime: 0000000001000000
+    enemyCreateDeltaTime: 0200000002000000
+    endCreatEnemyTime: 20
+  - bonus: 1
+    enemyIndex: 020000000c000000
+    enemyCreateFirstTime: 0000000001000000
+    enemyCreateDeltaTime: 0200000002000000
+    endCreatEnemyTime: 20
+  - bonus: 1
+    enemyIndex: 030000000d000000
+    enemyCreateFirstTime: 0000000000000000
+    enemyCreateDeltaTime: 3c00000001000000010000000100000001000000
+    endCreatEnemyTime: 20
   - bonus: 1
     enemyIndex: 030000000400000005000000060000000d0000000e0000000f00000010000000
     enemyCreateFirstTime: 0000000000000000000000000000000001000000010000000100000001000000

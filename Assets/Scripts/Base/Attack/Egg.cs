@@ -14,6 +14,7 @@ public class Egg : PlayerAtk
         poolIndex = 9;
         velocity = 30;
         autoReleaseTime = -1;
+        useRB = false;
         rb = GetComponent<Rigidbody2D>();
     }
     protected override void Reset()
@@ -43,9 +44,10 @@ public class Egg : PlayerAtk
                 break;
             }
             dir = target.transform.position - this.transform.position;
-            var distance = dir.magnitude;
-            if (distance < Settings.hitPlayerDis)
+            var distance = dir.sqrMagnitude;
+            if (distance < Settings.hitPlayerDisSqr)
             {
+                rb.velocity = Vector2.zero;
                 if (target.IsPlayer())
                     PlayerManager.Instance.PlayerHealPlayer(6, target.GetPlayerIndex(), atk);
                 else
@@ -88,7 +90,5 @@ public class Egg : PlayerAtk
                 PlayerManager.Instance.PlayerHurtEnemy(6, e, atk);
             }
         }
-        
-        
     }
 }

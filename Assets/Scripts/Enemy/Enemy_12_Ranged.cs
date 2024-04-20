@@ -12,6 +12,8 @@ public class Enemy_12_Ranged : Enemy_Ranged
     public override void AttackPlayer()
     {
         Vector2 dir = player.transform.position - this.transform.position;
+        float randomAngle = Random.Range(-100f, 100f);
+        dir = Utils.GetVec2RotateAngle(dir, randomAngle);
         Quaternion rotation1 = Quaternion.Euler(0, 0, 30);
         Quaternion rotation2 = Quaternion.Euler(0, 0, -30);
         Vector2 rotatedDir1 = rotation1 * dir;

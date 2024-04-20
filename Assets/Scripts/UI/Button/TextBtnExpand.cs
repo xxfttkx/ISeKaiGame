@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class TextBtnExpand : ImageBtnClick
 {
-    public TextMeshProUGUI content;
     public GameObject expandParent;
     public GameObject expandPrefab;
     private bool bInit = false;
@@ -45,7 +44,6 @@ public class TextBtnExpand : ImageBtnClick
         }
         currSelectIndex = currIndex;
         textBtnSelectList[currSelectIndex].Select();
-        content.text = stringList[currSelectIndex];
         expandParent.SetActive(false);
     }
     public void TryClickText(int index)
@@ -56,7 +54,6 @@ public class TextBtnExpand : ImageBtnClick
                 textBtnSelectList[currSelectIndex].CancelSelect();
             currSelectIndex = index;
             textBtnSelectList[index].Select();
-            content.text = stringList[index];
         }
         EventHandler.CallTextBtnExpandSelectEvent(saveLoadIndex, currSelectIndex);
     }

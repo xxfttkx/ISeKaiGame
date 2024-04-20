@@ -26,7 +26,7 @@ public class PlayerAtk : MonoBehaviour
     protected Vector3 _localScale
     {
         get => this.transform.localScale;
-        set => this.transform.localScale= value;
+        set => this.transform.localScale = value;
     }
     protected Vector2 _pos
     {
@@ -88,7 +88,7 @@ public class PlayerAtk : MonoBehaviour
         if (bReleased) return;
         bReleased = true;
         StartCoroutine(NextFrameRelease());
-        
+
     }
     IEnumerator NextFrameRelease()
     {
@@ -102,7 +102,7 @@ public class PlayerAtk : MonoBehaviour
 
     protected float GetProjectileSpeedBonus()
     {
-        return player.GetProjectileSpeedBonus();
+        return player == null ? 1 : player.GetProjectileSpeedBonus();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -110,11 +110,11 @@ public class PlayerAtk : MonoBehaviour
         if (collision.gameObject.layer == enemyLayerIndex)
         {
             var e = collision.gameObject.GetComponent<EnemyBase>();
-            if(e!=null)
+            if (e != null)
             {
                 StartCoroutine(HitEnemy(e));
             }
-            
+
         }
     }
     protected virtual IEnumerator HitEnemy(EnemyBase e)

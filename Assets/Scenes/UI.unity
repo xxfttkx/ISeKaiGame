@@ -1013,7 +1013,6 @@ MonoBehaviour:
   isShow: 0
   firstBtn: {fileID: 1152594732}
   currBtn: {fileID: 0}
-  useKeyboard: 0
 --- !u!1 &92951204
 GameObject:
   m_ObjectHideFlags: 0
@@ -4654,7 +4653,6 @@ MonoBehaviour:
   isShow: 0
   firstBtn: {fileID: 1875849132}
   currBtn: {fileID: 0}
-  useKeyboard: 0
 --- !u!1 &503451971
 GameObject:
   m_ObjectHideFlags: 0
@@ -8613,7 +8611,6 @@ MonoBehaviour:
   isShow: 0
   firstBtn: {fileID: 1356476822}
   currBtn: {fileID: 0}
-  useKeyboard: 0
 --- !u!224 &923246532 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8393299398224871950, guid: dc7a44921047c4d4388bed8a7dd28a6c, type: 3}
@@ -11851,7 +11848,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: go
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2389247474967287757, guid: a12831bbd2bfe0b4da7512371337716b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -19339,7 +19337,8 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4231465123351956841, guid: 00f8ebf986256874bbe0aa83da36de82, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -19669,7 +19668,6 @@ MonoBehaviour:
   isShow: 0
   firstBtn: {fileID: 1902531554}
   currBtn: {fileID: 0}
-  useKeyboard: 0
 --- !u!114 &1767530552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20308,7 +20306,6 @@ MonoBehaviour:
   isShow: 0
   firstBtn: {fileID: 0}
   currBtn: {fileID: 0}
-  useKeyboard: 0
 --- !u!1001 &1875849130
 PrefabInstance:
   m_ObjectHideFlags: 0

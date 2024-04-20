@@ -93,19 +93,21 @@ public class LevelsList : EditorWindow
             }
             
             int val = level.enemyCreateFirstTime[i] <= level.endCreatEnemyTime ? 1+ (level.endCreatEnemyTime- level.enemyCreateFirstTime[i])/ level.enemyCreateDeltaTime[i] : 0;
-/*            if (enemyIndexTimes.TryGetValue(level.enemyIndex[i], out int times))
+            if (enemyIndexTimes.TryGetValue(level.enemyIndex[i], out int times))
             {
                 times += val;
                 enemyIndexTimes[level.enemyIndex[i]] = times;
             }
             else
-                enemyIndexTimes.Add(level.enemyIndex[i], val);*/
+                enemyIndexTimes.Add(level.enemyIndex[i], val);
             currLabel.text = $"index:{level.enemyIndex[i]}  firstTime:{level.enemyCreateFirstTime[i]}   deltaTime:{level.enemyCreateDeltaTime[i]}   times:{val}";
         }
         for (int i = index; i < codeAddLabels.Count; ++i)
         {
             codeAddLabels[i].visible = false;
         }
+        var all = enemyIndexTimes.Sum(pair => pair.Value);
+        label.text = $"bonus:{level.bonus}  endTime:{level.endCreatEnemyTime}   all:{enemyIndexTimes.Sum(pair => pair.Value)}   num/s:{all * 1f / level.endCreatEnemyTime}";
         // label.RegisterValueChangedCallback(evt => { });
     }
 }

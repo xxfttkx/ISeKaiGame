@@ -9,7 +9,6 @@ public class TransitionManager : Singleton<TransitionManager>
 {
     private SpriteRenderer hole;
     private CinemachineVirtualCamera virtualCamera;
-    public int num;
     private void Update()
     {
         // Application.targetFrameRate = num;
@@ -17,8 +16,6 @@ public class TransitionManager : Singleton<TransitionManager>
     protected override void Awake()
     {
         base.Awake();
-        Application.targetFrameRate = -1;
-        Application.runInBackground = true;
 #if !UNITY_EDITOR
         Screen.SetResolution(1920, 1080, FullScreenMode.Windowed);
         //var moduleAB = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "ab"));
@@ -35,10 +32,18 @@ public class TransitionManager : Singleton<TransitionManager>
     private void OnEnable()
     {
         EventHandler.TransitionEvent += OnTransitionEvent;
+        EventHandler.ExitDungeonEvent += OnExitDungeonEvent;
     }
     private void OnDisable()
     {
         EventHandler.TransitionEvent -= OnTransitionEvent;
+        EventHandler.ExitDungeonEvent += OnExitDungeonEvent;
+    }
+    void OnExitDungeonEvent()
+    {
+        StopAllCoroutines();
+        Reset();
+        virtualCamera.m_Lens.OrthographicSize = 10;
     }
     void OnTransitionEvent(int l)
     {
