@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Lightning : PlayerAtk
 {
@@ -41,7 +42,13 @@ public class Lightning : PlayerAtk
     protected override IEnumerator AttackEnemy(EnemyBase enemy)
     {
         yield return null;
-        Vector2 dir;
+        Vector2 dir = enemy.transform.position - this.transform.position;
+        float angle = Vector2.Angle(Vector2.up, dir);
+        if (dir.x > 0)
+        {
+            angle = -angle;
+        }
+        transform.DORotate(new Vector3(0, 0, angle), Settings.projectionRotateTime);
         while (true)
         {
             if (!enemy.IsAlive())
@@ -60,12 +67,6 @@ public class Lightning : PlayerAtk
             else
             {
                 dir = dir.normalized;
-                float angle = Vector2.Angle(Vector2.up, dir);
-                if (dir.x > 0)
-                {
-                    angle = -angle;
-                }
-                this.transform.rotation = Quaternion.Euler(0, 0, angle);
                 rb.velocity = dir * _velocity;
                 yield return null;
             }
@@ -75,7 +76,13 @@ public class Lightning : PlayerAtk
     IEnumerator Attack(Player p)
     {
         yield return null;
-        Vector2 dir;
+        Vector2 dir = p.transform.position - this.transform.position;
+        float angle = Vector2.Angle(Vector2.up, dir);
+        if (dir.x > 0)
+        {
+            angle = -angle;
+        }
+        transform.DORotate(new Vector3(0, 0, angle), .1f);
         while (true)
         {
             if (p == null || !p.IsAlive())
@@ -94,12 +101,6 @@ public class Lightning : PlayerAtk
             else
             {
                 dir = dir.normalized;
-                float angle = Vector2.Angle(Vector2.up, dir);
-                if (dir.x > 0)
-                {
-                    angle = -angle;
-                }
-                this.transform.rotation = Quaternion.Euler(0, 0, angle);
                 rb.velocity = dir * _velocity;
             }
             yield return null;

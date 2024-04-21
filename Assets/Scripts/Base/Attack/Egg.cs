@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+
+
 
 public class Egg : PlayerAtk
 {
@@ -28,14 +31,20 @@ public class Egg : PlayerAtk
     {
         atk = a;
         GetSomeData();
-        StartCoroutine(AttackEnemyOrPlayer(e,p));
+        StartCoroutine(AttackEnemyOrPlayer(e, p));
         StartCoroutine(AutoRelease());
     }
     protected IEnumerator AttackEnemyOrPlayer(EnemyBase e, Player p)
     {
         yield return null;
-        Vector2 dir;
         Creature target = e != null ? e : p;
+        Vector2 dir = target.transform.position - this.transform.position;
+        float angle = Vector2.Angle(Vector2.up, dir);
+        if (dir.x > 0)
+        {
+            angle = -angle;
+        }
+        transform.DORotate(new Vector3(0, 0, angle), Settings.projectionRotateTime);
         while (true)
         {
             if (!target.IsAlive())
@@ -58,12 +67,9 @@ public class Egg : PlayerAtk
             else
             {
                 dir = dir.normalized;
-                float angle = Vector2.Angle(Vector2.up, dir);
-                if (dir.x > 0)
-                {
-                    angle = -angle;
-                }
-                this.transform.rotation = Quaternion.Euler(0, 0, angle);
+                
+                // this.transform.rotation = Quaternion.Euler(0, 0, angle);
+                // rb.AddTorque(angle);
                 rb.velocity = dir * _velocity;
             }
             yield return null;
@@ -71,24 +77,26 @@ public class Egg : PlayerAtk
     }
     IEnumerator AtkEnemiesAnim()
     {
+        rb.velocity = Vector2.zero;
         breakEgg.enabled = true;
         egg.enabled = false;
         float tarS = range * 2;
         float currS = 0f;
         _localScale = new Vector3(currS, currS, 1f);
-        while (currS < tarS)
-        {
-            currS += 0.1f;
-            _localScale = new Vector3(currS, currS, 1f);
-            yield return new WaitForSeconds(0.01f);
-        }
         var enemies = Utils.GetNearEnemies(_pos, range);
-        if(enemies!=null)
+        if (enemies != null)
         {
             foreach (var e in enemies)
             {
                 PlayerManager.Instance.PlayerHurtEnemy(6, e, atk);
             }
         }
+        while (currS < tarS)
+        {
+            currS += 0.2f;
+            _localScale = new Vector3(currS, currS, 1f);
+            yield return new WaitForSeconds(0.01f);
+        }
+
     }
 }

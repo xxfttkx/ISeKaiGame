@@ -25,20 +25,16 @@ public abstract class Enemy_Ranged_Idle : EnemyBase
                 float distance = deltaPos.magnitude;
                 if (movementVec2.x < 0) sp.flipX = !enemy.creature.faceToLeft;
                 else if (movementVec2.x > 0) sp.flipX = enemy.creature.faceToLeft;
-                if (distance < GetAttackRange() - 2)
+                IsMoving = true;
+                float x = movementVec2.x;
+                float y = movementVec2.y;
+                if (Mathf.Abs(x) > Mathf.Abs(y))
                 {
-                    IsMoving = true;
-                    rb.velocity = -movementVec2 * GetSpeed();
-                }
-                else if (distance > GetAttackRange() - 1)
-                {
-                    IsMoving = true;
-                    rb.velocity = movementVec2 * GetSpeed();
+                    rb.velocity = new Vector2(Mathf.Sign(x) * GetSpeed(), 0);
                 }
                 else
                 {
-                    rb.velocity = Vector2.zero;
-                    IsMoving = false;
+                    rb.velocity = new Vector2(0, Mathf.Sign(y) * GetSpeed());
                 }
             }
             else

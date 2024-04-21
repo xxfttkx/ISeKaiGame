@@ -11,6 +11,7 @@ public class Letter : PlayerAtk
         velocity = 20;
         poolIndex = 10;
         autoReleaseTime = -1;
+        useRB = false;
         sp = GetComponent<SpriteRenderer>();
     }
     protected override void Reset()
@@ -30,8 +31,8 @@ public class Letter : PlayerAtk
                 break;
             }
             dir = enemy.transform.position - this.transform.position;
-            var distance = dir.magnitude;
-            if (distance < Settings.hitEnemyDis)
+            var distance = dir.sqrMagnitude;
+            if (distance < Settings.hitPlayerDisSqr)
             {
                 if(extras[1]==1)
                 {

@@ -111,6 +111,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         finishLoad = true;
         EventHandler.CallLoadFinishEvent();
         Application.targetFrameRate = Utils.GetFrameRateBySelectIndex(gameSaveData.targetFrameRate);
+        Screen.SetResolution(1920, 1080, (FullScreenMode)(gameSaveData.windowed ? 3 : 1));
         //Debug.Log(Time.realtimeSinceStartup);
     }
     private async void SaveAsync()

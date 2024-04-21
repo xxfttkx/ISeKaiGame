@@ -9,7 +9,7 @@ public class Enemy_Melee_Idle : EnemyBase
         yield return null;
         while (true)
         {
-            if (CanAttack&&(player._pos - _pos).sqrMagnitude <= GetSqrAttackRange())
+            if (CanAttack && (player._pos - _pos).sqrMagnitude <= GetSqrAttackRange())
             {
                 AttackPlayer();
                 yield return new WaitForSeconds(GetSkillCD());
@@ -23,7 +23,7 @@ public class Enemy_Melee_Idle : EnemyBase
     {
         while (true)
         {
-            if(CanMove)
+            if (CanMove)
             {
                 Vector2 deltaPos = player._pos - _pos;
                 float distance = deltaPos.magnitude;
@@ -39,15 +39,15 @@ public class Enemy_Melee_Idle : EnemyBase
                     IsMoving = true;
                     float x = movementVec2.x;
                     float y = movementVec2.y;
-                    if(Mathf.Abs(x)>Mathf.Abs(y))
+                    if (Mathf.Abs(x) > Mathf.Abs(y))
                     {
-                        rb.velocity = new Vector2(x * GetSpeed(),0);
+                        rb.velocity = new Vector2(Mathf.Sign(x) * GetSpeed(), 0);
                     }
                     else
                     {
-                        rb.velocity = new Vector2(0, y * GetSpeed());
+                        rb.velocity = new Vector2(0, Mathf.Sign(y) * GetSpeed());
                     }
-                   
+
                 }
             }
             else

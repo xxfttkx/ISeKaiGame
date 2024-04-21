@@ -58,7 +58,7 @@ public struct LevelCreatEnemy
     public float bonus;
     public int[] enemyIndex;
     public int[] enemyCreateFirstTime;
-    public int[] enemyCreateDeltaTime;
+    public float[] enemyCreateDeltaTime;
     // 从第几秒后不出怪
     public int endCreatEnemyTime;
 
@@ -83,15 +83,6 @@ public class BGMDetails
     public AudioClip soundClip;
     [Range(0.1f, 1f)]
     public float soundVolume;
-}
-
-[System.Serializable]
-public class GenerateEnemyPointData
-{
-    public int[] enemyIndex;
-    public int[] enemyCreateFirstTime;
-    public int[] enemyCreateDeltaTime;
-
 }
 
 [System.Serializable]

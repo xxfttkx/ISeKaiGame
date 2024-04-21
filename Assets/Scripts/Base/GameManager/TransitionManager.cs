@@ -17,8 +17,8 @@ public class TransitionManager : Singleton<TransitionManager>
     {
         base.Awake();
 #if !UNITY_EDITOR
-        Screen.SetResolution(1920, 1080, FullScreenMode.Windowed);
-        //var moduleAB = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "ab"));
+        // Screen.SetResolution(1920, 1080, FullScreenMode.Windowed);
+        // var moduleAB = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "ab"));
         SceneManager.LoadScene("UI", LoadSceneMode.Additive);
 #endif
     }

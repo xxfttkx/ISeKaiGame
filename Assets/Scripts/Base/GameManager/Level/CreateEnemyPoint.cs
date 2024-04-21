@@ -9,14 +9,14 @@ public class CreateEnemyPoint : MonoBehaviour
     public float randomPosB = 10;
     public int enemyIndex;
     public int firstTime;
-    public int deltaTime;
+    public float deltaTime;
     public int endTime;
     public Player p;
     void OnEnable()
     {
     }
 
-    internal void Reset(int enemyIndex,int firstTime,int deltaTime,int endTime)
+    internal void Reset(int enemyIndex,int firstTime,float deltaTime,int endTime)
     {
         currTime = 0;
         p = PlayerManager.Instance.GetPlayerInControl();

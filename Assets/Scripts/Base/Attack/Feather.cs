@@ -14,6 +14,7 @@ public class Feather : PlayerAtk
         velocity = 30;
         poolIndex = 2;
         autoReleaseTime = -1;
+        useRB = false;
         rb = GetComponent<Rigidbody2D>();
     }
     protected override void Reset()
@@ -38,8 +39,8 @@ public class Feather : PlayerAtk
                 yield break;
             }
             dir = enemy.transform.position - this.transform.position;
-            var distance = dir.magnitude;
-            if (distance < 1f)
+            var distance = dir.sqrMagnitude;
+            if (distance < Settings.hitPlayerDisSqr)
             {
                 PlayerManager.Instance.PlayerHurtEnemy(1, enemy, atk);
                 DoExtra();

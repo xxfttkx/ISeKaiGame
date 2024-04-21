@@ -121,7 +121,7 @@ public class PlayerManager : Singleton<PlayerManager>
         {
             indexToPlayer[pIndex].ChangeAttack(0.5f);
         }
-        SaveLoadManager.Instance.SetPlayerExtraData(playerIndex, ExtraType.Kill, 1);
+        SaveLoadManager.Instance.SetPlayerExtraData(pIndex, ExtraType.Kill, 1);
         EventHandler.CallPlayerKillEnemyEvent(pIndex, enemy.GetEnemyIndex());
         SaveLoadManager.Instance.AddMoney(indexToPlayer[pIndex].GetMoneyEfficiency() * enemy.Money);
     }

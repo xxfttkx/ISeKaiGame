@@ -20,6 +20,7 @@ public class BianPao : PlayerAtk
         //velocity = 10;
         poolIndex = 4;
         autoReleaseTime = -1;
+        useRB = false;
     }
 
     protected override IEnumerator AttackEnemy(EnemyBase e)

@@ -91,8 +91,8 @@ public class LevelsList : EditorWindow
                 codeAddLabels.Add(currLabel);
                 right.Add(currLabel);
             }
-            
-            int val = level.enemyCreateFirstTime[i] <= level.endCreatEnemyTime ? 1+ (level.endCreatEnemyTime- level.enemyCreateFirstTime[i])/ level.enemyCreateDeltaTime[i] : 0;
+
+            int val = level.enemyCreateFirstTime[i] <= level.endCreatEnemyTime ? 1 + Mathf.FloorToInt((level.endCreatEnemyTime - level.enemyCreateFirstTime[i]) / level.enemyCreateDeltaTime[i]) : 0;
             if (enemyIndexTimes.TryGetValue(level.enemyIndex[i], out int times))
             {
                 times += val;
