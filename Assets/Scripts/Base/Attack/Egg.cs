@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 
 
@@ -44,7 +43,7 @@ public class Egg : PlayerAtk
         {
             angle = -angle;
         }
-        transform.DORotate(new Vector3(0, 0, angle), Settings.projectionRotateTime);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
         while (true)
         {
             if (!target.IsAlive())

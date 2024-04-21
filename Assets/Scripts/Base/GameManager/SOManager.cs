@@ -13,7 +13,7 @@ public class SOManager : Singleton<SOManager>
 
     public string GetStringByIndex(int index)
     {
-        int language = SaveLoadManager.Instance.GetLanguage();
+        int language = SaveLoadManager.Instance != null ? SaveLoadManager.Instance.GetLanguage() : 1;
         return textDataList_SO.GetTextString(index, language);
     }
 

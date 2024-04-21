@@ -20,7 +20,7 @@ MonoBehaviour:
       attackSpeed: 5
       attackRange: 1
       faceToLeft: 0
-      sprite: {fileID: -1177185971, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
+      sprite: {fileID: 1571574046, guid: 8cc5cb484953ca94fae100c5c9b6f354, type: 3}
       prefab: {fileID: 4708548768610898139, guid: d3470c4045ebf444b82348e1abed035c, type: 3}
     index: 0
     name: 77ko
@@ -36,7 +36,7 @@ MonoBehaviour:
       attackSpeed: 5
       attackRange: 6
       faceToLeft: 0
-      sprite: {fileID: 784740694, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
+      sprite: {fileID: -70648714, guid: ea30c583b9a3b1c40a3a49be06863ff1, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 8e01a792c675b0242b13b04c952bf1c1, type: 3}
     index: 1
     name: scarlet rain
@@ -52,7 +52,7 @@ MonoBehaviour:
       attackSpeed: 6
       attackRange: 6
       faceToLeft: 0
-      sprite: {fileID: 21300000, guid: 7ecf2779827a3eb4b90c5fad2eb62d90, type: 3}
+      sprite: {fileID: 1918729312, guid: 9cfda8aaa989a4b4f890a4ede0b6b1db, type: 3}
       prefab: {fileID: 4708548768610898139, guid: 8966b92e5303bff4bae67499f71fa73b, type: 3}
     index: 2
     name: purple hairpin

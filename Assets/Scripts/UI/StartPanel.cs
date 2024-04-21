@@ -29,7 +29,7 @@ public class StartPanel : MonoBehaviour
     // UI懒得优化了。。。   TODO:  Dictionary -> List
     void ShowCharacters()
     {
-        if (!SaveLoadManager.Instance.FinishLoad) return;
+        if (SaveLoadManager.Instance == null || !SaveLoadManager.Instance.FinishLoad) return;
         var list = SaveLoadManager.Instance.GetSomeCompanions();
         if(list!=null)
         {

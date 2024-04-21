@@ -6,7 +6,7 @@ using TMPro;
 public class TipsUI : MonoBehaviour
 {
     public TextMeshProUGUI tip;
-    List<int> tipsTextIndexes = new List<int>() {132,133,134,135,136,137 };
+    List<int> tipsTextIndexes = new List<int>() {132,133,134,135,136,137,138};
     private void OnEnable()
     {
         Show();
@@ -14,6 +14,6 @@ public class TipsUI : MonoBehaviour
     void Show()
     {
         var i = Random.Range(0, tipsTextIndexes.Count);
-        tip.text = SOManager.Instance.GetStringByIndex(tipsTextIndexes[i]);
+        tip.text = SOManager.Instance?.GetStringByIndex(tipsTextIndexes[i]);
     }
 }

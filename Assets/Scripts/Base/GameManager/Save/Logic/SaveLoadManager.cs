@@ -100,16 +100,14 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         {
             var jsonData = File.ReadAllText(resultPath);
             gameSaveData = JsonConvert.DeserializeObject<GameSaveData>(jsonData);
-            EventHandler.CallMoneyChangeEvent(gameSaveData.playerMoney, 0);
         }
         else
         {
             gameSaveData = new GameSaveData();
-            gameSaveData.charsToLevel = new Dictionary<string, int>();
-            EventHandler.CallMoneyChangeEvent(0, 0);
         }
         finishLoad = true;
         EventHandler.CallLoadFinishEvent();
+        EventHandler.CallMoneyChangeEvent(gameSaveData.playerMoney, 0);
         Application.targetFrameRate = Utils.GetFrameRateBySelectIndex(gameSaveData.targetFrameRate);
         Screen.SetResolution(1920, 1080, (FullScreenMode)(gameSaveData.windowed ? 3 : 1));
         //Debug.Log(Time.realtimeSinceStartup);
@@ -184,7 +182,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
     }
     public int GetLanguage()
     {
-        return gameSaveData?.language ?? 1;
+        return gameSaveData == null ? 1 : gameSaveData.language;
     }
     public int GetFrameRate()
     {

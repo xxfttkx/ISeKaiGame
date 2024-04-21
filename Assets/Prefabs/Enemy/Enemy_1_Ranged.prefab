@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: -987052999
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1571574046, guid: 8cc5cb484953ca94fae100c5c9b6f354, type: 3}
+  m_Sprite: {fileID: -70648714, guid: ea30c583b9a3b1c40a3a49be06863ff1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -190,8 +190,8 @@ MonoBehaviour:
     ProjectileSpeedBonus: 0
   enemy:
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0

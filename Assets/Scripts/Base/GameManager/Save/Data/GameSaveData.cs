@@ -7,7 +7,7 @@ public class GameSaveData
 {
     public int playerMoney = 0;
     // 对应indexes最高记录 
-    public Dictionary<string, int> charsToLevel;
+    public Dictionary<string, int> charsToLevel = new Dictionary<string, int>();
     //
     public List<List<int>> playerKillEnemy;
     //todo

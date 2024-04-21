@@ -48,7 +48,7 @@ public class Lightning : PlayerAtk
         {
             angle = -angle;
         }
-        transform.DORotate(new Vector3(0, 0, angle), Settings.projectionRotateTime);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
         while (true)
         {
             if (!enemy.IsAlive())
@@ -82,7 +82,7 @@ public class Lightning : PlayerAtk
         {
             angle = -angle;
         }
-        transform.DORotate(new Vector3(0, 0, angle), .1f);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
         while (true)
         {
             if (p == null || !p.IsAlive())

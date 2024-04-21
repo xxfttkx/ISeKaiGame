@@ -30,7 +30,7 @@ public class TMPStatic : MonoBehaviour
     }
     void TryUpdateLanguage()
     {
-        language = SaveLoadManager.Instance.GetLanguage();
+        language = SaveLoadManager.Instance != null ? SaveLoadManager.Instance.GetLanguage() : 1;
     }
 
 

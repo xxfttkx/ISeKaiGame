@@ -15,8 +15,8 @@ MonoBehaviour:
   characters:
   - index: 0
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -36,8 +36,8 @@ MonoBehaviour:
     finished: 1
   - index: 1
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
     profession: 2
     desc: 36
     extraTypes: 000000000300000005000000
-    extraThresholds: 10270000e803000005000000
+    extraThresholds: 050d00004d01000005000000
     extraDesire1: 000000002500000027000000
     extraDesire2: 000000002600000028000000
     extraCharacteristics: 0100000003000000
@@ -57,8 +57,8 @@ MonoBehaviour:
     finished: 1
   - index: 2
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
     profession: 1
     desc: 41
     extraTypes: 020000000100000005000000
-    extraThresholds: 102700008813000005000000
+    extraThresholds: 050d00008206000005000000
     extraDesire1: 000000002a0000002c000000
     extraDesire2: 000000002b0000002d000000
     extraCharacteristics: 0200000003000000
@@ -78,8 +78,8 @@ MonoBehaviour:
     finished: 1
   - index: 3
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
     profession: 3
     desc: 46
     extraTypes: 000000000300000005000000
-    extraThresholds: 10270000e803000005000000
+    extraThresholds: 050d00004d01000005000000
     extraDesire1: 000000002f00000031000000
     extraDesire2: 000000003000000032000000
     extraCharacteristics: 0200000001000000
@@ -99,8 +99,8 @@ MonoBehaviour:
     finished: 1
   - index: 4
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
     profession: 2
     desc: 51
     extraTypes: 000000000300000005000000
-    extraThresholds: 10270000e803000005000000
+    extraThresholds: 050d00004d01000005000000
     extraDesire1: 000000003400000036000000
     extraDesire2: 000000003500000037000000
     extraCharacteristics: 0100000004000000
@@ -120,8 +120,8 @@ MonoBehaviour:
     finished: 1
   - index: 5
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -141,8 +141,8 @@ MonoBehaviour:
     finished: 1
   - index: 6
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -162,8 +162,8 @@ MonoBehaviour:
     finished: 1
   - index: 7
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -183,8 +183,8 @@ MonoBehaviour:
     finished: 1
   - index: 8
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
     name: virtuo
     profession: 0
     desc: 73
-    extraTypes: 000000000100000007000000
+    extraTypes: 000000000100000005000000
     extraThresholds: 050d0000050d000005000000
     extraDesire1: 000000004a0000004c000000
     extraDesire2: 000000004b0000004d000000
@@ -204,8 +204,8 @@ MonoBehaviour:
     finished: 1
   - index: 9
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
     profession: 1
     desc: 78
     extraTypes: 01000000020000000500000006000000
-    extraThresholds: 050d0000050d00000500000064000000
+    extraThresholds: 050d0000050d00000500000032000000
     extraDesire1: 000000004f0000005100000053000000
     extraDesire2: 00000000500000005200000054000000
     extraCharacteristics: 0100000003000000
@@ -225,8 +225,8 @@ MonoBehaviour:
     finished: 1
   - index: 10
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
     profession: 2
     desc: 85
     extraTypes: 00000000030000000500000007000000
-    extraThresholds: 0a1a00009a0200000500000064000000
+    extraThresholds: 050d00004d0100000500000032000000
     extraDesire1: 0000000056000000580000005a000000
     extraDesire2: 0000000057000000590000005b000000
     extraCharacteristics: 0100000003000000
@@ -246,8 +246,8 @@ MonoBehaviour:
     finished: 1
   - index: 11
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -267,8 +267,8 @@ MonoBehaviour:
     finished: 0
   - index: 12
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -279,7 +279,7 @@ MonoBehaviour:
     profession: 2
     desc: 92
     extraTypes: 00000000030000000500000007000000
-    extraThresholds: 10270000e80300000500000014000000
+    extraThresholds: 050d00004d0100000500000014000000
     extraDesire1: 000000005d0000005f00000061000000
     extraDesire2: 000000005e0000006000000062000000
     extraCharacteristics: 0100000003000000
@@ -288,8 +288,8 @@ MonoBehaviour:
     finished: 1
   - index: 13
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -309,8 +309,8 @@ MonoBehaviour:
     finished: 1
   - index: 14
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -320,8 +320,8 @@ MonoBehaviour:
     name: gray joker
     profession: 0
     desc: 104
-    extraTypes: 010000000500000005000000
-    extraThresholds: 102700001400000005000000
+    extraTypes: 010000000700000005000000
+    extraThresholds: 050d00001400000005000000
     extraDesire1: 00000000690000006b000000
     extraDesire2: 000000006a0000006c000000
     extraCharacteristics: 0200000000000000
@@ -330,8 +330,8 @@ MonoBehaviour:
     finished: 1
   - index: 15
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -351,8 +351,8 @@ MonoBehaviour:
     finished: 1
   - index: 16
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -363,7 +363,7 @@ MonoBehaviour:
     profession: 3
     desc: 114
     extraTypes: 000000000300000005000000
-    extraThresholds: 10270000e803000005000000
+    extraThresholds: 050d00004d01000005000000
     extraDesire1: 000000007300000075000000
     extraDesire2: 000000007400000076000000
     extraCharacteristics: 0100000003000000
@@ -372,8 +372,8 @@ MonoBehaviour:
     finished: 1
   - index: 17
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -384,7 +384,7 @@ MonoBehaviour:
     profession: 2
     desc: 119
     extraTypes: 000000000300000005000000
-    extraThresholds: 050d00006400000005000000
+    extraThresholds: 050d00004d01000005000000
     extraDesire1: 00000000780000007a000000
     extraDesire2: 00000000790000007b000000
     extraCharacteristics: 0200000003000000
@@ -393,8 +393,8 @@ MonoBehaviour:
     finished: 1
   - index: 18
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -414,8 +414,8 @@ MonoBehaviour:
     finished: 0
   - index: 19
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -435,8 +435,8 @@ MonoBehaviour:
     finished: 0
   - index: 20
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -456,8 +456,8 @@ MonoBehaviour:
     finished: 0
   - index: 21
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -477,8 +477,8 @@ MonoBehaviour:
     finished: 0
   - index: 22
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -498,8 +498,8 @@ MonoBehaviour:
     finished: 0
   - index: 23
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -519,8 +519,8 @@ MonoBehaviour:
     finished: 0
   - index: 24
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -540,8 +540,8 @@ MonoBehaviour:
     finished: 0
   - index: 25
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0
@@ -561,8 +561,8 @@ MonoBehaviour:
     finished: 0
   - index: 26
     creature:
-      attack: 0
       hp: 0
+      attack: 0
       speed: 0
       attackSpeed: 0
       attackRange: 0

@@ -21,6 +21,7 @@ public class SlotPanel : MonoBehaviour
     {
         EventHandler.EnterSelectCanvasEvent += OnEnterSelectCanvasEvent;
         EventHandler.SelectIndexesEvent += OnSelectIndexesEvent;
+        ShowMoney();
     }
     private void OnDisable()
     {

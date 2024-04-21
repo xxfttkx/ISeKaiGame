@@ -742,6 +742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848bf9416d93f6445929539b2acebe96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shadow: {fileID: 0}
   all: {fileID: 5258101874898451139}
   bInit: 1
   soundSettingsPanel: {fileID: 2720422483261122160}
@@ -1666,7 +1667,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 203, y: 314}
-  m_SizeDelta: {x: 300, y: 160}
+  m_SizeDelta: {x: 340, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3987988719727964256
 CanvasRenderer:
@@ -1735,20 +1736,9 @@ MonoBehaviour:
   slot: {fileID: 8404944157141413041}
   enterColor: {r: 0.6981132, g: 0.6836241, b: 0.6836241, a: 1}
   exitColor: {r: 1, g: 1, b: 1, a: 1}
-  content: {fileID: 6406769745709933635}
   expandParent: {fileID: 4828378211184379942}
   expandPrefab: {fileID: 1731179009341773198}
-  bInit: 1
-  textBtnSelectList:
-  - {fileID: 1065450309707796063}
-  - {fileID: 8453064402035988826}
-  - {fileID: 4915173996942340598}
-  stringList:
-  - "\u4E2D\u6587"
-  - English
-  - "\u65E5\u672C\u8A9E"
   saveLoadIndex: 0
-  currSelectIndex: 0
 --- !u!1 &1846643627549845842
 GameObject:
   m_ObjectHideFlags: 0
@@ -3279,8 +3269,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 539.83, y: 314}
-  m_SizeDelta: {x: 300, y: 160}
+  m_AnchoredPosition: {x: 600, y: 314}
+  m_SizeDelta: {x: 340, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6454193103527625397
 CanvasRenderer:
@@ -3349,32 +3339,9 @@ MonoBehaviour:
   slot: {fileID: 6069306687187843126}
   enterColor: {r: 0.6981132, g: 0.6836241, b: 0.6836241, a: 1}
   exitColor: {r: 1, g: 1, b: 1, a: 1}
-  content: {fileID: 3567803081982743551}
   expandParent: {fileID: 5344091760434802234}
   expandPrefab: {fileID: 2734746982211057176}
-  bInit: 1
-  textBtnSelectList:
-  - {fileID: 7521382194115814208}
-  - {fileID: 1472666473760014377}
-  - {fileID: 16167998071097241}
-  - {fileID: 2478512863409828735}
-  - {fileID: 4576895951067764486}
-  - {fileID: 3137677130656091891}
-  - {fileID: 3102987487490708439}
-  - {fileID: 2634922597135981446}
-  - {fileID: 3328578876929448154}
-  stringList:
-  - -1
-  - 30
-  - 60
-  - 90
-  - 120
-  - 150
-  - 180
-  - 210
-  - 240
   saveLoadIndex: 1
-  currSelectIndex: 0
 --- !u!1 &4150251009375847507
 GameObject:
   m_ObjectHideFlags: 0

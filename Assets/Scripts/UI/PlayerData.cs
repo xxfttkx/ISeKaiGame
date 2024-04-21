@@ -90,7 +90,7 @@ public class PlayerData : MonoBehaviour
     }
     void OnEnterLevelEvent(int _)
     {
-        image.DOKill();
+        image.transform.DOKill();
         image.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
     public void SetPlayerDead()

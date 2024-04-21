@@ -40,8 +40,8 @@ public class Player3_Knife : MonoBehaviour
     }
     private void OnDisable()
     {
-        EventHandler.ExitLevelEvent += OnExitLevelEvent;
-        EventHandler.EnterLevelEvent += OnEnterLevelEvent;
+        EventHandler.ExitLevelEvent -= OnExitLevelEvent;
+        EventHandler.EnterLevelEvent -= OnEnterLevelEvent;
     }
     void OnExitLevelEvent(int _)
     {

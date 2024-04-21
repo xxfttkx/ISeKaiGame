@@ -8,9 +8,10 @@ public class GameStateManager : Singleton<GameStateManager>
 
     private void Start()
     {
+#if !UNITY_EDITOR
         Debug.unityLogger.logEnabled = false;
+#endif
         SetGameState(GameState.GameEnd);
-        //Application.targetFrameRate = 60;
     }
     private void Update()
     {

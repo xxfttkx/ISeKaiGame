@@ -213,7 +213,7 @@ public class EnemyBase : Creature
     {
         base.Reset();
         enemy = SOManager.Instance.enemyDataList_SO.GetEnemyByIndex(enemy.index);
-        sp.sprite = enemy.creature.sprite;
+        // sp.sprite = enemy.creature.sprite;
         hp = Mathf.CeilToInt(enemy.creature.hp * levelBonus);
         maxHp = hp;
         isBegingRepelled = false;

@@ -63,7 +63,10 @@ public class CharactersList : EditorWindow
             {
                 if(characters[i].creature.sprite!=null)
                     e.Q<VisualElement>("Sprite").style.backgroundImage = characters[i].creature.sprite.texture;
-                e.Q<Label>("Index").text = characters[i].index+"";
+                if(characters[i].finished)
+                    e.Q<Label>("Index").text = characters[i].index+"";
+                else
+                    e.Q<Label>("Index").text = -1 + "";
             }
         };
         leftListView.fixedItemHeight = 60;
