@@ -133,7 +133,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public void PlayerHurtEnemy(int playerIndex, EnemyBase e, int atk = -1)
     {
         if (atk == -1) atk = GetPlayerAttack(playerIndex);
-        if (atk == 0) return;
+        if (atk <= 0) return;
         if (indexToPlayer.ContainsKey(2) && indexToPlayer[2].IsAlive())
         {
             int extra = SaveLoadManager.Instance.GetPlayerExtra(2, 2);

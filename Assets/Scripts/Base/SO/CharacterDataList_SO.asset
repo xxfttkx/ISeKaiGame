@@ -253,18 +253,18 @@ MonoBehaviour:
       attackRange: 0
       faceToLeft: 0
       sprite: {fileID: -1898791945, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
-      prefab: {fileID: 0}
+      prefab: {fileID: 4708548768610898139, guid: 015929db7ca5994418ad71f94a064511, type: 3}
     name: jealous
-    profession: 2
-    desc: 0
-    extraTypes: 010000000400000008000000
-    extraThresholds: 000000000000000000000000
-    extraDesire1: 000000000000000000000000
-    extraDesire2: 000000000000000000000000
-    extraCharacteristics: 
-    extraCharacteristicVals: 
+    profession: 1
+    desc: 139
+    extraTypes: 010000000200000005000000
+    extraThresholds: 050d0000050d000005000000
+    extraDesire1: 000000008c0000008e000000
+    extraDesire2: 000000008d0000008f000000
+    extraCharacteristics: 0000000002000000
+    extraCharacteristicVals: 0a00000002000000
     extraData: 
-    finished: 0
+    finished: 1
   - index: 12
     creature:
       hp: 0

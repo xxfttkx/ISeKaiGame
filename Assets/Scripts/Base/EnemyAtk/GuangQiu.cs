@@ -74,7 +74,7 @@ public class GuangQiu : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == playerLayerIndex)
+        if (!beReleased && collision.gameObject.layer == playerLayerIndex)
         {
             var p = PlayerManager.Instance.GetPlayerInControl();
             PlayerManager.Instance.EnemyHurtPlayer(null, p, atk);

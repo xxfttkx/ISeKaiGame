@@ -119,9 +119,9 @@ public class Player : Creature
         if (!IsAlive()) return;
         if (attack <= 0) return;
         attack = Mathf.Min(hp, attack);
+        hp -= attack;
         EventHandler.CallEnemyHurtPlayerEvent(e, GetPlayerIndex(), attack);
         SaveLoadManager.Instance.SetPlayerExtraData(GetPlayerIndex(), ExtraType.BeHurt, attack);
-        hp -= attack;
         EventHandler.CallPlayerHpChangeEvent(GetPlayerIndex(), GetHp(), GetMaxHP());
         if (hp <= 0)
         {

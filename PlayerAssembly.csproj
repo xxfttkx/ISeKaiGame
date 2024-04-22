@@ -66,7 +66,7 @@
     <Compile Include="Assets\Scripts\Player\Player_17_Mage.cs" />
     <Compile Include="Assets\Scripts\Player\Player_5_Mage.cs" />
     <Compile Include="Assets\Scripts\Player\Player_18_Mage.cs" />
-    <Compile Include="Assets\Scripts\Player\Player_11_Mage.cs" />
+    <Compile Include="Assets\Scripts\Player\Player_11_Priest.cs" />
     <Compile Include="Assets\Scripts\Player\Player_16_Assassin.cs" />
     <Compile Include="Assets\Scripts\Player\Player_1_Mage.cs" />
     <Compile Include="Assets\Scripts\Player\Player_13_Priest.cs" />
