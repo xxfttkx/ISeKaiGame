@@ -3,65 +3,73 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_18_Mage : Player
+// 吟唱时间长 范围= 吟唱时间 伤害*吟唱时间
+public class Player_18_Mage : Player_Single
 {
     private float lastChantTime;
     public List<Sprite> chantList;
     public SpriteRenderer chantSp;
+    public SpriteRenderer atkRangeCircle;
     protected override void Awake()
     {
         character.index = 18;
         chantSp.enabled = false;
         base.Awake();
     }
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-        StartCoroutine(Attack());
-    }
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-    }
-
-    IEnumerator Attack()
+    protected override IEnumerator Attack()
     {
         while (true)
         {
-            bool attackSuccess = false;
-            do
-            {
-                var e = Utils.GetNearestEnemy(this.transform.position, this.GetAttackRange());
-                if (e != null)
-                {
-                    int lastGlobalIndex = e.GetGlobalIndex();
-                    yield return Chant();
-                    int newGlobalIndex = e.GetGlobalIndex();
-                    if (lastGlobalIndex != newGlobalIndex)
-                    {
-                        Debug.Log("target was dead。。。");
-                        break;
-                    }
-                    PlayerManager.Instance.PlayerHurtEnemy(GetPlayerIndex(), e);
-                    AudioManager.Instance.PlaySoundEffect(SoundName.Atk);
-                    attackSuccess = true;
-                }
-            } while (false);
-            if(!attackSuccess)
+            var e = Utils.GetNearestEnemy(this.transform.position, GetAttackRange());
+            if (e == null)
             {
                 yield return null;
+                continue;
             }
-            else
-            {
-                yield return new WaitForSeconds(GetSkillCD());
-            }
+            yield return AttackAnim(e);
         }
 
     }
-
+    protected override IEnumerator AttackAnim(EnemyBase e)
+    {
+        int lastGlobalIndex = e.GetGlobalIndex();
+        yield return Chant();
+        if(e==null)
+        {
+            Debug.Log("e==null");
+            yield break;
+        }
+        int newGlobalIndex = e.GetGlobalIndex();
+        if (lastGlobalIndex != newGlobalIndex)
+        {
+            Debug.Log("target was dead。。。");
+            yield break;
+        }
+        if(!e.IsAlive())
+        {
+            yield break;
+        }
+        var enemies = Utils.GetNearEnemies(e._pos, lastChantTime);
+        if (enemies != null && enemies.Count > 0)
+        {
+            foreach (var enemy in enemies)
+            {
+                PlayerManager.Instance.PlayerHurtEnemy(GetPlayerIndex(), e);
+            }
+            // anim
+            atkRangeCircle.enabled = true;
+            StartCoroutine(DelayDisableCircle());
+            yield return new WaitForSeconds(GetSkillCD());
+        }
+    }
+    IEnumerator DelayDisableCircle()
+    {
+        yield return new WaitForSeconds(Settings.circleAnimTime);
+        atkRangeCircle.enabled = false;
+    }
     IEnumerator Chant()
     {
-        lastChantTime = GetChantTime();
+        lastChantTime = ChantTime;
         chantSp.enabled = true;
         float temp = lastChantTime - 0.1f;
         float delta = temp / chantList.Count;
@@ -77,9 +85,13 @@ public class Player_18_Mage : Player
 
     }
 
-    private float GetChantTime()
+    private float ChantTime
     {
-        return 1.0f;
+        get => 1.0f;
+    }
+    float DamageBonus
+    {
+        get => lastChantTime + 1.0f;
     }
     public override int GetAttack()
     {

@@ -29,7 +29,6 @@ public class Player_10_Mage : Player_Single
     protected override IEnumerator AttackAnim(EnemyBase e)
     {
         PoolManager.Instance.CreateLetter(this, e, _pos);
-        AudioManager.Instance.PlaySoundEffect(SoundName.Atk);
         yield break;
     }
     private void OnPlayerKillEnemyEvent(int playerIndex, int _)

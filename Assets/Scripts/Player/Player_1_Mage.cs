@@ -28,7 +28,6 @@ public class Player_1_Mage : Player_Single
     protected override IEnumerator AttackAnim(EnemyBase e)
     {
         PoolManager.Instance.CreateFeather(e, this.transform.position);
-        AudioManager.Instance.PlaySoundEffect(SoundName.Atk);
         yield break;
     }
     public override void AddBuffBeforeStart()
