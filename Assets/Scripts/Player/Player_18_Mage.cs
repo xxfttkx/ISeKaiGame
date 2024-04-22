@@ -53,8 +53,7 @@ public class Player_18_Mage : Player
             }
             else
             {
-                var cd = 10.0f / GetAttackSpeed();
-                yield return new WaitForSeconds(cd);
+                yield return new WaitForSeconds(GetSkillCD());
             }
         }
 
