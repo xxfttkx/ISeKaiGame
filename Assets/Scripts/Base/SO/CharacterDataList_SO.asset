@@ -400,18 +400,18 @@ MonoBehaviour:
       attackRange: 0
       faceToLeft: 0
       sprite: {fileID: 32792908, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
-      prefab: {fileID: 0}
+      prefab: {fileID: 4708548768610898139, guid: 6329e88ab9a600d4f843aa79ef281d64, type: 3}
     name: emerald
     profession: 2
-    desc: 0
-    extraTypes: 
-    extraThresholds: 
-    extraDesire1: 
-    extraDesire2: 
-    extraCharacteristics: 
-    extraCharacteristicVals: 
+    desc: 144
+    extraTypes: 000000000300000005000000
+    extraThresholds: 050d00004d01000005000000
+    extraDesire1: 000000009100000093000000
+    extraDesire2: 000000009200000094000000
+    extraCharacteristics: 0100000003000000
+    extraCharacteristicVals: 0300000003000000
     extraData: 
-    finished: 0
+    finished: 1
   - index: 19
     creature:
       hp: 0
@@ -421,18 +421,18 @@ MonoBehaviour:
       attackRange: 0
       faceToLeft: 0
       sprite: {fileID: 2027102922, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
-      prefab: {fileID: 0}
+      prefab: {fileID: 4708548768610898139, guid: 60d67198ba4423945a0bb92e6ebbabe5, type: 3}
     name: blend fruit
-    profession: 2
-    desc: 0
-    extraTypes: 
-    extraThresholds: 
-    extraDesire1: 
-    extraDesire2: 
-    extraCharacteristics: 
-    extraCharacteristicVals: 
+    profession: 1
+    desc: 149
+    extraTypes: 020000000100000005000000
+    extraThresholds: e8030000e803000005000000
+    extraDesire1: 000000009600000098000000
+    extraDesire2: 000000009700000099000000
+    extraCharacteristics: 0100000003000000
+    extraCharacteristicVals: 0300000003000000
     extraData: 
-    finished: 0
+    finished: 1
   - index: 20
     creature:
       hp: 0
@@ -441,17 +441,17 @@ MonoBehaviour:
       attackSpeed: 0
       attackRange: 0
       faceToLeft: 0
-      sprite: {fileID: 0}
-      prefab: {fileID: 0}
+      sprite: {fileID: -719524639, guid: 1351c23c38b55664f9e08677e0d910e8, type: 3}
+      prefab: {fileID: 4708548768610898139, guid: cf5e0378705b61f46b02ea375c3db8d8, type: 3}
     name: 20
-    profession: 2
+    profession: 3
     desc: 0
-    extraTypes: 
-    extraThresholds: 
-    extraDesire1: 
-    extraDesire2: 
-    extraCharacteristics: 
-    extraCharacteristicVals: 
+    extraTypes: 000000000300000005000000
+    extraThresholds: e80300006400000005000000
+    extraDesire1: 000000000000000000000000
+    extraDesire2: 000000000000000000000000
+    extraCharacteristics: 0100000003000000
+    extraCharacteristicVals: 0300000003000000
     extraData: 
     finished: 0
   - index: 21

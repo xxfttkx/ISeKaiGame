@@ -92,16 +92,16 @@ public static class Utils
     {
         var enemies = GetNearEnemies(curr, range);
         if (enemies == null || enemies.Count == 0) return null;
-        EnemyBase res = enemies[0];
-        float dis = ((Vector2)res.transform.position - curr).sqrMagnitude;
+        EnemyBase res = null;
+        float minDisSqr = float.MaxValue;
         float newDis;
-        for (int i = 1; i < enemies.Count; ++i)
+        foreach (var e in enemies)
         {
-            newDis = ((Vector2)enemies[i].transform.position - curr).sqrMagnitude;
-            if (newDis < dis)
+            newDis = (e._pos - curr).sqrMagnitude;
+            if (newDis < minDisSqr)
             {
-                res = enemies[i];
-                dis = newDis;
+                res = e;
+                minDisSqr = newDis;
             }
         }
         return res;
