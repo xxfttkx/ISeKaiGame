@@ -80,7 +80,7 @@ public class PlayerData : MonoBehaviour
     }
     public void ShowPlayerSettings()
     {
-        UIManager.Instance.ShowPlayerSettingsPanel(index);
+        UIManager.Instance.TryShowOrHidePlayerSettingsPanel(index);
     }
 
     internal void Init(int index, Sprite sprite)

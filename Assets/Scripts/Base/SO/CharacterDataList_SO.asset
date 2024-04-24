@@ -453,7 +453,7 @@ MonoBehaviour:
     extraCharacteristics: 0100000003000000
     extraCharacteristicVals: 0300000003000000
     extraData: 
-    finished: 0
+    finished: 1
   - index: 21
     creature:
       hp: 0

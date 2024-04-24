@@ -46,7 +46,10 @@ public class UIManager : Singleton<UIManager>
                 EscOnePanel();
             }
         }
-
+        else if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            TryShowOrHidePlayerSettingsPanel();
+        }
     }
     private void OnEnable()
     {
@@ -91,6 +94,23 @@ public class UIManager : Singleton<UIManager>
     {
         TryAddToOpenPanelStack(pausePanel.gameObject);
         GameStateManager.Instance.SetGameState(GameState.GamePause);
+    }
+    public void TryShowOrHidePlayerSettingsPanel(int playerIndex = -1)
+    {
+        if (GameStateManager.Instance.InGamePlay())
+        {
+            if(playerSettingsPanel.gameObject.activeInHierarchy)
+                EscOnePanel();
+            else
+                ShowPlayerSettingsPanel(playerIndex);
+        }
+        else if (GameStateManager.Instance.InGamePause())
+        {
+            if (playerSettingsPanel.gameObject.activeInHierarchy)
+                EscOnePanel();
+            else
+                ShowPlayerSettingsPanel(playerIndex);
+        }
     }
 
     public void OnMoneyChangeEvent(int curr, int add)
