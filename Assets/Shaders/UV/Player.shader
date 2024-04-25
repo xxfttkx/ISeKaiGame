@@ -8,7 +8,7 @@ Shader "Custom/Player" {
         _Index("Index",Range(0,20)) = 0
         _Max("Max",Range(0,30)) = 30
         _Scale("Scale",Range(0,1)) = 1
-    }
+    } 
     SubShader {
         Tags { "Queue" = "Transparent" }
         Blend SrcAlpha OneMinusSrcAlpha

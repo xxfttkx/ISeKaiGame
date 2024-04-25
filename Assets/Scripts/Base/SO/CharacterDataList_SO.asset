@@ -27,7 +27,7 @@ MonoBehaviour:
     profession: 0
     desc: 31
     extraTypes: 010000000000000005000000
-    extraThresholds: 050d0000050d000005000000
+    extraThresholds: e8030000e803000005000000
     extraDesire1: ffffffff2000000022000000
     extraDesire2: ffffffff2100000023000000
     extraCharacteristics: 0200000000000000
@@ -48,7 +48,7 @@ MonoBehaviour:
     profession: 2
     desc: 36
     extraTypes: 000000000300000005000000
-    extraThresholds: 050d00004d01000005000000
+    extraThresholds: e80300006400000005000000
     extraDesire1: 000000002500000027000000
     extraDesire2: 000000002600000028000000
     extraCharacteristics: 0100000003000000
@@ -69,7 +69,7 @@ MonoBehaviour:
     profession: 1
     desc: 41
     extraTypes: 020000000100000005000000
-    extraThresholds: 050d00008206000005000000
+    extraThresholds: e8030000f401000005000000
     extraDesire1: 000000002a0000002c000000
     extraDesire2: 000000002b0000002d000000
     extraCharacteristics: 0200000003000000
@@ -90,7 +90,7 @@ MonoBehaviour:
     profession: 3
     desc: 46
     extraTypes: 000000000300000005000000
-    extraThresholds: 050d00004d01000005000000
+    extraThresholds: e80300006400000005000000
     extraDesire1: 000000002f00000031000000
     extraDesire2: 000000003000000032000000
     extraCharacteristics: 0200000001000000
@@ -111,7 +111,7 @@ MonoBehaviour:
     profession: 2
     desc: 51
     extraTypes: 000000000300000005000000
-    extraThresholds: 050d00004d01000005000000
+    extraThresholds: e80300006400000005000000
     extraDesire1: 000000003400000036000000
     extraDesire2: 000000003500000037000000
     extraCharacteristics: 0100000004000000
@@ -132,7 +132,7 @@ MonoBehaviour:
     profession: 2
     desc: 56
     extraTypes: 000000000300000005000000
-    extraThresholds: 050d00004d01000005000000
+    extraThresholds: e80300006400000005000000
     extraDesire1: 00000000390000003b000000
     extraDesire2: 000000003a0000003c000000
     extraCharacteristics: 0100000004000000
@@ -153,7 +153,7 @@ MonoBehaviour:
     profession: 2
     desc: 61
     extraTypes: 00000000030000000500000002000000
-    extraThresholds: 050d00004d01000005000000050d0000
+    extraThresholds: e80300006400000005000000e8030000
     extraDesire1: 000000003e0000004000000042000000
     extraDesire2: 000000003f0000004100000043000000
     extraCharacteristics: 0100000004000000
@@ -174,7 +174,7 @@ MonoBehaviour:
     profession: 0
     desc: 68
     extraTypes: 000000000100000005000000
-    extraThresholds: 050d0000050d000005000000
+    extraThresholds: e8030000e803000005000000
     extraDesire1: 000000004500000047000000
     extraDesire2: 000000004600000048000000
     extraCharacteristics: 0100000000000000
@@ -195,7 +195,7 @@ MonoBehaviour:
     profession: 0
     desc: 73
     extraTypes: 000000000100000005000000
-    extraThresholds: 050d0000050d000005000000
+    extraThresholds: e8030000e803000005000000
     extraDesire1: 000000004a0000004c000000
     extraDesire2: 000000004b0000004d000000
     extraCharacteristics: 0100000000000000
@@ -216,7 +216,7 @@ MonoBehaviour:
     profession: 1
     desc: 78
     extraTypes: 01000000020000000500000006000000
-    extraThresholds: 050d0000050d00000500000032000000
+    extraThresholds: e8030000e8030000050000000c000000
     extraDesire1: 000000004f0000005100000053000000
     extraDesire2: 00000000500000005200000054000000
     extraCharacteristics: 0100000003000000
@@ -237,7 +237,7 @@ MonoBehaviour:
     profession: 2
     desc: 85
     extraTypes: 00000000030000000500000007000000
-    extraThresholds: 050d00004d0100000500000032000000
+    extraThresholds: e803000064000000050000000b000000
     extraDesire1: 0000000056000000580000005a000000
     extraDesire2: 0000000057000000590000005b000000
     extraCharacteristics: 0100000003000000
@@ -258,7 +258,7 @@ MonoBehaviour:
     profession: 1
     desc: 139
     extraTypes: 010000000200000005000000
-    extraThresholds: 050d0000050d000005000000
+    extraThresholds: e8030000e803000005000000
     extraDesire1: 000000008c0000008e000000
     extraDesire2: 000000008d0000008f000000
     extraCharacteristics: 0000000002000000
@@ -279,7 +279,7 @@ MonoBehaviour:
     profession: 2
     desc: 92
     extraTypes: 00000000030000000500000007000000
-    extraThresholds: 050d00004d0100000500000014000000
+    extraThresholds: e8030000640000000500000014000000
     extraDesire1: 000000005d0000005f00000061000000
     extraDesire2: 000000005e0000006000000062000000
     extraCharacteristics: 0100000003000000
@@ -300,7 +300,7 @@ MonoBehaviour:
     profession: 1
     desc: 99
     extraTypes: 010000000200000005000000
-    extraThresholds: 050d0000050d000005000000
+    extraThresholds: e8030000e803000005000000
     extraDesire1: 000000006400000066000000
     extraDesire2: 000000006500000067000000
     extraCharacteristics: 0300000000000000
@@ -321,7 +321,7 @@ MonoBehaviour:
     profession: 0
     desc: 104
     extraTypes: 010000000700000005000000
-    extraThresholds: 050d00001400000005000000
+    extraThresholds: e80300001400000005000000
     extraDesire1: 00000000690000006b000000
     extraDesire2: 000000006a0000006c000000
     extraCharacteristics: 0200000000000000
@@ -342,7 +342,7 @@ MonoBehaviour:
     profession: 0
     desc: 109
     extraTypes: 000000000100000005000000
-    extraThresholds: e8030000050d000005000000
+    extraThresholds: e8030000e803000005000000
     extraDesire1: 000000006e00000070000000
     extraDesire2: 000000006f00000071000000
     extraCharacteristics: 0100000000000000
@@ -363,7 +363,7 @@ MonoBehaviour:
     profession: 3
     desc: 114
     extraTypes: 000000000300000005000000
-    extraThresholds: 050d00004d01000005000000
+    extraThresholds: e80300006400000005000000
     extraDesire1: 000000007300000075000000
     extraDesire2: 000000007400000076000000
     extraCharacteristics: 0100000003000000
@@ -384,7 +384,7 @@ MonoBehaviour:
     profession: 2
     desc: 119
     extraTypes: 000000000300000005000000
-    extraThresholds: 050d00004d01000005000000
+    extraThresholds: e80300006400000005000000
     extraDesire1: 00000000780000007a000000
     extraDesire2: 00000000790000007b000000
     extraCharacteristics: 0200000003000000
@@ -405,7 +405,7 @@ MonoBehaviour:
     profession: 2
     desc: 144
     extraTypes: 000000000300000005000000
-    extraThresholds: 050d00004d01000005000000
+    extraThresholds: e80300006400000005000000
     extraDesire1: 000000009100000093000000
     extraDesire2: 000000009200000094000000
     extraCharacteristics: 0100000003000000
@@ -445,11 +445,11 @@ MonoBehaviour:
       prefab: {fileID: 4708548768610898139, guid: cf5e0378705b61f46b02ea375c3db8d8, type: 3}
     name: 20
     profession: 3
-    desc: 0
+    desc: 154
     extraTypes: 000000000300000005000000
     extraThresholds: e80300006400000005000000
-    extraDesire1: 000000000000000000000000
-    extraDesire2: 000000000000000000000000
+    extraDesire1: 000000009b0000009d000000
+    extraDesire2: 000000009c0000009e000000
     extraCharacteristics: 0100000003000000
     extraCharacteristicVals: 0300000003000000
     extraData: 

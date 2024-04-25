@@ -97,4 +97,15 @@ public class PlayerData : MonoBehaviour
     {
         image.transform.DORotate(new Vector3(0, 0, 90), .5f).SetUpdate(true);
     }
+    public GameObject hpTextParent;
+    public GameObject hpTextPrefab;
+    public List<GameObject> canUseText;
+    public HashSet<RectTransform> currText;
+    public void AddorSubHP(TextMeshProUGUI t)
+    {
+        foreach(var rect in currText)
+        {
+            rect.anchoredPosition = new Vector2(rect.anchoredPosition.x + 30, rect.anchoredPosition.y);
+        }
+    }
 }
