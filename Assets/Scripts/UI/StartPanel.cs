@@ -26,7 +26,7 @@ public class StartPanel : MonoBehaviour
     {
         ShowCharacters();
     }
-    // UI懒得优化了。。。   TODO:  Dictionary -> List
+    // UI懒得优化了。。   TODO:  Dictionary -> List
     void ShowCharacters()
     {
         if (SaveLoadManager.Instance == null || !SaveLoadManager.Instance.FinishLoad) return;
