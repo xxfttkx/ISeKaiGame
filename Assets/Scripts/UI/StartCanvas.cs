@@ -26,7 +26,6 @@ public class StartCanvas : Singleton<StartCanvas>
     {
         EventHandler.CallEnterSelectCanvasEvent();
     }
-
     public void EnterTitle()
     {
         startPanel.SetActive(true);
