@@ -3,9 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_11_Mage : Priest
+public class Player_11_Priest : Priest
 {
-    // ´ó¸»ºÀ
     protected override void Awake()
     {
         character.index = 11;

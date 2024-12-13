@@ -73,7 +73,7 @@ public class CharactersList : EditorWindow
         leftListView.itemsSource = characters;
         leftListView.makeItem = makeItem;
         leftListView.bindItem = bindItem;
-        leftListView.selectionChanged += OnSelectionChanged;
+        leftListView.onSelectionChange += OnSelectionChanged;
     }
 
     List<Label> codeAddLabels = new List<Label>();

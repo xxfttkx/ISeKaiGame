@@ -13,7 +13,7 @@ public class PlayerData : MonoBehaviour
     private Material material;
     public GameObject buffParent;
     public GameObject buffPrefab;
-    public Dictionary<string, Bufftip> buffNameToBuffTip;
+    public Dictionary<string, BuffTip> buffNameToBuffTip;
     public TextMeshProUGUI hpAndMaxHp;
     private int index;
     private void Awake()
@@ -22,7 +22,7 @@ public class PlayerData : MonoBehaviour
         material = image.material;
         material = new Material(material);
         image.material = material;
-        buffNameToBuffTip = new Dictionary<string, Bufftip>();
+        buffNameToBuffTip = new Dictionary<string, BuffTip>();
         SetFieldTime(0);
     }
     private void OnEnable()
@@ -56,7 +56,7 @@ public class PlayerData : MonoBehaviour
     }
     public void SetBuffList(Buff buff)
     {
-        Bufftip tip;
+        BuffTip tip;
         if (buffNameToBuffTip.TryGetValue(buff.buffName, out tip))
         {
 
@@ -64,7 +64,7 @@ public class PlayerData : MonoBehaviour
         else
         {
             var go = Instantiate(buffPrefab, buffParent.transform);
-            tip = go.GetComponent<Bufftip>();
+            tip = go.GetComponent<BuffTip>();
             buffNameToBuffTip.Add(buff.buffName, tip);
         }
 
@@ -72,7 +72,7 @@ public class PlayerData : MonoBehaviour
     }
     public void RemoveBuff(Buff b)
     {
-        if (buffNameToBuffTip.TryGetValue(b.buffName, out Bufftip tip))
+        if (buffNameToBuffTip.TryGetValue(b.buffName, out BuffTip tip))
         {
             buffNameToBuffTip.Remove(b.buffName);
             Destroy(tip.gameObject);

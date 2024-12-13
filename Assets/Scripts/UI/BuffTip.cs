@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class Bufftip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class BuffTip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public TextMeshProUGUI tooltipUI;  // 这是用来显示tooltip的UI Text对象
     public GameObject tips;

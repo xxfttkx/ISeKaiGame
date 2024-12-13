@@ -62,7 +62,7 @@ public class LevelsList : EditorWindow
         leftListView.itemsSource = levels;
         leftListView.makeItem = makeItem;
         leftListView.bindItem = bindItem;
-        leftListView.selectionChanged += OnSelectionChanged;
+        leftListView.onSelectionChange += OnSelectionChanged;
     }
     List<Label> codeAddLabels = new List<Label>();
     Dictionary<int, int> enemyIndexTimes = new Dictionary<int, int>();

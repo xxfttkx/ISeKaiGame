@@ -81,7 +81,7 @@ public class EnemyList : EditorWindow
         leftListView.itemsSource = enemies;
         leftListView.makeItem = makeItem;
         leftListView.bindItem = bindItem;
-        leftListView.selectionChanged += OnSelectionChanged;
+        leftListView.onSelectionChange += OnSelectionChanged;
     }
 
     
